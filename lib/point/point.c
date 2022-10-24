@@ -5,6 +5,7 @@
 #include <stdio.h>
 #include "../boolean.h"
 #include <math.h>
+#include "point.h"
 
 #define PI 3.14159265
 /* *** DEFINISI PROTOTIPE PRIMITIF *** */
