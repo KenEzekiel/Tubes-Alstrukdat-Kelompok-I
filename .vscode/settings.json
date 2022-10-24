@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "boolean.h": "c",
+        "point.h": "c"
+    }
+}
