@@ -1,18 +1,12 @@
 # Tubes-Alstrukdat-Kelompok-I
 
----
-
 Tugas Besar IF2110 Algoritma dan Struktur Data
-
----
 
 BNMO is a game robot owned by Indra and Doni. Recently, Indra has been in close contact with a girl named Siska Kol and wants to invite her to dinner at his place. Indra then asked Doni and BNMO to help prepare the dinner, which BNMO is immediately interested in because he often watches cooking videos in toktok. Because BNMO is a computer, the easiest way for him to learn to cook is to make a cooking simulation program for BNMO to follow.
 
 Cooking BNMO (Name TBD) is a Command-Line Interface Game that is made using C, which includes a variety of Abstact Data Types and Structures, such as List, Matrix, Tree, Queue, Stack, etc.
 
 ## Features
-
----
 
 - Inisiasi
 - Simulator
@@ -27,8 +21,6 @@ Cooking BNMO (Name TBD) is a Command-Line Interface Game that is made using C, w
 
 ## Anggota Kelompok I
 
----
-
 | NIM      | Name                        |
 | -------- | --------------------------- |
 | 13521094 | Angela Livia Arumsari       |
@@ -39,9 +31,9 @@ Cooking BNMO (Name TBD) is a Command-Line Interface Game that is made using C, w
 
 ## Program Structure
 
----
-
-> | README.md
-> |
-> |
-> |--- lib
+```
+| README.md
+|
+|
+└─── lib
+```
