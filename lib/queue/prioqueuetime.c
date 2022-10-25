@@ -3,6 +3,8 @@
 /* Elemen queue terurut membesar berdasarkan elemen time */
 
 #include "../boolean.h"
+#include "../makanan/makanan.h"
+#include "../time/time.h"
 #include "prioqueuetime.h"
 #include <stdlib.h>
 #include <stdio.h>
@@ -111,7 +113,7 @@ void Enqueue(PrioQueueTime *Q, infotype X)
         InfoTail(*Q) = X;
         i = Tail(*Q);
         j = i == 0 ? MaxEl(*Q) - 1 : i - 1;
-        while (i != Head(*Q) && Time(Elmt(*Q, i)) < (Time(Elmt(*Q, j))))
+        while (i != Head(*Q) && TIMEToDetik(Exp(Elmt(*Q, i))) < TIMEToDetik(Exp(Elmt(*Q, j))))
         {
             temp = Elmt(*Q, i);
             Elmt(*Q, i) = Elmt(*Q, j);
@@ -159,9 +161,64 @@ void PrintPrioQueueTime(PrioQueueTime Q)
         while (!IsEmpty(temp))
         {
             Dequeue(&temp, &val);
-            printf("%d %c\n", Time(val), Info(val));
+            TulisMakanan(val);
             // idx = (idx % NBElmt(Q)) + 1;
         }
     }
     printf("#\n");
+}
+
+boolean isElmt(PrioQueueTime Q, infotype val)
+{
+    /* Mengirimkan true jika val terdapat didalam Q */
+    // KAMUS LOKAL
+    PrioQueueTime temp = Q;
+    boolean found = false;
+    infotype tempval;
+    // ALGORITMA
+    while ((!IsEmpty(temp)) && (!found))
+    {
+        Dequeue(&temp, &tempval);
+        if (ID(val) == ID(tempval))
+        {
+            found = true;
+        }
+    }
+    return found;
+}
+
+void deleteElmt(PrioQueueTime *Q, infotype *val)
+{
+    /* Delete suatu elemen val dari Q */
+    /* I.S Q terdefinisi, mungkin kosong */
+    /* F.S val didelete jika ada didalam Q */
+    // KAMUS LOKAL
+    PrioQueueTime temp = *Q;
+    PrioQueueTime hasil;
+    boolean found = false;
+    infotype tempval;
+
+    // ALGORITMA
+    MakeEmpty(&hasil, MaxEl(*Q));
+    if (isElmt(*Q, *val))
+    {
+        while ((!IsEmpty(temp)) && (!found))
+        {
+            Dequeue(&temp, &tempval);
+            if (ID(*val) == ID(tempval))
+            {
+                found = true;
+            }
+            else
+            {
+                Enqueue(&hasil, tempval);
+            }
+        }
+        while ((!IsEmpty(temp)) && (found))
+        {
+            Dequeue(&temp, &tempval);
+            Enqueue(&hasil, tempval);
+        }
+        *Q = hasil;
+    }
 }

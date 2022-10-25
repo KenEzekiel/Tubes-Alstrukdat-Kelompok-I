@@ -1,6 +1,8 @@
 #include "prioqueuetime.h"
 #include <stdio.h>
 #include "../boolean.h"
+#include "../makanan/makanan.h"
+#include "../time/time.h"
 
 int main()
 {
@@ -15,18 +17,22 @@ int main()
         Info(x) = i;
         Enqueue(&Q, x);
     }*/
-    Time(x) = 1;
-    Info(x) = 'j';
-    Time(y) = 2;
-    Info(y) = 'd';
-    Time(z) = 2;
-    Info(z) = 'g';
-    Time(a) = 4;
-    Info(a) = 'o';
+    BacaMakanan(&x);
+    BacaMakanan(&y);
+    BacaMakanan(&z);
+    BacaMakanan(&a);
     Enqueue(&Q, x);
     Enqueue(&Q, y);
     Enqueue(&Q, z);
     Enqueue(&Q, a);
+    printf("Apakah Q kosong? %d\n", IsEmpty(Q));
+    printf("Apakah Q penuh? %d\n", IsFull(Q));
+    printf("Jumlah elemen Q? %d\n", NBElmt(Q));
+    printf("is x element Q? %d\n", isElmt(Q, x));
+    deleteElmt(&Q, &x);
+    printf("is x element Q setelah di delete? %d\n", isElmt(Q, x));
+    Dequeue(&Q, &y);
+    TulisMakanan(y);
     /*Dequeue(&Q, &x);
     printf("removed elmt x : %d\n", Time(x));
     printf("idx head : %d\t idx tail : %d\n", Head(Q), Tail(Q));
@@ -56,6 +62,7 @@ int main()
     Enqueue(&Q, x);
     printf("idx head : %d\t idx tail : %d\n", Head(Q), Tail(Q));*/
     PrintPrioQueueTime(Q);
+    DeAlokasi(&Q);
 
     return 0;
 }

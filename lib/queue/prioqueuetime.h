@@ -7,16 +7,14 @@
 #define prioqueuetime_H
 
 #include "../boolean.h"
+#include "../makanan/makanan.h"
+#include "../time/time.h"
 
 #define Nil -1
 /* Konstanta untuk mendefinisikan address tak terdefinisi */
 
 /* Definisi elemen dan address */
-typedef struct
-{
-    int time;  /* [1..100], waktu dengan nilai 1..100 (1 adalah waktu adalah terendah) */
-    char info; /* elemen karakter */
-} infotype;
+typedef Makanan infotype;
 typedef int address; /* indeks tabel */
 /* Contoh deklarasi variabel bertype PrioQueueTime : */
 /* Versi I : tabel dinamik, Head dan Tail eksplisit, ukuran disimpan */
@@ -32,8 +30,8 @@ typedef struct
 
 /* ********* AKSES (Selektor) ********* */
 /* Jika e adalah infotype dan Q adalah PrioQueueTime, maka akses elemen : */
-#define Time(e) (e).time
-#define Info(e) (e).info
+//#define Time(e) (e).time
+//#define Info(e) (e).info
 #define Head(Q) (Q).HEAD
 #define Tail(Q) (Q).TAIL
 #define InfoHead(Q) (Q).T[(Q).HEAD]
@@ -86,5 +84,13 @@ void PrintPrioQueueTime(PrioQueueTime Q);
 <time-n> <elemen-n>
 #
 */
+
+boolean isElmt(PrioQueueTime Q, infotype val);
+/* Mengirimkan true jika val terdapat didalam Q */
+
+void deleteElmt(PrioQueueTime *Q, infotype *val);
+/* Delete suatu elemen val dari Q */
+/* I.S Q terdefinisi, mungkin kosong */
+/* F.s val didelete jika ada didalam Q */
 
 #endif
