@@ -65,17 +65,17 @@ boolean isStringEqual(String s1, String s2);
 /* Proses: Menambahkan c sebagai elemen pertama List */
 /* I.S. String s boleh kosong, tetapi tidak penuh */
 /* F.S. c adalah elemen pertama s yang baru */
-void insertFirst(String *s, ElType c);
+void insertSFirst(String *s, ElType c);
 
 /* Proses: Menambahkan c sebagai elemen pada index idx String */
 /* I.S. String s tidak kosong dan tidak penuh, idx merupakan index yang valid di s */
 /* F.S. val adalah elemen yang disisipkan pada index idx l */
-void insertAt(String *s, ElType c, int idx);
+void insertSAt(String *s, ElType c, int idx);
 
 /* Proses: Menambahkan c sebagai elemen terakhir String */
 /* I.S. String s boleh kosong, tetapi tidak penuh */
 /* F.S. c adalah elemen terakhir s yang baru */
-void insertLast(String *s, ElType c);
+void insertSLast(String *s, ElType c);
 
 /* Proses: Menambahkan s2 sebagai substring dari s1 pada indeks tertentu */
 /* I.S. String s1 tidak penuh, String s2 tidak kosong , length s1 + length s2 <= CAPACITY */
@@ -90,7 +90,7 @@ void insertSubstring(String *s1, String s2);
 /* F.S. c adalah nilai char pertama s sebelum penghapusan, */
 /*      Banyaknya elemen String berkurang satu */
 /*      String s mungkin menjadi kosong */
-void deleteFirst(String *s, ElType *c);
+void deleteSFirst(String *s, ElType *c);
 
 /* *** Menghapus elemen pada index tertentu *** */
 /* Proses : Menghapus elemen pada index idx String */
@@ -98,7 +98,7 @@ void deleteFirst(String *s, ElType *c);
 /* F.S. val adalah nilai elemen pada index idx l sebelum penghapusan, */
 /*      Banyaknya elemen List berkurang satu */
 /*      List l mungkin menjadi kosong */
-void deleteAt(String *s, ElType *c, int idx);
+void deleteSAt(String *s, ElType *c, int idx);
 
 /* *** Menghapus elemen terakhir *** */
 /* Proses : Menghapus elemen terakhir String */
@@ -106,6 +106,6 @@ void deleteAt(String *s, ElType *c, int idx);
 /* F.S. c adalah nilai elemen terakhir s sebelum penghapusan, */
 /*      Banyaknya elemen String berkurang satu */
 /*      String s mungkin menjadi kosong */
-void deleteLast(String *s, ElType *c);
+void deleteSLast(String *s, ElType *c);
 
 #endif

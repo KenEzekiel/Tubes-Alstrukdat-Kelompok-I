@@ -7,6 +7,7 @@
 #define LISTSTATIK_H
 
 #include "../boolean.h"
+#include "./makanan/makanan.h"
 
 /*  Kamus Umum */
 #define CAPACITY 100
