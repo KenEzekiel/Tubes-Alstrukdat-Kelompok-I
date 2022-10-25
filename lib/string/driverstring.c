@@ -20,14 +20,14 @@ int main()
 
     char elmt;
     int idx;
-    printf("Masukkan element:");
-    scanf("%c", &elmt);
+    printf("Masukkan element: ");
+    scanf(" %c", &elmt);
 
     insertFirst(&s, elmt);
     printf("string setelah di insert elmt di idx pertama:\n");
     displayString(s);
 
-    printf("Masukkan indeks:");
+    printf("Masukkan indeks: ");
     scanf("%d", &idx);
     insertAt(&s, elmt, idx);
     printf("\nstring setelah di insert elmt di idx:\n");
