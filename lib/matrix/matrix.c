@@ -5,7 +5,7 @@
 
 #include "matrix.h"
 #include <stdio.h>
-#include "boolean.h"
+#include "../boolean.h"
 #include <math.h>
 /* ********** DEFINISI PROTOTIPE PRIMITIF ********** */
 /* *** Konstruktor membentuk Matrix *** */
