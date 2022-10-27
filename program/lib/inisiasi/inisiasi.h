@@ -1,7 +1,7 @@
 #ifndef INISIASI
 #define INISIASI
 
-#include "../boolean.h"
+#include "../main.h"
 
 /* Selektor */
 #define LENGTH(w) (w).Length
