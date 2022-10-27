@@ -8,11 +8,9 @@ ElType CheckCurrent(Peta m){
     return CP(m);
 }
 void Update(Peta *m,int P) {
-    char temp;
     switch (P)
     {
     case 1:
-        temp = CP(*m);
         ELMT(PETA(*m),Absis(POINT(*m))+1,Ordinat(POINT(*m))) = CP(*m);
         CP(*m) = ELMT(PETA(*m),Absis(POINT(*m)),Ordinat(POINT(*m)));
         ELMT(PETA(*m),Absis(POINT(*m)),Ordinat(POINT(*m))) = 'S';
@@ -43,7 +41,6 @@ void Update(Peta *m,int P) {
         }
         break;
     case 2:
-        temp = CP(*m);
         ELMT(PETA(*m),Absis(POINT(*m)),Ordinat(POINT(*m))-1) = CP(*m);
         CP(*m) = ELMT(PETA(*m),Absis(POINT(*m)),Ordinat(POINT(*m)));
         ELMT(PETA(*m),Absis(POINT(*m)),Ordinat(POINT(*m))) = 'S';
@@ -74,7 +71,6 @@ void Update(Peta *m,int P) {
         }
         break;
     case 3:
-        temp = CP(*m);
         ELMT(PETA(*m),Absis(POINT(*m))-1,Ordinat(POINT(*m))) = CP(*m);
         CP(*m) = ELMT(PETA(*m),Absis(POINT(*m)),Ordinat(POINT(*m)));
         ELMT(PETA(*m),Absis(POINT(*m)),Ordinat(POINT(*m))) = 'S';
@@ -105,7 +101,6 @@ void Update(Peta *m,int P) {
         }
         break;
     case 4:
-        temp = CP(*m);
         ELMT(PETA(*m),Absis(POINT(*m)),Ordinat(POINT(*m))+1) = CP(*m);
         CP(*m) = ELMT(PETA(*m),Absis(POINT(*m)),Ordinat(POINT(*m)));
         ELMT(PETA(*m),Absis(POINT(*m)),Ordinat(POINT(*m))) = 'S';
@@ -139,16 +134,17 @@ void Update(Peta *m,int P) {
 }
 
 boolean isValidJalan(Peta m, int i) {
-    switch (i)
-    {
-    case 1:
+    if (i==1) {
         return (ELMT(PETA(m),Absis(POINT(m))-1,Ordinat(POINT(m)))== '.');
-    case 2:
+    }
+    else if (i==2) {
         return (ELMT(PETA(m),Absis(POINT(m)),Ordinat(POINT(m))+1)== '.');
-    case 3:
+    }
+    else if (i==3) {
         return (ELMT(PETA(m),Absis(POINT(m))+1,Ordinat(POINT(m)))== '.');
-    case 4:
-        return (ELMT(PETA(m),Absis(POINT(m)),Ordinat(POINT(m))-1)== '.');
+    }
+    else if (i==4) {
+        return (ELMT(PETA(m),Absis(POINT(m)),Ordinat(POINT(m))-1)== '.');     
     }
 }
 
@@ -211,7 +207,7 @@ void DisplayPeta(Peta m) {
 
 void fileToPeta(char* dir, Matrix* m){
     int row,col,i,j;
-
+    char temp;
     STARTFILEWORD(dir);
     row = WordToInt(currentWord);
     ADVLINE();
@@ -222,7 +218,11 @@ void fileToPeta(char* dir, Matrix* m){
     for (i=0; i<row;i++) {
         ADVLINE();
         for (j=0;j<col;j++) {
-            ELMT(*m,i,j) = currentWord.TabWord[j];
+            temp = currentWord.TabWord[j];
+            if (temp == '#') {
+                temp = '.';
+            }
+            ELMT(*m,i,j) = temp;
         }
     }
 
