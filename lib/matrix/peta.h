@@ -24,6 +24,7 @@ typedef struct
 
 void Update(Peta *m,int P);
 ElType CheckCurrent(Peta m);
+POINT cariSimul(Peta m);
 
 void MoveNorth(Peta* m);
 void MoveEast(Peta* m);
@@ -33,4 +34,5 @@ void MoveWest(Peta* m);
 void DisplayPos(Peta m);
 void DisplayPeta(Peta m);
 
+Matrix fileToPeta(char* dir);
 #endif
