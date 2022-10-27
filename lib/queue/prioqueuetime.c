@@ -179,7 +179,7 @@ boolean isElmt(PrioQueueTime Q, infotype val)
     while ((!IsEmpty(temp)) && (!found))
     {
         Dequeue(&temp, &tempval);
-        if (ID(val) == ID(tempval))
+        if (ID(val) == ID(tempval) && isStringEqual(Nama(val), Nama(tempval)))
         {
             found = true;
         }
