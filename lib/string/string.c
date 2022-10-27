@@ -3,6 +3,8 @@
 
 #include "../boolean.h"
 #include "string.h"
+#include "../wordmachine/wordmachine.h"
+#include "../wordmachine/charmachine.h"
 #include <stdio.h>
 
 /* ********* AKSES (Selektor) ********* */
@@ -274,5 +276,34 @@ void deleteSLast(String *s, ElType *c)
 
         LENGTH(*s)
         --;
+    }
+}
+
+/* *** Konversi tipe Word menjadi tipe String *** */
+String wordToString(Word w)
+{
+    // KAMUS LOKAL
+    String s;
+    int i;
+    // ALGORITMA
+    CreateString(&s);
+    LENGTH(s) = w.Length;
+    for (i = 0; i < LENGTH(s); i++)
+    {
+        ELMT(s, i) = w.TabWord[i];
+    }
+
+    return s;
+}
+
+void procwordToString(Word w, String *s)
+{
+    // KAMUS LOKAL
+    int i;
+    // ALGORITMA
+    LENGTH(*s) = w.Length;
+    for (i = 0; i < LENGTH(*s); i++)
+    {
+        ELMT(*s, i) = w.TabWord[i];
     }
 }

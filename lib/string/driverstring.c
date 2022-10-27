@@ -1,6 +1,8 @@
 #include "../boolean.h"
 #include <stdio.h>
 #include "string.h"
+#include "../wordmachine/wordmachine.h"
+#include "../wordmachine/charmachine.h"
 
 int main()
 {
@@ -23,32 +25,41 @@ int main()
     printf("Masukkan element: ");
     scanf(" %c", &elmt);
 
-    insertFirst(&s, elmt);
+    insertSFirst(&s, elmt);
     printf("string setelah di insert elmt di idx pertama:\n");
     displayString(s);
 
     printf("Masukkan indeks: ");
     scanf("%d", &idx);
-    insertAt(&s, elmt, idx);
+    insertSAt(&s, elmt, idx);
     printf("\nstring setelah di insert elmt di idx:\n");
     displayString(s);
 
-    insertLast(&s, elmt);
+    insertSLast(&s, elmt);
     printf("\nstring setelah di insert elmt di idx terakhir:\n");
     displayString(s);
 
-    deleteLast(&s, &elmt);
+    deleteSLast(&s, &elmt);
     printf("\nstring setelah di delete elmt di idx terakhir:\n");
     displayString(s);
 
     printf("Masukkan indeks:");
     scanf("%d", &idx);
-    deleteAt(&s, &elmt, idx);
+    deleteSAt(&s, &elmt, idx);
     printf("\nstring setelah di delete elmt di idx:\n");
     displayString(s);
 
-    deleteFirst(&s, &elmt);
+    deleteSFirst(&s, &elmt);
     printf("\nstring setelah di delete elmt di idx pertama:\n");
     displayString(s);
+
+    int retval;
+    STARTWORD();
+    String a = wordToString(currentWord);
+    displayString(a);
+
+    String b;
+    procwordToString(currentWord, &b);
+    displayString(b);
     return 0;
 }

@@ -5,6 +5,8 @@
 #define STRING_H
 
 #include "../boolean.h"
+#include "../wordmachine/wordmachine.h"
+#include "../wordmachine/charmachine.h"
 
 #define CAPACITY 100
 
@@ -107,5 +109,10 @@ void deleteSAt(String *s, ElType *c, int idx);
 /*      Banyaknya elemen String berkurang satu */
 /*      String s mungkin menjadi kosong */
 void deleteSLast(String *s, ElType *c);
+
+/* *** Konversi tipe Word menjadi tipe String *** */
+String wordToString(Word w);
+
+void procwordToString(Word w, String *s);
 
 #endif
