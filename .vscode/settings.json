@@ -2,7 +2,9 @@
     "files.associations": {
         "boolean.h": "c",
         "point.h": "c",
-        "time.h": "c"
+        "time.h": "c",
+        "matrix.h": "c",
+        "stdio.h": "c"
     },
     "C_Cpp.errorSquiggles": "Enabled"
 }

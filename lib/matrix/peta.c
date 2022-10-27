@@ -130,6 +130,33 @@ void Update(Peta *m,int P) {
             WEST(*m) = ' ';
         }
         break;
+    case 5:
+        CP(*m) = '.';
+        if (Ordinat(POINT(*m))-1>=0) {
+            NORTH(*m) = ELMT(PETA(*m),Absis(POINT(*m))-1,Ordinat(POINT(*m)));
+        }
+        else {
+            NORTH(*m) = ' ';
+        }
+        if (Ordinat(POINT(*m))+1<ROW_EFF(PETA(*m))) {
+            SOUTH(*m) = ELMT(PETA(*m),Absis(POINT(*m))+1,Ordinat(POINT(*m)));
+        }
+        else {
+            SOUTH(*m) = ' ';
+        }
+        if (Absis(POINT(*m))+1<COL_EFF(PETA(*m))) {
+            EAST(*m) = ELMT(PETA(*m),Absis(POINT(*m)),Ordinat(POINT(*m))+1);
+        }
+        else {
+            EAST(*m) = ' ';
+        }
+        if (Absis(POINT(*m))-1>=0) {
+            WEST(*m) = ELMT(PETA(*m),Absis(POINT(*m)),Ordinat(POINT(*m))-1);
+        }
+        else {
+            WEST(*m) = ' ';
+        }
+        break;
     }
 }
 
