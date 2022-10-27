@@ -6,11 +6,11 @@
 #include "../boolean.h"
 
 /* Ukuran maksimum baris dan kolom */
-#define ROW_CAP 100
-#define COL_CAP 100
+#define ROW_CAP 1000
+#define COL_CAP 1000
 
 typedef int IdxType; /* Index baris, kolom */
-typedef int ElType;
+typedef char ElType;
 typedef struct
 {
    ElType mem[ROW_CAP][COL_CAP];
@@ -72,63 +72,6 @@ void displayMatrix(Matrix m);
 4 5 6
 8 9 10
 */
-
-/* ********** KELOMPOK OPERASI ARITMATIKA TERHADAP TYPE ********** */
-Matrix addMatrix(Matrix m1, Matrix m2);
-/* Prekondisi : m1 berukuran sama dengan m2 */
-/* Mengirim hasil penjumlahan matriks: m1 + m2 */
-Matrix subtractMatrix(Matrix m1, Matrix m2);
-/* Prekondisi : m1 berukuran sama dengan m2 */
-/* Mengirim hasil pengurangan matriks: salinan m1 – m2 */
-Matrix multiplyMatrix(Matrix m1, Matrix m2);
-/* Prekondisi : Ukuran kolom efektif m1 = ukuran baris efektif m2 */
-/* Mengirim hasil perkalian matriks: salinan m1 * m2 */
-Matrix multiplyByConst(Matrix m, ElType x);
-/* Mengirim hasil perkalian setiap elemen m dengan x */
-void pMultiplyByConst(Matrix *m, ElType k);
-/* I.S. m terdefinisi, k terdefinisi */
-/* F.S. Mengalikan setiap elemen m dengan k */
-
-/* ********** KELOMPOK OPERASI RELASIONAL TERHADAP Matrix ********** */
-boolean isMatrixEqual(Matrix m1, Matrix m2);
-/* Mengirimkan true jika m1 = m2, yaitu count(m1) = count(m2) dan */
-/* untuk setiap i,j yang merupakan Index baris dan kolom m1(i,j) = m2(i,j) */
-/* Juga merupakan strong eq karena getLastIdxCol(m1) = getLastIdxCol(m2) */
-boolean isMatrixNotEqual(Matrix m1, Matrix m2);
-/* Mengirimkan true jika m1 tidak sama dengan m2 */
-boolean isMatrixSizeEqual(Matrix m1, Matrix m2);
-/* Mengirimkan true jika ukuran efektif matriks m1 sama dengan ukuran efektif m2 */
-/* yaitu RowEff(m1) = RowEff (m2) dan ColEff (m1) = ColEff (m2) */
-
-/* ********** Operasi lain ********** */
-int countElmt(Matrix m);
-/* Mengirimkan banyaknya elemen m */
-
 /* ********** KELOMPOK TEST TERHADAP Matrix ********** */
-boolean isSquare(Matrix m);
-/* Mengirimkan true jika m adalah matriks dg ukuran baris dan kolom sama */
-boolean isSymmetric(Matrix m);
-/* Mengirimkan true jika m adalah matriks simetri : isSquare(m) 
-   dan untuk setiap elemen m, m(i,j)=m(j,i) */
-boolean isIdentity(Matrix m);
-/* Mengirimkan true jika m adalah matriks satuan: isSquare(m) dan 
-   setiap elemen diagonal m bernilai 1 dan elemen yang bukan diagonal bernilai 0 */
-boolean isSparse(Matrix m);
-/* Mengirimkan true jika m adalah matriks sparse: matriks “jarang” dengan definisi: 
-   hanya maksimal 5% dari memori matriks yang efektif bukan bernilai 0 */
-Matrix negation(Matrix m);
-/* Menghasilkan salinan m dengan setiap elemen dinegasikan (dikalikan -1) */
-void pNegation(Matrix *m);
-/* I.S. m terdefinisi */
-/* F.S. m di-invers, yaitu setiap elemennya dinegasikan (dikalikan -1) */
-float determinant(Matrix m);
-/* Prekondisi: isSquare(m) */
-/* Menghitung nilai determinan m */
-Matrix transpose(Matrix m);
-/* I.S. m terdefinisi dan IsSquare(m) */
-/* F.S. menghasilkan salinan transpose dari m, yaitu setiap elemen m(i,j) ditukar nilainya dengan elemen m(j,i) */
-void pTranspose(Matrix *m);
-/* I.S. m terdefinisi dan IsSquare(m) */
-/* F.S. m "di-transpose", yaitu setiap elemen m(i,j) ditukar nilainya dengan elemen m(j,i) */
-
+void readFileMatrix(char file, Matrix m);
 #endif
