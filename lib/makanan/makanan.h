@@ -27,10 +27,6 @@ typedef struct {
 /* ***************************************************************** */
 /* DEFINISI PRIMITIF                                                 */
 /* ***************************************************************** */
-/* KELOMPOK VALIDASI TERHADAP TYPE                                   */
-/* ***************************************************************** */
-boolean IsMakananValid (int id, String nama, TIME exp, String aksi, TIME delivTime);
-/* Mengirim true jika id, nama, exp, aksi, dan delivTime dapat membentuk Makanan yang valid */
 
 /* *** Konstruktor: Membentuk sebuah Makanan dari komponen-komponennya *** */
 void CreateMakanan (Makanan * Food, int id, String nama, TIME exp, String aksi, TIME delivTime);

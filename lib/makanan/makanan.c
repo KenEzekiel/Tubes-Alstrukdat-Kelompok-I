@@ -7,11 +7,6 @@
 #include "makanan.h"
 #include <stdio.h>
 
-boolean IsMakananValid (int id, String nama, TIME exp, String aksi, TIME delivTime) {
-
-}
-/* Mengirim true jika id, nama, exp, aksi, dan delivTime dapat membentuk Makanan yang valid */
-
 /* *** Konstruktor: Membentuk sebuah Makanan dari komponen-komponennya *** */
 void CreateMakanan (Makanan * Food, int id, String nama, TIME exp, String aksi, TIME delivTime) {
     ID(*Food) = id;
@@ -28,14 +23,12 @@ void BacaMakanan (Makanan * Food) {
     String nama, aksi;
     TIME exp, delivTime;
     
-    do {
-        scanf("%d\n", id);
-        readString(&nama);
-        BacaTIME(&exp);
-        readString(&aksi);
-        BacaTIME(&delivTime);
-    } while (IsMakananValid(id, nama, exp, aksi, delivTime));
-    
+    scanf("%d\n", id);
+    readString(&nama);
+    BacaTIME(&exp);
+    readString(&aksi);
+    BacaTIME(&delivTime);
+   
     CreateMakanan(Food, id, nama, exp, aksi, delivTime);
 
 }

@@ -11,12 +11,6 @@
 /* ***************************************************************** */
 /* DEFINISI PRIMITIF                                                 */
 /* ***************************************************************** */
-/* KELOMPOK VALIDASI TERHADAP TYPE                                   */
-/* ***************************************************************** */
-boolean IsSimulatorValid (String user, POINT loc, PrioQueueTime inventory) {
-
-}
-/* Mengirim true jika user, loc, inventory dapat membentuk Simulator yang valid */
 
 /* *** Konstruktor: Membentuk sebuah Makanan dari komponen-komponennya *** */
 void CreateStartSimulator (Simulator * Sim, String user){
@@ -43,11 +37,9 @@ void BacaSimulator (Simulator * Sim){
     POINT loc;
     PrioQueueTime inventory;
 
-    do {
-        readString(&user);
-        BacaPOINT(&loc);
-        MakeEmpty(&inventory, 100);
-    } while (!IsSimulatorValid(user, loc, inventory));
+    readString(&user);
+    BacaPOINT(&loc);
+    MakeEmpty(&inventory, 100);
     
     CreateSimulator(Sim, user, loc, inventory);
 

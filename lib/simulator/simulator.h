@@ -25,10 +25,6 @@ typedef struct {
 /* ***************************************************************** */
 /* DEFINISI PRIMITIF                                                 */
 /* ***************************************************************** */
-/* KELOMPOK VALIDASI TERHADAP TYPE                                   */
-/* ***************************************************************** */
-boolean IsSimulatorValid (String user, POINT loc, PrioQueueTime inventory);
-/* Mengirim true jika user, loc, inventory dapat membentuk Simulator yang valid */
 
 /* *** Konstruktor: Membentuk sebuah Makanan dari komponen-komponennya *** */
 void CreateStartSimulator (Simulator * Sim, String user);
