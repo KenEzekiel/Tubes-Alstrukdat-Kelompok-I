@@ -3,7 +3,8 @@
         "boolean.h": "c",
         "point.h": "c",
         "time.h": "c",
-        "charmachine.h": "c"
+        "matrix.h": "c",
+        "stdio.h": "c"
     },
     "C_Cpp.errorSquiggles": "Enabled"
 }

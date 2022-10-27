@@ -51,16 +51,6 @@ void copyMatrix(Matrix mIn, Matrix *mOut){
 /* Melakukan assignment mOut <- mIn */
 
 /* ********** KELOMPOK BACA/TULIS ********** */
-void readMatrix(Matrix *m, int nRow, int nCol){
-    ElType temp;
-    createMatrix(nRow,nCol,m);
-    for (int i = 0; i<nRow;i++) {
-        for (int j = 0; j<nCol;j++) {
-            scanf("%d", &temp);
-            ELMT(*m,i,j) = temp;
-        }
-    }
-}
 /* I.S. isIdxValid(nRow,nCol) */
 /* F.S. m terdefinisi nilai elemen efektifnya, berukuran nRow x nCol */
 /* Proses: Melakukan CreateMatrix(m,nRow,nCol) dan mengisi nilai efektifnya */
@@ -74,10 +64,10 @@ void displayMatrix(Matrix m){
     for (int i = 0; i<ROW_EFF(m);i++) {
         for (int j = 0; j<COL_EFF(m);j++) {
             if (j == 0) {
-                printf("%d", ELMT(m,i,j));
+                printf("%c", ELMT(m,i,j));
             }
             else {
-                printf(" %d", ELMT(m,i,j));
+                printf(" %c", ELMT(m,i,j));
             }
         }
         printf("\n");
