@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include "../main.h"
 #include "inisiasi.h"
 
 void PrintGUI(Time* Waktu, Point* Lokasi, PrioQueueTime* Inventory, Simulator* BNMO, Peta* Peta)
