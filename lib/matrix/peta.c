@@ -219,8 +219,6 @@ void fileToPeta(char* dir, Matrix* m){
 
     createMatrix(row,col,m);
 
-    printf("%d %d\n", row, col);
-
     for (i=0; i<row;i++) {
         ADVLINE();
         for (j=0;j<col;j++) {
