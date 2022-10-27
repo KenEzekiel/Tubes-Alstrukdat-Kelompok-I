@@ -209,22 +209,23 @@ void DisplayPeta(Peta m) {
     displayMatrix(petatemp);
 }
 
-Matrix fileToPeta(char* dir){
-    Matrix m;
-    int row,col,i,j,temp;
+void fileToPeta(char* dir, Matrix* m){
+    int row,col,i,j;
+
     STARTFILEWORD(dir);
     row = WordToInt(currentWord);
-    ADVWORD();
-    col = WordToInt(currentWord);
     ADVLINE();
+    col = WordToInt(currentWord);
+
+    createMatrix(row,col,m);
+
+    printf("%d %d\n", row, col);
 
     for (i=0; i<row;i++) {
-        for (j=0;j<col;j++) {
-            temp = WordToInt(currentWord);
-            ELMT(m,i,j) = temp;
-            ADVWORD();
-        }
         ADVLINE();
+        for (j=0;j<col;j++) {
+            ELMT(*m,i,j) = currentWord.TabWord[j];
+        }
     }
 
 }

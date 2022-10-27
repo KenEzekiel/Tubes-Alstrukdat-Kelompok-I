@@ -34,5 +34,5 @@ void MoveWest(Peta* m);
 void DisplayPos(Peta m);
 void DisplayPeta(Peta m);
 
-Matrix fileToPeta(char* dir);
+void fileToPeta(char* dir, Matrix *m);
 #endif
