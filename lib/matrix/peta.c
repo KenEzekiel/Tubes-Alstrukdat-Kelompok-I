@@ -12,30 +12,30 @@ void Update(Peta *m,int P) {
     {
     case 1:
         temp = CP(*m);
-        ELMT(PETA(*m),Absis(POINT(*m)),Ordinat(POINT(*m))+1) = CP(*m);
+        ELMT(PETA(*m),Absis(POINT(*m))+1,Ordinat(POINT(*m))) = CP(*m);
         CP(*m) = ELMT(PETA(*m),Absis(POINT(*m)),Ordinat(POINT(*m)));
         ELMT(PETA(*m),Absis(POINT(*m)),Ordinat(POINT(*m))) = 'S';
 
         if (Ordinat(POINT(*m))-1>=0) {
-            NORTH(*m) = ELMT(PETA(*m),Absis(POINT(*m)),Ordinat(POINT(*m))-1);
+            NORTH(*m) = ELMT(PETA(*m),Absis(POINT(*m))-1,Ordinat(POINT(*m)));
         }
         else {
             NORTH(*m) = ' ';
         }
         if (Ordinat(POINT(*m))+1<rowEff(PETA(*m))) {
-            SOUTH(*m) = ELMT(PETA(*m),Absis(POINT(*m)),Ordinat(POINT(*m))+1);
+            SOUTH(*m) = ELMT(PETA(*m),Absis(POINT(*m))+1,Ordinat(POINT(*m)));
         }
         else {
             SOUTH(*m) = ' ';
         }
         if (Absis(POINT(*m))+1<colEff(PETA(*m))) {
-            EAST(*m) = ELMT(PETA(*m),Absis(POINT(*m))+1,Ordinat(POINT(*m)));
+            EAST(*m) = ELMT(PETA(*m),Absis(POINT(*m)),Ordinat(POINT(*m))+1);
         }
         else {
             EAST(*m) = ' ';
         }
         if (Absis(POINT(*m))-1>=0) {
-            WEST(*m) = ELMT(PETA(*m),Absis(POINT(*m))-1,Ordinat(POINT(*m)));
+            WEST(*m) = ELMT(PETA(*m),Absis(POINT(*m)),Ordinat(POINT(*m))-1);
         }
         else {
             WEST(*m) = ' ';
@@ -43,30 +43,30 @@ void Update(Peta *m,int P) {
         break;
     case 2:
         temp = CP(*m);
-        ELMT(PETA(*m),Absis(POINT(*m))-1,Ordinat(POINT(*m))) = CP(*m);
+        ELMT(PETA(*m),Absis(POINT(*m)),Ordinat(POINT(*m))-1) = CP(*m);
         CP(*m) = ELMT(PETA(*m),Absis(POINT(*m)),Ordinat(POINT(*m)));
         ELMT(PETA(*m),Absis(POINT(*m)),Ordinat(POINT(*m))) = 'S';
 
         if (Ordinat(POINT(*m))-1>=0) {
-            NORTH(*m) = ELMT(PETA(*m),Absis(POINT(*m)),Ordinat(POINT(*m))-1);
+            NORTH(*m) = ELMT(PETA(*m),Absis(POINT(*m))-1,Ordinat(POINT(*m)));
         }
         else {
             NORTH(*m) = ' ';
         }
         if (Ordinat(POINT(*m))+1<rowEff(PETA(*m))) {
-            SOUTH(*m) = ELMT(PETA(*m),Absis(POINT(*m)),Ordinat(POINT(*m))+1);
+            SOUTH(*m) = ELMT(PETA(*m),Absis(POINT(*m))+1,Ordinat(POINT(*m)));
         }
         else {
             SOUTH(*m) = ' ';
         }
         if (Absis(POINT(*m))+1<colEff(PETA(*m))) {
-            EAST(*m) = ELMT(PETA(*m),Absis(POINT(*m))+1,Ordinat(POINT(*m)));
+            EAST(*m) = ELMT(PETA(*m),Absis(POINT(*m)),Ordinat(POINT(*m))+1);
         }
         else {
             EAST(*m) = ' ';
         }
         if (Absis(POINT(*m))-1>=0) {
-            WEST(*m) = ELMT(PETA(*m),Absis(POINT(*m))-1,Ordinat(POINT(*m)));
+            WEST(*m) = ELMT(PETA(*m),Absis(POINT(*m)),Ordinat(POINT(*m))-1);
         }
         else {
             WEST(*m) = ' ';
@@ -74,30 +74,30 @@ void Update(Peta *m,int P) {
         break;
     case 3:
         temp = CP(*m);
-        ELMT(PETA(*m),Absis(POINT(*m)),Ordinat(POINT(*m))-1) = CP(*m);
+        ELMT(PETA(*m),Absis(POINT(*m))-1,Ordinat(POINT(*m))) = CP(*m);
         CP(*m) = ELMT(PETA(*m),Absis(POINT(*m)),Ordinat(POINT(*m)));
         ELMT(PETA(*m),Absis(POINT(*m)),Ordinat(POINT(*m))) = 'S';
 
         if (Ordinat(POINT(*m))-1>=0) {
-            NORTH(*m) = ELMT(PETA(*m),Absis(POINT(*m)),Ordinat(POINT(*m))-1);
+            NORTH(*m) = ELMT(PETA(*m),Absis(POINT(*m))-1,Ordinat(POINT(*m)));
         }
         else {
             NORTH(*m) = ' ';
         }
         if (Ordinat(POINT(*m))+1<rowEff(PETA(*m))) {
-            SOUTH(*m) = ELMT(PETA(*m),Absis(POINT(*m)),Ordinat(POINT(*m))+1);
+            SOUTH(*m) = ELMT(PETA(*m),Absis(POINT(*m))+1,Ordinat(POINT(*m)));
         }
         else {
             SOUTH(*m) = ' ';
         }
         if (Absis(POINT(*m))+1<colEff(PETA(*m))) {
-            EAST(*m) = ELMT(PETA(*m),Absis(POINT(*m))+1,Ordinat(POINT(*m)));
+            EAST(*m) = ELMT(PETA(*m),Absis(POINT(*m)),Ordinat(POINT(*m))+1);
         }
         else {
             EAST(*m) = ' ';
         }
         if (Absis(POINT(*m))-1>=0) {
-            WEST(*m) = ELMT(PETA(*m),Absis(POINT(*m))-1,Ordinat(POINT(*m)));
+            WEST(*m) = ELMT(PETA(*m),Absis(POINT(*m)),Ordinat(POINT(*m))-1);
         }
         else {
             WEST(*m) = ' ';
@@ -105,30 +105,30 @@ void Update(Peta *m,int P) {
         break;
     case 4:
         temp = CP(*m);
-        ELMT(PETA(*m),Absis(POINT(*m))+1,Ordinat(POINT(*m))) = CP(*m);
+        ELMT(PETA(*m),Absis(POINT(*m)),Ordinat(POINT(*m))+1) = CP(*m);
         CP(*m) = ELMT(PETA(*m),Absis(POINT(*m)),Ordinat(POINT(*m)));
         ELMT(PETA(*m),Absis(POINT(*m)),Ordinat(POINT(*m))) = 'S';
 
         if (Ordinat(POINT(*m))-1>=0) {
-            NORTH(*m) = ELMT(PETA(*m),Absis(POINT(*m)),Ordinat(POINT(*m))-1);
+            NORTH(*m) = ELMT(PETA(*m),Absis(POINT(*m))-1,Ordinat(POINT(*m)));
         }
         else {
             NORTH(*m) = ' ';
         }
         if (Ordinat(POINT(*m))+1<rowEff(PETA(*m))) {
-            SOUTH(*m) = ELMT(PETA(*m),Absis(POINT(*m)),Ordinat(POINT(*m))+1);
+            SOUTH(*m) = ELMT(PETA(*m),Absis(POINT(*m))+1,Ordinat(POINT(*m)));
         }
         else {
             SOUTH(*m) = ' ';
         }
         if (Absis(POINT(*m))+1<colEff(PETA(*m))) {
-            EAST(*m) = ELMT(PETA(*m),Absis(POINT(*m))+1,Ordinat(POINT(*m)));
+            EAST(*m) = ELMT(PETA(*m),Absis(POINT(*m)),Ordinat(POINT(*m))+1);
         }
         else {
             EAST(*m) = ' ';
         }
         if (Absis(POINT(*m))-1>=0) {
-            WEST(*m) = ELMT(PETA(*m),Absis(POINT(*m))-1,Ordinat(POINT(*m)));
+            WEST(*m) = ELMT(PETA(*m),Absis(POINT(*m)),Ordinat(POINT(*m))-1);
         }
         else {
             WEST(*m) = ' ';
@@ -141,18 +141,18 @@ boolean isValidJalan(Peta m, int i) {
     switch (i)
     {
     case 1:
-        return (ELMT(PETA(m),Absis(POINT(m)),Ordinat(POINT(m))-1)== '.');
-    case 2:
-        return (ELMT(PETA(m),Absis(POINT(m))+1,Ordinat(POINT(m)))== '.');
-    case 3:
-        return (ELMT(PETA(m),Absis(POINT(m)),Ordinat(POINT(m))+1)== '.');
-    case 4:
         return (ELMT(PETA(m),Absis(POINT(m))-1,Ordinat(POINT(m)))== '.');
+    case 2:
+        return (ELMT(PETA(m),Absis(POINT(m)),Ordinat(POINT(m))+1)== '.');
+    case 3:
+        return (ELMT(PETA(m),Absis(POINT(m))+1,Ordinat(POINT(m)))== '.');
+    case 4:
+        return (ELMT(PETA(m),Absis(POINT(m)),Ordinat(POINT(m))-1)== '.');
     }
 }
 
 void MoveNorth(Peta* m){
-    if (Ordinat(POINT(*m))-1>=0) {
+    if (Absis(POINT(*m))-1>=0) {
         if (isValidJalan(*m,1)) {
             MoveN(&POINT(*m));
             Update(m,1);
@@ -161,7 +161,7 @@ void MoveNorth(Peta* m){
 }
 
 void MoveEast(Peta* m){
-    if (Absis(POINT(*m))+1<colEff(MAP(*m))) {
+    if (Ordinat(POINT(*m))+1<colEff(MAP(*m))) {
         if (isValidJalan(*m,2)) {
             MoveE(&POINT(*m));
             Update(m,2);
@@ -170,7 +170,7 @@ void MoveEast(Peta* m){
 }
 
 void MoveSouth(Peta* m){
-    if (Ordinat(POINT(*m))+1<rowEff(MAP(*m))) {
+    if (Absis(POINT(*m))+1<rowEff(MAP(*m))) {
         if (isValidJalan(*m,3)) {
             MoveS(&POINT(*m));
             Update(m,3);
@@ -179,7 +179,7 @@ void MoveSouth(Peta* m){
 }
 
 void MoveWest(Peta* m){
-    if (Absis(POINT(*m))-1>=0) {
+    if (Ordinat(POINT(*m))-1>=0) {
         if (isValidJalan(*m,4)) {
             MoveW(&POINT(*m));
             Update(m,4);
@@ -188,7 +188,7 @@ void MoveWest(Peta* m){
 }
 
 void DisplayPos(Peta m) {
-    printf("(%d,%d)",Ordinat(POINT(m)),Absis(POINT(m)));
+    printf("(%d,%d)",Absis(POINT(m)),Ordinat(POINT(m)));
 }
 
 void DisplayPeta(Peta m) {

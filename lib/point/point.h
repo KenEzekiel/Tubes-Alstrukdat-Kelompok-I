@@ -14,8 +14,8 @@ typedef struct POINT {
 } POINT;
 
 /* *** Notasi Akses: Selektor POINT *** */
-#define Absis(P) (P).Y
-#define Ordinat(P) (P).X
+#define Absis(P) (P).X
+#define Ordinat(P) (P).Y
         
 /* *** DEFINISI PROTOTIPE PRIMITIF *** */
 /* *** Konstruktor membentuk POINT *** */
