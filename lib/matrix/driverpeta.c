@@ -1,12 +1,12 @@
 #include <stdio.h>
-#include "peta.c"
-#include "matrix.c"
+#include "peta.h"
+#include "matrix.h"
 #include "../wordmachine/wordmachine.c"
 #include "../wordmachine/charmachine.c"
 #include "../point/point.c"
 
 int main() {
     Peta p;
-    PETA(p) = fileToPeta("../../test/peta.txt");
+    fileToPeta("../../test/peta.txt", &PETA(p));
     DisplayPeta(p);
 }
