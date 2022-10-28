@@ -1,6 +1,7 @@
 #include "../boolean.h"
 #include "../queue/prioqueuetime.h"
 #include "../time/time.h"
+#include "../makanan/makanan.h"
 #include "inventory.h"
 
 /* Definisi Inventory adalah PrioQueueTime */
