@@ -1,0 +1,1 @@
+gcc driverlistmakanan.c listmakanan.c ../makanan/makanan.c ../wordmachine/wordmachine.c ../wordmachine/charmachine.c ../time/time.c ../string/string.c -o driverlistmakanan
