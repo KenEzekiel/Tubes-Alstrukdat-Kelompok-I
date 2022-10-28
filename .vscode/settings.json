@@ -1,5 +1,6 @@
 {
     "files.associations": {
+        "*.js": "javascript",
         "boolean.h": "c",
         "point.h": "c",
         "time.h": "c",
@@ -7,7 +8,8 @@
         "stdio.h": "c",
         "prioqueuetime.h": "c",
         "charmachine.h": "c",
-        "makanan.h": "c"
+        "makanan.h": "c",
+        "string.h": "c"
     },
     "C_Cpp.errorSquiggles": "Enabled"
 }
