@@ -1,3 +1,9 @@
+/* File inventory.h */
+/* Definisi ADT Inventory */
+
+#ifndef inventory_H
+#define inventory_H
+
 #include "../boolean.h"
 #include "../queue/prioqueuetime.h"
 #include "../time/time.h"
@@ -45,3 +51,5 @@ void displayInventory(Inventory I);
 
 /* *** Mengembalikan panjang inventory *** */
 int lengthInventory(Inventory I);
+
+#endif

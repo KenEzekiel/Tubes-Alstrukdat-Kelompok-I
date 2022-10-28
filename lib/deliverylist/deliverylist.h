@@ -1,3 +1,9 @@
+/* File deliverylist.h */
+/* Definisi ADT Delivery List */
+
+#ifndef delivlist_H
+#define delivlist_H
+
 #include "../queue/prioqueuetime.h"
 #include "../inventory/inventory.h"
 #include "../boolean.h"
@@ -65,3 +71,5 @@ boolean checkUpgrade(DeliveryList DL);
 /* Perlu dilakukan apakah delivery list perlu di upgrade atau tidak terlebih dahulu */
 /* Upgrade adalah penambahan kapasitas 2 kali lipat aslinya */
 void upgradeDelivList(DeliveryList *DL);
+
+#endif
