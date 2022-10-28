@@ -35,10 +35,14 @@ void CreateSimulator (Simulator * Sim, String user, POINT loc, PrioQueueTime inv
 void BacaSimulator (Simulator * Sim){
     String user;
     POINT loc;
+    float x, y;
     PrioQueueTime inventory;
 
+    printf("Masukkan nama user: ");
     readString(&user);
-    BacaPOINT(&loc);
+    printf("Masukkan lokasi x y: ");
+    scanf("%f %f", &x, &y);
+    CreatePoint(&loc, x, y);
     MakeEmpty(&inventory, 100);
     
     CreateSimulator(Sim, user, loc, inventory);
@@ -55,7 +59,7 @@ void TulisSimulator (Simulator Sim){
     printf("Nama user: ");
     displayString(User(Sim));
     printf("Lokasi saat ini: ");
-    TulisPOINT(Loc(Sim));
+    printf("(%d, %d)\n", Absis(Loc(Sim)), Ordinat(Loc(Sim)));
     printf("Inventory user: ");
     PrintPrioQueueTime(Inventory(Sim));
 }
