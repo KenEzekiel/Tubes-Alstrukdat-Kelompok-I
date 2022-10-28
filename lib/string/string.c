@@ -53,7 +53,6 @@ void readString(String *s)
     char *c;
     // ALGORITMA
     CreateString(s);
-    printf("Masukkan string: ");
     scanf("%s", string);
     for (c = &string[0]; *c != '\0'; c++)
     {
@@ -84,7 +83,6 @@ void displayString(String s)
         {
             printf("%c", ELMT(s, i));
         }
-        printf("\n");
     }
 }
 
