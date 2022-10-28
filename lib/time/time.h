@@ -57,6 +57,10 @@ void TulisTIME (TIME T);
 /* Proses : menulis nilai setiap komponen T ke layar dalam format HH:MM:SS
    tanpa karakter apa pun di depan atau belakangnya, termasuk spasi, enter, dll.*/ 
 
+void PrintTime(TIME T);
+/* I.S. : T sembarang */
+/* F.S. : Nilai T ditulis dg format HH jam MM menit SS detik */
+
 /* ***************************************************************** */
 /* KELOMPOK KONVERSI TERHADAP TYPE                                   */
 /* ***************************************************************** */

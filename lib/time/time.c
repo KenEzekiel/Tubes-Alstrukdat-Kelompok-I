@@ -67,6 +67,34 @@ void TulisTIME(TIME T)
    printf("\n");
 }
 
+void PrintTime(TIME T)
+{
+   /* I.S. : T sembarang */
+   /* F.S. : Nilai T ditulis dg format HH jam MM menit SS detik */
+   int HH, MM, SS;
+   HH = Hour(T);
+   MM = Minute(T);
+   SS = Second(T);
+   if (HH > 0) {
+      printf("%d jam", HH);
+   }
+   if (MM > 0) {
+      if (HH > 0) {
+         printf(" ");
+      }
+      printf("%d menit", MM);
+   }
+   if (SS > 0) {
+      if (HH > 0 || MM > 0) {
+         printf(" ");
+      }
+      printf("%d detik", SS);
+   }
+   if (HH == 0 && MM == 0 && SS == 0){
+      printf("0");
+   }
+}
+
 /* ***************************************************************** */
 /* KELOMPOK KONVERSI TERHADAP TYPE                                   */
 /* ***************************************************************** */
