@@ -10,11 +10,12 @@
 
 /* *** Definisi TYPE Makanan <id, nama, exp, aksi, delivTime> *** */
 typedef struct { 
-	int id;
-	String nama;
-    TIME exp;
-    String aksi;
-    TIME delivTime;
+	int id;         /* ID Makanan */
+	String nama;    /* Nama Makanan */
+    TIME exp;       /* Waktu kadaluwarsa */
+    String aksi;    /* Aksi yang bisa dilakukan */
+    TIME delivTime; /* Lama pengiriman */
+    TIME aksiTime;  /* Waktu pengolahan makanan */
 } Makanan;
 
 /* *** Notasi Akses: selektor Makanan *** */
@@ -23,13 +24,14 @@ typedef struct {
 #define Exp(Food) (Food).exp 
 #define Aksi(Food) (Food).aksi 
 #define DelivTime(Food) (Food).delivTime 
+#define AksiTime(Food) (Food).aksiTime
 
 /* ***************************************************************** */
 /* DEFINISI PRIMITIF                                                 */
 /* ***************************************************************** */
 
 /* *** Konstruktor: Membentuk sebuah Makanan dari komponen-komponennya *** */
-void CreateMakanan (Makanan * Food, int id, String nama, TIME exp, String aksi, TIME delivTime);
+void CreateMakanan (Makanan * Food, int id, String nama, TIME exp, String aksi, TIME delivTime, TIME aksiTime);
 /* Membentuk sebuah Makanan dari komponen-komponennya yang valid */
 /* Prekondisi : id, nama, exp, aksi, dan delivTime valid untuk membentuk Makanan */
 

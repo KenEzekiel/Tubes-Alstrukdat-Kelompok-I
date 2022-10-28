@@ -1,0 +1,1 @@
+gcc drivermakanan.c makanan.c ../string/string.c ../time/time.c -o drivermakanan
