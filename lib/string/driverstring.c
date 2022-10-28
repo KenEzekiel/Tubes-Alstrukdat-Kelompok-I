@@ -53,13 +53,5 @@ int main()
     printf("\nstring setelah di delete elmt di idx pertama:\n");
     displayString(s);
 
-    int retval;
-    STARTWORD();
-    String a = wordToString(currentWord);
-    displayString(a);
-
-    String b;
-    procwordToString(currentWord, &b);
-    displayString(b);
-    return 0;
+        return 0;
 }

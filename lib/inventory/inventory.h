@@ -39,3 +39,9 @@ infotype getMakananByName(Inventory *I, String nama);
 
 /* *** Mengecek apakah suatu nama makanan ada didalam inventory *** */
 boolean isElmtByName(Inventory I, String nama);
+
+/* *** Menampilkan isi inventory *** */
+void displayInventory(Inventory I);
+
+/* *** Mengembalikan panjang inventory *** */
+int lengthInventory(Inventory I);

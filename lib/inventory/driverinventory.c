@@ -20,7 +20,7 @@ int main()
     Enqueue(&Q, z);
     Enqueue(&Q, a);
 
-    PrintPrioQueueTime(Q);
+    displayInventory(Q);
 
     int id;
     printf("Masukkan id makanan yang ingin diambil: ");
@@ -38,7 +38,7 @@ int main()
         getMakananByName(&Q, nama);
     }
 
-    PrintPrioQueueTime(Q);
+    displayInventory(Q);
 
     TIME t;
     CreateTime(&t, 0, 10, 0);
@@ -46,7 +46,7 @@ int main()
     updateInventory(&Q, t);
 
     printf("Inventory setelah makanan telah di update 10 menit: \n");
-    PrintPrioQueueTime(Q);
+    displayInventory(Q);
 }
 
 /*

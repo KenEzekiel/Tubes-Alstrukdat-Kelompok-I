@@ -167,3 +167,15 @@ boolean isElmtByName(Inventory I, String nama)
     }
     return found;
 }
+
+/* *** Menampilkan isi inventory *** */
+void displayInventory(Inventory I)
+{
+    PrintPrioQueueTime(I);
+}
+
+/* *** Mengembalikan panjang inventory *** */
+int lengthInventory(Inventory I)
+{
+    return NBElmt(I);
+}
