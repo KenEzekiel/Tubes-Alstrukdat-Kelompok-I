@@ -6,7 +6,8 @@
         "matrix.h": "c",
         "stdio.h": "c",
         "prioqueuetime.h": "c",
-        "charmachine.h" : "c"
-},
+        "charmachine.h": "c",
+        "makanan.h": "c"
+    },
     "C_Cpp.errorSquiggles": "Enabled"
 }

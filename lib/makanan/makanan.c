@@ -8,7 +8,8 @@
 #include <stdio.h>
 
 /* *** Konstruktor: Membentuk sebuah Makanan dari komponen-komponennya *** */
-void CreateMakanan (Makanan * Food, int id, String nama, TIME exp, String aksi, TIME delivTime) {
+void CreateMakanan(Makanan *Food, int id, String nama, TIME exp, String aksi, TIME delivTime)
+{
     ID(*Food) = id;
     Nama(*Food) = nama;
     Exp(*Food) = exp;
@@ -18,19 +19,19 @@ void CreateMakanan (Makanan * Food, int id, String nama, TIME exp, String aksi, 
 /* Membentuk sebuah Makanan dari komponen-komponennya yang valid */
 /* Prekondisi : id, nama, exp, aksi, dan delivTime valid untuk membentuk Makanan */
 
-void BacaMakanan (Makanan * Food) {
+void BacaMakanan(Makanan *Food)
+{
     int id;
     String nama, aksi;
     TIME exp, delivTime;
-    
-    scanf("%d\n", id);
+
+    scanf("%d", &id);
     readString(&nama);
     BacaTIME(&exp);
     readString(&aksi);
     BacaTIME(&delivTime);
-   
-    CreateMakanan(Food, id, nama, exp, aksi, delivTime);
 
+    CreateMakanan(Food, id, nama, exp, aksi, delivTime);
 }
 /* I.S. : Food tidak terdefinisi */
 /* F.S. : Food terdefinisi dan merupakan makanan yang valid */
@@ -38,8 +39,9 @@ void BacaMakanan (Makanan * Food) {
 /* yang valid. Tidak mungkin menghasilkan Food yang tidak valid. */
 /* Pembacaan dilakukan dengan mengetikkan komponen id, nama, exp, aksi, delivTime
    berbeda baris, masing-masing dipisahkan dan diakhiri enter. */
-   
-void TulisMakanan (Makanan Food){
+
+void TulisMakanan(Makanan Food)
+{
     printf("%d\n", ID(Food));
     displayString(Nama(Food));
     TulisTIME(Exp(Food));
@@ -48,5 +50,4 @@ void TulisMakanan (Makanan Food){
 }
 /* I.S. : Food sembarang */
 /* F.S. : Nilai Food ditulis dg format ... */
-/* Proses : menulis nilai setiap komponen Food ke layar dalam format ...*/ 
-
+/* Proses : menulis nilai setiap komponen Food ke layar dalam format ...*/
