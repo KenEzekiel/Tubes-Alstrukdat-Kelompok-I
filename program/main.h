@@ -11,6 +11,7 @@
 #include "../lib/point/point.h"
 #include "../lib/queue/queue.h"
 #include "../lib/queue/prioqueuetime.h"
+#include "../lib/inventory/inventory.h"
 #include "../lib/simulator/simulator.h"
 #include "../lib/stack/stack.h"
 #include "../lib/string/string.h"
