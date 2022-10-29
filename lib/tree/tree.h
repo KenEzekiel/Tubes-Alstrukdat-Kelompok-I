@@ -1,10 +1,6 @@
 /* File : tree.h */
 /* Definisi N-Ary Tree */
 
-/*
-TO DO : CHANGE ElType to Makanan
-*/
-
 #ifndef TREE_H
 #define TREE_H
 
@@ -57,9 +53,13 @@ void CreateTree(Infotype root, Tree child, Tree *t);
    		  dan count bertambah satu jika child bukan Nil
    		  Jika alokasi gagal, menghasilkan pohon kosong (Nil) */
 
-void ConnectTree(Tree child, Tree *t);
+void ConnectChild(Tree child, Tree *t);
 /* I.S. : t dan child terdefinisi
    F.S. : t terhubung dengan child dan count bertambah satu jika child bukan Nil */
+
+void ConnectParent(Tree parent, Tree *t);
+/* I.S. : t dan parent terdefinisi
+   F.S. : t menjadi child dari parent, ROOT(t) menjadi ROOT(parent) */
 
 void DeallocateTree(Address t);
 /* I.S. : t terdefinisi

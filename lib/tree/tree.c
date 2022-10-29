@@ -59,15 +59,26 @@ void CreateTree(Infotype root, Tree child, Tree *t)
 	}
 }
 
-void ConnectTree(Tree child, Tree *t)
+void ConnectChild(Tree child, Tree *t)
 /* I.S. : t dan child terdefinisi
    F.S. : t terhubung dengan child dan count bertambah satu jika child bukan Nil */
 {
-	// kalau udah penuh
+	if (COUNT(*t) == CAPACITY(*t))
+		ExpandCapacity(t);
+
 	SUBTREE(*t, COUNT(*t)) = child;
 
 	if (child != Nil)
 		COUNT(*t)++;
+}
+
+void ConnectParent(Tree parent, Tree *t)
+/* I.S. : t dan parent terdefinisi
+	F.S. : t menjadi child dari parent, ROOT(t) menjadi ROOT(parent) */
+{
+	ConnectChild(*t, &parent);
+
+	*t = parent;
 }
 
 void DeallocateTree(Address t)
