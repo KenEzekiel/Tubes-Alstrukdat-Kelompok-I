@@ -10,7 +10,7 @@ Simulator BNMO;
 
 // Constant variables
 ListStatik Makanan;
-Tree Resep;
+Tree* Resep;
 Peta Peta;
 
 void InitializeVariables()
@@ -26,6 +26,8 @@ void InitializeVariables()
 	CreateStartSimulator(&BNMO, "BNMO");
 
 	// Initialize constant variables (read from file)
+
+
 }
 
 int main()
