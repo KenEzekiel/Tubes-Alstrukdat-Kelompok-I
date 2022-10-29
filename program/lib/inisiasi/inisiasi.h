@@ -1,7 +1,7 @@
 #ifndef INISIASI
 #define INISIASI
 
-#include "../main.h"
+#include "../../../lib/wordmachine/wordmachine.h"
 
 /* Selektor */
 #define LENGTH(w) (w).Length
