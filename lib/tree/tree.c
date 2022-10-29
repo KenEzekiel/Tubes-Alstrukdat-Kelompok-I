@@ -28,7 +28,7 @@ Address NewTreeNode(Infotype root)
 
 Tree NewTree(Infotype root, Tree child)
 /* Jika alokasi berhasil, menghasilkan sebuah pohon dari root dan child;
-   dan count bertambah satu jika child bukan Nil
+   dan count bertambah satu jika child bukan Nil */
 /* Jika alokasi gagal, menghasilkan pohon kosong (Nil) */
 {
 	Address t = NewTreeNode(root);
