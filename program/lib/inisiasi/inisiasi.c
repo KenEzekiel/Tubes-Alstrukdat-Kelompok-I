@@ -15,24 +15,20 @@ void PrintGUI(Time* Waktu, Point* Lokasi, PrioQueueTime* Inventory, Simulator* B
 	printf("Enter Command: "); STARTWORD();
 }
 
-Word StringToWord(char* string, int size)
-/*  Mengubah array of char (string) menjadi word */
-{
-	Word w;
-	LENGTH(w) = size;
-
-	for (int i = 0; i < size; i++)
-		WORD(w,i) = string[i];
-
-	return w;
-}
-
 boolean IsSTART()
 /* Mengecek apakah currentWord == START */
 {
 	Word Start; StringToWord("START", 5);
 
 	return IsWordEqual(Start, currentWord);
+}
+
+boolean IsEXIT()
+/* Mengecek apakah currentWord == EXIT */
+{
+	Word Exit; StringToWord("EXIT", 4);
+	
+	return IsWordEqual(Exit, currentWord);
 }
 
 boolean IsEXIT()
