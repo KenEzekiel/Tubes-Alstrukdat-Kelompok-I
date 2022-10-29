@@ -156,10 +156,10 @@ Word StringToWord(char* string, int size)
 /*  Mengubah array of char (string) menjadi word */
 {
    Word w;
-   LENGTH(w) = size;
+   w.Length = size;
 
    for (int i = 0; i < size; i++)
-      WORD(w,i) = string[i];
+      w.TabWord[i] = string[i];
 
    return w;
 }

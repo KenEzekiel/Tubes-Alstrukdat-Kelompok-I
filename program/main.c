@@ -10,23 +10,19 @@ Simulator BNMO;
 
 // Constant variables
 ListStatik Makanan;
-Tree* Resep;
+ResepTree Resep;
 Peta Peta;
 
 void InitializeVariables()
 {
 	// Initialize changable variables
-	TIME waktu;
 	CreateTime(&waktu, 0, 0, 0);
-	Point lokasi;
 	CreatePoint(&lokasi, 0, 0);
-	Inventory inventory;
 	MakeEmpty(&inventory, 100);
-	Simulator BNMO;
 	CreateStartSimulator(&BNMO, "BNMO");
 
 	// Initialize constant variables (read from file)
-
+	ReadFromFile(&Resep, 10, "../test/resep.txt");
 
 }
 
@@ -85,6 +81,10 @@ int main()
 			}
 			else if (IsINVENTORY())
 			{
+			}
+			else if (IsEXIT())
+			{
+				break;
 			}
 		}
 	}
