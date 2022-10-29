@@ -81,4 +81,7 @@ boolean IsWordEqual(Word w1, Word w2);
 int WordToInt(Word w);
 /* Mengubah array char integer ('0', '1', '2', dst.) menjadi integer */
 
+Word StringToWord(char* string, int size);
+/*  Mengubah array of char (string) menjadi word */
+
 #endif

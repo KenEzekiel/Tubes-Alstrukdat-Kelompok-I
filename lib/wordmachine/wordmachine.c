@@ -151,3 +151,15 @@ int WordToInt(Word w)
 
    return sum;
 }
+
+Word StringToWord(char* string, int size)
+/*  Mengubah array of char (string) menjadi word */
+{
+   Word w;
+   LENGTH(w) = size;
+
+   for (int i = 0; i < size; i++)
+      WORD(w,i) = string[i];
+
+   return w;
+}
