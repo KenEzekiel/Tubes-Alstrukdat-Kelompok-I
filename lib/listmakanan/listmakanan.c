@@ -9,7 +9,8 @@
 
 /* ********** KONSTRUKTOR ********** */
 /* Konstruktor : create List kosong  */
-void CreateListMakanan(ListMakanan *lfood) {
+void CreateListMakanan(ListMakanan *lfood)
+{
     /* I.S. l sembarang */
     /* F.S. Terbentuk List l kosong dengan kapasitas CAPACITY */
     /* Proses: Inisialisasi semua elemen List l dengan MARK */
@@ -34,7 +35,8 @@ void CreateListMakanan(ListMakanan *lfood) {
 
 /* ********** SELEKTOR (TAMBAHAN) ********** */
 /* *** Banyaknya elemen *** */
-int listMakananLength(ListMakanan lfood){
+int listMakananLength(ListMakanan lfood)
+{
     /*KAMUS LOKAL*/
     int i = 0;
     /*ALGORITMA*/
@@ -48,8 +50,10 @@ int listMakananLength(ListMakanan lfood){
 /* Mengirimkan banyaknya elemen efektif List */
 /* Mengirimkan nol jika List kosong */
 
-void insertLastMakanan(ListMakanan *lfood, eltype val){
-    if (listMakananLength(*lfood) != CAPACITY_LMAKANAN){
+void insertLastMakanan(ListMakanan *lfood, eltype val)
+{
+    if (listMakananLength(*lfood) != CAPACITY_LMAKANAN)
+    {
         ELMT_LM(*lfood, listMakananLength(*lfood)) = val;
     }
 }
@@ -57,7 +61,8 @@ void insertLastMakanan(ListMakanan *lfood, eltype val){
 /* I.S. List l boleh kosong, tetapi tidak penuh */
 /* F.S. val adalah elemen terakhir l yang baru */
 
-ListMakanan readListMakanan(char* dir){
+ListMakanan readListMakanan(char *dir)
+{
     /* KAMUS */
     ListMakanan ret;
     Makanan food;
@@ -69,8 +74,9 @@ ListMakanan readListMakanan(char* dir){
     CreateListMakanan(&ret);
 
     STARTFILEWORD(dir);
-	int len = WordToInt(currentWord);
-    for(int i = 0; i < len; i++) {
+    int len = WordToInt(currentWord);
+    for (int i = 0; i < len; i++)
+    {
         /* ID Makanan */
         ADVWORD();
         id = WordToInt(currentWord);
@@ -78,22 +84,31 @@ ListMakanan readListMakanan(char* dir){
         ADVLINE();
         nama = wordToString(currentWord);
         /* Waktu Kadaluwarsa */
-        ADVWORD(); HH = WordToInt(currentWord);
-        ADVWORD(); MM = WordToInt(currentWord);
-        ADVWORD(); SS = WordToInt(currentWord);
+        ADVWORD();
+        HH = WordToInt(currentWord);
+        ADVWORD();
+        MM = WordToInt(currentWord);
+        ADVWORD();
+        SS = WordToInt(currentWord);
         CreateTime(&exp, HH, MM, SS);
         /* Lama Pengiriman */
-        ADVWORD(); HH = WordToInt(currentWord);
-        ADVWORD(); MM = WordToInt(currentWord);
-        ADVWORD(); SS = WordToInt(currentWord);
+        ADVWORD();
+        HH = WordToInt(currentWord);
+        ADVWORD();
+        MM = WordToInt(currentWord);
+        ADVWORD();
+        SS = WordToInt(currentWord);
         CreateTime(&delivTime, HH, MM, SS);
         /* Aksi */
         ADVWORD();
         aksi = wordToString(currentWord);
         /* Waktu Pengolahan */
-        ADVWORD(); HH = WordToInt(currentWord);
-        ADVWORD(); MM = WordToInt(currentWord);
-        ADVWORD(); SS = WordToInt(currentWord);
+        ADVWORD();
+        HH = WordToInt(currentWord);
+        ADVWORD();
+        MM = WordToInt(currentWord);
+        ADVWORD();
+        SS = WordToInt(currentWord);
         CreateTime(&aksiTime, HH, MM, SS);
         /* Pembentukan makanan */
         CreateMakanan(&food, id, nama, exp, aksi, delivTime, aksiTime);
@@ -105,14 +120,17 @@ ListMakanan readListMakanan(char* dir){
 /* Ketentuan file konfigurasi: baris pertama berisi banyaknya elemen, dilanjutkan tiap baris membaca tipe makanan dengan
 urutan ID Makanan, Nama Makanan, Waktu Kadaluwarsa, Lama Pengiriman, Aksi yang Dapat Dilakukan, Waktu Pengolahan Makanan */
 
-ListMakanan filterByAksi(ListMakanan lfood, String aksi){
+ListMakanan filterByAksi(ListMakanan lfood, String aksi)
+{
     ListMakanan ret;
     String aksiFood;
 
     CreateListMakanan(&ret);
-    for (int i = 0; i < listMakananLength(lfood); i++) {
+    for (int i = 0; i < listMakananLength(lfood); i++)
+    {
         aksiFood = Aksi(ELMT_LM(lfood, i));
-        if (isStringEqual(aksiFood, aksi)) {
+        if (isStringEqual(aksiFood, aksi))
+        {
             insertLastMakanan(&ret, ELMT_LM(lfood, i));
         }
     }
@@ -120,36 +138,77 @@ ListMakanan filterByAksi(ListMakanan lfood, String aksi){
 }
 /* Menghasilkan list makanan baru yang bisa dilakukan aksi */
 
-int indexOfID(ListMakanan lfood, int idfood){
+int indexOfID(ListMakanan lfood, int idfood)
+{
     /* KAMUS */
     int idx;
     boolean found = false;
     int i = 0;
 
     /* ALGORITMA */
-    while (i < listMakananLength(lfood) && !found){
-        if (ID(ELMT_LM(lfood, i)) == idfood){
+    while (i < listMakananLength(lfood) && !found)
+    {
+        if (ID(ELMT_LM(lfood, i)) == idfood)
+        {
             found = true;
-        } else {
+        }
+        else
+        {
             i++;
         }
     }
-    if (found) {
+    if (found)
+    {
         idx = i;
-    } else {
+    }
+    else
+    {
         idx = IDX_UNDEF_LMAKANAN;
     }
     return idx;
 }
 /* Menghasilkan indeks list dengan ID Makanan sesuai idfood, mengembalikan IDX_UNDEF jika ID Makanan tidak ditemukan */
 
-void printCatalog(ListMakanan lfood){
+int indexOfName(ListMakanan lfood, String nama)
+{
+    /* KAMUS */
+    int idx;
+    boolean found = false;
+    int i = 0;
+
+    /* ALGORITMA */
+    while (i < listMakananLength(lfood) && !found)
+    {
+        if (isStringEqual(Nama(ELMT_LM(lfood, i)), nama))
+        {
+            found = true;
+        }
+        else
+        {
+            i++;
+        }
+    }
+    if (found)
+    {
+        idx = i;
+    }
+    else
+    {
+        idx = IDX_UNDEF_LMAKANAN;
+    }
+    return idx;
+}
+/* Mengembalikan indeks list dengan nama makanan sesuai nama, mengembalikan IDX_UNDEF jika tidak ditemukan */
+
+void printCatalog(ListMakanan lfood)
+{
     Makanan food;
     printf("==========================================List Makanan=============================================\n");
     printf("Nama Makanan - Durasi Kedaluwarsa - Aksi yang Diperlukan - Delivery Time - Waktu Pengolahan Makanan\n");
-    for (int i = 0; i < listMakananLength(lfood); i++) {
+    for (int i = 0; i < listMakananLength(lfood); i++)
+    {
         food = ELMT_LM(lfood, i);
-        printf("%d. ", i+1);
+        printf("%d. ", i + 1);
         displayString(Nama(food));
         printf(" - ");
         PrintTime(Exp(food));

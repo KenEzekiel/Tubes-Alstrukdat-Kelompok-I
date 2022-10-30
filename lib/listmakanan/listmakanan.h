@@ -34,7 +34,6 @@ typedef struct
    List kosong: semua elemen bernilai MARK
    Definisi elemen pertama: ELMT(l,i) dengan i=0 */
 
-
 /* ********** SELEKTOR ********** */
 #define ELMT_LM(l, i) (l).contents[(i)]
 
@@ -56,7 +55,7 @@ void insertLastMakanan(ListMakanan *lfood, eltype val);
 /* I.S. List l boleh kosong, tetapi tidak penuh */
 /* F.S. val adalah elemen terakhir l yang baru */
 
-ListMakanan readListMakanan(char* dir);
+ListMakanan readListMakanan(char *dir);
 /* Membaca file dari directory dan menghasilkan List Statik yang elemennya berisi tipe Makanan */
 /* Ketentuan file konfigurasi: baris pertama berisi banyaknya elemen, dilanjutkan tiap baris membaca tipe makanan dengan
 urutan ID Makanan, Nama Makanan, Waktu Kadaluwarsa, Lama Pengiriman, Aksi yang Dapat Dilakukan, Waktu Pengolahan Makanan */
@@ -66,6 +65,9 @@ ListMakanan filterByAksi(ListMakanan lfood, String aksi);
 
 int indexOfID(ListMakanan lfood, int idfood);
 /* Menghasilkan indeks list dengan ID Makanan sesuai idfood, mengembalikan IDX_UNDEF jika ID Makanan tidak ditemukan */
+
+int indexOfName(ListMakanan lfood, String nama);
+/* Mengembalikan indeks list dengan nama makanan sesuai nama, mengembalikan IDX_UNDEF jika tidak ditemukan */
 
 void printCatalog(ListMakanan lfood);
 /* I.S. lfood terdefinisi */
