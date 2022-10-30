@@ -11,6 +11,7 @@
 #include "../makanan/makanan.h"
 #include "../string/string.h"
 #include "../liststatik/liststatik.h"
+#include "../listmakanan/listmakanan.h"
 
 /* *** Definisi DeliveryList adalah PrioQueueTime *** */
 typedef PrioQueueTime DeliveryList;
@@ -23,21 +24,21 @@ void buyMakanan(DeliveryList *DL, Makanan food);
 /* *** Operasi Penambahan Makanan dengan id makanan *** */
 /* I.S. Simulator sedang berada di sebelah B, id makanan yang dibeli sudah valid */
 /* F.S. Makanan dengan id tertentu di List dimasukkan ke dalam DeliveryList */
-void buyMakananbyId(DeliveryList *DL, int id, ListStatik L);
+void buyMakananbyId(DeliveryList *DL, int id, ListMakanan L);
 
 /* *** Operasi Penambahan Makanan dengan nama makanan *** */
 /* I.S. Simulator sedang berada di sebelah B, dan nama makanan yang dibeli sudah valid */
 /* F.S. Makanan dengan nama tertentu di List dimasukkan kedalam DeliveryList */
-void buyMakananbyName(DeliveryList *DL, String nama, ListStatik L);
+void buyMakananbyName(DeliveryList *DL, String nama, ListMakanan L);
 
 /* *** Mengembalikan hasil pengecekan apakah makanan ada dalam list makanan *** */
-boolean isMakananValid(Makanan food, ListStatik L);
+boolean isMakananValid(Makanan food, ListMakanan L);
 
 /* *** Mengembalikan hasil pengecekan apakah makanan ada dalam list makanan berdasarkan id *** */
-boolean isMakananValidbyId(int id, ListStatik L);
+boolean isMakananValidbyId(int id, ListMakanan L);
 
 /* *** Mengembalikan hasil pengecekan apakah makanan ada dalam list makanan berdasarkan nama *** */
-boolean isMakananValidbyName(String nama, ListStatik L);
+boolean isMakananValidbyName(String nama, ListMakanan L);
 
 /* *** Update DeliveryList dan Inventory *** */
 /* I.S. DeliveryList dan Inventory terdefinisi sembarang */

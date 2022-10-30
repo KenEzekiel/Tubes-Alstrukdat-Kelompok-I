@@ -45,28 +45,96 @@ void buyMakanan(DeliveryList *DL, infotype food)
 /* *** Operasi Penambahan Makanan dengan id makanan *** */
 /* I.S. Simulator sedang berada di sebelah B, id makanan yang dibeli sudah valid */
 /* F.S. Makanan dengan id tertentu di List dimasukkan ke dalam DeliveryList */
-void buyMakananbyId(DeliveryList *DL, int id, ListStatik L)
+void buyMakananbyId(DeliveryList *DL, int id, ListMakanan L)
 {
     // KAMUS LOKAL
     infotype food;
     // ALGORITMA
-    // TODO : getMakananByIdList
+
+    food = ELMT_LM(L, indexOfID(L, id));
+
     buyMakanan(DL, food);
 }
 
 /* *** Operasi Penambahan Makanan dengan nama makanan *** */
 /* I.S. Simulator sedang berada di sebelah B, dan nama makanan yang dibeli sudah valid */
 /* F.S. Makanan dengan nama tertentu di List dimasukkan ke dalam DeliveryList */
-void buyMakananbyName(DeliveryList *DL, String nama, ListStatik L);
+void buyMakananbyName(DeliveryList *DL, String nama, ListMakanan L)
+{
+    // KAMUS LOKAL
+    infotype food;
+    // ALGORITMA
+
+    food = ELMT_LM(L, indexOfName(L, nama));
+
+    buyMakanan(DL, food);
+}
 
 /* *** Mengembalikan hasil pengecekan apakah makanan ada dalam list makanan *** */
-boolean isMakananValid(Makanan food, ListStatik L);
+boolean isMakananValid(Makanan food, ListMakanan L)
+{
+    // KAMUS LOKAL
+    int i = 0;
+    boolean found = false;
+
+    // ALGORITMA
+    while (i < listMakananLength(L) && !found)
+    {
+        if (isStringEqual(Nama(food), Nama(ELMT_LM(L, i))) && ID(food) == ID(ELMT_LM(L, i)))
+        {
+            found = true;
+        }
+        else
+        {
+            i++;
+        }
+    }
+    return found;
+}
 
 /* *** Mengembalikan hasil pengecekan apakah makanan ada dalam list makanan berdasarkan id *** */
-boolean isMakananValidbyId(int id, ListStatik L);
+boolean isMakananValidbyId(int id, ListMakanan L)
+{
+    // KAMUS LOKAL
+    int i = 0;
+    boolean found = false;
+
+    // ALGORITMA
+    while (i < listMakananLength(L) && !found)
+    {
+        if (id == ID(ELMT_LM(L, i)))
+        {
+            found = true;
+        }
+        else
+        {
+            i++;
+        }
+    }
+    return found;
+}
 
 /* *** Mengembalikan hasil pengecekan apakah makanan ada dalam list makanan berdasarkan nama *** */
-boolean isMakananValidbyName(String nama, ListStatik L);
+boolean isMakananValidbyName(String nama, ListMakanan L)
+{
+    // KAMUS LOKAL
+    int i = 0;
+    boolean found = false;
+
+    // ALGORITMA
+    while (i < listMakananLength(L) && !found)
+    {
+        if (isStringEqual(nama, Nama(ELMT_LM(L, i))))
+        {
+            found = true;
+        }
+        else
+        {
+            i++;
+        }
+    }
+    return found;
+}
 
 /* *** Update DeliveryList dan Inventory *** */
 /* I.S. DeliveryList dan Inventory terdefinisi sembarang */
@@ -153,7 +221,7 @@ int lengthDeliveryList(DeliveryList DL)
 
 /* *** Mengembalikan hasil pengecekan apakah delivery list perlu di upgrade *** */
 /* Upgrade dilakukan jika panjang delivery list > 75% maxel nya */
-void checkUpgrade(DeliveryList DL)
+boolean checkUpgrade(DeliveryList DL)
 {
     // KAMUS LOKAL
     int len, threshold;
@@ -174,4 +242,23 @@ void checkUpgrade(DeliveryList DL)
 /* *** Mengupgrade kapasitas dari delivery list *** */
 /* Perlu dilakukan apakah delivery list perlu di upgrade atau tidak terlebih dahulu */
 /* Upgrade adalah penambahan kapasitas 2 kali lipat aslinya */
-void upgradeDelivList(DeliveryList *DL);
+void upgradeDelivList(DeliveryList *DL)
+{
+    // KAMUS LOKAL
+    DeliveryList p = *DL;
+    DeliveryList q;
+    infotype food;
+
+    // ALGORITMA
+
+    if (checkUpgrade(*DL))
+    {
+        MakeEmpty(&q, MaxEl(*DL) * 2);
+        while (!IsEmpty(p))
+        {
+            Dequeue(&p, &food);
+            buyMakanan(&q, food);
+        }
+        *DL = q;
+    }
+}
