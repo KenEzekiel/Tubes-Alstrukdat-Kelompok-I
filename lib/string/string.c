@@ -42,7 +42,7 @@ int length(String s)
 
 /* *** Primitif Konstruktor *** */
 
-/* Proses: Menambahkan val pada q dengan aturan FIFO */
+/* Proses: Menambahkan char pada s dengan aturan FIFO */
 /* I.S. s mungkin kosong, tabel penampung elemen s TIDAK penuh */
 /* F.S. s diisi oleh input string */
 void readString(String *s)
