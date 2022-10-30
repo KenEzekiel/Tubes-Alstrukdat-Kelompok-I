@@ -1,0 +1,1 @@
+gcc driverdl.c deliverylist.c ../inventory/inventory.c ../makanan/makanan.c ../wordmachine/wordmachine.c ../wordmachine/charmachine.c ../time/time.c ../string/string.c ../queue/prioqueuetime.c ../listmakanan/listmakanan.c -o driverdl

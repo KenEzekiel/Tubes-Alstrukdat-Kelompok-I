@@ -6,6 +6,13 @@
 #include "../string/string.h"
 #include "../liststatik/liststatik.h"
 #include "../deliverylist/deliverylist.h"
+#include <stdio.h>
+
+/* *** Konstruktor *** */
+void CreateDeliveryList(DeliveryList *DL, int max)
+{
+    MakeEmpty(DL, max);
+}
 
 /* *** Operasi Penambahan Makanan *** */
 /* I.S. Simulator sedang berada di sebelah B, dan makanan yang dibeli sudah valid */
@@ -210,6 +217,7 @@ void minusDelivTime(DeliveryList *DL, TIME t)
 /* *** Menampilkan isi Delivery List *** */
 void displayDeliveryList(DeliveryList DL)
 {
+    printf("DELIVERY LIST: \n");
     PrintPrioQueueTime(DL);
 }
 

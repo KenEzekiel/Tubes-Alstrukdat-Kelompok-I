@@ -16,6 +16,9 @@
 /* *** Definisi DeliveryList adalah PrioQueueTime *** */
 typedef PrioQueueTime DeliveryList;
 
+/* *** Konstruktor *** */
+void CreateDeliveryList(DeliveryList *DL, int max);
+
 /* *** Operasi Penambahan Makanan *** */
 /* I.S. Simulator sedang berada di sebelah B, dan makanan yang dibeli sudah valid */
 /* F.S. Makanan dimasukkan kedalam DeliveryList */
