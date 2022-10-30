@@ -37,17 +37,17 @@ Cooking BNMO is a Command-Line Interface Game that is made using C, which includ
 |
 └─── .vscode
 └─── doc
-        | Pedoman Tugas Besar IF2110 2022_2023.docx
-        | Spesifikasi Tugas Besar IF2110 2022-2023.pdf
+|       | Pedoman Tugas Besar IF2110 2022_2023.docx
+|       | Spesifikasi Tugas Besar IF2110 2022-2023.pdf
 └─── lib
-        |
-        |
+|       |
+|       |
 └─── program
-        | main.c
-        | main.h
-        └─── lib
-                |
-                |
+|       | main.c
+|       | main.h
+|       └─── lib
+|               |
+|               |
 └─── test
         | peta.txt
         | test.txt
