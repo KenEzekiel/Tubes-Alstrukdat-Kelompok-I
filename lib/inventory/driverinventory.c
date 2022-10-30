@@ -9,7 +9,7 @@ int main()
 {
     Inventory Q;
     infotype x, y, z, a;
-    MakeEmpty(&Q, 5);
+    CreateInventory(&Q, 4);
 
     BacaMakanan(&x);
     BacaMakanan(&y);
@@ -47,6 +47,13 @@ int main()
 
     printf("Inventory setelah makanan telah di update 10 menit: \n");
     displayInventory(Q);
+
+    upgradeInventory(&Q);
+    Enqueue(&Q, x);
+    Enqueue(&Q, y);
+    Enqueue(&Q, z);
+    Enqueue(&Q, a);
+    displayInventory(Q);
 }
 
 /*
@@ -82,4 +89,110 @@ Masukkan string: Kari
 0
 25
 0
+*/
+/*
+hasil dijalankan
+Masukkan id: 1
+Masukkan nama makanan: ayam
+Masukkan waktu kadaluwarsa: 0 10 0
+Masukkan aksi yang bisa dilakukan: beli
+Masukkan lama pengiriman: 0 20 0
+Masukkan waktu pengolahan makanan: 0 30 0
+Masukkan id: 2
+Masukkan nama makanan: nasi
+Masukkan waktu kadaluwarsa: 0 25 0
+Masukkan aksi yang bisa dilakukan: kukus
+Masukkan lama pengiriman: 0 30 0
+Masukkan waktu pengolahan makanan: 0 15 0
+Masukkan id: 3
+Masukkan nama makanan: kari
+Masukkan waktu kadaluwarsa: 0 20 0
+Masukkan aksi yang bisa dilakukan: makan
+Masukkan lama pengiriman: 0 20 0
+Masukkan waktu pengolahan makanan: 0 10 0
+Masukkan id: 4
+Masukkan nama makanan: bubut
+Masukkan waktu kadaluwarsa: 1 0 0
+Masukkan aksi yang bisa dilakukan: aduk
+Masukkan lama pengiriman: 0 15 0
+Masukkan waktu pengolahan makanan: 9 0 0
+ID: 1
+Nama makanan: ayam
+Waktu kadaluwarsa: 0:10:0
+Lokasi aksi: beli
+Lama pengiriman: 0:20:0
+Waktu pengolahan makanan: 0:30:0
+ID: 3
+Nama makanan: kari
+Waktu kadaluwarsa: 0:20:0
+Lokasi aksi: makan
+Lama pengiriman: 0:20:0
+Waktu pengolahan makanan: 0:10:0
+ID: 2
+Nama makanan: nasi
+Waktu kadaluwarsa: 0:25:0
+Lokasi aksi: kukus
+Lama pengiriman: 0:30:0
+Waktu pengolahan makanan: 0:15:0
+ID: 4
+Nama makanan: bubut
+Waktu kadaluwarsa: 1:0:0
+Lokasi aksi: aduk
+Lama pengiriman: 0:15:0
+Waktu pengolahan makanan: 9:0:0
+#
+Masukkan id makanan yang ingin diambil: 2
+Masukkan nama makanan yang ingin diambil: bubut
+ID: 1
+Nama makanan: ayam
+Waktu kadaluwarsa: 0:10:0
+Lokasi aksi: beli
+Lama pengiriman: 0:20:0
+Waktu pengolahan makanan: 0:30:0
+ID: 3
+Nama makanan: kari
+Waktu kadaluwarsa: 0:20:0
+Lokasi aksi: makan
+Lama pengiriman: 0:20:0
+Waktu pengolahan makanan: 0:10:0
+#
+Inventory setelah makanan telah di update 10 menit:
+ID: 3
+Nama makanan: kari
+Waktu kadaluwarsa: 0:10:0
+Lokasi aksi: makan
+Lama pengiriman: 0:20:0
+Waktu pengolahan makanan: 0:10:0
+#
+ID: 3
+Nama makanan: kari
+Waktu kadaluwarsa: 0:10:0
+Lokasi aksi: makan
+Lama pengiriman: 0:20:0
+Waktu pengolahan makanan: 0:10:0
+ID: 1
+Nama makanan: ayam
+Waktu kadaluwarsa: 0:10:0
+Lokasi aksi: beli
+Lama pengiriman: 0:20:0
+Waktu pengolahan makanan: 0:30:0
+ID: 3
+Nama makanan: kari
+Waktu kadaluwarsa: 0:20:0
+Lokasi aksi: makan
+Lama pengiriman: 0:20:0
+Waktu pengolahan makanan: 0:10:0
+ID: 2
+Nama makanan: nasi
+Waktu kadaluwarsa: 0:25:0
+Lokasi aksi: kukus
+Lama pengiriman: 0:30:0
+Waktu pengolahan makanan: 0:15:0
+ID: 4
+Nama makanan: bubut
+Waktu kadaluwarsa: 1:0:0
+Lokasi aksi: aduk
+Lama pengiriman: 0:15:0
+Waktu pengolahan makanan: 9:0:0
+#
 */

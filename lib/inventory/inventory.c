@@ -3,9 +3,16 @@
 #include "../time/time.h"
 #include "../makanan/makanan.h"
 #include "inventory.h"
+#include <stdio.h>
 
 /* Definisi Inventory adalah PrioQueueTime */
 // typedef PrioQueueTime Inventory;
+
+/* *** Konstruktor *** */
+void CreateInventory(Inventory *I, int max)
+{
+    MakeEmpty(I, max);
+}
 
 /* *** Update makanan di inventory *** */
 /* I.S. I terdefinisi, diisi oleh makanan, bisa kosong */
@@ -171,6 +178,7 @@ boolean isElmtByName(Inventory I, String nama)
 /* *** Menampilkan isi inventory *** */
 void displayInventory(Inventory I)
 {
+    printf("INVENTORY: \n");
     PrintPrioQueueTime(I);
 }
 
@@ -178,4 +186,47 @@ void displayInventory(Inventory I)
 int lengthInventory(Inventory I)
 {
     return NBElmt(I);
+}
+
+/* *** Mengembalikan hasil pengecekan apakah inventory perlu di upgrade *** */
+/* Upgrade dilakukan jika panjang inventory > 75% maxel nya */
+boolean checkInventoryUpgrade(Inventory I)
+{
+    int len, threshold;
+    // ALGORITMA
+    len = lengthInventory(I);
+    threshold = 0.75 * MaxEl(I);
+
+    if (len > threshold)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+
+/* *** Mengupgrade kapasitas dari inventory *** */
+/* Perlu dilakukan apakah inventory perlu di upgrade atau tidak terlebih dahulu */
+/* Upgrade adalah penambahan kapasitas 2 kali lipat aslinya */
+void upgradeInventory(Inventory *I)
+{
+    // KAMUS LOKAL
+    Inventory p = *I;
+    Inventory q;
+    infotype food;
+
+    // ALGORITMA
+
+    if (checkInventoryUpgrade(*I))
+    {
+        MakeEmpty(&q, MaxEl(*I) * 2);
+        while (!IsEmpty(p))
+        {
+            Dequeue(&p, &food);
+            Enqueue(&q, food);
+        }
+        *I = q;
+    }
 }

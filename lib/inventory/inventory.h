@@ -12,6 +12,9 @@
 /* Definisi Inventory adalah PrioQueueTime */
 typedef PrioQueueTime Inventory;
 
+/* *** Konstruktor *** */
+void CreateInventory(Inventory *I, int max);
+
 /* *** Update makanan di inventory *** */
 /* I.S. I terdefinisi, diisi oleh makanan, bisa kosong */
 /* F.S. Isi dari I di update */
@@ -51,5 +54,14 @@ void displayInventory(Inventory I);
 
 /* *** Mengembalikan panjang inventory *** */
 int lengthInventory(Inventory I);
+
+/* *** Mengembalikan hasil pengecekan apakah inventory perlu di upgrade *** */
+/* Upgrade dilakukan jika panjang inventory > 75% maxel nya */
+boolean checkInventoryUpgrade(Inventory I);
+
+/* *** Mengupgrade kapasitas dari inventory *** */
+/* Perlu dilakukan apakah inventory perlu di upgrade atau tidak terlebih dahulu */
+/* Upgrade adalah penambahan kapasitas 2 kali lipat aslinya */
+void upgradeInventory(Inventory *I);
 
 #endif
