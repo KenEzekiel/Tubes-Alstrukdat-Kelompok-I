@@ -4,21 +4,21 @@
 /***** Global Variable *****/
 // Changable variables
 TIME Waktu;
-Point Lokasi;
-Inventory Inventory;
+POINT Lokasi;
+Inventory Inv;
 Simulator BNMO;
 
 // Constant variables
 ListStatik Makanan;
 ResepTree Resep;
-Peta Peta;
+Peta Map;
 
 void InitializeVariables()
 {
 	// Initialize changable variables
-	CreateTime(&waktu, 0, 0, 0);
-	CreatePoint(&lokasi, 0, 0);
-	MakeEmpty(&inventory, 100);
+	CreateTime(&Waktu, 0, 0, 0);
+	CreatePoint(&Lokasi, 0, 0);
+	MakeEmpty(&Inv, 100);
 	CreateStartSimulator(&BNMO, "BNMO");
 
 	// Initialize constant variables (read from file)
@@ -41,7 +41,7 @@ int main()
 		boolean isRunning = true;
 		while (isRunning)
 		{
-			PrintGUI(Waktu, Lokasi, Inventory, BNMO, Peta);
+			PrintGUI(Waktu, Lokasi, Inv, BNMO, Map);
 
 			if (IsBUY())
 			{
