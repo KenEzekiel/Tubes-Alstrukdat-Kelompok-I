@@ -161,18 +161,28 @@ void Update(Peta *m,int P) {
 }
 
 boolean isValidJalan(Peta m, int i) {
+    boolean check=false;
     if (i==1) {
-        return (ELMT(PETA(m),Absis(POINT(m))-1,Ordinat(POINT(m)))== '.');
+        if (ELMT(PETA(m),Absis(POINT(m))-1,Ordinat(POINT(m)))== '.') {
+            check = true;
+        }
     }
     else if (i==2) {
-        return (ELMT(PETA(m),Absis(POINT(m)),Ordinat(POINT(m))+1)== '.');
+        if (ELMT(PETA(m),Absis(POINT(m)),Ordinat(POINT(m))+1)== '.'){
+            check = true;
+        }
     }
     else if (i==3) {
-        return (ELMT(PETA(m),Absis(POINT(m))+1,Ordinat(POINT(m)))== '.');
+        if (ELMT(PETA(m),Absis(POINT(m))+1,Ordinat(POINT(m)))== '.'){
+            check = true;
+        }
     }
     else if (i==4) {
-        return (ELMT(PETA(m),Absis(POINT(m)),Ordinat(POINT(m))-1)== '.');     
+        if (ELMT(PETA(m),Absis(POINT(m)),Ordinat(POINT(m))-1)== '.'){
+            check = true;
+        }     
     }
+    return check;
 }
 
 void MoveNorth(Peta* m){
