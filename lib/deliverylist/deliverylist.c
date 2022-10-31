@@ -161,6 +161,22 @@ void updateDeliveryList(DeliveryList *DL, Inventory *I, TIME t)
     }
 }
 
+/* *** Update DeliveryList dan Inventory *** */
+/* I.S. DeliveryList dan Inventory terdefinisi sembarang */
+/* F.S. Isi dari DL dan I di update */
+/* Update semua makanan untuk menambah waktu delivery time nya sebesar t */
+void reverseUpdateDeliveryList(DeliveryList *DL, Inventory *I, TIME t)
+{
+    // KAMUS LOKAL
+
+    // ALGORITMA
+
+    if (!IsEmpty(*DL))
+    {
+        plusDelivTime(DL, t);
+    }
+}
+
 /* *** Mengirim semua makanan yang delivery time nya sudah 0 *** */
 /* I.S. DL terdefinisi dan tidak kosong */
 /* F.S. Semua makanan yang delivery time nya sudah 0 didelete dari DL dan di masukkan ke I*/
@@ -208,6 +224,28 @@ void minusDelivTime(DeliveryList *DL, TIME t)
         {
             hasil = 0;
         }
+        DelivTime(food) = DetikToTIME(hasil);
+        buyMakanan(&p, food);
+    }
+    *DL = p;
+}
+
+/* *** Menambah waktu dari delivery time semua makanan sebesar t *** */
+/* I.S. DL terdefinisi, tidak kosong */
+/* F.S. semua makanan ditambah delivery time nya sebesar t */
+void plusDelivTime(DeliveryList *DL, TIME t)
+{
+    // KAMUS LOKAL
+    DeliveryList p;
+    DeliveryList q = *DL;
+    infotype food;
+    int hasil;
+    // ALGORITMA
+    MakeEmpty(&p, MaxEl(*DL));
+    while (!IsEmpty(q))
+    {
+        Dequeue(&q, &food);
+        hasil = TIMEToDetik(DelivTime(food)) + TIMEToDetik(t);
         DelivTime(food) = DetikToTIME(hasil);
         buyMakanan(&p, food);
     }

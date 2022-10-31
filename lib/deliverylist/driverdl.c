@@ -54,6 +54,10 @@ int main()
     displayDeliveryList(DL);
     displayInventory(I);
 
+    reverseUpdateDeliveryList(&DL, &I, DetikToTIME(sec));
+    displayDeliveryList(DL);
+    displayInventory(I);
+
     printf("Masukkan id makanan yang mau dibeli: ");
     scanf("%d", &id);
     while (!isMakananValidbyId(id, L))
@@ -93,6 +97,8 @@ int main()
     buyMakananbyId(&DL, id, L);
     displayDeliveryList(DL);
 
+    upgradeDelivList(&DL);
+
     printf("Masukkan id makanan yang mau dibeli: ");
     scanf("%d", &id);
     while (!isMakananValidbyId(id, L))
@@ -103,6 +109,8 @@ int main()
     }
     buyMakananbyId(&DL, id, L);
     displayDeliveryList(DL);
+
+    upgradeDelivList(&DL);
 
     printf("Masukkan id makanan yang mau dibeli: ");
     scanf("%d", &id);

@@ -45,10 +45,16 @@ boolean isMakananValidbyName(String nama, ListMakanan L);
 
 /* *** Update DeliveryList dan Inventory *** */
 /* I.S. DeliveryList dan Inventory terdefinisi sembarang */
-/* F.S. Isi dari DL dan I di update*/
+/* F.S. Isi dari DL dan I di update */
 /* Jika ada makanan yang sudah 0 delivery time nya, akan dimasukkan ke I dan dikeluarkan dari DL*/
 /* Update semua makanan untuk mengurangi waktu delivery time nya sebesar t */
 void updateDeliveryList(DeliveryList *DL, Inventory *I, TIME t);
+
+/* *** Update DeliveryList dan Inventory *** */
+/* I.S. DeliveryList dan Inventory terdefinisi sembarang */
+/* F.S. Isi dari DL dan I di update */
+/* Update semua makanan untuk menambah waktu delivery time nya sebesar t */
+void reverseUpdateDeliveryList(DeliveryList *DL, Inventory *I, TIME t);
 
 /* *** Mengirim semua makanan yang delivery time nya sudah 0 *** */
 /* I.S. DL terdefinisi dan tidak kosong */
@@ -60,6 +66,11 @@ void deliver(DeliveryList *DL, Inventory *I);
 /* F.S. semua makanan dikurangi delivery time nya sebesar t
 jika hasil < 0, maka delivery time di set 0 */
 void minusDelivTime(DeliveryList *DL, TIME t);
+
+/* *** Menambah waktu dari delivery time semua makanan sebesar t *** */
+/* I.S. DL terdefinisi, tidak kosong */
+/* F.S. semua makanan ditambah delivery time nya sebesar t */
+void plusDelivTime(DeliveryList *DL, TIME t);
 
 /* *** Menampilkan isi Delivery List *** */
 void displayDeliveryList(DeliveryList DL);
