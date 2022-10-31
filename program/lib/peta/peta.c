@@ -344,3 +344,9 @@ POINT cariSimul(Peta m)
     }
     return p;
 }
+
+void StartPeta(Peta *m) {
+    fileToPeta("../../test/peta.txt", PETA(m));
+    POINT(*m) = cariSimul(p);
+    Update(m, 5);
+}

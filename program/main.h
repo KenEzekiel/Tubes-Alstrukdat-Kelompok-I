@@ -7,7 +7,7 @@
 #include "../lib/liststatik/liststatik.h"
 #include "../lib/makanan/makanan.h"
 #include "../lib/matrix/matrix.h"
-#include "../lib/matrix/peta.h"
+#include "../lib/peta/peta.h"
 #include "../lib/point/point.h"
 #include "../lib/queue/queue.h"
 #include "../lib/queue/prioqueuetime.h"
