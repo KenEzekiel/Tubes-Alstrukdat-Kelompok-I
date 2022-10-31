@@ -9,7 +9,7 @@ Inventory Inv;
 Simulator BNMO;
 
 // Constant variables
-ListStatik Makanan;
+ListMakanan Makanan;
 ResepTree Resep;
 Peta Map;
 
@@ -75,6 +75,7 @@ int main()
 			}
 			else if (IsCATALOG())
 			{
+				DisplayCatalog(&Makanan);
 			}
 			else if (IsCOOKBOOK())
 			{
@@ -84,7 +85,7 @@ int main()
 			}
 			else if (IsEXIT())
 			{
-				break;
+				isRunning = false;
 			}
 		}
 	}
