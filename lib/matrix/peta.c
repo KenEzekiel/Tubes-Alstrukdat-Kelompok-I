@@ -4,15 +4,11 @@
 #include <stdlib.h>
 #include "../wordmachine/wordmachine.h"
 
-ElType CheckCurrent(Peta m){
-    return CP(m);
-}
 void Update(Peta *m,int P) {
     switch (P)
     {
     case 1:
-        ELMT(PETA(*m),Absis(POINT(*m))+1,Ordinat(POINT(*m))) = CP(*m);
-        CP(*m) = ELMT(PETA(*m),Absis(POINT(*m)),Ordinat(POINT(*m)));
+        ELMT(PETA(*m),Absis(POINT(*m))+1,Ordinat(POINT(*m))) = '.';
         ELMT(PETA(*m),Absis(POINT(*m)),Ordinat(POINT(*m))) = 'S';
 
         if (Ordinat(POINT(*m))-1>=0) {
@@ -41,8 +37,7 @@ void Update(Peta *m,int P) {
         }
         break;
     case 2:
-        ELMT(PETA(*m),Absis(POINT(*m)),Ordinat(POINT(*m))-1) = CP(*m);
-        CP(*m) = ELMT(PETA(*m),Absis(POINT(*m)),Ordinat(POINT(*m)));
+        ELMT(PETA(*m),Absis(POINT(*m)),Ordinat(POINT(*m))-1) = '.';
         ELMT(PETA(*m),Absis(POINT(*m)),Ordinat(POINT(*m))) = 'S';
 
         if (Ordinat(POINT(*m))-1>=0) {
@@ -71,8 +66,7 @@ void Update(Peta *m,int P) {
         }
         break;
     case 3:
-        ELMT(PETA(*m),Absis(POINT(*m))-1,Ordinat(POINT(*m))) = CP(*m);
-        CP(*m) = ELMT(PETA(*m),Absis(POINT(*m)),Ordinat(POINT(*m)));
+        ELMT(PETA(*m),Absis(POINT(*m))-1,Ordinat(POINT(*m))) = '.';
         ELMT(PETA(*m),Absis(POINT(*m)),Ordinat(POINT(*m))) = 'S';
 
         if (Ordinat(POINT(*m))-1>=0) {
@@ -101,8 +95,7 @@ void Update(Peta *m,int P) {
         }
         break;
     case 4:
-        ELMT(PETA(*m),Absis(POINT(*m)),Ordinat(POINT(*m))+1) = CP(*m);
-        CP(*m) = ELMT(PETA(*m),Absis(POINT(*m)),Ordinat(POINT(*m)));
+        ELMT(PETA(*m),Absis(POINT(*m)),Ordinat(POINT(*m))+1) = '.';
         ELMT(PETA(*m),Absis(POINT(*m)),Ordinat(POINT(*m))) = 'S';
 
         if (Ordinat(POINT(*m))-1>=0) {
@@ -131,7 +124,6 @@ void Update(Peta *m,int P) {
         }
         break;
     case 5:
-        CP(*m) = '.';
         if (Ordinat(POINT(*m))-1>=0) {
             NORTH(*m) = ELMT(PETA(*m),Absis(POINT(*m))-1,Ordinat(POINT(*m)));
         }
