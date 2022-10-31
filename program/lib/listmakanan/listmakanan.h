@@ -5,8 +5,8 @@
 #define LISTMAKANAN_H
 
 #include "../boolean.h"
-#include "../makanan/makanan.h"
-#include "../wordmachine/wordmachine.h"
+#include "../../../lib/makanan/makanan.h"
+#include "../../../lib/wordmachine/wordmachine.h"
 
 /*  Kamus Umum */
 #define CAPACITY_LMAKANAN 100

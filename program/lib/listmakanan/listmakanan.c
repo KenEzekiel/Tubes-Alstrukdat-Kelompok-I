@@ -1,9 +1,9 @@
 
 #include "../boolean.h"
-#include "../makanan/makanan.h"
-#include "../wordmachine/wordmachine.h"
-#include "../time/time.h"
-#include "../string/string.h"
+#include "../../../lib/makanan/makanan.h"
+#include "../../../lib/wordmachine/wordmachine.h"
+#include "../../../lib/time/time.h"
+#include "../../../lib/string/string.h"
 #include "listmakanan.h"
 #include <stdio.h>
 

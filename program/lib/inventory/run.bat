@@ -1,0 +1,1 @@
+gcc driverinventory.c inventory.c ../../../lib/makanan/makanan.c ../../../lib/wordmachine/wordmachine.c ../../../lib/wordmachine/charmachine.c ../../../lib/time/time.c ../../../lib/string/string.c ../../../lib/queue/prioqueuetime.c -o driverinventory1

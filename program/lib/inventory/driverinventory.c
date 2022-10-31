@@ -1,8 +1,8 @@
 #include "inventory.h"
 #include "../boolean.h"
-#include "../queue/prioqueuetime.h"
-#include "../time/time.h"
-#include "../makanan/makanan.h"
+#include "../../../lib/queue/prioqueuetime.h"
+#include "../../../lib/time/time.h"
+#include "../../../lib/makanan/makanan.h"
 #include <stdio.h>
 
 int main()

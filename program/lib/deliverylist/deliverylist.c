@@ -1,10 +1,10 @@
-#include "../queue/prioqueuetime.h"
+#include "../../../lib/queue/prioqueuetime.h"
 #include "../inventory/inventory.h"
 #include "../boolean.h"
-#include "../time/time.h"
-#include "../makanan/makanan.h"
-#include "../string/string.h"
-#include "../liststatik/liststatik.h"
+#include "../../../lib/time/time.h"
+#include "../../../lib/makanan/makanan.h"
+#include "../../../lib/string/string.h"
+#include "../../../lib/liststatik/liststatik.h"
 #include "../deliverylist/deliverylist.h"
 #include <stdio.h>
 

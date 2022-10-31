@@ -5,9 +5,9 @@
 #define inventory_H
 
 #include "../boolean.h"
-#include "../queue/prioqueuetime.h"
-#include "../time/time.h"
-#include "../makanan/makanan.h"
+#include "../../../lib/queue/prioqueuetime.h"
+#include "../../../lib/time/time.h"
+#include "../../../lib/makanan/makanan.h"
 
 /* Definisi Inventory adalah PrioQueueTime */
 typedef PrioQueueTime Inventory;

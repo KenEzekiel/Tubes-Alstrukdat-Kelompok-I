@@ -1,5 +1,5 @@
 #include "deliverylist.h"
-#include "../string/string.h"
+#include "../../../lib/string/string.h"
 #include <stdio.h>
 
 int main()

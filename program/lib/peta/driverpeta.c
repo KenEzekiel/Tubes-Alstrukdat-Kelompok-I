@@ -1,16 +1,17 @@
 #include <stdio.h>
 #include "peta.h"
-#include "matrix.h"
-#include "../wordmachine/wordmachine.h"
-#include "../wordmachine/charmachine.h"
-#include "../point/point.h"
+#include "../../../lib/matrix/matrix.h"
+#include "../../../lib/wordmachine/wordmachine.h"
+#include "../../../lib/wordmachine/charmachine.h"
+#include "../../../lib/point/point.h"
 
-int main() {
+int main()
+{
     Peta p;
     fileToPeta("../../test/peta.txt", &PETA(p));
     DisplayPeta(p);
     POINT(p) = cariSimul(p);
-    Update(&p,5);
+    Update(&p, 5);
     MoveEast(&p);
     DisplayPeta(p);
     return 0;

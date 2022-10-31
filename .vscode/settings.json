@@ -10,7 +10,11 @@
         "charmachine.h": "c",
         "makanan.h": "c",
         "string.h": "c",
-        "liststatik.h": "c"
+        "liststatik.h": "c",
+        "inventory.h": "c",
+        "deliverylist.h": "c",
+        "listmakanan.h": "c",
+        "wordmachine.h": "c"
     },
     "C_Cpp.errorSquiggles": "Enabled"
 }
