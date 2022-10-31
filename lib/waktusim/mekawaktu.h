@@ -4,8 +4,6 @@
 
 
 void StartTimeSimulator(TIME *t);
-void UpdateActionTime(DeliveryList *DL,Inventory *I);
-void UpdateWaitTime(DeliveryList *DL,Inventory *I, TIME t);
-
-
-
+void UpdateActionTime(DeliveryList *DL,Inventory *I, TIME *tglob);
+void UpdateGlobalTime(TIME *t, TIME t2);
+void UpdateWaitTime(DeliveryList *DL,Inventory *I, TIME t, TIME *tglob);
