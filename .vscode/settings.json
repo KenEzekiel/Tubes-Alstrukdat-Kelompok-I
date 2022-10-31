@@ -14,7 +14,8 @@
         "inventory.h": "c",
         "deliverylist.h": "c",
         "listmakanan.h": "c",
-        "wordmachine.h": "c"
+        "wordmachine.h": "c",
+        "queue.h": "c"
     },
     "C_Cpp.errorSquiggles": "Enabled"
 }
