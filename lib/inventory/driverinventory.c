@@ -48,10 +48,18 @@ int main()
     printf("Inventory setelah makanan telah di update 10 menit: \n");
     displayInventory(Q);
 
+    reverseUpdateInventory(&Q, t);
+
+    printf("Inventory setelah makanan di reverseupdate 10 menit: \n");
+    displayInventory(Q);
+
     upgradeInventory(&Q);
     Enqueue(&Q, x);
+    upgradeInventory(&Q);
     Enqueue(&Q, y);
+    upgradeInventory(&Q);
     Enqueue(&Q, z);
+    upgradeInventory(&Q);
     Enqueue(&Q, a);
     displayInventory(Q);
 }
@@ -195,4 +203,145 @@ Lokasi aksi: aduk
 Lama pengiriman: 0:15:0
 Waktu pengolahan makanan: 9:0:0
 #
+
+Masukkan id: 1
+Masukkan nama makanan: ayam
+Masukkan waktu kadaluwarsa: 0 10 0
+Masukkan aksi yang bisa dilakukan: goreng
+Masukkan lama pengiriman: 1 0 0
+Masukkan waktu pengolahan makanan: 1 0 0
+Masukkan id: 2
+Masukkan nama makanan: nasi
+Masukkan waktu kadaluwarsa: 0 20 0
+Masukkan aksi yang bisa dilakukan: kukus
+Masukkan lama pengiriman: 1 0 0
+Masukkan waktu pengolahan makanan: 3 0 0
+Masukkan id: 3
+Masukkan nama makanan: kari
+Masukkan waktu kadaluwarsa: 0 15 0
+Masukkan aksi yang bisa dilakukan: sate
+Masukkan lama pengiriman: 0 1 0
+Masukkan waktu pengolahan makanan: 1 0 0
+Masukkan id: 4
+Masukkan nama makanan: bubur
+Masukkan waktu kadaluwarsa: 0 40 0
+Masukkan aksi yang bisa dilakukan: aduk
+Masukkan lama pengiriman: 1 0 0
+Masukkan waktu pengolahan makanan: 9 0 0
+INVENTORY:
+ID: 1
+Nama makanan: ayam
+Waktu kadaluwarsa: 0:10:0
+Lokasi aksi: goreng
+Lama pengiriman: 1:0:0
+Waktu pengolahan makanan: 1:0:0
+ID: 3
+Nama makanan: kari
+Waktu kadaluwarsa: 0:15:0
+Lokasi aksi: sate
+Lama pengiriman: 0:1:0
+Waktu pengolahan makanan: 1:0:0
+ID: 2
+Nama makanan: nasi
+Waktu kadaluwarsa: 0:20:0
+Lokasi aksi: kukus
+Lama pengiriman: 1:0:0
+Waktu pengolahan makanan: 3:0:0
+ID: 4
+Nama makanan: bubur
+Waktu kadaluwarsa: 0:40:0
+Lokasi aksi: aduk
+Lama pengiriman: 1:0:0
+Waktu pengolahan makanan: 9:0:0
+#
+Masukkan id makanan yang ingin diambil: 4
+Masukkan nama makanan yang ingin diambil: 2
+INVENTORY:
+ID: 1
+Nama makanan: ayam
+Waktu kadaluwarsa: 0:10:0
+Lokasi aksi: goreng
+Lama pengiriman: 1:0:0
+Waktu pengolahan makanan: 1:0:0
+ID: 3
+Nama makanan: kari
+Waktu kadaluwarsa: 0:15:0
+Lokasi aksi: sate
+Lama pengiriman: 0:1:0
+Waktu pengolahan makanan: 1:0:0
+ID: 2
+Nama makanan: nasi
+Waktu kadaluwarsa: 0:20:0
+Lokasi aksi: kukus
+Lama pengiriman: 1:0:0
+Waktu pengolahan makanan: 3:0:0
+#
+Inventory setelah makanan telah di update 10 menit:
+INVENTORY:
+ID: 3
+Nama makanan: kari
+Waktu kadaluwarsa: 0:5:0
+Lokasi aksi: sate
+Lama pengiriman: 0:1:0
+Waktu pengolahan makanan: 1:0:0
+ID: 2
+Nama makanan: nasi
+Waktu kadaluwarsa: 0:10:0
+Lokasi aksi: kukus
+Lama pengiriman: 1:0:0
+Waktu pengolahan makanan: 3:0:0
+#
+Inventory setelah makanan di reverseupdate 10 menit:
+INVENTORY:
+ID: 3
+Nama makanan: kari
+Waktu kadaluwarsa: 0:15:0
+Lokasi aksi: sate
+Lama pengiriman: 0:1:0
+Waktu pengolahan makanan: 1:0:0
+ID: 2
+Nama makanan: nasi
+Waktu kadaluwarsa: 0:20:0
+Lokasi aksi: kukus
+Lama pengiriman: 1:0:0
+Waktu pengolahan makanan: 3:0:0
+#
+INVENTORY:
+ID: 1
+Nama makanan: ayam
+Waktu kadaluwarsa: 0:10:0
+Lokasi aksi: goreng
+Lama pengiriman: 1:0:0
+Waktu pengolahan makanan: 1:0:0
+ID: 3
+Nama makanan: kari
+Waktu kadaluwarsa: 0:15:0
+Lokasi aksi: sate
+Lama pengiriman: 0:1:0
+Waktu pengolahan makanan: 1:0:0
+ID: 3
+Nama makanan: kari
+Waktu kadaluwarsa: 0:15:0
+Lokasi aksi: sate
+Lama pengiriman: 0:1:0
+Waktu pengolahan makanan: 1:0:0
+ID: 2
+Nama makanan: nasi
+Waktu kadaluwarsa: 0:20:0
+Lokasi aksi: kukus
+Lama pengiriman: 1:0:0
+ID: 2
+Nama makanan: nasi
+Waktu kadaluwarsa: 0:20:0
+Lokasi aksi: kukus
+Lama pengiriman: 1:0:0
+Waktu pengolahan makanan: 3:0:0
+ID: 4
+Nama makanan: bubur
+Waktu kadaluwarsa: 0:40:0
+Lokasi aksi: aduk
+Lama pengiriman: 1:0:0
+Waktu pengolahan makanan: 9:0:0
+#
+PS C
 */

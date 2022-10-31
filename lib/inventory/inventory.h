@@ -22,6 +22,12 @@ void CreateInventory(Inventory *I, int max);
 /* Update semua makanan untuk mengurangi waktu expiration nya sejumlah time */
 void updateInventory(Inventory *I, TIME t);
 
+/* *** Update makanan di inventory *** */
+/* I.S. I terdefinisi, diisi oleh makanan, bisa kosong */
+/* F.S. Isi dari I di update */
+/* Update semua makanan untuk menambah waktu expiration nya sejumlah time */
+void reverseUpdateInventory(Inventory *I, TIME t);
+
 /* *** Menghilangkan semua makanan yang expired *** */
 /* I.S. I terdefinisi, tidak kosong */
 /* F.S. semua makanan yang expired di I (TIME == 0) di delete di HEAD */
@@ -32,6 +38,11 @@ void deleteExpired(Inventory *I);
 /* F.S. semua makanan dikurangi waktu expired nya sejumlah time,
 jika hasil < 0, maka expiration time di set 0*/
 void minusTime(Inventory *I, TIME t);
+
+/* *** Menambah waktu dari semua makanan di inventory *** */
+/* I.S. I terdefinisi, tidak kosong */
+/* F.S. semua makanan ditambah waktu expired nya sejumlah time */
+void plusTime(Inventory *I, TIME t);
 
 /* *** Mengambil makanan dari inventory *** */
 /* Mengembalikan makanan dari inventory dengan id tertentu */

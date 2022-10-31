@@ -32,6 +32,22 @@ void updateInventory(Inventory *I, TIME t)
     }
 }
 
+/* *** Update makanan di inventory *** */
+/* I.S. I terdefinisi, diisi oleh makanan, bisa kosong */
+/* F.S. Isi dari I di update */
+/* Update semua makanan untuk menambah waktu expiration nya sejumlah time */
+void reverseUpdateInventory(Inventory *I, TIME t)
+{
+    // KAMUS LOKAL
+
+    // ALGORITMA
+
+    if (!IsEmpty(*I))
+    {
+        plusTime(I, t);
+    }
+}
+
 /* *** Menghilangkan semua makanan yang expired *** */
 /* I.S. I terdefinisi, tidak kosong */
 /* F.S. semua makanan yang expired di I (TIME == 0) di delete di HEAD */
@@ -75,6 +91,28 @@ void minusTime(Inventory *I, TIME t)
         {
             hasil = 0;
         }
+        Exp(food) = DetikToTIME(hasil);
+        Enqueue(&p, food);
+    }
+    *I = p;
+}
+
+/* *** Menambah waktu dari semua makanan di inventory *** */
+/* I.S. I terdefinisi, tidak kosong */
+/* F.S. semua makanan ditambah waktu expired nya sejumlah time */
+void plusTime(Inventory *I, TIME t)
+{
+    // KAMUS LOKAL
+    Inventory p;
+    Inventory q = *I;
+    infotype food;
+    int hasil;
+    // ALGORITMA
+    MakeEmpty(&p, MaxEl(*I));
+    while (!IsEmpty(q))
+    {
+        Dequeue(&q, &food);
+        hasil = TIMEToDetik(Exp(food)) + TIMEToDetik(t);
         Exp(food) = DetikToTIME(hasil);
         Enqueue(&p, food);
     }
