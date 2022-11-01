@@ -3,6 +3,7 @@
 
 #include "../../../lib/tree/tree.h"
 #include "../../../lib/wordmachine/wordmachine.h"
+#include "../listmakanan/listmakanan.h"
 
 /* Selektor */
 #define LIST(t) (t).T
@@ -31,7 +32,7 @@ void DisplayCookbook(ListMakanan* Makanan, Tree* t);
 	I.S. : Makanan dan Resep terdefinisi
 	F.S. : Cookbook tercetak pada layar */
 
-void PrintResep(ResepTree Resep);
+void PrintResep(ListMakanan* Makanan, ResepTree* Resep);
 /* I.S. : Resep terdefinisi
    F.S. : ResepTree tercetak, tiap tree dipisahkan dengan enter */
 
