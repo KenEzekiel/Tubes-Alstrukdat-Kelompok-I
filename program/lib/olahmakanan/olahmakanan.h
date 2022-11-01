@@ -21,7 +21,7 @@ void displayMakananFiltered(String aksi, ListMakanan *lfood, ListMakanan *lfilte
 boolean isBahanAvailable(ListMakanan lfood);
 /*mengembalikan nilai true apabila semua bahan yang diperlukan untuk memproses makanan tersedia*/
 
-void process(String aksi,int i, ListMakanan *lfood, ListMakanan *lfiltered, Inventory I, ResepTree Resep);
+void process(String aksi,int i, ListMakanan *lfood, ListMakanan *lfiltered, Inventory *I, ResepTree Resep);
 /*I.S. lfiltered sembarang, lfood*/
 /*F.S. jika semua bahan tersedia, bahan makanan yang dibuat bertambah dan bahan makanan yang diperlukan berkurang di inventory,
        jika ada bahan yang tidak tersedia, menampilkan bahan-bahan yang tidak tersedia tersebut*/
