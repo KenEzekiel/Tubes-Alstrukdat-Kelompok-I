@@ -26,6 +26,11 @@ void ReadFromFile(ResepTree* Resep, int size, char* dir);
 	I.S. : Resep sembarang, dir terdefinisi
 	F.S. : Terbentuk pohon resep */
 
+void DisplayCookbook(ListMakanan* Makanan, Tree* t);
+/*  Menampilkan list resep pada layar
+	I.S. : Makanan dan Resep terdefinisi
+	F.S. : Cookbook tercetak pada layar */
+
 void PrintResep(ResepTree Resep);
 /* I.S. : Resep terdefinisi
    F.S. : ResepTree tercetak, tiap tree dipisahkan dengan enter */
