@@ -124,20 +124,25 @@ void DisplayCookbook(ListMakanan* Makanan, Tree* t)
 {
 	int idx = indexOfID(*Makanan, ROOT(*t));
    
-   displayString(Nama(*Makanan[idx])); printf("\n");
-   displayString(Aksi(*Makanan[idx])); printf(" - ")
+   displayString(Nama(ELMT_LM(*Makanan, idx))); printf("\n");
+   displayString(Aksi(ELMT_LM(*Makanan, idx))); 
 
-   for (int i = 0; i < COUNT(*t); i++)
+   for (int i = 0; i < TREECOUNT(*t); i++)
    {
    	int childIdx = indexOfID(*Makanan, ROOT(SUBTREE(*t,i)));
 
-	   displayString(Nama(*Makanan[childIdx])); printf(" - ");
+   	printf(" - ");
+	   displayString(Nama(ELMT_LM(*Makanan, childIdx)));
    }
    printf("\n");
 
-   for (int i = 0; i < COUNT(*t); i++)
+   for (int i = 0; i < TREECOUNT(*t); i++)
+   {
    	if (!HasNoChild(SUBTREE(*t,i)))
-   		DisplayCookbook(*Makanan, SUBTREE(*t,i));
+   	{
+   		DisplayCookbook(Makanan, &SUBTREE(*t,i));
+   	}
+   }
 }
 
 void PrintResep(ListMakanan* Makanan, ResepTree* Resep)
@@ -147,7 +152,6 @@ void PrintResep(ListMakanan* Makanan, ResepTree* Resep)
 	for (int i = 0; i < RESEPCOUNT(*Resep); i++)
 	{
 		DisplayCookbook(Makanan, &TREE(*Resep,i));
-		PrintTree(TREE(*Resep,i));
 	}
 }
 
@@ -160,7 +164,7 @@ boolean TraverseTree(Tree t, int ID)
 	boolean retValue = false;
 
 	int i = 0;
-	while (i < COUNT(t) && !retValue)
+	while (i < TREECOUNT(t) && !retValue)
 	{
 		retValue |= TraverseTree(SUBTREE(t,i), ID);
 		i++;
@@ -193,7 +197,7 @@ Address FindTreeNode(Tree t, int ID)
 	Address temp = NULL;
 
 	int i = 0;
-	while (i < COUNT(t) && temp == NULL)
+	while (i < TREECOUNT(t) && temp == NULL)
 	{
 		temp = FindTreeNode(SUBTREE(t,i), ID);
 		i++;

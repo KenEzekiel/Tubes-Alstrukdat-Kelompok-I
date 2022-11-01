@@ -344,3 +344,25 @@ POINT cariSimul(Peta m)
     }
     return p;
 }
+
+void StartPeta(Peta *m) {
+    fileToPeta("../../test/peta.txt", &PETA(*m));
+    POINT(*m) = cariSimul(*m);
+    Update(m, 5);
+}
+
+boolean CanOrder(Peta m){
+    return (NORTH(m)=='T' || EAST(m)=='T'|| WEST(m)=='T' || SOUTH(m) == 'T');
+}
+boolean CanMix(Peta m){
+    return (NORTH(m)=='M' || EAST(m)=='M'|| WEST(m)=='M' || SOUTH(m) == 'M');
+}
+boolean CanCut(Peta m){
+    return (NORTH(m)=='C' || EAST(m)=='C'|| WEST(m)=='C' || SOUTH(m) == 'C');
+}
+boolean CanFry(Peta m){
+    return (NORTH(m)=='F' || EAST(m)=='F'|| WEST(m)=='F' || SOUTH(m) == 'F');
+}
+boolean CanBoil(Peta m){
+    return (NORTH(m)=='B' || EAST(m)=='B'|| WEST(m)=='B' || SOUTH(m) == 'B');
+}

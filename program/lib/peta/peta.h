@@ -32,4 +32,11 @@ void DisplayPos(Peta m);
 void DisplayPeta(Peta m);
 
 void fileToPeta(char *dir, Matrix *m);
+void StartPeta(Peta *m);
+
+boolean CanOrder(Peta m);
+boolean CanMix(Peta m);
+boolean CanCut(Peta m);
+boolean CanFry(Peta m);
+boolean CanBoil(Peta m);
 #endif

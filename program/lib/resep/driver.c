@@ -2,9 +2,13 @@
 
 int main()
 {
+	ListMakanan lm;
+    CreateListMakanan(&lm);
+    lm = readListMakanan("../../../test/makanan.txt");
+
 	ResepTree Resep;
-	ReadFromFile(&Resep, 10, "../../../test/resep.txt");
-	PrintResep(&Resep);
+	ReadFromFile(&Resep, 10, "../../../test/resep_2.txt");
+	PrintResep(&lm, &Resep);
 
 	// CreateResepTree(Resep, size);
 	
