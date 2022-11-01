@@ -79,6 +79,7 @@ int main()
 			}
 			else if (IsCOOKBOOK())
 			{
+				PrintResep(&Makanan, &Resep);
 			}
 			else if (IsINVENTORY())
 			{
