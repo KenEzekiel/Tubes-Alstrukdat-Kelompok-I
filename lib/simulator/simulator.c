@@ -13,18 +13,30 @@
 /* ***************************************************************** */
 
 /* *** Konstruktor: Membentuk sebuah Makanan dari komponen-komponennya *** */
-void CreateStartSimulator (Simulator * Sim, String user){
+void CreateStartSimulator(Simulator *Sim, String user)
+{
+    // KAMUS LOKAL
+    State S;
+    TIME Waktu;
+    POINT Lokasi;
+    Inventory I;
+    DeliveryList DL;
+    // ALGORITMA
     User(*Sim) = user;
-    Absis(Loc(*Sim)) = 0;
-    Ordinat(Loc(*Sim)) = 0;
-    MakeEmpty(&Inventory(*Sim), 100);
+
+    CreateTime(&Waktu, 0, 0, 0);
+    CreatePoint(&Lokasi, 0, 0);
+    CreateInventory(&I, 100);
+    CreateDeliveryList(&DL, 100);
+    CreateState(&S, Lokasi, Waktu, I, DL);
+    State(*Sim) = S;
 }
 /* Membentuk sebuah Simulator dari nama pengguna dengan komponen lain berupa komponen awal */
 
-void CreateSimulator (Simulator * Sim, String user, POINT loc, PrioQueueTime inventory){
+void CreateSimulator(Simulator *Sim, String user, State S)
+{
     User(*Sim) = user;
-    Loc(*Sim) = loc;
-    Inventory(*Sim) = inventory;
+    State(*Sim) = S;
 }
 /* Membentuk sebuah Simulator dari komponen-komponennya yang valid */
 /* Prekondisi : user, loc, inventory valid untuk membentuk Makanan */
@@ -32,21 +44,32 @@ void CreateSimulator (Simulator * Sim, String user, POINT loc, PrioQueueTime inv
 /* ***************************************************************** */
 /* KELOMPOK BACA/TULIS                                               */
 /* ***************************************************************** */
-void BacaSimulator (Simulator * Sim){
+void BacaSimulator(Simulator *Sim)
+{
     String user;
     POINT loc;
     float x, y;
-    PrioQueueTime inventory;
+    TIME T;
+    Inventory inventory;
+    DeliveryList DL;
+    State S;
 
     printf("Masukkan nama user: ");
     readString(&user);
+
     printf("Masukkan lokasi x y: ");
     scanf("%f %f", &x, &y);
     CreatePoint(&loc, x, y);
-    MakeEmpty(&inventory, 100);
-    
-    CreateSimulator(Sim, user, loc, inventory);
 
+    printf("Masukkan time: ");
+    BacaTIME(&T);
+
+    CreateInventory(&inventory, 100);
+    CreateDeliveryList(&DL, 100);
+
+    CreateState(&S, loc, T, inventory, DL);
+
+    CreateSimulator(Sim, user, S);
 }
 /* I.S. : Simulator tidak terdefinisi */
 /* F.S. : Simulator terdefinisi dan merupakan simulator yang valid */
@@ -54,15 +77,24 @@ void BacaSimulator (Simulator * Sim){
 /* yang valid. Tidak mungkin menghasilkan Simulator yang tidak valid. */
 /* Pembacaan dilakukan dengan mengetikkan komponen user, loc, inventory
    berbeda baris, masing-masing dipisahkan dan diakhiri enter. */
-   
-void TulisSimulator (Simulator Sim){
+
+void TulisSimulator(Simulator Sim)
+{
     printf("Nama user: ");
     displayString(User(Sim));
+
     printf("Lokasi saat ini: ");
-    printf("(%d, %d)\n", Absis(Loc(Sim)), Ordinat(Loc(Sim)));
+    printf("(%d, %d)\n", Absis(Position(State(Sim))), Ordinat(Position(State((Sim)))));
+
+    printf("Waktu saat ini: ");
+    PrintTime(TimeState(State(Sim)));
+
     printf("Inventory user: ");
-    PrintPrioQueueTime(Inventory(Sim));
+    displayInventory(InventoryState(State((Sim))));
+
+    printf("Delivery List user: ");
+    displayDeliveryList(DeliveryListState(State(Sim)));
 }
 /* I.S. : Simulator sembarang */
 /* F.S. : Nilai Simulator ditulis dg format ... */
-/* Proses : menulis nilai setiap komponen Simulator ke layar dalam format ...*/ 
+/* Proses : menulis nilai setiap komponen Simulator ke layar dalam format ...*/

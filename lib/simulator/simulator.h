@@ -7,6 +7,9 @@
 #include "../boolean.h"
 #include "../string/string.h"
 #include "../point/point.h"
+#include "../time/time.h"
+#include "../program/lib/inventory/inventory.h"
+#include "../program/lib/deliverylist/deliverylist.h"
 #include "../queue/prioqueuetime.h"
 #include "../program/lib/state/state.h"
 
@@ -29,7 +32,7 @@ typedef struct
 void CreateStartSimulator(Simulator *Sim, String user);
 /* Membentuk sebuah Simulator dari nama pengguna dengan komponen lain berupa komponen awal */
 
-void CreateSimulator(Simulator *Sim, String user, POINT loc, PrioQueueTime inventory);
+void CreateSimulator(Simulator *Sim, String user, State S);
 /* Membentuk sebuah Simulator dari komponen-komponennya yang valid */
 /* Prekondisi : user, loc, inventory valid untuk membentuk Makanan */
 

@@ -30,4 +30,7 @@ typedef struct state
 /* F.S. S terisi sesuai T, I, DL */
 void CreateState(State *S, POINT P, TIME T, Inventory I, DeliveryList DL);
 
+/* Menampilkan State */
+void displayState(State S);
+
 #endif

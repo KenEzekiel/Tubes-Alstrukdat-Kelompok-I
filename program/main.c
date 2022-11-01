@@ -3,9 +3,10 @@
 
 /***** Global Variable *****/
 // Changable variables
-TIME Waktu;
-POINT Lokasi;
-Inventory Inv;
+// TIME Waktu;
+// POINT Lokasi;
+// Inventory Inv;
+// Masuk kedalam Simulator.State
 Simulator BNMO;
 
 // Constant variables
@@ -17,9 +18,7 @@ String user;
 void InitializeVariables()
 {
 	// Initialize changable variables
-	CreateTime(&Waktu, 0, 0, 0);
-	CreatePoint(&Lokasi, 0, 0);
-	MakeEmpty(&Inv, 100);
+
 	readString(&user);
 	CreateStartSimulator(&BNMO, user);
 
@@ -43,7 +42,7 @@ int main()
 		boolean isRunning = true;
 		while (isRunning)
 		{
-			PrintGUI(Waktu, Lokasi, Inv, BNMO, Map);
+			PrintGUI(TimeState(State(BNMO)), Position(State(BNMO)), InventoryState(State(BNMO)), BNMO, Map);
 
 			if (IsBUY())
 			{
