@@ -9,9 +9,10 @@ Inventory Inv;
 Simulator BNMO;
 
 // Constant variables
-ListStatik Makanan;
+ListMakanan Makanan;
 ResepTree Resep;
 Peta Map;
+String user;
 
 void InitializeVariables()
 {
@@ -19,11 +20,12 @@ void InitializeVariables()
 	CreateTime(&Waktu, 0, 0, 0);
 	CreatePoint(&Lokasi, 0, 0);
 	MakeEmpty(&Inv, 100);
-	CreateStartSimulator(&BNMO, "BNMO");
+	readString(&user);
+	CreateStartSimulator(&BNMO, user);
 
 	// Initialize constant variables (read from file)
 	ReadFromFile(&Resep, 10, "../test/resep.txt");
-
+	Makanan = readListMakanan("../../test/makanan.txt");
 }
 
 int main()
@@ -32,7 +34,7 @@ int main()
 
 	if (IsSTART())
 	{
-		// PrintASCII();
+		displaySplashScreen();
 
 		/* Menginisiasi nilai variable konstan/global */
 		InitializeVariables();

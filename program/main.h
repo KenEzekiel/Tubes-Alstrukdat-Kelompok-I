@@ -26,5 +26,6 @@
 #include "lib/deliverylist/deliverylist.h"
 #include "lib/listmakanan/listmakanan.h"
 #include "lib/waktusim/mekawaktu.h"
+#include "lib/utility/utility.h"
 
 #endif
