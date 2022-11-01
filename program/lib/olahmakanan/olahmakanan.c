@@ -4,6 +4,7 @@
 boolean isPointTrue(String aksi, POINT P) {
     boolean found = false;
     //if (isStringEqual(aksi, wordToString("MIX")));
+
     return found;
 }
 
@@ -31,12 +32,12 @@ boolean isBahanAvailable(ListMakanan lfood){
     return ada;
 }
 
-void process(String aksi,int i, ListMakanan *lfood, ListMakanan *lfiltered, Inventory I, ResepTree Resep){
+void process(String aksi,int i, ListMakanan *lfood, ListMakanan *lfiltered, Inventory *I, ResepTree Resep){
     //Makanan food = Makanan
+    //i = input dari command
     boolean berhasil = false;
-    Makanan food = ELMT_LM(*lfiltered, i);
-    int ID = ID(food);
-    Tree t = FindID(Resep,ID);
+    Makanan food = ELMT_LM(*lfiltered, i-1);
+    Tree t = FindID(Resep,ID(food));
 
     ListMakanan lneed;
     CreateListMakanan(&lneed);
@@ -49,16 +50,25 @@ void process(String aksi,int i, ListMakanan *lfood, ListMakanan *lfiltered, Inve
     }
 
     if (isBahanAvailable(lneed)) {
+        for (i=0; i<listMakananLength(lneed); i++){
+            //mengurangi bahan yang diperlukan dari inventory 
+            getMakananById(I, ID(ELMT_LM(lneed,i)));
+        }
+        //menambahkan makanan yang sudah diolah
+        Enqueue(I,food);
         printf("%c berhasil dibuat dan sudah masuk ke dalam inventory!",Nama(food));
     }
     else{
         printf("Gagal membuat %c karena kamu tidak memiliki bahan berikut: ",Nama(food));
-        ListMakanan lkosong;
-        CreateListMakanan(&lkosong);
+        //ListMakanan lkosong;
+        //CreateListMakanan(&lkosong);
         eltype val;
-        for(i=0; i<listMakananLength(*lfiltered); i++){
-            if (!isElmtById(I,ID(food))) {
-                insertLastMakanan(&lkosong,val);
+        int count=0;
+        for(i=0; i<listMakananLength(lneed); i++){
+            if (!isElmtById(*I,ID(ELMT_LM(lneed,i)))) {
+                count++;
+                //insertLastMakanan(&lkosong,val);
+                printf("%d. %c", count, Nama(ELMT_LM(lneed,i)));
             }
         }
     }

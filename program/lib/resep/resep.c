@@ -117,14 +117,37 @@ void ReadFromFile(ResepTree* Resep, int size, char* dir)
 	}
 }
 
-void PrintResep(ResepTree Resep)
+void DisplayCookbook(ListMakanan* Makanan, Tree* t)
+/*  Menampilkan list resep pada layar
+	I.S. : Makanan dan Resep terdefinisi
+	F.S. : Cookbook tercetak pada layar */
+{
+	int idx = indexOfID(*Makanan, ROOT(*t));
+   
+   displayString(Nama(*Makanan[idx])); printf("\n");
+   displayString(Aksi(*Makanan[idx])); printf(" - ")
+
+   for (int i = 0; i < COUNT(*t); i++)
+   {
+   	int childIdx = indexOfID(*Makanan, ROOT(SUBTREE(*t,i)));
+
+	   displayString(Nama(*Makanan[childIdx])); printf(" - ");
+   }
+   printf("\n");
+
+   for (int i = 0; i < COUNT(*t); i++)
+   	if (!HasNoChild(SUBTREE(*t,i)))
+   		DisplayCookbook(*Makanan, SUBTREE(*t,i));
+}
+
+void PrintResep(ListMakanan* Makanan, ResepTree* Resep)
 /* I.S. : Resep terdefinisi
    F.S. : ResepTree tercetak, tiap tree dipisahkan dengan enter */
 {
-	for (int i = 0; i < RESEPCOUNT(Resep); i++)
+	for (int i = 0; i < RESEPCOUNT(*Resep); i++)
 	{
-		PrintTree(TREE(Resep,i));
-		printf("\n");
+		DisplayCookbook(Makanan, &TREE(*Resep,i));
+		PrintTree(TREE(*Resep,i));
 	}
 }
 

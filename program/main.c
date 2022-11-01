@@ -77,16 +77,18 @@ int main()
 			}
 			else if (IsCATALOG())
 			{
+				DisplayCatalog(&Makanan);
 			}
 			else if (IsCOOKBOOK())
 			{
+				PrintResep(&Makanan, &Resep);
 			}
 			else if (IsINVENTORY())
 			{
 			}
 			else if (IsEXIT())
 			{
-				break;
+				isRunning = false;
 			}
 		}
 	}
