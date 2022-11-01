@@ -32,4 +32,5 @@ void DisplayPos(Peta m);
 void DisplayPeta(Peta m);
 
 void fileToPeta(char *dir, Matrix *m);
+void StartPeta(Peta *m);
 #endif

@@ -24,6 +24,7 @@ void InitializeVariables()
 
 	// Initialize constant variables (read from file)
 	ReadFromFile(&Resep, 10, "../test/resep.txt");
+	StartPeta(&Map);
 	Makanan = readListMakanan("../../test/makanan.txt");
 }
 
