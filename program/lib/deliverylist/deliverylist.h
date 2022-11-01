@@ -27,11 +27,13 @@ void buyMakanan(DeliveryList *DL, Makanan food);
 /* *** Operasi Penambahan Makanan dengan id makanan *** */
 /* I.S. Simulator sedang berada di sebelah B, id makanan yang dibeli sudah valid */
 /* F.S. Makanan dengan id tertentu di List dimasukkan ke dalam DeliveryList */
+/* Delivery list di upgrade jika dibutuhkan */
 void buyMakananbyId(DeliveryList *DL, int id, ListMakanan L);
 
 /* *** Operasi Penambahan Makanan dengan nama makanan *** */
 /* I.S. Simulator sedang berada di sebelah B, dan nama makanan yang dibeli sudah valid */
 /* F.S. Makanan dengan nama tertentu di List dimasukkan kedalam DeliveryList */
+/* Delivery list di upgrade jika dibutuhkan */
 void buyMakananbyName(DeliveryList *DL, String nama, ListMakanan L);
 
 /* *** Mengembalikan hasil pengecekan apakah makanan ada dalam list makanan *** */

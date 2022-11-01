@@ -15,6 +15,11 @@ typedef PrioQueueTime Inventory;
 /* *** Konstruktor *** */
 void CreateInventory(Inventory *I, int max);
 
+/* *** Operasi menambahkan item ke inventory *** */
+/* I.S. Inventory terdefinisi */
+/* F.S. food ditambahkan ke inventory sesuai priority nya, inventory di upgrade jika dibutuhkan */
+void addMakananToInventory(Inventory *I, infotype food);
+
 /* *** Update makanan di inventory *** */
 /* I.S. I terdefinisi, diisi oleh makanan, bisa kosong */
 /* F.S. Isi dari I di update */
