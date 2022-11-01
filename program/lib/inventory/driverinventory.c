@@ -15,10 +15,10 @@ int main()
     BacaMakanan(&y);
     BacaMakanan(&z);
     BacaMakanan(&a);
-    Enqueue(&Q, x);
-    Enqueue(&Q, y);
-    Enqueue(&Q, z);
-    Enqueue(&Q, a);
+    addMakananToInventory(&Q, x);
+    addMakananToInventory(&Q, y);
+    addMakananToInventory(&Q, z);
+    addMakananToInventory(&Q, a);
 
     displayInventory(Q);
 
@@ -53,14 +53,13 @@ int main()
     printf("Inventory setelah makanan di reverseupdate 10 menit: \n");
     displayInventory(Q);
 
-    upgradeInventory(&Q);
-    Enqueue(&Q, x);
-    upgradeInventory(&Q);
-    Enqueue(&Q, y);
-    upgradeInventory(&Q);
-    Enqueue(&Q, z);
-    upgradeInventory(&Q);
-    Enqueue(&Q, a);
+    addMakananToInventory(&Q, x);
+
+    addMakananToInventory(&Q, y);
+
+    addMakananToInventory(&Q, z);
+
+    addMakananToInventory(&Q, a);
     displayInventory(Q);
 }
 

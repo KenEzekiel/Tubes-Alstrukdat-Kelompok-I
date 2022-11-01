@@ -3,28 +3,29 @@
 
 /***** Global Variable *****/
 // Changable variables
-TIME Waktu;
-POINT Lokasi;
-Inventory Inv;
+// TIME Waktu;
+// POINT Lokasi;
+// Inventory Inv;
+// Masuk kedalam Simulator.State
 Simulator BNMO;
 
 // Constant variables
-ListStatik Makanan;
+ListMakanan Makanan;
 ResepTree Resep;
 Peta Map;
+String user;
 
 void InitializeVariables()
 {
 	// Initialize changable variables
-	CreateTime(&Waktu, 0, 0, 0);
-	CreatePoint(&Lokasi, 0, 0);
-	MakeEmpty(&Inv, 100);
-	CreateStartSimulator(&BNMO, "BNMO");
+
+	readString(&user);
+	CreateStartSimulator(&BNMO, user);
 
 	// Initialize constant variables (read from file)
 	ReadFromFile(&Resep, 10, "../test/resep.txt");
 	StartPeta(&Map);
-
+	Makanan = readListMakanan("../../test/makanan.txt");
 }
 
 int main()
@@ -33,7 +34,7 @@ int main()
 
 	if (IsSTART())
 	{
-		// PrintASCII();
+		displaySplashScreen();
 
 		/* Menginisiasi nilai variable konstan/global */
 		InitializeVariables();
@@ -42,7 +43,7 @@ int main()
 		boolean isRunning = true;
 		while (isRunning)
 		{
-			PrintGUI(Waktu, Lokasi, Inv, BNMO, Map);
+			PrintGUI(TimeState(State(BNMO)), Position(State(BNMO)), InventoryState(State(BNMO)), BNMO, Map);
 
 			if (IsBUY())
 			{
@@ -76,16 +77,18 @@ int main()
 			}
 			else if (IsCATALOG())
 			{
+				DisplayCatalog(&Makanan);
 			}
 			else if (IsCOOKBOOK())
 			{
+				PrintResep(&Makanan, &Resep);
 			}
 			else if (IsINVENTORY())
 			{
 			}
 			else if (IsEXIT())
 			{
-				break;
+				isRunning = false;
 			}
 		}
 	}

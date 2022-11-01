@@ -1,7 +1,8 @@
 #include "listmakanan.h"
 #include <stdio.h>
 
-int main() {
+int main()
+{
     ListMakanan lfood1, lbuy;
     String aksi;
     int id, idx;
@@ -10,7 +11,7 @@ int main() {
     CreateListMakanan(&lbuy);
 
     printf("Menampilkan list makanan hasil pembacaan dari file konfigurasi\n");
-    lfood1 = readListMakanan("../../test/test.txt");
+    lfood1 = readListMakanan("../../../test/makanan.txt");
     printCatalog(lfood1);
 
     printf("Mengecek indeks dari ID Makanan\n");

@@ -52,6 +52,7 @@ void buyMakanan(DeliveryList *DL, infotype food)
 /* *** Operasi Penambahan Makanan dengan id makanan *** */
 /* I.S. Simulator sedang berada di sebelah B, id makanan yang dibeli sudah valid */
 /* F.S. Makanan dengan id tertentu di List dimasukkan ke dalam DeliveryList */
+/* Delivery list di upgrade jika dibutuhkan */
 void buyMakananbyId(DeliveryList *DL, int id, ListMakanan L)
 {
     // KAMUS LOKAL
@@ -60,12 +61,14 @@ void buyMakananbyId(DeliveryList *DL, int id, ListMakanan L)
 
     food = ELMT_LM(L, indexOfID(L, id));
 
+    upgradeDelivList(DL);
     buyMakanan(DL, food);
 }
 
 /* *** Operasi Penambahan Makanan dengan nama makanan *** */
 /* I.S. Simulator sedang berada di sebelah B, dan nama makanan yang dibeli sudah valid */
 /* F.S. Makanan dengan nama tertentu di List dimasukkan ke dalam DeliveryList */
+/* Delivery list di upgrade jika dibutuhkan */
 void buyMakananbyName(DeliveryList *DL, String nama, ListMakanan L)
 {
     // KAMUS LOKAL
@@ -74,6 +77,7 @@ void buyMakananbyName(DeliveryList *DL, String nama, ListMakanan L)
 
     food = ELMT_LM(L, indexOfName(L, nama));
 
+    upgradeDelivList(DL);
     buyMakanan(DL, food);
 }
 

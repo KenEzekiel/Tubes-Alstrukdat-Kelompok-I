@@ -83,7 +83,7 @@ int main()
         displayDeliveryList(DL);
     }
 
-    upgradeDelivList(&DL);
+    // upgradeDelivList(&DL);
 
     // cek apakah kapasitas sudah bertambah jadi 2x lipat nya
     printf("Masukkan id makanan yang mau dibeli: ");
@@ -97,7 +97,7 @@ int main()
     buyMakananbyId(&DL, id, L);
     displayDeliveryList(DL);
 
-    upgradeDelivList(&DL);
+    // upgradeDelivList(&DL);
 
     printf("Masukkan id makanan yang mau dibeli: ");
     scanf("%d", &id);
@@ -110,7 +110,7 @@ int main()
     buyMakananbyId(&DL, id, L);
     displayDeliveryList(DL);
 
-    upgradeDelivList(&DL);
+    // upgradeDelivList(&DL);
 
     printf("Masukkan id makanan yang mau dibeli: ");
     scanf("%d", &id);
