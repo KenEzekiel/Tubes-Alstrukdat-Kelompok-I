@@ -4,7 +4,7 @@ int main()
 {
 	ResepTree Resep;
 	ReadFromFile(&Resep, 10, "../../../test/resep.txt");
-	PrintResep(Resep);
+	PrintResep(&Resep);
 
 	// CreateResepTree(Resep, size);
 	
