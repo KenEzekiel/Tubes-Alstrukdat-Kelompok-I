@@ -12,8 +12,8 @@
 #define ROOT(t) (t)->T
 #define SUBADDRESS(t) (t)->SubTree
 #define SUBTREE(t,n) (t)->SubTree[n]
-#define COUNT(t) (t)->Count
-#define CAPACITY(t) (t)->Capacity
+#define TREECOUNT(t) (t)->Count
+#define TREECAPACITY(t) (t)->Capacity
 
 #define Nil NULL
 #define INITIAL 5
@@ -38,7 +38,7 @@ Address NewTreeNode(Infotype root);
 /* Mengirimkan Address hasil alokasi sebuah elemen bernilai root
    Jika alokasi berhasil, maka Address tidak Nil dan menghasilkan t
    ROOT(t) = val, SUBADDRESS(t) terdefinisi dengan ukuran INITIAL,
-   COUNT(t) = 0, dan CAPACITY(t) = INITIAL 
+   COUNT(t) = 0, dan TREECAPACITY(t) = INITIAL 
    Jika alokasi gagal, maka mengirimkan Nil */
 
 Tree NewTree(Infotype root, Tree child);
@@ -80,7 +80,7 @@ void PrintTree(Tree t);
    		  Pohon kosong ditandai dengan () */
 
 void ExpandCapacity(Tree *t);
-/* Proses: Memperbesar dua kali lipat capacity t */
+/* Proses: Memperbesar dua kali lipat TREECAPACITY t */
 /* I.S. : t terdefinisi */
 /* F.S. : Ukuran SubTree menjadi dua kali lipat ukuran semula */
 

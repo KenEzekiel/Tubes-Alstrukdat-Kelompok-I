@@ -10,7 +10,7 @@ Address NewTreeNode(Infotype root)
 /* Mengirimkan Address hasil alokasi sebuah elemen bernilai root
    Jika alokasi berhasil, maka Address tidak Nil dan menghasilkan t
    ROOT(t) = val, SUBADDRESS(t) terdefinisi dengan ukuran INITIAL,
-   COUNT(t) = 0, dan CAPACITY(t) = INITIAL 
+   TREECOUNT(t) = 0, dan TREECAPACITY(t) = INITIAL 
    Jika alokasi gagal, maka mengirimkan Nil */
 {
 	Address t = (Address) malloc(sizeof(Node));
@@ -19,8 +19,8 @@ Address NewTreeNode(Infotype root)
 	{
 		ROOT(t) = root;
 		SUBADDRESS(t) = (Address*) malloc(INITIAL * sizeof(Address*));
-		COUNT(t) = 0;
-		CAPACITY(t) = INITIAL;
+		TREECOUNT(t) = 0;
+		TREECAPACITY(t) = INITIAL;
 	}
 
 	return t;
@@ -28,16 +28,16 @@ Address NewTreeNode(Infotype root)
 
 Tree NewTree(Infotype root, Tree child)
 /* Jika alokasi berhasil, menghasilkan sebuah pohon dari root dan child;
-   dan count bertambah satu jika child bukan Nil */
+   dan TREECOUNT bertambah satu jika child bukan Nil */
 /* Jika alokasi gagal, menghasilkan pohon kosong (Nil) */
 {
 	Address t = NewTreeNode(root);
 	if (t != Nil)
 	{
-		SUBTREE(t, COUNT(t)) = child;
+		SUBTREE(t, TREECOUNT(t)) = child;
 
 		if (child != Nil)
-			COUNT(t)++;
+			TREECOUNT(t)++;
 	}
 	return t;
 }
@@ -46,30 +46,30 @@ void CreateTree(Infotype root, Tree child, Tree *t)
 /* I.S. : Sembarang
    F.S. : Menghasilkan sebuah pohon t
    		  Jika alokasi berhasil, menghasilkan sebuah pohon dari root dan child;
-   		  dan count bertambah satu jika child bukan Nil
+   		  dan TREECOUNT bertambah satu jika child bukan Nil
    		  Jika alokasi gagal, menghasilkan pohon kosong (Nil) */
 {
 	*t = NewTreeNode(root);
 	if (*t != Nil)
 	{
-		SUBTREE(*t, COUNT(*t)) = child;
+		SUBTREE(*t, TREECOUNT(*t)) = child;
 
 		if (child != Nil)
-			COUNT(*t)++;
+			TREECOUNT(*t)++;
 	}
 }
 
 void ConnectChild(Tree child, Tree *t)
 /* I.S. : t dan child terdefinisi
-   F.S. : t terhubung dengan child dan count bertambah satu jika child bukan Nil */
+   F.S. : t terhubung dengan child dan TREECOUNT bertambah satu jika child bukan Nil */
 {
-	if (COUNT(*t) == CAPACITY(*t))
+	if (TREECOUNT(*t) == TREECAPACITY(*t))
 		ExpandCapacity(t);
 
-	SUBTREE(*t, COUNT(*t)) = child;
+	SUBTREE(*t, TREECOUNT(*t)) = child;
 
 	if (child != Nil)
-		COUNT(*t)++;
+		TREECOUNT(*t)++;
 }
 
 void ConnectParent(Tree parent, Tree *t)
@@ -92,7 +92,7 @@ void DeallocateTree(Address t)
 boolean HasNoChild(Tree t)
 /* Mengirimkan true jika t tidak memiliki child */
 {
-	if (COUNT(t) == 0)
+	if (TREECOUNT(t) == 0)
 		return true;
 	return false;
 }
@@ -100,7 +100,7 @@ boolean HasNoChild(Tree t)
 boolean HasOneChild(Tree t)
 /* Mengirimkan true jika t hanya memiliki 1 child */
 {
-	if (COUNT(t) == 1)
+	if (TREECOUNT(t) == 1)
 		return true;
 	return false;
 }
@@ -121,7 +121,7 @@ void PrintTree(Tree t)
 		printf("(");
 		printf("%d", ROOT(t));
 		int i;
-		for (i = 0; i < COUNT(t); i++)
+		for (i = 0; i < TREECOUNT(t); i++)
 			PrintTree(SUBTREE(t,i));
 		printf(")");
 	}
@@ -132,14 +132,14 @@ void ExpandCapacity(Tree *t)
 /* I.S. : t terdefinisi */
 /* F.S. : Ukuran SubTree menjadi dua kali lipat ukuran semula */
 {
-	CAPACITY(*t) *= 2;
+	TREECAPACITY(*t) *= 2;
 
 	Address *temp = SUBADDRESS(*t);
 
-	SUBADDRESS(*t) = (Address*) malloc(CAPACITY(*t) * sizeof(Address*));
-	COUNT(*t) = 0;
+	SUBADDRESS(*t) = (Address*) malloc(TREECAPACITY(*t) * sizeof(Address*));
+	TREECOUNT(*t) = 0;
 	
 	int i;
-	for (i = 0; i < CAPACITY(*temp); i++)
+	for (i = 0; i < TREECAPACITY(*temp); i++)
 		SUBTREE(*t,i) = SUBTREE(*temp,i);
 }
