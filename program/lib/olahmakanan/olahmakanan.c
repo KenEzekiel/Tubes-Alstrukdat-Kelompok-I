@@ -1,13 +1,5 @@
 #include "olahmakanan.h"
 
-
-boolean isPointTrue(String aksi, POINT P) {
-    boolean found = false;
-    //if (isStringEqual(aksi, wordToString("MIX")));
-
-    return found;
-}
-
 void displayMakananFiltered(String aksi, ListMakanan *lfood, ListMakanan *lfiltered) {
     Makanan food;
     String nama;
@@ -27,8 +19,19 @@ void displayMakananFiltered(String aksi, ListMakanan *lfood, ListMakanan *lfilte
     }
 }
 
-boolean isBahanAvailable(ListMakanan lfood){
+boolean isBahanAvailable(ListMakanan lfood, ListMakanan lneed){
     boolean ada=true;
+    int j = 0;
+    while (ada && j<listMakananLength(lneed)){
+        Makanan food = ELMT_LM(lneed,j);
+        if (indexOfID(lfood,ID(food)) == IDX_UNDEF){
+            ada = false;
+        }
+        else{
+            j++;
+        }
+    }
+    
     return ada;
 }
 
@@ -49,7 +52,7 @@ void process(String aksi,int i, ListMakanan *lfood, ListMakanan *lfiltered, Inve
         }
     }
 
-    if (isBahanAvailable(lneed)) {
+    if (isBahanAvailable(*lfood,lneed)) {
         for (i=0; i<listMakananLength(lneed); i++){
             //mengurangi bahan yang diperlukan dari inventory 
             getMakananById(I, ID(ELMT_LM(lneed,i)));

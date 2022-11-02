@@ -11,9 +11,6 @@
 #include "../resep/resep.h"
 #include <stdio.h>
 
-boolean isPointTrue(String aksi, POINT P);
-/*mengembalikan nilai true apabila di titik tersebut dapat dilakukan aksi*/
-
 void displayMakananFiltered(String aksi, ListMakanan *lfood, ListMakanan *lfiltered);
 /*I.S. lfiltered sembarang*/
 /*F.S. lfiltered yang berisi elemen-elemen dari lfood yang dapat dilakukan aksi*/
