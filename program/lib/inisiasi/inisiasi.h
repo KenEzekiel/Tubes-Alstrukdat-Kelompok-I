@@ -2,10 +2,19 @@
 #define INISIASI
 
 #include "../../../lib/wordmachine/wordmachine.h"
+#include "../inventory/inventory.h"
+#include "../notifikasi/notifikasi.h"
+#include "../peta/peta.h"
+#include "../../../lib/simulator/simulator.h"
+#include "../../../lib/time/time.h"
+#include "../../../lib/point/point.h"
+
 
 /* Selektor */
 #define LENGTH(w) (w).Length
 #define WORD(w,i) (w).TabWord[i]
+
+void PrintGUI(TIME Waktu, POINT Lokasi, Inventory Inventory, Simulator BNMO, Peta Peta, Notif listNotif);
 
 void ScanWord();
 /* 	Menerima input dari pengguna

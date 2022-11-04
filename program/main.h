@@ -31,5 +31,6 @@
 #include "lib/undostack/undostack.h"
 #include "lib/redostack/redostack.h"
 #include "lib/state/state.h"
+#include "lib/notifikasi/notifikasi.h"
 
 #endif

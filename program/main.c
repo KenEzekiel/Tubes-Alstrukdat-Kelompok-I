@@ -10,6 +10,7 @@
 Simulator BNMO;
 UndoStack US;
 RedoStack RS;
+Notif listNotif;
 
 // Constant variables
 ListMakanan Makanan;
@@ -23,7 +24,7 @@ void InitializeVariables()
 
 	readString(&user);
 	CreateStartSimulator(&BNMO, user);
-
+	CreateNotif(&listNotif);
 	CreateUndoStackEmpty(&US);
 	CreateRedoStackEmpty(&RS);
 
@@ -48,53 +49,62 @@ int main()
 		boolean isRunning = true;
 		while (isRunning)
 		{
-			PrintGUI(TimeState(State(BNMO)), Position(State(BNMO)), InventoryState(State(BNMO)), BNMO, Map);
+			PrintGUI(TimeState(State(BNMO)), Position(State(BNMO)), InventoryState(State(BNMO)), BNMO, Map, listNotif);
 
 			if (IsBUY())
 			{
 				PushUndoStack(&US, State(BNMO));
+				updateNotif(State(BNMO), &listNotif);
 			}
 			else if (IsDELIVERY())
 			{
-				// PushUndoStack(&US, State(BNMO));
-				// mengubah state ga?
+				PushUndoStack(&US, State(BNMO));
+				updateNotif(State(BNMO), &listNotif);
 			}
 			else if (IsMOVE())
 			{
 				PushUndoStack(&US, State(BNMO));
+				updateNotif(State(BNMO), &listNotif);
 			}
 			else if (IsMIX())
 			{
 				PushUndoStack(&US, State(BNMO));
+				updateNotif(State(BNMO), &listNotif);
 			}
 			else if (IsCHOP())
 			{
 				PushUndoStack(&US, State(BNMO));
+				updateNotif(State(BNMO), &listNotif);
 			}
 			else if (IsFRY())
 			{
 				PushUndoStack(&US, State(BNMO));
+				updateNotif(State(BNMO), &listNotif);
 			}
 			else if (IsBOIL())
 			{
 				PushUndoStack(&US, State(BNMO));
+				updateNotif(State(BNMO), &listNotif);
 			}
 			else if (IsWAIT())
 			{
 				PushUndoStack(&US, State(BNMO));
+				updateNotif(State(BNMO), &listNotif);
 			}
 			else if (IsUNDO())
 			{
 				State temp;
 				PopUndoStack(&US, &temp);
-				State(BNMO) = temp;
+				State(BNMO) = StateTop(US);
 				PushRedoStack(&RS, temp);
+				updateUndoNotif(State(BNMO), temp, &listNotif);
 			}
 			else if (IsREDO())
 			{
 				State temp;
 				PopRedoStack(&RS, &temp);
 				State(BNMO) = temp;
+				updateRedoNotif(State(BNMO), StateTop(US), &listNotif);
 				PushUndoStack(&US, temp);
 			}
 			else if (IsCATALOG())
