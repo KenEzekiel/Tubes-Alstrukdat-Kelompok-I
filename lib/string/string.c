@@ -305,3 +305,11 @@ void procwordToString(Word w, String *s)
         ELMT(*s, i) = w.TabWord[i];
     }
 }
+
+void charToString(char c[], String *s, int len)
+{
+    LENGTH(*s) = len;
+    for (int i = 0; i < len; i++) {
+        ELMT(*s, i) = c[i];
+    }
+}

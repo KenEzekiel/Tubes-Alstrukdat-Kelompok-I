@@ -110,9 +110,11 @@ void deleteSAt(String *s, ElType *c, int idx);
 /*      String s mungkin menjadi kosong */
 void deleteSLast(String *s, ElType *c);
 
-/* *** Konversi tipe Word menjadi tipe String *** */
+/* *** Konversi tipe *** */
 String wordToString(Word w);
 
 void procwordToString(Word w, String *s);
+
+void charToString(char c[], String *s, int len);
 
 #endif
