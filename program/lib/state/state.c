@@ -11,12 +11,14 @@
 /* Konstruktor */
 /* I.S. S terdefinisi sembarang, T, I, DL terisi */
 /* F.S. S terisi sesuai T, I, DL */
-void CreateState(State *S, POINT P, TIME T, Inventory I, DeliveryList DL)
+void CreateState(State *S, POINT P, TIME T, Inventory I, DeliveryList DL, ListMakanan expList, ListMakanan deliveredList)
 {
     Position(*S) = P;
     TimeState(*S) = T;
     InventoryState(*S) = I;
     DeliveryListState(*S) = DL;
+    ExpListState(*S) = expList;
+    DeliveredListState(*S) = deliveredList;
 }
 
 /* Menampilkan State */

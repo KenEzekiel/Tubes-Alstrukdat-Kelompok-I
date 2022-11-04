@@ -8,6 +8,7 @@
 #include "../../../lib/point/point.h"
 #include "../inventory/inventory.h"
 #include "../deliverylist/deliverylist.h"
+#include "../listmakanan/listmakanan.h"
 #include "../boolean.h"
 
 /* Definisi ADT State */
@@ -17,6 +18,8 @@ typedef struct state
     TIME T;
     Inventory I;
     DeliveryList DL;
+    ListMakanan expiredList;
+    ListMakanan deliveredList;
 } State;
 
 /* Definisi Selektor */
@@ -24,11 +27,13 @@ typedef struct state
 #define TimeState(S) (S).T
 #define InventoryState(S) (S).I
 #define DeliveryListState(S) (S).DL
+#define ExpListState(S) (S).expiredList
+#define DeliveredListState(S) (S).deliveredList
 
 /* Konstruktor */
 /* I.S. S terdefinisi sembarang, T, I, DL terisi */
 /* F.S. S terisi sesuai T, I, DL */
-void CreateState(State *S, POINT P, TIME T, Inventory I, DeliveryList DL);
+void CreateState(State *S, POINT P, TIME T, Inventory I, DeliveryList DL, ListMakanan expList, ListMakanan deliveredList);
 
 /* Menampilkan State */
 void displayState(State S);
