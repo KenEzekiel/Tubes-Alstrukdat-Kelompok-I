@@ -8,6 +8,7 @@
 #include "../../../lib/queue/prioqueuetime.h"
 #include "../../../lib/time/time.h"
 #include "../../../lib/makanan/makanan.h"
+#include "../listmakanan/listmakanan.h"
 
 /* Definisi Inventory adalah PrioQueueTime */
 typedef PrioQueueTime Inventory;
@@ -25,7 +26,7 @@ void addMakananToInventory(Inventory *I, infotype food);
 /* F.S. Isi dari I di update */
 /* Jika ada makanan yang expired, maka akan di delete */
 /* Update semua makanan untuk mengurangi waktu expiration nya sejumlah time */
-void updateInventory(Inventory *I, TIME t);
+void updateInventory(Inventory *I, TIME t, ListMakanan *expired);
 
 /* *** Update makanan di inventory *** */
 /* I.S. I terdefinisi, diisi oleh makanan, bisa kosong */
@@ -36,7 +37,7 @@ void reverseUpdateInventory(Inventory *I, TIME t);
 /* *** Menghilangkan semua makanan yang expired *** */
 /* I.S. I terdefinisi, tidak kosong */
 /* F.S. semua makanan yang expired di I (TIME == 0) di delete di HEAD */
-void deleteExpired(Inventory *I);
+void deleteExpired(Inventory *I, ListMakanan *expired);
 
 /* *** Mengurangi waktu dari semua makanan di inventory *** */
 /* I.S. I terdefinisi, tidak kosong */

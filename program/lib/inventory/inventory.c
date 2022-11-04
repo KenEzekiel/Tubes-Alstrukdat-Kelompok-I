@@ -28,7 +28,7 @@ void addMakananToInventory(Inventory *I, infotype food)
 /* F.S. Isi dari I di update */
 /* Jika ada makanan yang expired, maka akan di delete */
 /* Update semua makanan untuk mengurangi waktu expiration nya sejumlah time */
-void updateInventory(Inventory *I, TIME t)
+void updateInventory(Inventory *I, TIME t, ListMakanan *expired)
 {
     // KAMUS LOKAL
 
@@ -37,7 +37,7 @@ void updateInventory(Inventory *I, TIME t)
     if (!IsEmpty(*I))
     {
         minusTime(I, t);
-        deleteExpired(I);
+        deleteExpired(I, expired);
     }
 }
 
@@ -60,7 +60,7 @@ void reverseUpdateInventory(Inventory *I, TIME t)
 /* *** Menghilangkan semua makanan yang expired *** */
 /* I.S. I terdefinisi, tidak kosong */
 /* F.S. semua makanan yang expired di I (TIME == 0) di delete di HEAD */
-void deleteExpired(Inventory *I)
+void deleteExpired(Inventory *I, ListMakanan *expired)
 {
     // KAMUS LOKAL
     Inventory p;
@@ -71,9 +71,13 @@ void deleteExpired(Inventory *I)
     while (!IsEmpty(q))
     {
         Dequeue(&q, &food);
-        if (TIMEToDetik(Exp(food)) != 0)
+        if (TIMEToMenit(Exp(food)) != 0)
         {
             Enqueue(&p, food);
+        }
+        else 
+        {
+            insertLastMakanan(expired, food);
         }
     }
     *I = p;
@@ -95,12 +99,12 @@ void minusTime(Inventory *I, TIME t)
     while (!IsEmpty(q))
     {
         Dequeue(&q, &food);
-        hasil = TIMEToDetik(Exp(food)) - TIMEToDetik(t);
+        hasil = TIMEToMenit(Exp(food)) - TIMEToMenit(t);
         if (hasil < 0)
         {
             hasil = 0;
         }
-        Exp(food) = DetikToTIME(hasil);
+        Exp(food) = MenitToTIME(hasil);
         Enqueue(&p, food);
     }
     *I = p;
@@ -121,8 +125,8 @@ void plusTime(Inventory *I, TIME t)
     while (!IsEmpty(q))
     {
         Dequeue(&q, &food);
-        hasil = TIMEToDetik(Exp(food)) + TIMEToDetik(t);
-        Exp(food) = DetikToTIME(hasil);
+        hasil = TIMEToMenit(Exp(food)) + TIMEToMenit(t);
+        Exp(food) = MenitToTIME(hasil);
         Enqueue(&p, food);
     }
     *I = p;

@@ -6,12 +6,13 @@ int main()
 {
     DeliveryList DL;
     Inventory I;
-    ListMakanan L;
+    ListMakanan L, delivered;
     infotype x, y, z, a;
 
     MakeEmpty(&DL, 3);
     CreateInventory(&I, 3);
     CreateListMakanan(&L);
+    CreateListMakanan(&delivered);
 
     BacaMakanan(&x);
     BacaMakanan(&y);
@@ -48,13 +49,15 @@ int main()
     displayDeliveryList(DL);
 
     int sec;
-    printf("Masukkan detik update: ");
+    printf("Masukkan menit update: ");
     scanf("%d", &sec);
-    updateDeliveryList(&DL, &I, DetikToTIME(sec));
+    updateDeliveryList(&DL, &I, MenitToTIME(sec), &delivered);
     displayDeliveryList(DL);
     displayInventory(I);
+    printf("Makanan yang sudah dikirim: \n");
+    printCatalog(delivered);
 
-    reverseUpdateDeliveryList(&DL, &I, DetikToTIME(sec));
+    reverseUpdateDeliveryList(&DL, &I, MenitToTIME(sec));
     displayDeliveryList(DL);
     displayInventory(I);
 

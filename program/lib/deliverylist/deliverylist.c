@@ -38,7 +38,7 @@ void buyMakanan(DeliveryList *DL, infotype food)
         InfoTail(*DL) = food;
         i = Tail(*DL);
         j = i == 0 ? MaxEl(*DL) - 1 : i - 1;
-        while (i != Head(*DL) && TIMEToDetik(DelivTime(Elmt(*DL, i))) < TIMEToDetik(DelivTime(Elmt(*DL, j))))
+        while (i != Head(*DL) && TIMEToMenit(DelivTime(Elmt(*DL, i))) < TIMEToMenit(DelivTime(Elmt(*DL, j))))
         {
             temp = Elmt(*DL, i);
             Elmt(*DL, i) = Elmt(*DL, j);
@@ -152,7 +152,7 @@ boolean isMakananValidbyName(String nama, ListMakanan L)
 /* F.S. Isi dari DL dan I di update*/
 /* Jika ada makanan yang sudah 0 delivery time nya, akan dimasukkan ke I dan dikeluarkan dari DL*/
 /* Update semua makanan untuk mengurangi waktu delivery time nya sebesar t */
-void updateDeliveryList(DeliveryList *DL, Inventory *I, TIME t)
+void updateDeliveryList(DeliveryList *DL, Inventory *I, TIME t, ListMakanan *delivered)
 {
     // KAMUS LOKAL
 
@@ -161,7 +161,7 @@ void updateDeliveryList(DeliveryList *DL, Inventory *I, TIME t)
     if (!IsEmpty(*DL))
     {
         minusDelivTime(DL, t);
-        deliver(DL, I);
+        deliver(DL, I, delivered);
     }
 }
 
@@ -184,7 +184,7 @@ void reverseUpdateDeliveryList(DeliveryList *DL, Inventory *I, TIME t)
 /* *** Mengirim semua makanan yang delivery time nya sudah 0 *** */
 /* I.S. DL terdefinisi dan tidak kosong */
 /* F.S. Semua makanan yang delivery time nya sudah 0 didelete dari DL dan di masukkan ke I*/
-void deliver(DeliveryList *DL, Inventory *I)
+void deliver(DeliveryList *DL, Inventory *I, ListMakanan *delivered)
 {
     // KAMUS LOKAL
     DeliveryList p;
@@ -195,13 +195,14 @@ void deliver(DeliveryList *DL, Inventory *I)
     while (!IsEmpty(q))
     {
         Dequeue(&q, &food);
-        if (TIMEToDetik(DelivTime(food)) != 0)
+        if (TIMEToMenit(DelivTime(food)) != 0)
         {
             buyMakanan(&p, food);
         }
         else
         {
             Enqueue(I, food);
+            insertLastMakanan(delivered, food);
         }
     }
     *DL = p;
@@ -223,12 +224,12 @@ void minusDelivTime(DeliveryList *DL, TIME t)
     while (!IsEmpty(q))
     {
         Dequeue(&q, &food);
-        hasil = TIMEToDetik(DelivTime(food)) - TIMEToDetik(t);
+        hasil = TIMEToMenit(DelivTime(food)) - TIMEToMenit(t);
         if (hasil < 0)
         {
             hasil = 0;
         }
-        DelivTime(food) = DetikToTIME(hasil);
+        DelivTime(food) = MenitToTIME(hasil);
         buyMakanan(&p, food);
     }
     *DL = p;
@@ -249,8 +250,8 @@ void plusDelivTime(DeliveryList *DL, TIME t)
     while (!IsEmpty(q))
     {
         Dequeue(&q, &food);
-        hasil = TIMEToDetik(DelivTime(food)) + TIMEToDetik(t);
-        DelivTime(food) = DetikToTIME(hasil);
+        hasil = TIMEToMenit(DelivTime(food)) + TIMEToMenit(t);
+        DelivTime(food) = MenitToTIME(hasil);
         buyMakanan(&p, food);
     }
     *DL = p;

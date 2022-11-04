@@ -8,8 +8,10 @@
 int main()
 {
     Inventory Q;
+    ListMakanan expired;
     infotype x, y, z, a;
     CreateInventory(&Q, 4);
+    CreateListMakanan(&expired);
 
     BacaMakanan(&x);
     BacaMakanan(&y);
@@ -43,10 +45,13 @@ int main()
     TIME t;
     CreateTime(&t, 0, 10, 0);
 
-    updateInventory(&Q, t);
+    updateInventory(&Q, t, &expired);
 
     printf("Inventory setelah makanan telah di update 10 menit: \n");
     displayInventory(Q);
+
+    printf("List makanan yang sudah kedaluwarsa: \n");
+    printCatalog(expired);
 
     reverseUpdateInventory(&Q, t);
 
