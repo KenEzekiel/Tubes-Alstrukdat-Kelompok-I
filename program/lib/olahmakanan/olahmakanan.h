@@ -15,7 +15,7 @@ void displayMakananFiltered(String aksi, ListMakanan *lfood, ListMakanan *lfilte
 /*I.S. lfiltered sembarang*/
 /*F.S. lfiltered yang berisi elemen-elemen dari lfood yang dapat dilakukan aksi*/
 
-boolean isBahanAvailable(ListMakanan lfood);
+boolean isBahanAvailable(ListMakanan lfood, ListMakanan lneed);
 /*mengembalikan nilai true apabila semua bahan yang diperlukan untuk memproses makanan tersedia*/
 
 void process(String aksi,int i, ListMakanan *lfood, ListMakanan *lfiltered, Inventory *I, ResepTree Resep);
