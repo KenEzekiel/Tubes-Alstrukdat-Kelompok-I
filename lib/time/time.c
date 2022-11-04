@@ -78,19 +78,19 @@ void PrintTime(TIME T)
    MM = Minute(T);
    
    if (DD > 0) {
-      printf("%d jam", DD);
+      printf("%d hari", DD);
    }
    if (HH > 0) {
       if (DD > 0) {
          printf(" ");
       }
-      printf("%d menit", MM);
+      printf("%d jam", HH);
    }
    if (MM > 0) {
       if (DD > 0 || HH > 0) {
          printf(" ");
       }
-      printf("%d detik", MM);
+      printf("%d menit", MM);
    }
    if (HH == 0 && MM == 0 && DD == 0){
       printf("0");

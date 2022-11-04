@@ -113,7 +113,7 @@ void Enqueue(PrioQueueTime *Q, infotype X)
         InfoTail(*Q) = X;
         i = Tail(*Q);
         j = i == 0 ? MaxEl(*Q) - 1 : i - 1;
-        while (i != Head(*Q) && TIMEToDetik(Exp(Elmt(*Q, i))) < TIMEToDetik(Exp(Elmt(*Q, j))))
+        while (i != Head(*Q) && TIMEToMenit(Exp(Elmt(*Q, i))) < TIMEToMenit(Exp(Elmt(*Q, j))))
         {
             temp = Elmt(*Q, i);
             Elmt(*Q, i) = Elmt(*Q, j);
