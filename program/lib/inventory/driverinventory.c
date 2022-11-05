@@ -9,7 +9,7 @@ int main()
 {
     Inventory Q;
     ListMakanan expired;
-    infotype x, y, z, a;
+    prioQueueInfotype x, y, z, a;
     CreateInventory(&Q, 4);
     CreateListMakanan(&expired);
 

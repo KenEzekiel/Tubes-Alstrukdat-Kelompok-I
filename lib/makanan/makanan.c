@@ -29,7 +29,8 @@ void BacaMakanan(Makanan *Food)
     TIME exp, delivTime, aksiTime;
 
     printf("Masukkan id: ");
-    scanf("%d", &id);
+    STARTWORD();
+    id = WordToInt(currentWord);
     printf("Masukkan nama makanan: ");
     readString(&nama);
     printf("Masukkan waktu kadaluwarsa: ");
@@ -41,7 +42,10 @@ void BacaMakanan(Makanan *Food)
     printf("Masukkan waktu pengolahan makanan: ");
     BacaTIME(&aksiTime);
     printf("Masukkan ukuran makanan (baris kolom): ");
-    scanf("%d %d", &ukBaris, &ukKolom);
+    STARTWORD();
+    ukBaris = WordToInt(currentWord);
+    ADVWORD();
+    ukKolom = WordToInt(currentWord);
 
     CreateMakanan(Food, id, nama, exp, aksi, delivTime, aksiTime, ukBaris, ukKolom);
 }
