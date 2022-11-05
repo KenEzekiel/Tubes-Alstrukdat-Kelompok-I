@@ -101,6 +101,7 @@ int main()
 			}
 			else if (IsMIX())
 			{
+
 				if (CanMix(Map))
 				{
 					ListMakanan lfiltered;
@@ -206,6 +207,15 @@ int main()
 			}
 			else if (IsWAIT())
 			{
+				TIME temptime;
+				int X,Y;
+				ADVWORD();
+				X = WordToInt(currentWord);
+				ADVWORD();
+				Y =WordToInt(currentWord);
+				CreateTime(&temptime,0,X,Y);
+				UpdateWaitTime(&State(BNMO),temptime);
+
 				PushUndoStack(&US, State(BNMO));
 				updateNotif(State(BNMO), &listNotif);
 			}

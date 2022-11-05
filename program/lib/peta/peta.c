@@ -374,7 +374,7 @@ boolean CanOrder(Peta m){
 boolean CanMix(Peta m){
     return (NORTH(m)=='M' || EAST(m)=='M'|| WEST(m)=='M' || SOUTH(m) == 'M');
 }
-boolean CanCut(Peta m){
+boolean CanChop(Peta m){
     return (NORTH(m)=='C' || EAST(m)=='C'|| WEST(m)=='C' || SOUTH(m) == 'C');
 }
 boolean CanFry(Peta m){
