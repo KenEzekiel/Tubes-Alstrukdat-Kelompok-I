@@ -37,7 +37,7 @@ void InitializeVariables()
 int main()
 {
     displaySplashScreen("lib/utility/SplashScreen.txt");
-	STARTWORD();
+    printf("User input: "); STARTWORD();
 
 	if (IsSTART())
 	{
