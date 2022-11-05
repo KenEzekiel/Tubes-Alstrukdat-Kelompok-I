@@ -1,15 +1,17 @@
 #include <stdio.h>
 #include "mekawaktu.h"
 
-void UpdateActionTime(DeliveryList *DL,Inventory *I, TIME *tglob, ListMakanan *expired, ListMakanan *delivered){
+void UpdateActionTime(DeliveryList *DL,Inventory *I, TIME *tglob, ListMakanan *expired, ListMakanan *delivered, ProcessList *PL){
     TIME t;
     CreateTime(&t,0,1,0);
+    updateProcessList(PL,I,t, delivered);
     updateInventory(I,t, expired);
     updateDeliveryList(DL,I,t, delivered);
     UpdateGlobalTime(tglob,t);
 }
 
-void UpdateWaitTime(DeliveryList *DL,Inventory *I, TIME t, TIME *tglob, ListMakanan *expired, ListMakanan *delivered){
+void UpdateWaitTime(DeliveryList *DL,Inventory *I, TIME t, TIME *tglob, ListMakanan *expired, ListMakanan *delivered, ProcessList *PL){
+    updateProcessList(PL,I,t, delivered);
     updateInventory(I,t, expired);
     updateDeliveryList(DL,I,t, delivered);
     UpdateGlobalTime(tglob,t);

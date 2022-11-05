@@ -39,4 +39,6 @@ boolean CanMix(Peta m);
 boolean CanCut(Peta m);
 boolean CanFry(Peta m);
 boolean CanBoil(Peta m);
+
+void NotifTidakGerak(int x);
 #endif

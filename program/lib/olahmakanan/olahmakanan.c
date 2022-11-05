@@ -35,7 +35,7 @@ boolean isBahanAvailable(ListMakanan lfood, ListMakanan lneed){
     return ada;
 }
 
-void process(String aksi,int i, ListMakanan *lfood, ListMakanan *lfiltered, Inventory *I, ResepTree Resep){
+void process(String aksi,int i, ListMakanan *lfood, Inventory I, ListMakanan *lfiltered, ProcessList *P, ResepTree Resep){
     //Makanan food = Makanan
     //i = input dari command
     boolean berhasil = false;
@@ -55,11 +55,12 @@ void process(String aksi,int i, ListMakanan *lfood, ListMakanan *lfiltered, Inve
     if (isBahanAvailable(*lfood,lneed)) {
         for (i=0; i<listMakananLength(lneed); i++){
             //mengurangi bahan yang diperlukan dari inventory 
-            getMakananById(I, ID(ELMT_LM(lneed,i)));
+            getMakananById(P, ID(ELMT_LM(lneed,i)));
         }
         //menambahkan makanan yang sudah diolah
-        Enqueue(I,food);
-        printf("%c berhasil dibuat dan sudah masuk ke dalam inventory!",Nama(food));
+        upgradeProcessList(P);
+        Enqueue(P,food);
+        printf("%c sedang diproses!",Nama(food));
     }
     else{
         printf("Gagal membuat %c karena kamu tidak memiliki bahan berikut: ",Nama(food));
@@ -68,11 +69,105 @@ void process(String aksi,int i, ListMakanan *lfood, ListMakanan *lfiltered, Inve
         eltype val;
         int count=0;
         for(i=0; i<listMakananLength(lneed); i++){
-            if (!isElmtById(*I,ID(ELMT_LM(lneed,i)))) {
+            if (!isElmtById(I,ID(ELMT_LM(lneed,i)))) {
                 count++;
                 //insertLastMakanan(&lkosong,val);
                 printf("%d. %c", count, Nama(ELMT_LM(lneed,i)));
             }
         }
     }
+}
+
+void CreateProcessMakanan(ProcessList *P, int max){
+    MakeEmpty(P, max);
+}
+
+void updateProcessList(ProcessList *P, Inventory *I, TIME t, ListMakanan *delivered){
+    // KAMUS LOKAL
+
+    // ALGORITMA
+
+    if (!IsEmpty(*P))
+    {
+        minusDelivTime(P, t);
+        deliver(P, I, delivered);
+    }
+}
+
+void minusProcessTime(ProcessList *P, TIME t){
+    // KAMUS LOKAL
+    ProcessList p;
+    ProcessList q = *P;
+    infotype food;
+    int hasil;
+    // ALGORITMA
+    MakeEmpty(&p, MaxEl(*P));
+    while (!IsEmpty(q))
+    {
+        Dequeue(&q, &food);
+        hasil = TIMEToMenit(DelivTime(food)) - TIMEToMenit(t);
+        if (hasil < 0)
+        {
+            hasil = 0;
+        }
+        DelivTime(food) = MenitToTIME(hasil);
+        buyMakanan(&p, food);
+    }
+    *P = p;
+}
+
+void plusProcessTime(ProcessList *P, TIME t){
+    // KAMUS LOKAL
+    ProcessList p;
+    ProcessList q = *P;
+    infotype food;
+    int hasil;
+    // ALGORITMA
+    MakeEmpty(&p, MaxEl(*P));
+    while (!IsEmpty(q))
+    {
+        Dequeue(&q, &food);
+        hasil = TIMEToMenit(DelivTime(food)) - TIMEToMenit(t);
+        if (hasil < 0)
+        {
+            hasil = 0;
+        }
+        DelivTime(food) = MenitToTIME(hasil);
+        buyMakanan(&p, food);
+    }
+    *P = p;
+
+}
+
+int lengthProcessList(ProcessList P){
+    return NBElmt(P);
+}
+
+boolean checkUpgrade(ProcessList P){
+    // KAMUS LOKAL
+    int len, threshold;
+    // ALGORITMA
+    len = lengthDeliveryList(P);
+    threshold = 0.75 * MaxEl(P);
+
+    if (len > threshold)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+
+}
+
+void upgradeProcessList(ProcessList *P){
+    upgradeDelivList(P);
+}
+
+void displayDeliveryList(ProcessList P){
+    
+    printf("PROCESSING LIST: \n");
+    PrintPrioQueueTime(P);
+
 }

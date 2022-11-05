@@ -236,7 +236,9 @@ void MoveNorth(Peta *m)
             MoveN(&POINT(*m));
             Update(m, 1);
         }
+        NotifTidakGerak(1);
     }
+    NotifTidakGerak(1);
 }
 
 void MoveEast(Peta *m)
@@ -248,7 +250,9 @@ void MoveEast(Peta *m)
             MoveE(&POINT(*m));
             Update(m, 2);
         }
+        NotifTidakGerak(2);
     }
+    NotifTidakGerak(2);
 }
 
 void MoveSouth(Peta *m)
@@ -260,7 +264,9 @@ void MoveSouth(Peta *m)
             MoveS(&POINT(*m));
             Update(m, 3);
         }
+        NotifTidakGerak(3);
     }
+    NotifTidakGerak(3);
 }
 
 void MoveWest(Peta *m)
@@ -272,7 +278,9 @@ void MoveWest(Peta *m)
             MoveW(&POINT(*m));
             Update(m, 4);
         }
+        NotifTidakGerak(4);
     }
+    NotifTidakGerak(4);
 }
 
 void DisplayPos(Peta m)
@@ -365,4 +373,20 @@ boolean CanFry(Peta m){
 }
 boolean CanBoil(Peta m){
     return (NORTH(m)=='B' || EAST(m)=='B'|| WEST(m)=='B' || SOUTH(m) == 'B');
+}
+
+void NotifTidakGerak(int x){
+    printf("TIDAK DAPAT BERGERAK KE ARAH ");
+    if (x==1){
+        printf("UTARA.\n");
+    }
+    else if (x==2) {
+        printf("TIMUR.\n");
+    }
+    else if (x==3) {
+        printf("SELATAN.\n");
+    }
+    else if (x==4) {
+        printf("BARAT.\n");
+    }
 }

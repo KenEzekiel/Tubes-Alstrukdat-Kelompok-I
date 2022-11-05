@@ -64,6 +64,18 @@ int main()
 			}
 			else if (IsMOVE())
 			{
+				if (IsNORTH()){
+					MoveNorth(&Map);
+				}
+				else if (IsEAST()) {
+					MoveNorth(&Map);
+				} 
+				else if (IsSOUTH()){
+					MoveSouth(&Map);
+				}
+				else if (IsWEST()) {
+					MoveWest(&Map);
+				}
 				PushUndoStack(&US, State(BNMO));
 				updateNotif(State(BNMO), &listNotif);
 			}
