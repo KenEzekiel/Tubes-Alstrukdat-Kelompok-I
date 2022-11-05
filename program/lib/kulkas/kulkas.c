@@ -325,10 +325,15 @@ void getFoodbyIdKulkas(Kulkas *K, Makanan *food, int idkulkas)
     int idx = ElmtIdxInLTByIdKulkas(LISTTUPLE(*K), idkulkas);
     Tuple element;
     // ALGORITMA
-    row = SizeBaris(*food);
-    col = SizeKolom(*food);
+    printf("A\n");
+    row = IDXROW(TELMT(LISTTUPLE(*K), idx));
+    printf("B\n");
+    col = IDXCOL(TELMT(LISTTUPLE(*K), idx));
+    printf("C\n");
     *food = MAKANAN(TELMT(LISTTUPLE(*K), idx));
+    printf("D\n");
     deleteAtLT(&LISTTUPLE(*K), &element, idx);
+    printf("E\n");
     for (i = row; i < row + SizeBaris(*food); i++)
     {
         for (j = col; j < col + SizeKolom(*food); j++)
