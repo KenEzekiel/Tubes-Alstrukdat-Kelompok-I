@@ -3,7 +3,7 @@
 
 void UpdateActionTime(DeliveryList *DL,Inventory *I, TIME *tglob, ListMakanan *expired, ListMakanan *delivered, ProcessList *PL){
     TIME t;
-    CreateTime(&t,0,1,0);
+    CreateTime(&t,0,0,1);
     updateProcessList(PL,I,t, delivered);
     updateInventory(I,t, expired);
     updateDeliveryList(DL,I,t, delivered);
