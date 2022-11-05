@@ -130,6 +130,7 @@ int main()
 			}
 			else if (IsINVENTORY())
 			{
+				displayInventory(InventoryState(State(BNMO)));
 			}
 			else if (IsEXIT())
 			{
