@@ -12,6 +12,7 @@
 #include "../../program/lib/deliverylist/deliverylist.h"
 #include "../queue/prioqueuetime.h"
 #include "../../program/lib/state/state.h"
+#include "../../program/lib/olahmakanan/olahmakanan.h"
 
 /* *** Definisi TYPE Makanan <id, nama, exp, aksi, delivTime> *** */
 typedef struct
