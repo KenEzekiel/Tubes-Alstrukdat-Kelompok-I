@@ -258,26 +258,34 @@ void plusDelivTime(DeliveryList *DL, TIME t)
 /* *** Menampilkan isi Delivery List *** */
 void displayDeliveryList(DeliveryList DL)
 {
-    printf("List Makanan di Perjalanan \n");
-    printf(" (nama - waktu sisa delivery) \n");
-
-    prioQueueInfotype val;
-    PrioQueueTime temp;
-    int i = 1;
-    temp = DL;
-    if (!IsPrioQueueEmpty(DL))
+    printf("\nDELIVERY LIST: \n");
+    if (IsPrioQueueEmpty(DL))
     {
-        while (!IsPrioQueueEmpty(temp))
+        printf("Delivery List Kosong\n");
+    }
+    else
+    {
+        printf("List Makanan di Perjalanan \n");
+        printf(" (nama - waktu sisa delivery) \n");
+
+        prioQueueInfotype val;
+        PrioQueueTime temp;
+        int i = 1;
+        temp = DL;
+        if (!IsPrioQueueEmpty(DL))
         {
-            printf("%d. ");
-            Dequeue(&temp, &val);
-            displayString(Nama(val));
-            printf(" - ");
-            PrintTime(DelivTime(val));
-            printf("\n");
-            // TulisMakanan(val);
-            //  idx = (idx % NBElmt(Q)) + 1;
-            i++;
+            while (!IsPrioQueueEmpty(temp))
+            {
+                printf("%d. (%d) ", i, ID(val));
+                Dequeue(&temp, &val);
+                displayString(Nama(val));
+                printf(" - ");
+                PrintTime(DelivTime(val));
+                printf("\n");
+                // TulisMakanan(val);
+                //  idx = (idx % NBElmt(Q)) + 1;
+                i++;
+            }
         }
     }
 }

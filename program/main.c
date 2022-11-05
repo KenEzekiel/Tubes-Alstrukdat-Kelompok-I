@@ -97,6 +97,7 @@ int main()
 				}
 				else
 				{
+					warningNotif(&listNotif);
 				}
 			}
 			else if (IsMIX())
