@@ -405,9 +405,9 @@ void procGetFromKulkas(Kulkas *K, Inventory *I)
     idkulkas = WordToInt(currentWord);
 
     getFoodbyIdKulkas(K, &food, idkulkas);
-    printf("1\n");
+    // printf("1\n");
     Enqueue(I, food);
-    printf("2\n");
+    // printf("2\n");
 
     displayInventory(*I);
     displayKulkas(*K);
