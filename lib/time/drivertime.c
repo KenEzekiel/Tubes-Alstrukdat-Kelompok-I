@@ -6,33 +6,19 @@ int main() {
     int n;
 
     //Membuat ADT Time dari elemen jam, menit, detik
-    int HH,MM,SS;
-    printf("Masukkan nilai jam: ");
-    scanf("%d", &HH);
-    printf("Masukkan nilai menit: ");
-    scanf("%d", &MM);
-    printf("Masukkan nilai detik: ");
-    scanf("%d", &SS);
-    printf("Apakah waktu valid? %d\n", IsTIMEValid(HH,MM,SS));
-    CreateTime(&T1,HH,MM,SS);
-    printf("T1: ");
-    TulisTIME(T1);
-    printf("\n");
-
-    //Membuat ADT Time dari elemen jam, menit, detik
-    printf("Masukkan jam, menit, dan detik T2 (format: hh mm ss): ");
+    printf("Masukkan hari,jam, dan menit T2 (format: hh mm ss): ");
     BacaTIME(&T2);
     printf("T2: ");
     TulisTIME(T2);
     //Menampilkan jumlah detik dari TIME
-    int jam = TIMEToDetik(T2);
-    printf("Total detik T2 = %d\n", jam);
+    int jam = TIMEToMenit(T2);
+    printf("Total menit T2 = %d\n", jam);
     printf("\n");
 
     //Menampilkan TIME dari jumlah detik
-    printf("Total detik T3: ");
+    printf("Total menit T3: ");
     scanf("%d", &n);
-    T3 = DetikToTIME(n);
+    T3 = MenitToTIME(n);
     printf("T3: ");
     TulisTIME(T3);
     printf("\n");
@@ -51,38 +37,38 @@ int main() {
 
     //Mengirimkan 1 detik setelah T
     printf("\n");
-    T2 = NextDetik(T2);
-    printf("T2 setelah dimajukan 1 detik: ");
+    T2 = NextMenit(T2);
+    printf("T2 setelah dimajukan 1 menit: ");
     TulisTIME(T2);
 
     //Mengirimkan X detik setelah T
     int k;
     printf("\n");
-    printf("Masukkan berapa detik setelah T: ");
+    printf("Masukkan berapa menit setelah T: ");
     scanf("%d", &k);
-    T3 = NextNDetik(T3,k);
-    printf("T3 setelah dimajukan %d detik: ", k);
+    T3 = NextNMenit(T3,k);
+    printf("T3 setelah dimajukan %d menit: ", k);
     TulisTIME(T3);
 
     //Mengirimkan 1 detik sebelum T
     printf("\n");
-    T3 = PrevDetik(T3);
-    printf("T3 setelah dimundurkan 1 detik: ");
+    T3 = PrevMenit(T3);
+    printf("T3 setelah dimundurkan 1 menit: ");
     TulisTIME(T3);
 
     //Mengirimkan X detik sebelum T
     int a;
     printf("\n");
-    printf("Masukkan berapa detik sebelum T: ");
+    printf("Masukkan berapa menit sebelum T: ");
     scanf("%d", &a);
-    T2 = PrevNDetik(T2,a);
-    printf("T2 setelah dimundurkan %d detik: ", a);
+    T2 = PrevNMenit(T2,a);
+    printf("T2 setelah dimundurkan %d menit: ", a);
     TulisTIME(T2);
 
     //Durasi dari T2 ke T3
     printf("\n");
     printf("Durasi T2 ke T3: ");
-    printf("%d detik\n", Durasi(T2,T3));
+    printf("%d menit\n", Durasi(T2,T3));
 
     return 0;
 

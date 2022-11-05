@@ -12,11 +12,11 @@ int main()
     BacaMakanan(&x);
     BacaMakanan(&y);
     BacaMakanan(&z);
-    BacaMakanan(&a);
+    //BacaMakanan(&a);
     addMakananToInventory(&Q, x);
     addMakananToInventory(&Q, y);
     addMakananToInventory(&Q, z);
-    addMakananToInventory(&Q, a);
+    //addMakananToInventory(&Q, a);
 
     displayInventory(Q);
 

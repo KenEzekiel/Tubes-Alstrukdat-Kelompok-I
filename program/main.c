@@ -12,6 +12,7 @@ Simulator BNMO;
 UndoStack US;
 RedoStack RS;
 Notif listNotif;
+Kulkas K;
 
 // Constant variables
 ListMakanan DaftarMakanan;
@@ -24,20 +25,22 @@ void InitializeVariables()
 	// Initialize changable variables
 	printf("Input user: ");
 	readString(&user);
-	CreateStartSimulator(&BNMO, user);;
+	CreateStartSimulator(&BNMO, user);
+	;
 	CreateUndoStackEmpty(&US);
 	CreateRedoStackEmpty(&RS);
-	// CreatePeta(&Map);
+	CreateKulkas(&K, 20, 30);
 
 	// // Initialize constant variables (read from file)
-	ReadFromFile(&Resep, 10, "../test/resep_1.txt");
-	StartPeta(&Map,"../test/peta.txt");
-	CreateListMakanan(&DaftarMakanan); DaftarMakanan = readListMakanan("../test/makanan.txt");
+	ReadFromFile(&Resep, 10, "../test/resep_2.txt");
+	StartPeta(&Map, "../test/peta.txt");
+	CreateListMakanan(&DaftarMakanan);
+	DaftarMakanan = readListMakanan("../test/makanan.txt");
 }
 
 int main()
 {
-    displaySplashScreen("lib/utility/SplashScreen.txt");
+	displaySplashScreen("lib/utility/SplashScreen.txt");
 	STARTWORD();
 
 	if (IsSTART())
@@ -65,26 +68,33 @@ int main()
 			}
 			else if (IsMOVE())
 			{
-				boolean gerak=false;
-				if (IsNORTH()){
-					MoveNorth(&Map,&gerak);
+				ADVWORD();
+				boolean gerak = false;
+				if (IsNORTH())
+				{
+					MoveNorth(&Map, &gerak);
 				}
-				else if (IsEAST()) {
-					MoveNorth(&Map,&gerak);
-				} 
-				else if (IsSOUTH()){
-					MoveSouth(&Map,&gerak);
+				else if (IsEAST())
+				{
+					MoveEast(&Map, &gerak);
 				}
-				else if (IsWEST()) {
-					MoveWest(&Map,&gerak);
+				else if (IsSOUTH())
+				{
+					MoveSouth(&Map, &gerak);
+				}
+				else if (IsWEST())
+				{
+					MoveWest(&Map, &gerak);
 				}
 
-				if (gerak) {
-				PushUndoStack(&US, State(BNMO));
-				updateNotif(State(BNMO), &listNotif);
+				if (gerak)
+				{
+					PushUndoStack(&US, State(BNMO));
+					updateNotif(State(BNMO), &listNotif);
+					UpdateActionTime(&DeliveryListState(State(BNMO)), &InventoryState(State(BNMO)), &TimeState(State(BNMO)), &ExpListState(State(BNMO)), &DeliveredListState(State(BNMO)), &ProcessedList(State(BNMO)));
 				}
-				else {
-					
+				else
+				{
 				}
 			}
 			else if (IsMIX())

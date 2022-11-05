@@ -1,6 +1,9 @@
 #include "../boolean.h"
 #include "time.h"
 #include <stdio.h>
+#include "../wordmachine/wordmachine.h"
+#include "../wordmachine/charmachine.h"
+#include "../string/string.h"
 
 /* ***************************************************************** */
 /* DEFINISI PRIMITIF                                                 */
@@ -11,7 +14,7 @@ boolean IsTIMEValid(int D, int H, int M)
 {
    /* Mengirim true jika H,M,S dapat membentuk T yang valid */
    /* dipakai untuk mentest SEBELUM membentuk sebuah Jam */
-   return (H >= 0 && H <= 23 && M >= 0 && M <= 59 && D >= 0 && D <= 59);
+   return (H >= 0 && H <= 23 && M >= 0 && M <= 59 && D >= 0);
 }
 
 /* *** Konstruktor: Membentuk sebuah TIME dari komponen-komponennya *** */
@@ -44,11 +47,21 @@ void BacaTIME(TIME *T)
    --> akan terbentuk TIME <1,3,4> */
    int DD, HH, MM;
 
-   scanf("%d %d %d", &DD, &HH, &MM);
+   STARTWORD();
+   DD = WordToInt(currentWord);
+   ADVWORD();
+   HH = WordToInt(currentWord);
+   ADVWORD();
+   MM = WordToInt(currentWord);
    while (IsTIMEValid(DD,HH, MM) == false)
    {
-      printf("Jam tidak valid\n");
-      scanf("%d %d %d", &DD, &HH, &MM);
+      printf("Waktu tidak valid\n");
+      STARTWORD();
+      DD = WordToInt(currentWord);
+      ADVWORD();
+      HH = WordToInt(currentWord);
+      ADVWORD();
+      MM = WordToInt(currentWord);
    }
    CreateTime(T,DD,HH,MM);
 }
@@ -64,7 +77,15 @@ void TulisTIME(TIME T)
    HH = Hour(T);
    MM = Minute(T);
    
-   printf("%d:%d:%d", DD, HH, MM);
+   if (DD>0){
+        printf("%d.%d.%d", DD, HH, MM);
+   }
+   else if (HH>0) {
+        printf("%d.%d", HH, MM);
+   }
+   else {
+        printf("%d",MM);
+   }
    printf("\n");
 }
 
@@ -125,16 +146,14 @@ TIME MenitToTIME(long N)
       N1 = N mod 86400, baru N1 dikonversi menjadi TIME */
    int minute, h, m, d;
    TIME T;
-   while(N<0){
-      N += 86400;
-   }
+   
    /*while(N>= 86400) {
       N -= 86400;
    }*/
-   minute = N % 10080;
-   d = minute / 3600;
-   h = (minute % 3600) / 60;
-   m = (minute % 3600) % 60;
+   minute = N;
+   d = minute / 1440;
+   h = (minute % 1440) / 60;
+   m = (minute % 1440) % 60;
 
    Day(T) = d;
    Hour(T) = h;
@@ -203,7 +222,7 @@ TIME NextNMenit(TIME T, int N)
    return T;
 }
 
-TIME PrevDetik(TIME T)
+TIME PrevMenit(TIME T)
 {
    /* Mengirim 1 detik sebelum T dalam bentuk TIME */
    int minute;
@@ -234,8 +253,10 @@ long Durasi(TIME TAw, TIME TAkh)
    time2 = TIMEToMenit(TAkh);
    if (time1 > time2)
    {
-      time2 = time2 + 10800;
+        durasi = time1-time2;
    }
-   durasi = time2 - time1;
+   else{
+        durasi = time2 - time1;
+   }
    return durasi;
 }

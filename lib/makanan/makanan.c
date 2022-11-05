@@ -70,7 +70,7 @@ void TulisMakanan(Makanan Food)
     printf("Waktu pengolahan makanan: ");
     TulisTIME(AksiTime(Food));
     printf("Ukuran makanan: ");
-    printf("\n%d x %d", SizeBaris(Food), SizeKolom(Food));
+    printf("\n%d x %d\n", SizeBaris(Food), SizeKolom(Food));
 }
 /* I.S. : Food sembarang */
 /* F.S. : Nilai Food ditulis dg format ... */
