@@ -35,7 +35,7 @@ boolean isStringFull(String s)
 }
 
 /* Mengirimkan banyaknya elemen string. Mengirimkan 0 jika q kosong. */
-int length(String s)
+int stringLength(String s)
 {
     return LENGTH(s);
 }
@@ -81,7 +81,7 @@ void displayString(String s)
     {
         for (i = 0; i < LENGTH(s); i++)
         {
-            printf("%c", ELMT(s, i));
+            printf("%c", ELMT_STRING(s, i));
         }
     }
 }
@@ -99,7 +99,7 @@ String reverse(String s)
     LENGTH(temp) = LENGTH(s);
     for (i = LENGTH(s) - 1; i >= 0; i--)
     {
-        temp.buffer[j] = ELMT(s, i);
+        temp.buffer[j] = ELMT_STRING(s, i);
         j++;
     }
     return temp;
@@ -120,7 +120,7 @@ boolean isStringEqual(String s1, String s2)
     {
         while (eq && i < LENGTH(s1))
         {
-            if (ELMT(s1, i) != ELMT(s2, i))
+            if (ELMT_STRING(s1, i) != ELMT_STRING(s2, i))
             {
                 eq = false;
             }
@@ -144,7 +144,7 @@ void insertSFirst(String *s, ElType c)
     {
         for (i = LENGTH(*s); i > 0; i--)
         {
-            s->buffer[i] = ELMT(*s, i - 1);
+            s->buffer[i] = ELMT_STRING(*s, i - 1);
         }
         s->buffer[0] = c;
         LENGTH(*s)
@@ -164,7 +164,7 @@ void insertSAt(String *s, ElType c, int idx)
     {
         for (i = LENGTH(*s); i > idx; i--)
         {
-            s->buffer[i] = ELMT(*s, i - 1);
+            s->buffer[i] = ELMT_STRING(*s, i - 1);
         }
         s->buffer[idx] = c;
         LENGTH(*s)
@@ -200,7 +200,7 @@ void insertSubstring(String *s1, String s2)
     {
         for (i = 0; i < LENGTH(s2); i++)
         {
-            s1->buffer[LENGTH(*s1)] = ELMT(s2, i);
+            s1->buffer[LENGTH(*s1)] = ELMT_STRING(s2, i);
             LENGTH(*s1)
             ++;
         }
@@ -222,11 +222,11 @@ void deleteSFirst(String *s, ElType *c)
     // ALGORITMA
     if (isStringEmpty(*s) != true)
     {
-        *c = ELMT(*s, 0);
+        *c = ELMT_STRING(*s, 0);
 
         for (i = 0; i < LENGTH(*s) - 1; i++)
         {
-            s->buffer[i] = ELMT(*s, i + 1);
+            s->buffer[i] = ELMT_STRING(*s, i + 1);
         }
         LENGTH(*s)
         --;
@@ -246,11 +246,11 @@ void deleteSAt(String *s, ElType *c, int idx)
     // ALGORITMA
     if (isStringEmpty(*s) != true)
     {
-        *c = ELMT(*s, idx);
+        *c = ELMT_STRING(*s, idx);
 
         for (i = idx; i < LENGTH(*s) - 1; i++)
         {
-            s->buffer[i] = ELMT(*s, i + 1);
+            s->buffer[i] = ELMT_STRING(*s, i + 1);
         }
         LENGTH(*s)
         --;
@@ -270,7 +270,7 @@ void deleteSLast(String *s, ElType *c)
     // ALGORITMA
     if (isStringEmpty(*s) != true)
     {
-        *c = ELMT(*s, LENGTH(*s) - 1);
+        *c = ELMT_STRING(*s, LENGTH(*s) - 1);
 
         LENGTH(*s)
         --;
@@ -288,7 +288,7 @@ String wordToString(Word w)
     LENGTH(s) = w.Length;
     for (i = 0; i < LENGTH(s); i++)
     {
-        ELMT(s, i) = w.TabWord[i];
+        ELMT_STRING(s, i) = w.TabWord[i];
     }
 
     return s;
@@ -302,7 +302,7 @@ void procwordToString(Word w, String *s)
     LENGTH(*s) = w.Length;
     for (i = 0; i < LENGTH(*s); i++)
     {
-        ELMT(*s, i) = w.TabWord[i];
+        ELMT_STRING(*s, i) = w.TabWord[i];
     }
 }
 
@@ -310,6 +310,6 @@ void charToString(char c[], String *s, int len)
 {
     LENGTH(*s) = len;
     for (int i = 0; i < len; i++) {
-        ELMT(*s, i) = c[i];
+        ELMT_STRING(*s, i) = c[i];
     }
 }

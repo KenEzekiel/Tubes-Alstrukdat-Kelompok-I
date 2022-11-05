@@ -13,7 +13,7 @@ RedoStack RS;
 Notif listNotif;
 
 // Constant variables
-ListMakanan Makanan;
+ListMakanan DaftarMakanan;
 ResepTree Resep;
 Peta Map;
 String user;
@@ -22,25 +22,26 @@ void InitializeVariables()
 {
 	// Initialize changable variables
 
+	printf("Input user: ");
 	readString(&user);
 	CreateStartSimulator(&BNMO, user);
-	CreateNotif(&listNotif);
+	// CreateNotif(&listNotif);
 	CreateUndoStackEmpty(&US);
 	CreateRedoStackEmpty(&RS);
 
 	// Initialize constant variables (read from file)
 	ReadFromFile(&Resep, 10, "../test/resep.txt");
 	StartPeta(&Map);
-	Makanan = readListMakanan("../../test/makanan.txt");
+	DaftarMakanan = readListMakanan("../../test/makanan.txt");
 }
 
 int main()
 {
+	// displaySplashScreen();
 	STARTWORD();
 
 	if (IsSTART())
 	{
-		displaySplashScreen();
 
 		/* Menginisiasi nilai variable konstan/global */
 		InitializeVariables();
@@ -128,11 +129,11 @@ int main()
 			}
 			else if (IsCATALOG())
 			{
-				DisplayCatalog(&Makanan);
+				printCatalog(DaftarMakanan);
 			}
 			else if (IsCOOKBOOK())
 			{
-				PrintResep(&Makanan, &Resep);
+				PrintResep(&DaftarMakanan, &Resep);
 			}
 			else if (IsINVENTORY())
 			{

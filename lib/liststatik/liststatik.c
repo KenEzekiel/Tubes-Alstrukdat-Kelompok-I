@@ -75,7 +75,7 @@ boolean isIdxValid(ListStatik l, IdxType i)
     else
         return false;
 }
-boolean isIdxEff(ListStatik l, IdxType i)
+boolean isIdxListEff(ListStatik l, IdxType i)
 {
     /* Mengirimkan true jika i adalah indeks yang terdefinisi utk List l */
     /* yaitu antara 0..length(l)-1 */

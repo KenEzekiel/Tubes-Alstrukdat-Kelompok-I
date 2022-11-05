@@ -8,10 +8,10 @@
 #include "../string/string.h"
 #include "../point/point.h"
 #include "../time/time.h"
-#include "../program/lib/inventory/inventory.h"
-#include "../program/lib/deliverylist/deliverylist.h"
+#include "../../program/lib/inventory/inventory.h"
+#include "../../program/lib/deliverylist/deliverylist.h"
 #include "../queue/prioqueuetime.h"
-#include "../program/lib/state/state.h"
+#include "../../program/lib/state/state.h"
 
 /* *** Definisi TYPE Makanan <id, nama, exp, aksi, delivTime> *** */
 typedef struct

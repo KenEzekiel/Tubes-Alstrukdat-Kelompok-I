@@ -34,7 +34,7 @@ IdxType getLastIdxCol(Matrix m){
     return (COL_EFF(m)-1);
 }
 /* Mengirimkan Index kolom terbesar m */
-boolean isIdxEff(Matrix m, IdxType i, IdxType j){
+boolean isIdxMatrixEff(Matrix m, IdxType i, IdxType j){
     return (0<=j && j<COL_EFF(m) && 0<=i && i<ROW_EFF(m));
 }
 /* Mengirimkan true jika i, j adalah Index efektif bagi m */
@@ -44,7 +44,7 @@ void copyMatrix(Matrix mIn, Matrix *mOut){
     createMatrix(ROW_EFF(mIn),COL_EFF(mIn),mOut);
     for (int i = 0; i<ROW_EFF(mIn);i++) {
         for (int j = 0; j<COL_EFF(mIn);j++) {
-            ELMT(*mOut,i,j) = ELMT(mIn,i,j);
+            ELMT_MATRIX(*mOut,i,j) = ELMT_MATRIX(mIn,i,j);
         }
     }
 }
@@ -64,10 +64,10 @@ void displayMatrix(Matrix m){
     for (int i = 0; i<ROW_EFF(m);i++) {
         for (int j = 0; j<COL_EFF(m);j++) {
             if (j == 0) {
-                printf("%c", ELMT(m,i,j));
+                printf("%c", ELMT_MATRIX(m,i,j));
             }
             else {
-                printf(" %c", ELMT(m,i,j));
+                printf(" %c", ELMT_MATRIX(m,i,j));
             }
         }
         printf("\n");

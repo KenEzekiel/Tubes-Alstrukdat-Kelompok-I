@@ -17,7 +17,7 @@ void CreateInventory(Inventory *I, int max)
 /* *** Operasi menambahkan item ke inventory *** */
 /* I.S. Inventory terdefinisi */
 /* F.S. food ditambahkan ke inventory sesuai priority nya, inventory di upgrade jika dibutuhkan */
-void addMakananToInventory(Inventory *I, infotype food)
+void addMakananToInventory(Inventory *I, prioQueueInfotype food)
 {
     upgradeInventory(I);
     Enqueue(I, food);
@@ -34,7 +34,7 @@ void updateInventory(Inventory *I, TIME t, ListMakanan *expired)
 
     // ALGORITMA
 
-    if (!IsEmpty(*I))
+    if (!IsPrioQueueEmpty(*I))
     {
         minusTime(I, t);
         deleteExpired(I, expired);
@@ -51,7 +51,7 @@ void reverseUpdateInventory(Inventory *I, TIME t)
 
     // ALGORITMA
 
-    if (!IsEmpty(*I))
+    if (!IsPrioQueueEmpty(*I))
     {
         plusTime(I, t);
     }
@@ -65,10 +65,10 @@ void deleteExpired(Inventory *I, ListMakanan *expired)
     // KAMUS LOKAL
     Inventory p;
     Inventory q = *I;
-    infotype food;
+    prioQueueInfotype food;
     // ALGORITMA
-    MakeEmpty(&p, MaxEl(*I));
-    while (!IsEmpty(q))
+    MakeEmpty(&p, MaxPrioQueueEl(*I));
+    while (!IsPrioQueueEmpty(q))
     {
         Dequeue(&q, &food);
         if (TIMEToMenit(Exp(food)) != 0)
@@ -92,11 +92,11 @@ void minusTime(Inventory *I, TIME t)
     // KAMUS LOKAL
     Inventory p;
     Inventory q = *I;
-    infotype food;
+    prioQueueInfotype food;
     int hasil;
     // ALGORITMA
-    MakeEmpty(&p, MaxEl(*I));
-    while (!IsEmpty(q))
+    MakeEmpty(&p, MaxPrioQueueEl(*I));
+    while (!IsPrioQueueEmpty(q))
     {
         Dequeue(&q, &food);
         hasil = TIMEToMenit(Exp(food)) - TIMEToMenit(t);
@@ -118,11 +118,11 @@ void plusTime(Inventory *I, TIME t)
     // KAMUS LOKAL
     Inventory p;
     Inventory q = *I;
-    infotype food;
+    prioQueueInfotype food;
     int hasil;
     // ALGORITMA
-    MakeEmpty(&p, MaxEl(*I));
-    while (!IsEmpty(q))
+    MakeEmpty(&p, MaxPrioQueueEl(*I));
+    while (!IsPrioQueueEmpty(q))
     {
         Dequeue(&q, &food);
         hasil = TIMEToMenit(Exp(food)) + TIMEToMenit(t);
@@ -136,15 +136,15 @@ void plusTime(Inventory *I, TIME t)
 /* I.S. I terdefinisi F.S. makanan dengan id tertentu dihilangkan dari I */
 /* Mengembalikan makanan dari inventory dengan id tertentu */
 /* Prekondisi : id makanan harus valid dan id tersebut harus ada didalam inventory */
-infotype getMakananById(Inventory *I, int id)
+prioQueueInfotype getMakananById(Inventory *I, int id)
 {
     // KAMUS LOKAL
-    infotype food, hasil;
+    prioQueueInfotype food, hasil;
     Inventory p = *I;
     Inventory q;
     // ALGORITMA
-    MakeEmpty(&q, MaxEl(*I));
-    while (!IsEmpty(p))
+    MakeEmpty(&q, MaxPrioQueueEl(*I));
+    while (!IsPrioQueueEmpty(p))
     {
         Dequeue(&p, &food);
         if (id == ID(food))
@@ -166,9 +166,9 @@ boolean isElmtById(Inventory I, int id)
     // KAMUS LOKAL
     Inventory temp = I;
     boolean found = false;
-    infotype tempval;
+    prioQueueInfotype tempval;
     // ALGORITMA
-    while ((!IsEmpty(temp)) && (!found))
+    while ((!IsPrioQueueEmpty(temp)) && (!found))
     {
         Dequeue(&temp, &tempval);
         if (id == ID(tempval))
@@ -183,15 +183,15 @@ boolean isElmtById(Inventory I, int id)
 /* I.S. I terdefinisi F.S. makanan dengan nama tertentu dihilangkan dari I */
 /* Mengembalikan makanan dari inventory dengan nama tertentu */
 /* Prekondisi : nama makanan harus valid dan nama tersebut harus ada didalam inventory */
-infotype getMakananByName(Inventory *I, String nama)
+prioQueueInfotype getMakananByName(Inventory *I, String nama)
 {
     // KAMUS LOKAL
-    infotype food, hasil;
+    prioQueueInfotype food, hasil;
     Inventory p = *I;
     Inventory q;
     // ALGORITMA
-    MakeEmpty(&q, MaxEl(*I));
-    while (!IsEmpty(p))
+    MakeEmpty(&q, MaxPrioQueueEl(*I));
+    while (!IsPrioQueueEmpty(p))
     {
         Dequeue(&p, &food);
         if (isStringEqual(nama, Nama(food)))
@@ -213,9 +213,9 @@ boolean isElmtByName(Inventory I, String nama)
     // KAMUS LOKAL
     PrioQueueTime temp = I;
     boolean found = false;
-    infotype tempval;
+    prioQueueInfotype tempval;
     // ALGORITMA
-    while ((!IsEmpty(temp)) && (!found))
+    while ((!IsPrioQueueEmpty(temp)) && (!found))
     {
         Dequeue(&temp, &tempval);
         if (isStringEqual(nama, Nama(tempval)))
@@ -246,7 +246,7 @@ boolean checkInventoryUpgrade(Inventory I)
     int len, threshold;
     // ALGORITMA
     len = lengthInventory(I);
-    threshold = 0.75 * MaxEl(I);
+    threshold = 0.75 * MaxPrioQueueEl(I);
 
     if (len > threshold)
     {
@@ -266,14 +266,14 @@ void upgradeInventory(Inventory *I)
     // KAMUS LOKAL
     Inventory p = *I;
     Inventory q;
-    infotype food;
+    prioQueueInfotype food;
 
     // ALGORITMA
 
     if (checkInventoryUpgrade(*I))
     {
-        MakeEmpty(&q, MaxEl(*I) * 2);
-        while (!IsEmpty(p))
+        MakeEmpty(&q, MaxPrioQueueEl(*I) * 2);
+        while (!IsPrioQueueEmpty(p))
         {
             Dequeue(&p, &food);
             Enqueue(&q, food);

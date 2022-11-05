@@ -20,7 +20,7 @@ void PrintGUI(TIME Waktu, POINT Lokasi, Inventory Inventory, Simulator BNMO, Pet
 boolean IsSTART()
 /* Mengecek apakah currentWord == START */
 {
-	Word Start; StringToWord("START", 5);
+	Word Start = StringToWord("START", 5);
 
 	return IsWordEqual(Start, currentWord);
 }
@@ -28,23 +28,15 @@ boolean IsSTART()
 boolean IsEXIT()
 /* Mengecek apakah currentWord == EXIT */
 {
-	Word Exit; StringToWord("EXIT", 4);
+	Word Exit = StringToWord("EXIT", 4);
 	
-	return IsWordEqual(Exit, currentWord);
-}
-
-boolean IsEXIT()
-/* Mengecek apakah currentWord == EXIT */
-{
-	Word Exit; StringToWord("EXIT", 4);
-
 	return IsWordEqual(Exit, currentWord);
 }
 
 boolean IsBUY()
 /* Mengecek apakah currentWord == BUY */
 {
-	Word Buy; StringToWord("BUY", 3);
+	Word Buy = StringToWord("BUY", 3);
 
 	return IsWordEqual(Buy, currentWord);
 }
@@ -52,7 +44,7 @@ boolean IsBUY()
 boolean IsDELIVERY()
 /* Mengecek apakah currentWord == DELIVERY */
 {
-	Word Delivery; StringToWord("DELIVERY", 8);
+	Word Delivery = StringToWord("DELIVERY", 8);
 
 	return IsWordEqual(Delivery, currentWord);
 }
@@ -60,7 +52,7 @@ boolean IsDELIVERY()
 boolean IsMOVE()
 /* Mengecek apakah currentWord == MOVE */
 {
-	Word Move; StringToWord("MOVE", 4);
+	Word Move = StringToWord("MOVE", 4);
 
 	return IsWordEqual(Move, currentWord);
 }
@@ -68,7 +60,7 @@ boolean IsMOVE()
 boolean IsNORTH()
 /* Mengecek apakah currentWord == NORTH */
 {
-	Word North; StringToWord("NORTH", 5);
+	Word North = StringToWord("NORTH", 5);
 
 	return IsWordEqual(North, currentWord);
 }
@@ -76,7 +68,7 @@ boolean IsNORTH()
 boolean IsEAST()
 /* Mengecek apakah currentWord == EAST */
 {
-	Word East; StringToWord("EAST", 4);
+	Word East = StringToWord("EAST", 4);
 
 	return IsWordEqual(East, currentWord);
 }
@@ -84,7 +76,7 @@ boolean IsEAST()
 boolean IsWEST()
 /* Mengecek apakah currentWord == WEST */
 {
-	Word West; StringToWord("WEST", 4);
+	Word West = StringToWord("WEST", 4);
 
 	return IsWordEqual(West, currentWord);
 }
@@ -92,15 +84,15 @@ boolean IsWEST()
 boolean IsSOUTH()
 /* Mengecek apakah currentWord == SOUTH */
 {
-	Word South; StringToWord("SOUTH", 5);
+	Word South = StringToWord("SOUTH", 5);
 
 	return IsWordEqual(South, currentWord);
 }
 
-boolean IsMIX();
+boolean IsMIX()
 /* Mengecek apakah currentWord == MIX */
 {
-	Word Mix; StringToWord("MIX", 3);
+	Word Mix = StringToWord("MIX", 3);
 
 	return IsWordEqual(Mix, currentWord);
 }
@@ -108,7 +100,7 @@ boolean IsMIX();
 boolean IsCHOP()
 /* Mengecek apakah currentWord == CHOP */
 {
-	Word Chop; StringToWord("CHOP", 4);
+	Word Chop = StringToWord("CHOP", 4);
 
 	return IsWordEqual(Chop, currentWord);
 }
@@ -116,7 +108,7 @@ boolean IsCHOP()
 boolean IsFRY()
 /* Mengecek apakah currentWord == FRY */
 {
-	Word Fry; StringToWord("FRY", 3);
+	Word Fry = StringToWord("FRY", 3);
 
 	return IsWordEqual(Fry, currentWord);
 }
@@ -124,7 +116,7 @@ boolean IsFRY()
 boolean IsBOIL()
 /* Mengecek apakah currentWord == BOIL */
 {
-	Word Boil; StringToWord("BOIL", 4);
+	Word Boil = StringToWord("BOIL", 4);
 
 	return IsWordEqual(Boil, currentWord);
 }
@@ -132,7 +124,7 @@ boolean IsBOIL()
 boolean IsWAIT()
 /* Mengecek apakah currentWord == WAIT */
 {
-	Word Wait; StringToWord("WAIT", 4);
+	Word Wait = StringToWord("WAIT", 4);
 
 	return IsWordEqual(Wait, currentWord);
 }
@@ -140,7 +132,7 @@ boolean IsWAIT()
 boolean IsUNDO()
 /* Mengecek apakah currentWord == UNDO */
 {
-	Word Undo; StringToWord("UNDO", 4);
+	Word Undo = StringToWord("UNDO", 4);
 
 	return IsWordEqual(Undo, currentWord);
 }
@@ -148,7 +140,7 @@ boolean IsUNDO()
 boolean IsREDO()
 /* Mengecek apakah currentWord == REDO */
 {
-	Word Redo; StringToWord("REDO", 4);
+	Word Redo = StringToWord("REDO", 4);
 
 	return IsWordEqual(Redo, currentWord);
 }
@@ -156,7 +148,7 @@ boolean IsREDO()
 boolean IsCATALOG()
 /* Mengecek apakah currentWord == CATALOG */
 {
-	Word Catalog; StringToWord("CATALOG", 7);
+	Word Catalog = StringToWord("CATALOG", 7);
 
 	return IsWordEqual(Catalog, currentWord);
 }
@@ -164,7 +156,7 @@ boolean IsCATALOG()
 boolean IsCOOKBOOK()
 /* Mengecek apakah currentWord == COOKBOOK */
 {
-	Word Cookbook; StringToWord("COOKBOOK", 8);
+	Word Cookbook = StringToWord("COOKBOOK", 8);
 
 	return IsWordEqual(Cookbook, currentWord);
 }
@@ -172,7 +164,7 @@ boolean IsCOOKBOOK()
 boolean IsINVENTORY()
 /* Mengecek apakah currentWord == INVENTORY */
 {
-	Word Inventory; StringToWord("INVENTORY", 9);
+	Word Inventory = StringToWord("INVENTORY", 9);
 
 	return IsWordEqual(Inventory, currentWord);
 }

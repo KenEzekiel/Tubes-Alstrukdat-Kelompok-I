@@ -4,9 +4,9 @@
 #include <stdio.h>
 #include "statestack.h"
 
-//#define Nil -1
+//#define Empty -1
 //#define MaxEl 100
-/* Nil adalah stack dengan elemen kosong . */
+/* Empty adalah stack dengan elemen kosong . */
 
 // Undo/redo move mau simpen state peta atau move ke tempat sebelumnya tanpa increase time?
 
@@ -16,17 +16,17 @@
 /* I.S. sembarang; */
 /* F.S. Membuat sebuah StateStack S yang kosong berkapasitas MaxEl */
 /* jadi indeksnya antara 0.. MaxEl */
-/* Ciri StateStack kosong : TOP bernilai Nil */
+/* Ciri StateStack kosong : TOP bernilai Empty */
 void CreateStateStackEmpty(StateStack *SS)
 {
-    idxTop(*SS) = Nil;
+    idxTop(*SS) = Empty;
 }
 
 /* ************ Predikat Untuk test keadaan KOLEKSI ************ */
 /* Mengirim true jika StateStack kosong: lihat definisi di atas */
 boolean IsStateStackEmpty(StateStack SS)
 {
-    return idxTop(SS) == Nil;
+    return idxTop(SS) == Empty;
 }
 
 /* Mengirim true jika tabel penampung nilai elemen StateStack penuh */
@@ -61,7 +61,7 @@ void PopStateStack(StateStack *SS, State *X)
     *X = StateTop(*SS);
     if (idxTop(*SS) == 0)
     {
-        idxTop(*SS) = Nil;
+        idxTop(*SS) = Empty;
     }
     else
     {

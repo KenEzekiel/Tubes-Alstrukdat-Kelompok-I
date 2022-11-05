@@ -13,7 +13,7 @@ int main()
     displayString(s);
     printf("Apakah string kosong? %d\n", isStringEmpty(s));
     printf("Apakah string penuh? %d\n", isStringFull(s));
-    printf("Panjang string: %d\n", length(s));
+    printf("Panjang string: %d\n", stringLength(s));
     String rev;
     rev = reverse(s);
     printf("String jika dibalik: ");

@@ -32,24 +32,24 @@ void CreateQueue(Queue *q)
 }
 
 /* ********* Prototype ********* */
-boolean isEmpty(Queue q)
+boolean isQueueEmpty(Queue q)
 {
     /* Mengirim true jika q kosong: lihat definisi di atas */
     return (IDX_HEAD(q) == IDX_UNDEF) && (IDX_TAIL(q) == IDX_UNDEF);
 }
-boolean isFull(Queue q)
+boolean isQueueFull(Queue q)
 {
     /* Mengirim true jika tabel penampung elemen q sudah penuh */
     /* yaitu IDX_TAIL akan selalu di belakang IDX_HEAD dalam buffer melingkar*/
-    return (length(q) == CAPACITY);
+    return (queueLength(q) == CAPACITY);
 }
-int length(Queue q)
+int queueLength(Queue q)
 {
     /* Mengirimkan banyaknya elemen queue. Mengirimkan 0 jika q kosong. */
     // KAMUS LOKAL
 
     // ALGORITMA
-    if (isEmpty(q))
+    if (isQueueEmpty(q))
     {
         return 0;
     }
@@ -66,7 +66,7 @@ int length(Queue q)
     }
 }
 /* *** Primitif Add/Delete *** */
-void enqueue(Queue *q, ElType val)
+void enqueue(Queue *q, QueueElType val)
 {
     /* Proses: Menambahkan val pada q dengan aturan FIFO */
     /* I.S. q mungkin kosong, tabel penampung elemen q TIDAK penuh */
@@ -74,7 +74,7 @@ void enqueue(Queue *q, ElType val)
     // KAMUS LOKAL
 
     // ALGORITMA
-    if (isEmpty(*q))
+    if (isQueueEmpty(*q))
     {
         IDX_HEAD(*q) = 0;
         IDX_TAIL(*q) = 0;
@@ -87,7 +87,7 @@ void enqueue(Queue *q, ElType val)
         TAIL(*q) = val;
     }
 }
-void dequeue(Queue *q, ElType *val)
+void dequeue(Queue *q, QueueElType *val)
 {
     /* Proses: Menghapus val pada q dengan aturan FIFO */
     /* I.S. q tidak mungkin kosong */
@@ -96,7 +96,7 @@ void dequeue(Queue *q, ElType *val)
     // KAMUS LOKAL
 
     // ALGORITMA
-    if (length(*q) == 1)
+    if (queueLength(*q) == 1)
     {
         *val = HEAD(*q);
         IDX_HEAD(*q) = IDX_UNDEF;
@@ -121,11 +121,11 @@ void displayQueue(Queue q)
     /* Jika Queue kosong : menulis [] */
     // KAMUS LOKAL
     int i;
-    ElType head;
-    int len = length(q);
+    QueueElType head;
+    int len = queueLength(q);
     // ALGORTIMA
     printf("[");
-    if (!isEmpty(q))
+    if (!isQueueEmpty(q))
     {
         for (i = 0; i < len; i++)
         {

@@ -6,10 +6,10 @@
 typedef struct
 {
     Matrix map;
-    ElType N;
-    ElType S;
-    ElType E;
-    ElType W;
+    MatrixElType N;
+    MatrixElType S;
+    MatrixElType E;
+    MatrixElType W;
     POINT pos;
 } Peta;
 
