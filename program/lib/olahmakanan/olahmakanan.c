@@ -143,7 +143,7 @@ int lengthProcessList(ProcessList P){
     return NBElmt(P);
 }
 
-boolean checkUpgrade(ProcessList P){
+boolean checkProcessUpgrade(ProcessList P){
     // KAMUS LOKAL
     int len, threshold;
     // ALGORITMA
@@ -169,7 +169,7 @@ void upgradeProcessList(ProcessList *P){
 
     // ALGORITMA
 
-    if (checkUpgrade(*P))
+    if (checkProcessUpgrade(*P))
     {
         MakeEmpty(&q, MaxPrioQueueEl(*P) * 2);
         while (!IsPrioQueueEmpty(p))
@@ -181,7 +181,7 @@ void upgradeProcessList(ProcessList *P){
     }
 }
 
-void displayDeliveryList(ProcessList P){
+void displayProcessList(ProcessList P){
     
     printf("PROCESSING LIST: \n");
     PrintPrioQueueTime(P);

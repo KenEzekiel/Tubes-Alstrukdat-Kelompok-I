@@ -35,7 +35,7 @@ void plusProcessTime(ProcessList *P, TIME t);
 
 int lengthProcessList(ProcessList P);
 
-boolean checkUpgrade(ProcessList P);
+boolean checkProcessUpgrade(ProcessList P);
 
 void upgradeProcessList(ProcessList *P);
 
