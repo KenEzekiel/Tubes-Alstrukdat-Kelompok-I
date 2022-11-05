@@ -113,7 +113,7 @@ int main()
 						STARTWORD();
 						i = WordToInt(currentWord);
 					} while (i < 0 || i > listMakananLength(*lfiltered));
-					process(aksi, i, &DaftarMakanan, InventoryState(State(BNMO)), &lfiltered, &ProcessedList(State(BNMO)), Resep);
+					process(aksi, i, &DaftarMakanan, InventoryState(State(BNMO)), lfiltered, &ProcessedList(State(BNMO)), Resep);
 					PushUndoStack(&US, State(BNMO));
 					updateNotif(State(BNMO), &listNotif);
 				}
@@ -139,7 +139,7 @@ int main()
 						STARTWORD();
 						i = WordToInt(currentWord);
 					} while (i < 0 || i > listMakananLength(*lfiltered));
-					process(aksi, i, &DaftarMakanan, InventoryState(State(BNMO)), &lfiltered, &ProcessedList(State(BNMO)), Resep);
+					process(aksi, i, &DaftarMakanan, InventoryState(State(BNMO)), lfiltered, &ProcessedList(State(BNMO)), Resep);
 					PushUndoStack(&US, State(BNMO));
 					updateNotif(State(BNMO), &listNotif);
 				}
@@ -166,7 +166,7 @@ int main()
 						i = WordToInt(currentWord);
 						printf("\n");
 					} while (i < 0 || i > listMakananLength(*lfiltered));
-					process(aksi, i, &DaftarMakanan, InventoryState(State(BNMO)), &lfiltered, &ProcessedList(State(BNMO)), Resep);
+					process(aksi, i, &DaftarMakanan, InventoryState(State(BNMO)), lfiltered, &ProcessedList(State(BNMO)), Resep);
 					PushUndoStack(&US, State(BNMO));
 					updateNotif(State(BNMO), &listNotif);
 				}
@@ -192,7 +192,7 @@ int main()
 						STARTWORD();
 						i = WordToInt(currentWord);
 					} while (i < 0 || i > listMakananLength(*lfiltered));
-					process(aksi, i, &DaftarMakanan, InventoryState(State(BNMO)), &lfiltered, &ProcessedList(State(BNMO)), Resep);
+					process(aksi, i, &DaftarMakanan, InventoryState(State(BNMO)), lfiltered, &ProcessedList(State(BNMO)), Resep);
 					PushUndoStack(&US, State(BNMO));
 					updateNotif(State(BNMO), &listNotif);
 				}
