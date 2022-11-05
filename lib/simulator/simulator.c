@@ -23,6 +23,7 @@ void CreateStartSimulator(Simulator *Sim, String user)
     Inventory I;
     DeliveryList DL;
     ListMakanan expired, delivered;
+    ProcessList PL;
     // ALGORITMA
     User(*Sim) = user;
 
@@ -32,7 +33,8 @@ void CreateStartSimulator(Simulator *Sim, String user)
     CreateDeliveryList(&DL, 100);
     CreateListMakanan(&expired);
     CreateListMakanan(&delivered);
-    CreateState(&S, Lokasi, Waktu, I, DL, expired, delivered);
+    CreateProcessMakanan(&PL, 100);
+    CreateState(&S, Lokasi, Waktu, I, DL, expired, delivered, PL);
     State(*Sim) = S;
 }
 /* Membentuk sebuah Simulator dari nama pengguna dengan komponen lain berupa komponen awal */
@@ -56,6 +58,7 @@ void BacaSimulator(Simulator *Sim)
     TIME T;
     Inventory inventory;
     DeliveryList DL;
+    ProcessList PL;
     ListMakanan expired, delivered;
     State S;
 
@@ -73,8 +76,9 @@ void BacaSimulator(Simulator *Sim)
     CreateDeliveryList(&DL, 100);
     CreateListMakanan(&expired);
     CreateListMakanan(&delivered);
+    CreateProcessMakanan(&PL, 100);
 
-    CreateState(&S, loc, T, inventory, DL, expired, delivered);
+    CreateState(&S, loc, T, inventory, DL, expired, delivered, PL);
 
     CreateSimulator(Sim, user, S);
 }
