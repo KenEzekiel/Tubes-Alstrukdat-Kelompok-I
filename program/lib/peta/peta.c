@@ -349,6 +349,18 @@ POINT cariSimul(Peta m)
     }
     return p;
 }
+void CreatePeta(Peta *m) {
+    Matrix mat;
+    POINT point;
+    createMatrix(0,0,&mat);
+    PETA(*m) = mat;
+    CreatePoint(&point,0,0);
+    POINT(*m) = point;
+    NORTH(*m) = ' ';
+    EAST(*m) = ' ';
+    WEST(*m) = ' ';
+    SOUTH(*m) = ' ';
+}
 
 void StartPeta(Peta *m) {
     fileToPeta("../../../test/peta.txt", &PETA(*m));
