@@ -28,7 +28,6 @@ void InitializeVariables()
 	CreateNotif(&listNotif);
 	CreateUndoStackEmpty(&US);
 	CreateRedoStackEmpty(&RS);
-	// CreatePeta(&Map);
 
 	// // Initialize constant variables (read from file)
 	ReadFromFile(&Resep, 10, "../test/resep_1.txt");
@@ -65,6 +64,7 @@ int main()
 			}
 			else if (IsMOVE())
 			{
+				ADVWORD();
 				boolean gerak=false;
 				if (IsNORTH()){
 					MoveNorth(&Map,&gerak);
