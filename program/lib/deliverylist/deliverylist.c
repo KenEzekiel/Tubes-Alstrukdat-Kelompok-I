@@ -311,3 +311,42 @@ void upgradeDelivList(DeliveryList *DL)
         *DL = q;
     }
 }
+
+void buy(DeliveryList *DL, ListMakanan LM)
+{
+    /* KAMUS */
+    String aksiBuy, foodName;
+    ListMakanan listBuy;
+    int opt, idx, idFood;
+
+    /* ALGORITMA */
+    charToString("BUY", &aksiBuy, 3);
+    displayFilteredAksi(aksiBuy, LM, &listBuy);
+    printf("\n Kirim 0 untuk exit \n");
+
+    printf("Enter command: ");
+    STARTWORD(); opt = WordToInt(currentWord);
+
+    while (opt != 0)
+    {
+        idFood = ID(ELMT_LM(listBuy, opt - 1));
+        idx = indexOfID(listBuy, idFood);
+        if (idx == IDX_UNDEF_LMAKANAN)
+        {
+            printf("Makanan yang dipilih tidak valid. Silahkan input kembali.\n");
+        }
+        else
+        {
+            foodName = Nama(ELMT_LM(listBuy, idx));
+            buyMakananbyId(DL, idFood, listBuy);
+            printf("Berhasil memesan ");
+            displayString(foodName);
+            printf(". ");
+            displayString(foodName);
+            printf(" akan diantar dalam ");
+            PrintTime(DelivTime(ELMT_LM(listBuy, idx)));
+        }
+        printf("\nEnter command: ");
+        STARTWORD(); opt = WordToInt(currentWord);
+    }
+}
