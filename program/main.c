@@ -1,4 +1,5 @@
 #include <stdio.h>
+// #include "lib/utility/utility.h"
 #include "main.h"
 
 /***** Global Variable *****/
@@ -21,23 +22,22 @@ String user;
 void InitializeVariables()
 {
 	// Initialize changable variables
-
 	printf("Input user: ");
 	readString(&user);
 	CreateStartSimulator(&BNMO, user);
-	// CreateNotif(&listNotif);
+	CreateNotif(&listNotif);
 	CreateUndoStackEmpty(&US);
 	CreateRedoStackEmpty(&RS);
 
-	// Initialize constant variables (read from file)
-	ReadFromFile(&Resep, 10, "../test/resep.txt");
-	StartPeta(&Map);
-	DaftarMakanan = readListMakanan("../../test/makanan.txt");
+	// // Initialize constant variables (read from file)
+	ReadFromFile(&Resep, 10, "../test/resep_1.txt");
+	// StartPeta(&Map);
+	CreateListMakanan(&DaftarMakanan); DaftarMakanan = readListMakanan("../test/makanan.txt");
 }
 
 int main()
 {
-	displaySplashScreen("lib/utility/SplashScreen.txt");
+    displaySplashScreen("lib/utility/SplashScreen.txt");
 	STARTWORD();
 
 	if (IsSTART())
@@ -148,4 +148,6 @@ int main()
 
 	// Keluar dari program
 	printf("Terima kasih sudah menggunakan program ini!\n");
+
+	return 0;
 }
