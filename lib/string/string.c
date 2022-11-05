@@ -61,8 +61,10 @@ void readString(String *s)
         i++;
     }
     */
+    // printf("test\n");
     STARTWORD();
     *s = wordToString(currentWord);
+    // displayString(*s);
 }
 
 /* *** Display *** */

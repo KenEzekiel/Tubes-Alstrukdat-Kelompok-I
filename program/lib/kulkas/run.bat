@@ -1,0 +1,1 @@
+gcc ../../../lib/matrix/matrix.c ../../../lib/makanan/makanan.c ../../../lib/string/string.c ../../lib/inventory/inventory.c ../../../lib/wordmachine/charmachine.c ../../../lib/wordmachine/wordmachine.c ../../../lib/time/time.c ../../../lib/queue/prioqueuetime.c ../../lib/listmakanan/listmakanan.c kulkas.c driverkulkas.c -o driverkulkas
