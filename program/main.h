@@ -32,5 +32,6 @@
 #include "lib/redostack/redostack.h"
 #include "lib/state/state.h"
 #include "lib/notifikasi/notifikasi.h"
+#include "lib/kulkas/kulkas.h"
 
 #endif
