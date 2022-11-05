@@ -226,9 +226,11 @@ void updateRedoNotif(State current, State prev, Notif *listNotif)
     addExpired(expCurr, listNotif);
 }
 
-void updateNotif(State curr, Notif *listNotif)
+void updateNotif(State *curr, Notif *listNotif)
 {
-    addDelivered(DeliveredListState(curr), listNotif);
-    addExpired(ExpListState(curr), listNotif);
+    addDelivered(DeliveredListState(*curr), listNotif);
+    addExpired(ExpListState(*curr), listNotif);
+    initializeUlang(&DeliveredListState(*curr));
+    initializeUlang(&ExpListState(*curr));
 }
 

@@ -54,15 +54,15 @@ int main()
 		boolean isRunning = true;
 		while (isRunning)
 		{
-			CreateNotif(&listNotif);
 			PrintGUI(TimeState(State(BNMO)), Position(State(BNMO)), InventoryState(State(BNMO)), BNMO, Map, listNotif);
+			CreateNotif(&listNotif);
 
 			if (IsBUY())
 			{
 				buy(&DeliveryListState(State(BNMO)), DaftarMakanan);
 				UpdateActionTime(&State(BNMO));
 				PushUndoStack(&US, State(BNMO));
-				updateNotif(State(BNMO), &listNotif);
+				updateNotif(&State(BNMO), &listNotif);
 			}
 			else if (IsDELIVERY())
 			{
@@ -93,7 +93,7 @@ int main()
 				{
 					UpdateActionTime(&State(BNMO));
 					PushUndoStack(&US, State(BNMO));
-					updateNotif(State(BNMO), &listNotif);
+					updateNotif(&State(BNMO), &listNotif);
 				}
 				else
 				{
@@ -117,7 +117,7 @@ int main()
 					process(aksi, i, &DaftarMakanan, InventoryState(State(BNMO)), &lfiltered, &ProcessedList(State(BNMO)), Resep);
 					UpdateActionTime(&State(BNMO));
 					PushUndoStack(&US, State(BNMO));
-					updateNotif(State(BNMO), &listNotif);
+					updateNotif(&State(BNMO), &listNotif);
 				}
 				else
 				{
@@ -144,7 +144,7 @@ int main()
 					process(aksi, i, &DaftarMakanan, InventoryState(State(BNMO)), &lfiltered, &ProcessedList(State(BNMO)), Resep);
 					UpdateActionTime(&State(BNMO));
 					PushUndoStack(&US, State(BNMO));
-					updateNotif(State(BNMO), &listNotif);
+					updateNotif(&State(BNMO), &listNotif);
 				}
 				else
 				{
@@ -172,7 +172,7 @@ int main()
 					process(aksi, i, &DaftarMakanan, InventoryState(State(BNMO)), &lfiltered, &ProcessedList(State(BNMO)), Resep);
 					UpdateActionTime(&State(BNMO));
 					PushUndoStack(&US, State(BNMO));
-					updateNotif(State(BNMO), &listNotif);
+					updateNotif(&State(BNMO), &listNotif);
 				}
 				else
 				{
@@ -199,7 +199,7 @@ int main()
 					process(aksi, i, &DaftarMakanan, InventoryState(State(BNMO)), &lfiltered, &ProcessedList(State(BNMO)), Resep);
 					UpdateActionTime(&State(BNMO));
 					PushUndoStack(&US, State(BNMO));
-					updateNotif(State(BNMO), &listNotif);
+					updateNotif(&State(BNMO), &listNotif);
 				}
 				else
 				{
@@ -221,7 +221,7 @@ int main()
 				UpdateWaitTime(&State(BNMO),temptime);
 
 				PushUndoStack(&US, State(BNMO));
-				updateNotif(State(BNMO), &listNotif);
+				updateNotif(&State(BNMO), &listNotif);
 			}
 			else if (IsINSERTKULKAS())
 			{
