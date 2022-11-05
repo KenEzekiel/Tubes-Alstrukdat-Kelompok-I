@@ -276,8 +276,8 @@ void displayDeliveryList(DeliveryList DL)
         {
             while (!IsPrioQueueEmpty(temp))
             {
-                printf("%d. (%d) ", i, ID(val));
                 Dequeue(&temp, &val);
+                printf("%d. (%d) ", i, ID(val));
                 displayString(Nama(val));
                 printf(" - ");
                 PrintTime(DelivTime(val));
