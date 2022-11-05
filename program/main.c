@@ -29,7 +29,7 @@ void InitializeVariables()
 	CreateRedoStackEmpty(&RS);
 
 	// // Initialize constant variables (read from file)
-	ReadFromFile(&Resep, 10, "../test/resep_1.txt");
+	ReadFromFile(&Resep, 10, "../test/resep_2.txt");
 	StartPeta(&Map,"../test/peta.txt");
 	CreateListMakanan(&DaftarMakanan); DaftarMakanan = readListMakanan("../test/makanan.txt");
 }
@@ -70,7 +70,7 @@ int main()
 					MoveNorth(&Map,&gerak);
 				}
 				else if (IsEAST()) {
-					MoveNorth(&Map,&gerak);
+					MoveEast(&Map,&gerak);
 				} 
 				else if (IsSOUTH()){
 					MoveSouth(&Map,&gerak);
@@ -82,6 +82,7 @@ int main()
 				if (gerak) {
 				PushUndoStack(&US, State(BNMO));
 				updateNotif(State(BNMO), &listNotif);
+				UpdateActionTime(&DeliveryListState(State(BNMO)),&InventoryState(State(BNMO)),&TimeState(State(BNMO)),&ExpListState(State(BNMO)),&DeliveredListState(State(BNMO)),&ProcessedList(State(BNMO)));
 				}
 				else {
 					
