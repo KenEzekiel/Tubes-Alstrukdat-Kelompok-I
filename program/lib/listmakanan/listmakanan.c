@@ -15,7 +15,7 @@ void CreateListMakanan(ListMakanan *lfood)
     /* F.S. Terbentuk List l kosong dengan kapasitas CAPACITY */
     /* Proses: Inisialisasi semua elemen List l dengan MARK */
     /*KAMUS LOKAL*/
-    int i;
+    int i, uk;
     Makanan markFood;
     TIME markTime;
     String markString;
@@ -23,9 +23,10 @@ void CreateListMakanan(ListMakanan *lfood)
     /*ALGORITMA*/
     CreateString(&markString);
     CreateTime(&markTime, 0, 0, 0);
+    uk = 0;
     for (i = IDX_MIN_LMAKANAN; i < CAPACITY; i++)
     {
-        CreateMakanan(&markFood, MARK_LMAKANAN, markString, markTime, markString, markTime, markTime);
+        CreateMakanan(&markFood, MARK_LMAKANAN, markString, markTime, markString, markTime, markTime, uk, uk);
         ELMT_LM(*lfood, i) = markFood;
     }
 }
@@ -66,7 +67,7 @@ ListMakanan readListMakanan(char *dir)
     /* KAMUS */
     ListMakanan ret;
     Makanan food;
-    int id, HH, MM, SS;
+    int id, HH, MM, SS, ukBaris, ukKolom;
     String aksi, nama;
     TIME exp, delivTime, aksiTime;
 
@@ -110,8 +111,13 @@ ListMakanan readListMakanan(char *dir)
         ADVWORD();
         SS = WordToInt(currentWord);
         CreateTime(&aksiTime, HH, MM, SS);
+        /* Ukuran Makanan */
+        ADVWORD();
+        ukBaris = WordToInt(currentWord);
+        ADVWORD();
+        ukKolom = WordToInt(currentWord);
         /* Pembentukan makanan */
-        CreateMakanan(&food, id, nama, exp, aksi, delivTime, aksiTime);
+        CreateMakanan(&food, id, nama, exp, aksi, delivTime, aksiTime, ukBaris, ukKolom);
         insertLastMakanan(&ret, food);
     }
     return ret;
@@ -203,8 +209,8 @@ int indexOfName(ListMakanan lfood, String nama)
 void printCatalog(ListMakanan lfood)
 {
     Makanan food;
-    printf("==========================================List Makanan=============================================\n");
-    printf("Nama Makanan - Durasi Kedaluwarsa - Aksi yang Diperlukan - Delivery Time - Waktu Pengolahan Makanan\n");
+    printf("======================================================List Makanan==================================================\n");
+    printf("Nama Makanan - Durasi Kedaluwarsa - Aksi yang Diperlukan - Delivery Time - Waktu Pengolahan Makanan - Ukuran Makanan\n");
     for (int i = 0; i < listMakananLength(lfood); i++)
     {
         food = ELMT_LM(lfood, i);
@@ -218,7 +224,8 @@ void printCatalog(ListMakanan lfood)
         PrintTime(DelivTime(food));
         printf(" - ");
         PrintTime(AksiTime(food));
-        printf("\n");
+        printf(" - ");
+        printf("%d x %d\n", SizeBaris(food), SizeKolom(food));
     }
 }
 /* I.S. lfood terdefinisi */

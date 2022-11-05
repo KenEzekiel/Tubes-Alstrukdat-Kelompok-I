@@ -16,6 +16,8 @@ typedef struct {
     String aksi;    /* Aksi yang bisa dilakukan */
     TIME delivTime; /* Lama pengiriman */
     TIME aksiTime;  /* Waktu pengolahan makanan */
+    int ukBaris;
+    int ukKolom;
 } Makanan;
 
 /* *** Notasi Akses: selektor Makanan *** */
@@ -25,13 +27,15 @@ typedef struct {
 #define Aksi(Food) (Food).aksi 
 #define DelivTime(Food) (Food).delivTime 
 #define AksiTime(Food) (Food).aksiTime
+#define SizeBaris(Food) (Food).ukBaris
+#define SizeKolom(Food) (Food).ukKolom
 
 /* ***************************************************************** */
 /* DEFINISI PRIMITIF                                                 */
 /* ***************************************************************** */
 
 /* *** Konstruktor: Membentuk sebuah Makanan dari komponen-komponennya *** */
-void CreateMakanan (Makanan * Food, int id, String nama, TIME exp, String aksi, TIME delivTime, TIME aksiTime);
+void CreateMakanan (Makanan * Food, int id, String nama, TIME exp, String aksi, TIME delivTime, TIME aksiTime, int ukBaris, int ukKolom);
 /* Membentuk sebuah Makanan dari komponen-komponennya yang valid */
 /* Prekondisi : id, nama, exp, aksi, dan delivTime valid untuk membentuk Makanan */
 

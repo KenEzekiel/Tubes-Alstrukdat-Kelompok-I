@@ -8,7 +8,7 @@
 #include <stdio.h>
 
 /* *** Konstruktor: Membentuk sebuah Makanan dari komponen-komponennya *** */
-void CreateMakanan(Makanan *Food, int id, String nama, TIME exp, String aksi, TIME delivTime, TIME aksiTime)
+void CreateMakanan(Makanan *Food, int id, String nama, TIME exp, String aksi, TIME delivTime, TIME aksiTime, int ukBaris, int ukKolom)
 {
     ID(*Food) = id;
     Nama(*Food) = nama;
@@ -16,13 +16,15 @@ void CreateMakanan(Makanan *Food, int id, String nama, TIME exp, String aksi, TI
     Aksi(*Food) = aksi;
     DelivTime(*Food) = delivTime;
     AksiTime(*Food) = aksiTime;
+    SizeBaris(*Food) = ukBaris;
+    SizeKolom(*Food) = ukKolom;
 }
 /* Membentuk sebuah Makanan dari komponen-komponennya yang valid */
 /* Prekondisi : id, nama, exp, aksi, dan delivTime valid untuk membentuk Makanan */
 
 void BacaMakanan(Makanan *Food)
 {
-    int id;
+    int id, ukBaris, ukKolom;
     String nama, aksi;
     TIME exp, delivTime, aksiTime;
 
@@ -38,8 +40,10 @@ void BacaMakanan(Makanan *Food)
     BacaTIME(&delivTime);
     printf("Masukkan waktu pengolahan makanan: ");
     BacaTIME(&aksiTime);
+    printf("Masukkan ukuran makanan (baris kolom): ");
+    scanf("%d %d", &ukBaris, &ukKolom);
 
-    CreateMakanan(Food, id, nama, exp, aksi, delivTime, aksiTime);
+    CreateMakanan(Food, id, nama, exp, aksi, delivTime, aksiTime, ukBaris, ukKolom);
 }
 /* I.S. : Food tidak terdefinisi */
 /* F.S. : Food terdefinisi dan merupakan makanan yang valid */
@@ -61,6 +65,8 @@ void TulisMakanan(Makanan Food)
     TulisTIME(DelivTime(Food));
     printf("Waktu pengolahan makanan: ");
     TulisTIME(AksiTime(Food));
+    printf("Ukuran makanan: ");
+    printf("\n%d x %d", SizeBaris(Food), SizeKolom(Food));
 }
 /* I.S. : Food sembarang */
 /* F.S. : Nilai Food ditulis dg format ... */
