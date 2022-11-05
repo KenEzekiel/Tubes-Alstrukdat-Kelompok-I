@@ -258,8 +258,28 @@ void plusDelivTime(DeliveryList *DL, TIME t)
 /* *** Menampilkan isi Delivery List *** */
 void displayDeliveryList(DeliveryList DL)
 {
-    printf("DELIVERY LIST: \n");
-    PrintPrioQueueTime(DL);
+    printf("List Makanan di Perjalanan \n");
+    printf(" (nama - waktu sisa delivery) \n");
+
+    prioQueueInfotype val;
+    PrioQueueTime temp;
+    int i = 1;
+    temp = DL;
+    if (!IsPrioQueueEmpty(DL))
+    {
+        while (!IsPrioQueueEmpty(temp))
+        {
+            printf("%d. ");
+            Dequeue(&temp, &val);
+            displayString(Nama(val));
+            printf(" - ");
+            printTime(DelivTime(val));
+            printf("\n");
+            // TulisMakanan(val);
+            //  idx = (idx % NBElmt(Q)) + 1;
+            i++;
+        }
+    }
 }
 
 /* *** Mengembalikan panjang inventory *** */
@@ -325,7 +345,8 @@ void buy(DeliveryList *DL, ListMakanan LM)
     printf("\n Kirim 0 untuk exit \n");
 
     printf("Enter command: ");
-    STARTWORD(); opt = WordToInt(currentWord);
+    STARTWORD();
+    opt = WordToInt(currentWord);
 
     while (opt != 0)
     {
@@ -347,6 +368,7 @@ void buy(DeliveryList *DL, ListMakanan LM)
             PrintTime(DelivTime(ELMT_LM(listBuy, idx)));
         }
         printf("\nEnter command: ");
-        STARTWORD(); opt = WordToInt(currentWord);
+        STARTWORD();
+        opt = WordToInt(currentWord);
     }
 }
