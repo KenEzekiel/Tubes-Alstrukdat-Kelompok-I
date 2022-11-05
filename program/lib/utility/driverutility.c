@@ -1,9 +1,9 @@
 /* File: driverutility.c */
 /* Mengecek fungsionalitas di utility */
 
-#include "utility.h"
+#include "lib/utility/utility.h"
 
 int main() {
-    displaySplashScreen("SplashScreen.txt");
+    displaySplashScreen("lib/utility/SplashScreen.txt");
     return 0;
 }
