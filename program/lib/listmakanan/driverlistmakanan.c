@@ -16,15 +16,20 @@ int main()
 
     printf("Mengecek indeks dari ID Makanan\n");
     printf("ID Makanan: ");
-    scanf("%d", &id);
+    STARTWORD();
+    id = WordToInt(currentWord);
     idx = indexOfID(lfood1, id);
     printf("Makanan dengan ID %d berada pada indeks %d\n", id, idx);
 
-    printf("Masukkan aksi yang ingin dilakukan\n");
+    printf("Masukkan aksi yang ingin dilakukan: ");
     readString(&aksi);
-    lbuy = filterByAksi(lfood1, aksi);
     printf("Menampilkan list makanan yang sesuai dengan aksi\n");
-    printCatalog(lbuy);
+    displayFilteredAksi(aksi, lfood1, &lbuy);
+
+    printf("Masukkan aksi yang ingin dilakukan: ");
+    readString(&aksi);
+    printf("Menampilkan list makanan yang sesuai dengan aksi\n");
+    displayFilteredAksi(aksi, lfood1, &lbuy);
 
     return 0;
 }

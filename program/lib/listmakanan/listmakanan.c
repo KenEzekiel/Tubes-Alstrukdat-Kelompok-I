@@ -230,3 +230,43 @@ void printCatalog(ListMakanan lfood)
 }
 /* I.S. lfood terdefinisi */
 /* I.S. Menampilkan list makanan lfood */
+
+void displayFilteredAksi(String aksi, ListMakanan lfood, ListMakanan *lfiltered) {
+    Makanan food;
+    String nama, aksiBuy;
+
+
+    charToString("BUY", &aksiBuy, 3);
+
+    printf("========================\n");
+    printf("=         ");
+    displayString(aksi);
+    printf("          =\n");
+    printf("========================\n");
+
+    CreateListMakanan(lfiltered);
+    *lfiltered = filterByAksi(lfood,aksi);
+
+    if (isStringEqual(aksiBuy, aksi))
+    {
+        printf("List Bahan Makanan: \n");
+        for (int i = 0; i < listMakananLength(*lfiltered); i++)
+        {
+            printf("%d. ", i+1);
+            displayString(Nama(ELMT_LM(*lfiltered, i)));
+            printf(" (");
+            PrintTime(DelivTime(ELMT_LM(*lfiltered, i)));
+            printf(")\n");
+        }
+    }
+    else
+    {
+        printf("List Bahan Makanan yang Bisa Dibuat: \n");
+        for (int i = 0; i < listMakananLength(*lfiltered); i++)
+        {
+            printf("%d. ", i+1);
+            displayString(Nama(ELMT_LM(*lfiltered, i)));
+            printf("\n");
+        }
+    }
+}

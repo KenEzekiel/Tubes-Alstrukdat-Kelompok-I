@@ -73,4 +73,6 @@ void printCatalog(ListMakanan lfood);
 /* I.S. lfood terdefinisi */
 /* I.S. Menampilkan list makanan lfood */
 
+void displayFilteredAksi(String aksi, ListMakanan lfood, ListMakanan *lfiltered);
+
 #endif
