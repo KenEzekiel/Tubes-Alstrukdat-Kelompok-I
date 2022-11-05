@@ -325,6 +325,8 @@ void getFoodbyIdKulkas(Kulkas *K, Makanan *food, int idkulkas)
     int idx = ElmtIdxInLTByIdKulkas(LISTTUPLE(*K), idkulkas);
     Tuple element;
     // ALGORITMA
+    row = SizeBaris(*food);
+    col = SizeKolom(*food);
     *food = MAKANAN(TELMT(LISTTUPLE(*K), idx));
     deleteAtLT(&LISTTUPLE(*K), &element, idx);
     for (i = row; i < row + SizeBaris(*food); i++)
@@ -376,7 +378,8 @@ void procInsertToKulkas(Kulkas *K, Inventory *I)
 
     food = getMakananById(I, id);
     insertAtIdx(K, idxrow, idxcol, food, idkulkas, &valid);
-    if (!valid) {
+    if (!valid)
+    {
         Enqueue(I, food);
     }
 
