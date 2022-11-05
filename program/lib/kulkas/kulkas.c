@@ -376,11 +376,14 @@ void procInsertToKulkas(Kulkas *K, Inventory *I)
     STARTWORD();
     idkulkas = WordToInt(currentWord);
 
-    food = getMakananById(I, id);
-    insertAtIdx(K, idxrow, idxcol, food, idkulkas, &valid);
-    if (!valid)
+    if (!IsPrioQueueEmpty(*I))
     {
-        Enqueue(I, food);
+        food = getMakananById(I, id);
+        insertAtIdx(K, idxrow, idxcol, food, idkulkas, &valid);
+        if (!valid)
+        {
+            Enqueue(I, food);
+        }
     }
 
     displayInventory(*I);
