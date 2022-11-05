@@ -32,6 +32,7 @@ void DisplayPos(Peta m);
 void DisplayPeta(Peta m);
 
 void fileToPeta(char *dir, Matrix *m);
+void CreatePeta(Peta *m);
 void StartPeta(Peta *m);
 
 boolean CanOrder(Peta m);
