@@ -44,9 +44,9 @@ void insertLastNotif(Notif *listNotif, ELTYPE newNotif)
 void printNotif(Notif listNotif)
 {
     printf("Notifikasi: ");
-    if (notifLength == 0) 
+    if (notifLength(listNotif) == 0) 
     {
-        printf(" - \n");
+        printf("- \n");
     }
     else 
     {
