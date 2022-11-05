@@ -7,7 +7,7 @@ void PrintGUI(TIME Waktu, POINT Lokasi, Inventory Inventory, Simulator BNMO, Pet
 	I.S. : currentChar sembarang, currentWord sembarang
    	F.S. : mencetak GUI, currentWord terdefinisi */
 {
-	printf("BNMO berada di posisi: "); 
+	printf("BNMO berada di posisi: "); DisplayPos(Peta);
 	printf("Waktu: "); TulisTIME(Waktu);
 	
 	printNotif(listNotif);
