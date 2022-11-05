@@ -19,14 +19,14 @@ void CreatePoint (POINT * P, float X, float Y) {
 /* *** KELOMPOK Interaksi dengan I/O device, BACA/TULIS  *** */                                                               
 
 void MoveN(POINT* p){
-    Ordinat(*p)--;
+    Absis(*p)--;
 }
 void MoveE(POINT* p){
-    Absis(*p)++;
-}
-void MoveS(POINT* p){
     Ordinat(*p)++;
 }
+void MoveS(POINT* p){
+    Absis(*p)++;
+}
 void MoveW(POINT* p){
-    Absis(*p)--;
+    Ordinat(*p)--;
 }
