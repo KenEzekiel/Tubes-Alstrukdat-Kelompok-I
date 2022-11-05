@@ -37,7 +37,7 @@ void InitializeVariables()
 
 int main()
 {
-	// displaySplashScreen();
+	displaySplashScreen("lib/utility/SplashScreen.txt");
 	STARTWORD();
 
 	if (IsSTART())

@@ -40,8 +40,7 @@ void print_image(FILE *fptr)
         printf("%s",read_string);
 }
 
-void displaySplashScreen() {
-    char *filename = "SplashScreen.txt";
+void displaySplashScreen(char *filename) {
     FILE *fptr = NULL;
     fptr = fopen(filename,"r");
     print_image(fptr);
