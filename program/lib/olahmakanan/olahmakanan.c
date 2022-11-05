@@ -3,19 +3,31 @@
 void displayMakananFiltered(String aksi, ListMakanan *lfood, ListMakanan *lfiltered) {
     Makanan food;
     String nama;
+    String aksiChop, aksiMix, aksiFry, aksiBoil;
 
-    /*printf("========================");
-    printf("=        %c            =", aksi);
-    printf("========================");*/
+    charToString("CHOP",&aksiChop,4);
+    charToString("BOIL",&aksiBoil,4);
+    charToString("MIX",&aksiMix,3);
+    charToString("FRY",&aksiFry,3);
+    if (isStringEqual(aksi,aksiChop) || isStringEqual(aksi,aksiBoil)) {
+        printf("========================");
+        printf("=        %c        =", aksi);
+        printf("========================\n\n");
+    }
+    else if (isStringEqual(aksi,aksiMix) || isStringEqual(aksi,aksiFry)) {
+        printf("========================");
+        printf("=         %c        =", aksi);
+        printf("========================\n\n");
+    }
 
     //ListMakanan* lfiltered;
-    CreateListMakanan(lfiltered);
+    //CreateListMakanan(lfiltered);
     *lfiltered= filterByAksi(*lfood,aksi);
-    printf("List Bahan Makanan yang Bisa Dibuat: ");
+    printf("List Bahan Makanan yang Bisa Dibuat:\n");
     for(int i=0; i< listMakananLength(*lfiltered); i++){
         food = ELMT_LM(*lfiltered, i);
         nama = Nama(food);
-        printf("%d. %c", i+1, nama);
+        printf("%d. %c\n", i+1, nama);
     }
 }
 
@@ -63,7 +75,7 @@ void process(String aksi,int i, ListMakanan *lfood, Inventory I, ListMakanan *lf
         printf("%c sedang diproses!",Nama(food));
     }
     else{
-        printf("Gagal membuat %c karena kamu tidak memiliki bahan berikut: ",Nama(food));
+        printf("Gagal membuat %c karena kamu tidak memiliki bahan berikut:\n ",Nama(food));
         //ListMakanan lkosong;
         //CreateListMakanan(&lkosong);
         eltype val;
@@ -72,7 +84,7 @@ void process(String aksi,int i, ListMakanan *lfood, Inventory I, ListMakanan *lf
             if (!isElmtById(I,ID(ELMT_LM(lneed,i)))) {
                 count++;
                 //insertLastMakanan(&lkosong,val);
-                printf("%d. %c", count, Nama(ELMT_LM(lneed,i)));
+                printf("%d. %c\n", count, Nama(ELMT_LM(lneed,i)));
             }
         }
     }
