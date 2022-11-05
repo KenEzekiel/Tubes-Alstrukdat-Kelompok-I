@@ -123,8 +123,8 @@ void plusProcessTime(ProcessList *P, TIME t){
     prioQueueInfotype food;
     int hasil;
     // ALGORITMA
-    MakeEmpty(&p, MaxEl(*P));
-    while (!isPrioQueueEmpty(q))
+    MakeEmpty(&p, MaxPrioQueueEl(*P));
+    while (!IsPrioQueueEmpty(q))
     {
         Dequeue(&q, &food);
         hasil = TIMEToMenit(DelivTime(food)) - TIMEToMenit(t);
@@ -148,7 +148,7 @@ boolean checkUpgrade(ProcessList P){
     int len, threshold;
     // ALGORITMA
     len = lengthProcessList(P);
-    threshold = 0.75 * MaxEl(P);
+    threshold = 0.75 * MaxPrioQueueEl(P);
 
     if (len > threshold)
     {
