@@ -163,8 +163,8 @@ void PrintPrioQueueTime(PrioQueueTime Q)
     {
         while (!IsPrioQueueEmpty(temp))
         {
-            printf("%d. (%d) ", i, ID(val));
             Dequeue(&temp, &val);
+            printf("%d. (%d) ", i, ID(val));
             displayString(Nama(val));
             printf(" - ");
             PrintTime(Exp(val));
