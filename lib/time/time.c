@@ -77,7 +77,15 @@ void TulisTIME(TIME T)
    HH = Hour(T);
    MM = Minute(T);
    
-   printf("%d:%d:%d", DD, HH, MM);
+   if (DD>0){
+        printf("%d.%d.%d", DD, HH, MM);
+   }
+   else if (HH>0) {
+        printf("%d.%d", HH, MM);
+   }
+   else {
+        printf("%d",MM);
+   }
    printf("\n");
 }
 
