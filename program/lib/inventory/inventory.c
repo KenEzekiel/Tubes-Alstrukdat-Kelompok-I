@@ -75,7 +75,7 @@ void deleteExpired(Inventory *I, ListMakanan *expired)
         {
             Enqueue(&p, food);
         }
-        else 
+        else
         {
             insertLastMakanan(expired, food);
         }
@@ -229,8 +229,15 @@ boolean isElmtByName(Inventory I, String nama)
 /* *** Menampilkan isi inventory *** */
 void displayInventory(Inventory I)
 {
-    printf("INVENTORY: \n");
-    PrintPrioQueueTime(I);
+    printf("\nINVENTORY: \n");
+    if (IsPrioQueueEmpty(I))
+    {
+        printf("Inventory Kosong\n");
+    }
+    else
+    {
+        PrintPrioQueueTime(I);
+    }
 }
 
 /* *** Mengembalikan panjang inventory *** */
