@@ -87,9 +87,9 @@ void updateProcessList(ProcessList *P, Inventory *I, TIME t, ListMakanan *delive
 
     // ALGORITMA
 
-    if (!IsEmpty(*P))
+    if (!IsPrioQueueEmpty(*P))
     {
-        minusDelivTime(P, t);
+        minusProcessTime(P, t);
         deliver(P, I, delivered);
     }
 }
@@ -98,11 +98,11 @@ void minusProcessTime(ProcessList *P, TIME t){
     // KAMUS LOKAL
     ProcessList p;
     ProcessList q = *P;
-    infotype food;
+    prioQueueInfotype food;
     int hasil;
     // ALGORITMA
-    MakeEmpty(&p, MaxEl(*P));
-    while (!IsEmpty(q))
+    MakeEmpty(&p, MaxPrioQueueEl(*P));
+    while (!IsPrioQueueEmpty(q))
     {
         Dequeue(&q, &food);
         hasil = TIMEToMenit(DelivTime(food)) - TIMEToMenit(t);
@@ -111,7 +111,7 @@ void minusProcessTime(ProcessList *P, TIME t){
             hasil = 0;
         }
         DelivTime(food) = MenitToTIME(hasil);
-        buyMakanan(&p, food);
+        addProcessList(&p, food);
     }
     *P = p;
 }
@@ -120,11 +120,11 @@ void plusProcessTime(ProcessList *P, TIME t){
     // KAMUS LOKAL
     ProcessList p;
     ProcessList q = *P;
-    infotype food;
+    prioQueueInfotype food;
     int hasil;
     // ALGORITMA
     MakeEmpty(&p, MaxEl(*P));
-    while (!IsEmpty(q))
+    while (!isPrioQueueEmpty(q))
     {
         Dequeue(&q, &food);
         hasil = TIMEToMenit(DelivTime(food)) - TIMEToMenit(t);
@@ -133,7 +133,7 @@ void plusProcessTime(ProcessList *P, TIME t){
             hasil = 0;
         }
         DelivTime(food) = MenitToTIME(hasil);
-        buyMakanan(&p, food);
+        addProcessList(&p, food);
     }
     *P = p;
 
@@ -147,7 +147,7 @@ boolean checkUpgrade(ProcessList P){
     // KAMUS LOKAL
     int len, threshold;
     // ALGORITMA
-    len = lengthDeliveryList(P);
+    len = lengthProcessList(P);
     threshold = 0.75 * MaxEl(P);
 
     if (len > threshold)
@@ -162,7 +162,23 @@ boolean checkUpgrade(ProcessList P){
 }
 
 void upgradeProcessList(ProcessList *P){
-    upgradeDelivList(P);
+    // KAMUS LOKAL
+    ProcessList p = *P;
+    ProcessList q;
+    prioQueueInfotype food;
+
+    // ALGORITMA
+
+    if (checkUpgrade(*P))
+    {
+        MakeEmpty(&q, MaxPrioQueueEl(*P) * 2);
+        while (!IsPrioQueueEmpty(p))
+        {
+            Dequeue(&p, &food);
+            addProcessList(&q, food);
+        }
+        *P = q;
+    }
 }
 
 void displayDeliveryList(ProcessList P){
@@ -170,4 +186,33 @@ void displayDeliveryList(ProcessList P){
     printf("PROCESSING LIST: \n");
     PrintPrioQueueTime(P);
 
+}
+
+void addProcessList(ProcessList *PL, prioQueueInfotype food) {
+    int i, j;
+    prioQueueInfotype temp;
+
+    // ALGORITMA
+    if (IsPrioQueueEmpty(*PL))
+    {
+        Head(*PL) = 0;
+        Tail(*PL) = 0;
+        InfoTail(*PL) = food;
+    }
+    else
+    {
+        // Mod untuk antisipasi jika Tail dari DL > IDX_MAX alias CAPACITY - 1
+        Tail(*PL) = Tail(*PL) == MaxPrioQueueEl(*PL) - 1 ? 0 : Tail(*PL) + 1;
+        InfoTail(*PL) = food;
+        i = Tail(*PL);
+        j = i == 0 ? MaxPrioQueueEl(*PL) - 1 : i - 1;
+        while (i != Head(*PL) && TIMEToMenit(DelivTime(Elmt(*PL, i))) < TIMEToMenit(DelivTime(Elmt(*PL, j))))
+        {
+            temp = Elmt(*PL, i);
+            Elmt(*PL, i) = Elmt(*PL, j);
+            Elmt(*PL, j) = temp;
+            i = j;
+            j = i == 0 ? MaxPrioQueueEl(*PL) - 1 : i - 1;
+        }
+    }
 }

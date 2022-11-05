@@ -9,6 +9,7 @@
 #include "../listmakanan/listmakanan.h"
 #include "../inventory/inventory.h"
 #include "../resep/resep.h"
+#include "../deliverylist/deliverylist.h"
 #include <stdio.h>
 
 typedef PrioQueueTime ProcessList;
@@ -39,4 +40,6 @@ boolean checkUpgrade(ProcessList P);
 void upgradeProcessList(ProcessList *P);
 
 void displayProcessList(ProcessList P);
+
+void addProcessList(ProcessList *PL, prioQueueInfotype food);
 #endif
