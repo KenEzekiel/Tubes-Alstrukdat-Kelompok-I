@@ -273,7 +273,7 @@ void displayDeliveryList(DeliveryList DL)
             Dequeue(&temp, &val);
             displayString(Nama(val));
             printf(" - ");
-            printTime(DelivTime(val));
+            PrintTime(DelivTime(val));
             printf("\n");
             // TulisMakanan(val);
             //  idx = (idx % NBElmt(Q)) + 1;
