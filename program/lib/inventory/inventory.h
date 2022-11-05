@@ -19,7 +19,7 @@ void CreateInventory(Inventory *I, int max);
 /* *** Operasi menambahkan item ke inventory *** */
 /* I.S. Inventory terdefinisi */
 /* F.S. food ditambahkan ke inventory sesuai priority nya, inventory di upgrade jika dibutuhkan */
-void addMakananToInventory(Inventory *I, infotype food);
+void addMakananToInventory(Inventory *I, prioQueueInfotype food);
 
 /* *** Update makanan di inventory *** */
 /* I.S. I terdefinisi, diisi oleh makanan, bisa kosong */
@@ -53,7 +53,7 @@ void plusTime(Inventory *I, TIME t);
 /* *** Mengambil makanan dari inventory *** */
 /* Mengembalikan makanan dari inventory dengan id tertentu */
 /* Prekondisi : id makanan harus valid dan id tersebut harus ada didalam inventory */
-infotype getMakananById(Inventory *I, int id);
+prioQueueInfotype getMakananById(Inventory *I, int id);
 
 /* *** Mengecek apakah suatu id makanan ada didalam inventory *** */
 boolean isElmtById(Inventory I, int id);
@@ -61,7 +61,7 @@ boolean isElmtById(Inventory I, int id);
 /* *** Mengambil makanan dari inventory *** */
 /* Mengembalikan makanan dari inventory dengan nama tertentu */
 /* Prekondisi : id makanan harus valid dan nama tersebut harus ada didalam inventory */
-infotype getMakananByName(Inventory *I, String nama);
+prioQueueInfotype getMakananByName(Inventory *I, String nama);
 
 /* *** Mengecek apakah suatu nama makanan ada didalam inventory *** */
 boolean isElmtByName(Inventory I, String nama);

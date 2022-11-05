@@ -9,12 +9,12 @@ void Update(Peta *m, int P)
     switch (P)
     {
     case 1:
-        ELMT(PETA(*m), Absis(POINT(*m)) + 1, Ordinat(POINT(*m))) = '.';
-        ELMT(PETA(*m), Absis(POINT(*m)), Ordinat(POINT(*m))) = 'S';
+        ELMT_MATRIX(PETA(*m), Absis(POINT(*m)) + 1, Ordinat(POINT(*m))) = '.';
+        ELMT_MATRIX(PETA(*m), Absis(POINT(*m)), Ordinat(POINT(*m))) = 'S';
 
         if (Ordinat(POINT(*m)) - 1 >= 0)
         {
-            NORTH(*m) = ELMT(PETA(*m), Absis(POINT(*m)) - 1, Ordinat(POINT(*m)));
+            NORTH(*m) = ELMT_MATRIX(PETA(*m), Absis(POINT(*m)) - 1, Ordinat(POINT(*m)));
         }
         else
         {
@@ -22,7 +22,7 @@ void Update(Peta *m, int P)
         }
         if (Ordinat(POINT(*m)) + 1 < ROW_EFF(PETA(*m)))
         {
-            SOUTH(*m) = ELMT(PETA(*m), Absis(POINT(*m)) + 1, Ordinat(POINT(*m)));
+            SOUTH(*m) = ELMT_MATRIX(PETA(*m), Absis(POINT(*m)) + 1, Ordinat(POINT(*m)));
         }
         else
         {
@@ -30,7 +30,7 @@ void Update(Peta *m, int P)
         }
         if (Absis(POINT(*m)) + 1 < COL_EFF(PETA(*m)))
         {
-            EAST(*m) = ELMT(PETA(*m), Absis(POINT(*m)), Ordinat(POINT(*m)) + 1);
+            EAST(*m) = ELMT_MATRIX(PETA(*m), Absis(POINT(*m)), Ordinat(POINT(*m)) + 1);
         }
         else
         {
@@ -38,7 +38,7 @@ void Update(Peta *m, int P)
         }
         if (Absis(POINT(*m)) - 1 >= 0)
         {
-            WEST(*m) = ELMT(PETA(*m), Absis(POINT(*m)), Ordinat(POINT(*m)) - 1);
+            WEST(*m) = ELMT_MATRIX(PETA(*m), Absis(POINT(*m)), Ordinat(POINT(*m)) - 1);
         }
         else
         {
@@ -46,12 +46,12 @@ void Update(Peta *m, int P)
         }
         break;
     case 2:
-        ELMT(PETA(*m), Absis(POINT(*m)), Ordinat(POINT(*m)) - 1) = '.';
-        ELMT(PETA(*m), Absis(POINT(*m)), Ordinat(POINT(*m))) = 'S';
+        ELMT_MATRIX(PETA(*m), Absis(POINT(*m)), Ordinat(POINT(*m)) - 1) = '.';
+        ELMT_MATRIX(PETA(*m), Absis(POINT(*m)), Ordinat(POINT(*m))) = 'S';
 
         if (Ordinat(POINT(*m)) - 1 >= 0)
         {
-            NORTH(*m) = ELMT(PETA(*m), Absis(POINT(*m)) - 1, Ordinat(POINT(*m)));
+            NORTH(*m) = ELMT_MATRIX(PETA(*m), Absis(POINT(*m)) - 1, Ordinat(POINT(*m)));
         }
         else
         {
@@ -59,7 +59,7 @@ void Update(Peta *m, int P)
         }
         if (Ordinat(POINT(*m)) + 1 < ROW_EFF(PETA(*m)))
         {
-            SOUTH(*m) = ELMT(PETA(*m), Absis(POINT(*m)) + 1, Ordinat(POINT(*m)));
+            SOUTH(*m) = ELMT_MATRIX(PETA(*m), Absis(POINT(*m)) + 1, Ordinat(POINT(*m)));
         }
         else
         {
@@ -67,7 +67,7 @@ void Update(Peta *m, int P)
         }
         if (Absis(POINT(*m)) + 1 < COL_EFF(PETA(*m)))
         {
-            EAST(*m) = ELMT(PETA(*m), Absis(POINT(*m)), Ordinat(POINT(*m)) + 1);
+            EAST(*m) = ELMT_MATRIX(PETA(*m), Absis(POINT(*m)), Ordinat(POINT(*m)) + 1);
         }
         else
         {
@@ -75,7 +75,7 @@ void Update(Peta *m, int P)
         }
         if (Absis(POINT(*m)) - 1 >= 0)
         {
-            WEST(*m) = ELMT(PETA(*m), Absis(POINT(*m)), Ordinat(POINT(*m)) - 1);
+            WEST(*m) = ELMT_MATRIX(PETA(*m), Absis(POINT(*m)), Ordinat(POINT(*m)) - 1);
         }
         else
         {
@@ -83,12 +83,12 @@ void Update(Peta *m, int P)
         }
         break;
     case 3:
-        ELMT(PETA(*m), Absis(POINT(*m)) - 1, Ordinat(POINT(*m))) = '.';
-        ELMT(PETA(*m), Absis(POINT(*m)), Ordinat(POINT(*m))) = 'S';
+        ELMT_MATRIX(PETA(*m), Absis(POINT(*m)) - 1, Ordinat(POINT(*m))) = '.';
+        ELMT_MATRIX(PETA(*m), Absis(POINT(*m)), Ordinat(POINT(*m))) = 'S';
 
         if (Ordinat(POINT(*m)) - 1 >= 0)
         {
-            NORTH(*m) = ELMT(PETA(*m), Absis(POINT(*m)) - 1, Ordinat(POINT(*m)));
+            NORTH(*m) = ELMT_MATRIX(PETA(*m), Absis(POINT(*m)) - 1, Ordinat(POINT(*m)));
         }
         else
         {
@@ -96,7 +96,7 @@ void Update(Peta *m, int P)
         }
         if (Ordinat(POINT(*m)) + 1 < ROW_EFF(PETA(*m)))
         {
-            SOUTH(*m) = ELMT(PETA(*m), Absis(POINT(*m)) + 1, Ordinat(POINT(*m)));
+            SOUTH(*m) = ELMT_MATRIX(PETA(*m), Absis(POINT(*m)) + 1, Ordinat(POINT(*m)));
         }
         else
         {
@@ -104,7 +104,7 @@ void Update(Peta *m, int P)
         }
         if (Absis(POINT(*m)) + 1 < COL_EFF(PETA(*m)))
         {
-            EAST(*m) = ELMT(PETA(*m), Absis(POINT(*m)), Ordinat(POINT(*m)) + 1);
+            EAST(*m) = ELMT_MATRIX(PETA(*m), Absis(POINT(*m)), Ordinat(POINT(*m)) + 1);
         }
         else
         {
@@ -112,7 +112,7 @@ void Update(Peta *m, int P)
         }
         if (Absis(POINT(*m)) - 1 >= 0)
         {
-            WEST(*m) = ELMT(PETA(*m), Absis(POINT(*m)), Ordinat(POINT(*m)) - 1);
+            WEST(*m) = ELMT_MATRIX(PETA(*m), Absis(POINT(*m)), Ordinat(POINT(*m)) - 1);
         }
         else
         {
@@ -120,12 +120,12 @@ void Update(Peta *m, int P)
         }
         break;
     case 4:
-        ELMT(PETA(*m), Absis(POINT(*m)), Ordinat(POINT(*m)) + 1) = '.';
-        ELMT(PETA(*m), Absis(POINT(*m)), Ordinat(POINT(*m))) = 'S';
+        ELMT_MATRIX(PETA(*m), Absis(POINT(*m)), Ordinat(POINT(*m)) + 1) = '.';
+        ELMT_MATRIX(PETA(*m), Absis(POINT(*m)), Ordinat(POINT(*m))) = 'S';
 
         if (Ordinat(POINT(*m)) - 1 >= 0)
         {
-            NORTH(*m) = ELMT(PETA(*m), Absis(POINT(*m)) - 1, Ordinat(POINT(*m)));
+            NORTH(*m) = ELMT_MATRIX(PETA(*m), Absis(POINT(*m)) - 1, Ordinat(POINT(*m)));
         }
         else
         {
@@ -133,7 +133,7 @@ void Update(Peta *m, int P)
         }
         if (Ordinat(POINT(*m)) + 1 < ROW_EFF(PETA(*m)))
         {
-            SOUTH(*m) = ELMT(PETA(*m), Absis(POINT(*m)) + 1, Ordinat(POINT(*m)));
+            SOUTH(*m) = ELMT_MATRIX(PETA(*m), Absis(POINT(*m)) + 1, Ordinat(POINT(*m)));
         }
         else
         {
@@ -141,7 +141,7 @@ void Update(Peta *m, int P)
         }
         if (Absis(POINT(*m)) + 1 < COL_EFF(PETA(*m)))
         {
-            EAST(*m) = ELMT(PETA(*m), Absis(POINT(*m)), Ordinat(POINT(*m)) + 1);
+            EAST(*m) = ELMT_MATRIX(PETA(*m), Absis(POINT(*m)), Ordinat(POINT(*m)) + 1);
         }
         else
         {
@@ -149,7 +149,7 @@ void Update(Peta *m, int P)
         }
         if (Absis(POINT(*m)) - 1 >= 0)
         {
-            WEST(*m) = ELMT(PETA(*m), Absis(POINT(*m)), Ordinat(POINT(*m)) - 1);
+            WEST(*m) = ELMT_MATRIX(PETA(*m), Absis(POINT(*m)), Ordinat(POINT(*m)) - 1);
         }
         else
         {
@@ -159,7 +159,7 @@ void Update(Peta *m, int P)
     case 5:
         if (Ordinat(POINT(*m)) - 1 >= 0)
         {
-            NORTH(*m) = ELMT(PETA(*m), Absis(POINT(*m)) - 1, Ordinat(POINT(*m)));
+            NORTH(*m) = ELMT_MATRIX(PETA(*m), Absis(POINT(*m)) - 1, Ordinat(POINT(*m)));
         }
         else
         {
@@ -167,7 +167,7 @@ void Update(Peta *m, int P)
         }
         if (Ordinat(POINT(*m)) + 1 < ROW_EFF(PETA(*m)))
         {
-            SOUTH(*m) = ELMT(PETA(*m), Absis(POINT(*m)) + 1, Ordinat(POINT(*m)));
+            SOUTH(*m) = ELMT_MATRIX(PETA(*m), Absis(POINT(*m)) + 1, Ordinat(POINT(*m)));
         }
         else
         {
@@ -175,7 +175,7 @@ void Update(Peta *m, int P)
         }
         if (Absis(POINT(*m)) + 1 < COL_EFF(PETA(*m)))
         {
-            EAST(*m) = ELMT(PETA(*m), Absis(POINT(*m)), Ordinat(POINT(*m)) + 1);
+            EAST(*m) = ELMT_MATRIX(PETA(*m), Absis(POINT(*m)), Ordinat(POINT(*m)) + 1);
         }
         else
         {
@@ -183,7 +183,7 @@ void Update(Peta *m, int P)
         }
         if (Absis(POINT(*m)) - 1 >= 0)
         {
-            WEST(*m) = ELMT(PETA(*m), Absis(POINT(*m)), Ordinat(POINT(*m)) - 1);
+            WEST(*m) = ELMT_MATRIX(PETA(*m), Absis(POINT(*m)), Ordinat(POINT(*m)) - 1);
         }
         else
         {
@@ -198,28 +198,28 @@ boolean isValidJalan(Peta m, int i)
     boolean check = false;
     if (i == 1)
     {
-        if (ELMT(PETA(m), Absis(POINT(m)) - 1, Ordinat(POINT(m))) == '.')
+        if (ELMT_MATRIX(PETA(m), Absis(POINT(m)) - 1, Ordinat(POINT(m))) == '.')
         {
             check = true;
         }
     }
     else if (i == 2)
     {
-        if (ELMT(PETA(m), Absis(POINT(m)), Ordinat(POINT(m)) + 1) == '.')
+        if (ELMT_MATRIX(PETA(m), Absis(POINT(m)), Ordinat(POINT(m)) + 1) == '.')
         {
             check = true;
         }
     }
     else if (i == 3)
     {
-        if (ELMT(PETA(m), Absis(POINT(m)) + 1, Ordinat(POINT(m))) == '.')
+        if (ELMT_MATRIX(PETA(m), Absis(POINT(m)) + 1, Ordinat(POINT(m))) == '.')
         {
             check = true;
         }
     }
     else if (i == 4)
     {
-        if (ELMT(PETA(m), Absis(POINT(m)), Ordinat(POINT(m)) - 1) == '.')
+        if (ELMT_MATRIX(PETA(m), Absis(POINT(m)), Ordinat(POINT(m)) - 1) == '.')
         {
             check = true;
         }
@@ -291,11 +291,11 @@ void DisplayPeta(Peta m)
         {
             if (i == 0 || j == 0 || i == ROW_EFF(petatemp) - 1 || j == COL_EFF(petatemp) - 1)
             {
-                ELMT(petatemp, i, j) = '*';
+                ELMT_MATRIX(petatemp, i, j) = '*';
             }
             else
             {
-                ELMT(petatemp, i, j) = ELMT(PETA(m), i - 1, j - 1);
+                ELMT_MATRIX(petatemp, i, j) = ELMT_MATRIX(PETA(m), i - 1, j - 1);
             }
         }
     }
@@ -323,7 +323,7 @@ void fileToPeta(char *dir, Matrix *m)
             {
                 temp = '.';
             }
-            ELMT(*m, i, j) = temp;
+            ELMT_MATRIX(*m, i, j) = temp;
         }
     }
 }
@@ -335,7 +335,7 @@ POINT cariSimul(Peta m)
     {
         for (int j = 0; j < COL_EFF(PETA(m)); j++)
         {
-            if (ELMT(PETA(m), i, j) == 'S')
+            if (ELMT_MATRIX(PETA(m), i, j) == 'S')
             {
                 Absis(p) = i;
                 Ordinat(p) = j;

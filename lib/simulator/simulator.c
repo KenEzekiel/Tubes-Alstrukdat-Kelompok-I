@@ -5,6 +5,7 @@
 #include "../string/string.h"
 #include "../point/point.h"
 #include "../queue/prioqueuetime.h"
+#include "../../program/lib/listmakanan/listmakanan.h"
 #include "simulator.h"
 #include <stdio.h>
 
@@ -21,6 +22,7 @@ void CreateStartSimulator(Simulator *Sim, String user)
     POINT Lokasi;
     Inventory I;
     DeliveryList DL;
+    ListMakanan expired, delivered;
     // ALGORITMA
     User(*Sim) = user;
 
@@ -28,7 +30,9 @@ void CreateStartSimulator(Simulator *Sim, String user)
     CreatePoint(&Lokasi, 0, 0);
     CreateInventory(&I, 100);
     CreateDeliveryList(&DL, 100);
-    CreateState(&S, Lokasi, Waktu, I, DL);
+    CreateListMakanan(&expired);
+    CreateListMakanan(&delivered);
+    CreateState(&S, Lokasi, Waktu, I, DL, expired, delivered);
     State(*Sim) = S;
 }
 /* Membentuk sebuah Simulator dari nama pengguna dengan komponen lain berupa komponen awal */
@@ -52,6 +56,7 @@ void BacaSimulator(Simulator *Sim)
     TIME T;
     Inventory inventory;
     DeliveryList DL;
+    ListMakanan expired, delivered;
     State S;
 
     printf("Masukkan nama user: ");
@@ -66,8 +71,10 @@ void BacaSimulator(Simulator *Sim)
 
     CreateInventory(&inventory, 100);
     CreateDeliveryList(&DL, 100);
+    CreateListMakanan(&expired);
+    CreateListMakanan(&delivered);
 
-    CreateState(&S, loc, T, inventory, DL);
+    CreateState(&S, loc, T, inventory, DL, expired, delivered);
 
     CreateSimulator(Sim, user, S);
 }

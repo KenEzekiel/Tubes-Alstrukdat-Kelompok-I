@@ -11,9 +11,9 @@
 #include "../deliverylist/deliverylist.h"
 #include "../state/state.h"
 
-#define Nil -1
+#define Empty -1
 #define MaxEl 100
-/* Nil adalah stack dengan elemen kosong . */
+/* Empty adalah stack dengan elemen kosong . */
 
 // Undo/redo move mau simpen state peta atau move ke tempat sebelumnya tanpa increase time?
 
@@ -27,7 +27,7 @@ typedef struct Statestack
     State T[MaxEl]; /* tabel penyimpan elemen */
     address TOP;    /* alamat TOP: elemen puncak */
 } StateStack;
-/* Definisi Statestack US kosong : US.TOP = Nil */
+/* Definisi Statestack US kosong : US.TOP = Empty */
 /* Elemen yang dipakai menyimpan nilai Stack T[0]..T[MaxEl-1] */
 /* Jika US adalah StateStack maka akses elemen : */
 /* US.T[(S.TOP)] untuk mengakses elemen TOP */
@@ -43,7 +43,7 @@ typedef struct Statestack
 /* I.S. sembarang; */
 /* F.S. Membuat sebuah StateStack S yang kosong berkapasitas MaxEl */
 /* jadi indeksnya antara 0.. MaxEl */
-/* Ciri StateStack kosong : TOP bernilai Nil */
+/* Ciri StateStack kosong : TOP bernilai Empty */
 void CreateStateStackEmpty(StateStack *SS);
 
 /* ************ Predikat Untuk test keadaan KOLEKSI ************ */

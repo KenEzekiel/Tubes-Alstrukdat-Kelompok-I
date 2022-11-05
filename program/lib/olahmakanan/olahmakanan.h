@@ -1,11 +1,11 @@
 #ifndef OLAHMAKANAN_H
 #define OLAHMAKANAN_H
 
-#include "../../lib/queue/queue.h"
-#include "../../lib/string/string.h"
-#include "../../lib/matrix/matrix.h"
-#include "../../lib/liststatik/liststatik.h"
-#include "../../lib/point/point.h"
+#include "../../../lib/queue/queue.h"
+#include "../../../lib/string/string.h"
+#include "../../../lib/matrix/matrix.h"
+#include "../../../lib/liststatik/liststatik.h"
+#include "../../../lib/point/point.h"
 #include "../listmakanan/listmakanan.h"
 #include "../inventory/inventory.h"
 #include "../resep/resep.h"

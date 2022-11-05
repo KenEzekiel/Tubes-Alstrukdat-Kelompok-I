@@ -63,16 +63,16 @@ IdxType getLastIdx(ListStatik l);
 boolean isIdxValid(ListStatik l, IdxType i);
 /* Mengirimkan true jika i adalah indeks yang valid utk kapasitas List l */
 /* yaitu antara indeks yang terdefinisi utk container*/
-boolean isIdxEff(ListStatik l, IdxType i);
+boolean isIdxListEff(ListStatik l, IdxType i);
 /* Mengirimkan true jika i adalah indeks yang terdefinisi utk List l */
 /* yaitu antara 0..length(l)-1 */
 
 /* ********** TEST KOSONG/PENUH ********** */
 /* *** Test List kosong *** */
-boolean isEmpty(ListStatik l);
+boolean isListEmpty(ListStatik l);
 /* Mengirimkan true jika List l kosong, mengirimkan false jika tidak */
 /* *** Test List penuh *** */
-boolean isFull(ListStatik l);
+boolean isListFull(ListStatik l);
 /* Mengirimkan true jika List l penuh, mengirimkan false jika tidak */
 
 /* ********** BACA dan TULIS dengan INPUT/OUTPUT device ********** */

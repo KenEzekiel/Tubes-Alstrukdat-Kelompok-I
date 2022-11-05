@@ -10,22 +10,22 @@
 #include "../makanan/makanan.h"
 #include "../time/time.h"
 
-#define Nil -1
+#define Empty -1
 /* Konstanta untuk mendefinisikan address tak terdefinisi */
 
 /* Definisi elemen dan address */
-typedef Makanan infotype;
+typedef Makanan prioQueueInfotype;
 typedef int address; /* indeks tabel */
 /* Contoh deklarasi variabel bertype PrioQueueTime : */
 /* Versi I : tabel dinamik, Head dan Tail eksplisit, ukuran disimpan */
 typedef struct
 {
-    infotype *T;  /* tabel penyimpan elemen */
+    prioQueueInfotype *T;  /* tabel penyimpan elemen */
     address HEAD; /* alamat penghapusan */
     address TAIL; /* alamat penambahan */
     int MaxEl;    /* Max elemen queue */
 } PrioQueueTime;
-/* Definisi PrioQueueTime kosong: HEAD=Nil; TAIL=Nil. */
+/* Definisi PrioQueueTime kosong: HEAD=Empty; TAIL=Empty. */
 /* Catatan implementasi: T[0] tidak pernah dipakai */
 
 /* ********* AKSES (Selektor) ********* */
@@ -36,13 +36,13 @@ typedef struct
 #define Tail(Q) (Q).TAIL
 #define InfoHead(Q) (Q).T[(Q).HEAD]
 #define InfoTail(Q) (Q).T[(Q).TAIL]
-#define MaxEl(Q) (Q).MaxEl
+#define MaxPrioQueueEl(Q) (Q).MaxEl
 #define Elmt(Q, i) (Q).T[(i)]
 
 /* ********* Prototype ********* */
-boolean IsEmpty(PrioQueueTime Q);
+boolean IsPrioQueueEmpty(PrioQueueTime Q);
 /* Mengirim true jika Q kosong: lihat definisi di atas */
-boolean IsFull(PrioQueueTime Q);
+boolean IsPrioQueueFull(PrioQueueTime Q);
 /* Mengirim true jika tabel penampung elemen Q sudah penuh */
 /* yaitu mengandung elemen sebanyak MaxEl */
 int NBElmt(PrioQueueTime Q);
@@ -63,12 +63,12 @@ void DeAlokasi(PrioQueueTime *Q);
 /* F.S. Q menjadi tidak terdefinisi lagi, MaxEl(Q) diset 0 */
 
 /* *** Primitif Add/Delete *** */
-void Enqueue(PrioQueueTime *Q, infotype X);
+void Enqueue(PrioQueueTime *Q, prioQueueInfotype X);
 /* Proses: Menambahkan X pada Q dengan aturan priority queue, terurut membesar berdasarkan time */
 /* I.S. Q mungkin kosong, tabel penampung elemen Q TIDAK penuh */
 /* F.S. X disisipkan pada posisi yang tepat sesuai dengan prioritas,
         TAIL "maju" dengan mekanisme circular buffer; */
-void Dequeue(PrioQueueTime *Q, infotype *X);
+void Dequeue(PrioQueueTime *Q, prioQueueInfotype *X);
 /* Proses: Menghapus X pada Q dengan aturan FIFO */
 /* I.S. Q tidak mungkin kosong */
 /* F.S. X = nilai elemen HEAD pd I.S., HEAD "maju" dengan mekanisme circular buffer;
@@ -85,10 +85,10 @@ void PrintPrioQueueTime(PrioQueueTime Q);
 #
 */
 
-boolean isElmt(PrioQueueTime Q, infotype val);
+boolean isElmt(PrioQueueTime Q, prioQueueInfotype val);
 /* Mengirimkan true jika val terdapat didalam Q */
 
-void deleteElmt(PrioQueueTime *Q, infotype *val);
+void deleteElmt(PrioQueueTime *Q, prioQueueInfotype *val);
 /* Delete suatu elemen val dari Q */
 /* I.S Q terdefinisi, mungkin kosong */
 /* F.s val didelete jika ada didalam Q */

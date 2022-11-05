@@ -123,7 +123,7 @@ void updateUndoNotif(State current, State prev, Notif *listNotif)
 
     /* Menambahkan notif pembatalan aksi */
     tempPrev = InventoryState(prev);
-    while (!IsEmpty(tempPrev))
+    while (!IsPrioQueueEmpty(tempPrev))
     {
         Dequeue(&tempPrev, &tempVal);
         if (!isElmtById(InventoryState(current), ID(tempVal)))
@@ -204,7 +204,7 @@ void updateRedoNotif(State current, State prev, Notif *listNotif)
 
     /* Menambahkan notif pembatalan aksi */
     tempCurr = InventoryState(current);
-    while (!IsEmpty(tempCurr))
+    while (!IsPrioQueueEmpty(tempCurr))
     {
         Dequeue(&tempCurr, &tempVal);
         if (!isElmtById(InventoryState(prev), ID(tempVal)))

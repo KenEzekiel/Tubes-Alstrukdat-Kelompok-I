@@ -5,7 +5,7 @@
 #include "../../../lib/makanan/makanan.h"
 #include "../../../lib/string/string.h"
 #include "../../../lib/liststatik/liststatik.h"
-#include "../deliverylist/deliverylist.h"
+#include "deliverylist.h"
 #include <stdio.h>
 
 /* *** Konstruktor *** */
@@ -17,15 +17,13 @@ void CreateDeliveryList(DeliveryList *DL, int max)
 /* *** Operasi Penambahan Makanan *** */
 /* I.S. Simulator sedang berada di sebelah B, dan makanan yang dibeli sudah valid */
 /* F.S. Makanan dimasukkan kedalam DeliveryList */
-void buyMakanan(DeliveryList *DL, infotype food)
+void buyMakanan(DeliveryList *DL, prioQueueInfotype food)
 {
-    boolean found;
-    int idx;
     int i, j;
-    infotype temp;
+    prioQueueInfotype temp;
 
     // ALGORITMA
-    if (IsEmpty(*DL))
+    if (IsPrioQueueEmpty(*DL))
     {
         Head(*DL) = 0;
         Tail(*DL) = 0;
@@ -34,17 +32,17 @@ void buyMakanan(DeliveryList *DL, infotype food)
     else
     {
         // Mod untuk antisipasi jika Tail dari DL > IDX_MAX alias CAPACITY - 1
-        Tail(*DL) = Tail(*DL) == MaxEl(*DL) - 1 ? 0 : Tail(*DL) + 1;
+        Tail(*DL) = Tail(*DL) == MaxPrioQueueEl(*DL) - 1 ? 0 : Tail(*DL) + 1;
         InfoTail(*DL) = food;
         i = Tail(*DL);
-        j = i == 0 ? MaxEl(*DL) - 1 : i - 1;
+        j = i == 0 ? MaxPrioQueueEl(*DL) - 1 : i - 1;
         while (i != Head(*DL) && TIMEToMenit(DelivTime(Elmt(*DL, i))) < TIMEToMenit(DelivTime(Elmt(*DL, j))))
         {
             temp = Elmt(*DL, i);
             Elmt(*DL, i) = Elmt(*DL, j);
             Elmt(*DL, j) = temp;
             i = j;
-            j = i == 0 ? MaxEl(*DL) - 1 : i - 1;
+            j = i == 0 ? MaxPrioQueueEl(*DL) - 1 : i - 1;
         }
     }
 }
@@ -56,7 +54,7 @@ void buyMakanan(DeliveryList *DL, infotype food)
 void buyMakananbyId(DeliveryList *DL, int id, ListMakanan L)
 {
     // KAMUS LOKAL
-    infotype food;
+    prioQueueInfotype food;
     // ALGORITMA
 
     food = ELMT_LM(L, indexOfID(L, id));
@@ -72,7 +70,7 @@ void buyMakananbyId(DeliveryList *DL, int id, ListMakanan L)
 void buyMakananbyName(DeliveryList *DL, String nama, ListMakanan L)
 {
     // KAMUS LOKAL
-    infotype food;
+    prioQueueInfotype food;
     // ALGORITMA
 
     food = ELMT_LM(L, indexOfName(L, nama));
@@ -158,7 +156,7 @@ void updateDeliveryList(DeliveryList *DL, Inventory *I, TIME t, ListMakanan *del
 
     // ALGORITMA
 
-    if (!IsEmpty(*DL))
+    if (!IsPrioQueueEmpty(*DL))
     {
         minusDelivTime(DL, t);
         deliver(DL, I, delivered);
@@ -175,7 +173,7 @@ void reverseUpdateDeliveryList(DeliveryList *DL, Inventory *I, TIME t)
 
     // ALGORITMA
 
-    if (!IsEmpty(*DL))
+    if (!IsPrioQueueEmpty(*DL))
     {
         plusDelivTime(DL, t);
     }
@@ -189,10 +187,10 @@ void deliver(DeliveryList *DL, Inventory *I, ListMakanan *delivered)
     // KAMUS LOKAL
     DeliveryList p;
     DeliveryList q = *DL;
-    infotype food;
+    prioQueueInfotype food;
     // ALGORITMA
-    MakeEmpty(&p, MaxEl(*DL));
-    while (!IsEmpty(q))
+    MakeEmpty(&p, MaxPrioQueueEl(*DL));
+    while (!IsPrioQueueEmpty(q))
     {
         Dequeue(&q, &food);
         if (TIMEToMenit(DelivTime(food)) != 0)
@@ -217,11 +215,11 @@ void minusDelivTime(DeliveryList *DL, TIME t)
     // KAMUS LOKAL
     DeliveryList p;
     DeliveryList q = *DL;
-    infotype food;
+    prioQueueInfotype food;
     int hasil;
     // ALGORITMA
-    MakeEmpty(&p, MaxEl(*DL));
-    while (!IsEmpty(q))
+    MakeEmpty(&p, MaxPrioQueueEl(*DL));
+    while (!IsPrioQueueEmpty(q))
     {
         Dequeue(&q, &food);
         hasil = TIMEToMenit(DelivTime(food)) - TIMEToMenit(t);
@@ -243,11 +241,11 @@ void plusDelivTime(DeliveryList *DL, TIME t)
     // KAMUS LOKAL
     DeliveryList p;
     DeliveryList q = *DL;
-    infotype food;
+    prioQueueInfotype food;
     int hasil;
     // ALGORITMA
-    MakeEmpty(&p, MaxEl(*DL));
-    while (!IsEmpty(q))
+    MakeEmpty(&p, MaxPrioQueueEl(*DL));
+    while (!IsPrioQueueEmpty(q))
     {
         Dequeue(&q, &food);
         hasil = TIMEToMenit(DelivTime(food)) + TIMEToMenit(t);
@@ -278,7 +276,7 @@ boolean checkUpgrade(DeliveryList DL)
     int len, threshold;
     // ALGORITMA
     len = lengthDeliveryList(DL);
-    threshold = 0.75 * MaxEl(DL);
+    threshold = 0.75 * MaxPrioQueueEl(DL);
 
     if (len > threshold)
     {
@@ -298,14 +296,14 @@ void upgradeDelivList(DeliveryList *DL)
     // KAMUS LOKAL
     DeliveryList p = *DL;
     DeliveryList q;
-    infotype food;
+    prioQueueInfotype food;
 
     // ALGORITMA
 
     if (checkUpgrade(*DL))
     {
-        MakeEmpty(&q, MaxEl(*DL) * 2);
-        while (!IsEmpty(p))
+        MakeEmpty(&q, MaxPrioQueueEl(*DL) * 2);
+        while (!IsPrioQueueEmpty(p))
         {
             Dequeue(&p, &food);
             buyMakanan(&q, food);

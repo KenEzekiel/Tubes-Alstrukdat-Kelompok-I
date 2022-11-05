@@ -20,4 +20,4 @@ void print_cyan(char* c);
 
 void print_image(FILE *fptr);
 
-void printSplashScreen();
+void displaySplashScreen();

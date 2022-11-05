@@ -21,7 +21,7 @@ typedef struct
 /* ********* AKSES (Selektor) ********* */
 /* Jika s adalah String, maka : */
 #define LENGTH(s) (s).length
-#define ELMT(s, i) (s).buffer[(i)]
+#define ELMT_STRING(s, i) (s).buffer[(i)]
 
 /* *** Kreator *** */
 /* I.S. sembarang */
@@ -37,7 +37,7 @@ boolean isStringEmpty(String s);
 boolean isStringFull(String s);
 
 /* Mengirimkan banyaknya elemen string. Mengirimkan 0 jika q kosong. */
-int length(String s);
+int stringLength(String s);
 
 /* *** Primitif Konstruktor *** */
 

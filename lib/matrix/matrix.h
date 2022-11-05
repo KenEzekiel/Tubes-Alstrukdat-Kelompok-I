@@ -10,10 +10,10 @@
 #define COL_CAP 1000
 
 typedef int IdxType; /* Index baris, kolom */
-typedef char ElType;
+typedef char MatrixElType;
 typedef struct
 {
-   ElType mem[ROW_CAP][COL_CAP];
+   MatrixElType mem[ROW_CAP][COL_CAP];
    int rowEff; /* banyaknya/ukuran baris yg terdefinisi */
    int colEff; /* banyaknya/ukuran kolom yg terdefinisi */
 } Matrix;
@@ -22,7 +22,7 @@ void createMatrix(int nRows, int nCols, Matrix *m);
 
 #define ROW_EFF(M) (M).rowEff
 #define COL_EFF(M) (M).colEff
-#define ELMT(M, i, j) (M).mem[(i)][(j)]
+#define ELMT_MATRIX(M, i, j) (M).mem[(i)][(j)]
 
 
 boolean isMatrixIdxValid(int i, int j);
@@ -31,7 +31,7 @@ IdxType getLastIdxRow(Matrix m);
 
 IdxType getLastIdxCol(Matrix m);
 
-boolean isIdxEff(Matrix m, IdxType i, IdxType j);
+boolean isIdxMatrixEff(Matrix m, IdxType i, IdxType j);
 
 void copyMatrix(Matrix mIn, Matrix *mOut);
 
