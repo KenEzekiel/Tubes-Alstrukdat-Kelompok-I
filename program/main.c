@@ -102,23 +102,100 @@ int main()
 			}
 			else if (IsMIX())
 			{
-				PushUndoStack(&US, State(BNMO));
-				updateNotif(State(BNMO), &listNotif);
+				if (CanMix(Map)) {
+					ListMakanan *lfiltered;
+					String aksi = wordToString(currentWord);
+					displayFilteredAksi(aksi,DaftarMakanan,&lfiltered);
+					int i;
+					do {
+						printf("Enter command: ");
+						STARTWORD();
+						i = WordToInt(currentWord);
+					}
+					while (i<0 || i> listMakananLength(*lfiltered));
+					process(aksi,i,&DaftarMakanan,InventoryState(State(BNMO)),&lfiltered,&ProcessedList(State(BNMO)),Resep);
+					PushUndoStack(&US, State(BNMO));
+					updateNotif(State(BNMO), &listNotif);
+				}
+				else{
+					String aksi = wordToString(currentWord);
+					printf("BNMO tidak berada pada area ");
+					displayString(aksi);
+					printf("!\n");
+				}
 			}
 			else if (IsCHOP())
 			{
-				PushUndoStack(&US, State(BNMO));
-				updateNotif(State(BNMO), &listNotif);
+				if (CanChop(Map)) {
+					ListMakanan *lfiltered;
+					String aksi = wordToString(currentWord);
+					displayFilteredAksi(aksi,DaftarMakanan,&lfiltered);
+					int i;
+					do {
+						printf("Enter command: ");
+						STARTWORD();
+						i = WordToInt(currentWord);
+					}
+					while (i<0 || i> listMakananLength(*lfiltered));
+					process(aksi,i,&DaftarMakanan,InventoryState(State(BNMO)),&lfiltered,&ProcessedList(State(BNMO)),Resep);
+					PushUndoStack(&US, State(BNMO));
+					updateNotif(State(BNMO), &listNotif);
+				}
+				else{
+					String aksi = wordToString(currentWord);
+					printf("BNMO tidak berada pada area ");
+					displayString(aksi);
+					printf("!\n");
+				}
 			}
 			else if (IsFRY())
 			{
-				PushUndoStack(&US, State(BNMO));
-				updateNotif(State(BNMO), &listNotif);
+				if (CanFry(Map)) {
+					ListMakanan *lfiltered;
+					String aksi = wordToString(currentWord);
+					displayFilteredAksi(aksi,DaftarMakanan,&lfiltered);
+					int i;
+					do {
+						printf("Enter command: ");
+						STARTWORD();
+						i = WordToInt(currentWord);
+						printf("\n");
+					}
+					while (i<0 || i> listMakananLength(*lfiltered));
+					process(aksi,i,&DaftarMakanan,InventoryState(State(BNMO)),&lfiltered,&ProcessedList(State(BNMO)),Resep);
+					PushUndoStack(&US, State(BNMO));
+					updateNotif(State(BNMO), &listNotif);
+				}
+				else{
+					String aksi = wordToString(currentWord);
+					printf("BNMO tidak berada pada area ");
+					displayString(aksi);
+					printf("!\n");
+				}
 			}
 			else if (IsBOIL())
 			{
-				PushUndoStack(&US, State(BNMO));
-				updateNotif(State(BNMO), &listNotif);
+				if (CanBoil(Map)) {
+					ListMakanan *lfiltered;
+					String aksi = wordToString(currentWord);
+					displayFilteredAksi(aksi,DaftarMakanan,&lfiltered);
+					int i;
+					do {
+						printf("Enter command: ");
+						STARTWORD();
+						i = WordToInt(currentWord);
+					}
+					while (i<0 || i> listMakananLength(*lfiltered));
+					process(aksi,i,&DaftarMakanan,InventoryState(State(BNMO)),&lfiltered,&ProcessedList(State(BNMO)),Resep);
+					PushUndoStack(&US, State(BNMO));
+					updateNotif(State(BNMO), &listNotif);
+				}
+				else{
+					String aksi = wordToString(currentWord);
+					printf("BNMO tidak berada pada area ");
+					displayString(aksi);
+					printf("!\n");
+				}
 			}
 			else if (IsWAIT())
 			{

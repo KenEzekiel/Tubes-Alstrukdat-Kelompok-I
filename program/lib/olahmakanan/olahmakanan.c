@@ -1,5 +1,6 @@
 #include "olahmakanan.h"
 
+
 void displayMakananFiltered(String aksi, ListMakanan *lfood, ListMakanan *lfiltered) {
     Makanan food;
     String nama;
@@ -79,7 +80,7 @@ void process(String aksi,int i, ListMakanan *lfood, Inventory I, ListMakanan *lf
         upgradeProcessList(P);
         Enqueue(P,food);
         displayString(Nama(food));
-        printf(" sedang diproses!");
+        printf(" sedang diproses!\n");
     }
     else{
         printf("Gagal membuat ");
