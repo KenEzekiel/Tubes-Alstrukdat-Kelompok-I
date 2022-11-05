@@ -103,7 +103,7 @@ int main()
 			{
 				if (CanMix(Map))
 				{
-					ListMakanan *lfiltered;
+					ListMakanan lfiltered;
 					String aksi = wordToString(currentWord);
 					displayFilteredAksi(aksi, DaftarMakanan, &lfiltered);
 					int i;
@@ -112,8 +112,8 @@ int main()
 						printf("Enter command: ");
 						STARTWORD();
 						i = WordToInt(currentWord);
-					} while (i < 0 || i > listMakananLength(*lfiltered));
-					process(aksi, i, &DaftarMakanan, InventoryState(State(BNMO)), lfiltered, &ProcessedList(State(BNMO)), Resep);
+					} while (i < 0 || i > listMakananLength(lfiltered));
+					process(aksi, i, &DaftarMakanan, InventoryState(State(BNMO)), &lfiltered, &ProcessedList(State(BNMO)), Resep);
 					PushUndoStack(&US, State(BNMO));
 					updateNotif(State(BNMO), &listNotif);
 				}
@@ -129,7 +129,7 @@ int main()
 			{
 				if (CanChop(Map))
 				{
-					ListMakanan *lfiltered;
+					ListMakanan lfiltered;
 					String aksi = wordToString(currentWord);
 					displayFilteredAksi(aksi, DaftarMakanan, &lfiltered);
 					int i;
@@ -138,8 +138,8 @@ int main()
 						printf("Enter command: ");
 						STARTWORD();
 						i = WordToInt(currentWord);
-					} while (i < 0 || i > listMakananLength(*lfiltered));
-					process(aksi, i, &DaftarMakanan, InventoryState(State(BNMO)), lfiltered, &ProcessedList(State(BNMO)), Resep);
+					} while (i < 0 || i > listMakananLength(lfiltered));
+					process(aksi, i, &DaftarMakanan, InventoryState(State(BNMO)), &lfiltered, &ProcessedList(State(BNMO)), Resep);
 					PushUndoStack(&US, State(BNMO));
 					updateNotif(State(BNMO), &listNotif);
 				}
@@ -155,7 +155,7 @@ int main()
 			{
 				if (CanFry(Map))
 				{
-					ListMakanan *lfiltered;
+					ListMakanan lfiltered;
 					String aksi = wordToString(currentWord);
 					displayFilteredAksi(aksi, DaftarMakanan, &lfiltered);
 					int i;
@@ -165,8 +165,8 @@ int main()
 						STARTWORD();
 						i = WordToInt(currentWord);
 						printf("\n");
-					} while (i < 0 || i > listMakananLength(*lfiltered));
-					process(aksi, i, &DaftarMakanan, InventoryState(State(BNMO)), lfiltered, &ProcessedList(State(BNMO)), Resep);
+					} while (i < 0 || i > listMakananLength(lfiltered));
+					process(aksi, i, &DaftarMakanan, InventoryState(State(BNMO)), &lfiltered, &ProcessedList(State(BNMO)), Resep);
 					PushUndoStack(&US, State(BNMO));
 					updateNotif(State(BNMO), &listNotif);
 				}
@@ -182,7 +182,7 @@ int main()
 			{
 				if (CanBoil(Map))
 				{
-					ListMakanan *lfiltered;
+					ListMakanan lfiltered;
 					String aksi = wordToString(currentWord);
 					displayFilteredAksi(aksi, DaftarMakanan, &lfiltered);
 					int i;
@@ -191,8 +191,8 @@ int main()
 						printf("Enter command: ");
 						STARTWORD();
 						i = WordToInt(currentWord);
-					} while (i < 0 || i > listMakananLength(*lfiltered));
-					process(aksi, i, &DaftarMakanan, InventoryState(State(BNMO)), lfiltered, &ProcessedList(State(BNMO)), Resep);
+					} while (i < 0 || i > listMakananLength(lfiltered));
+					process(aksi, i, &DaftarMakanan, InventoryState(State(BNMO)), &lfiltered, &ProcessedList(State(BNMO)), Resep);
 					PushUndoStack(&US, State(BNMO));
 					updateNotif(State(BNMO), &listNotif);
 				}
