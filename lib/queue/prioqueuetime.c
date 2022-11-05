@@ -167,7 +167,7 @@ void PrintPrioQueueTime(PrioQueueTime Q)
             Dequeue(&temp, &val);
             displayString(Nama(val));
             printf(" - ");
-            printTime(Exp(val));
+            PrintTime(Exp(val));
             printf("\n");
             // TulisMakanan(val);
             //  idx = (idx % NBElmt(Q)) + 1;
