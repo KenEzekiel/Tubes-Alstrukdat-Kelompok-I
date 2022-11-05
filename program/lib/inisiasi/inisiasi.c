@@ -142,7 +142,7 @@ boolean IsKULKAS()
 boolean IsINSERTKULKAS()
 /* Mengecek apakah currentWord == INSERT */
 {
-	Word InsertKulkas = StringToWord("INSERT", 6);
+	Word InsertKulkas = StringToWord("INSERTKULKAS", 12);
 
 	return IsWordEqual(InsertKulkas, currentWord);
 }
@@ -150,7 +150,7 @@ boolean IsINSERTKULKAS()
 boolean IsGETKULKAS()
 /* Mengecek apakah currentWord == GET */
 {
-	Word GetKulkas = StringToWord("GET", 3);
+	Word GetKulkas = StringToWord("GETKULKAS", 9);
 
 	return IsWordEqual(GetKulkas, currentWord);
 }
