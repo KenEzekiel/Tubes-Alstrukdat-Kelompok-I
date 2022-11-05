@@ -60,7 +60,7 @@ int main()
 			if (IsBUY())
 			{
 				buy(&DeliveryListState(State(BNMO)), DaftarMakanan);
-				UpdateActionTime(&DeliveryListState(State(BNMO)), &InventoryState(State(BNMO)), &TimeState(State(BNMO)), &ExpListState(State(BNMO)), &DeliveredListState(State(BNMO)), &ProcessedList(State(BNMO)));
+				UpdateActionTime(&State(BNMO));
 				PushUndoStack(&US, State(BNMO));
 				updateNotif(State(BNMO), &listNotif);
 			}
@@ -125,16 +125,13 @@ int main()
 				PushUndoStack(&US, State(BNMO));
 				updateNotif(State(BNMO), &listNotif);
 			}
-			else if (IsKULKAS())
+			else if (IsINSERTKULKAS())
 			{
-				if (IsINSERTKULKAS())
-				{
-					procInsertToKulkas(&K, &InventoryState(State(BNMO)));
-				}
-				else if (IsGETKULKAS())
-				{
-					procGetFromKulkas(&K, &InventoryState(State(BNMO)));
-				}
+				procInsertToKulkas(&K, &InventoryState(State(BNMO)));
+			}
+			else if (IsGETKULKAS())
+			{
+				procGetFromKulkas(&K, &InventoryState(State(BNMO)));
 			}
 			else if (IsUNDO())
 			{
