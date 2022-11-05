@@ -129,6 +129,14 @@ boolean IsWAIT()
 	return IsWordEqual(Wait, currentWord);
 }
 
+boolean IsKULKAS()
+/* Mengecek apakah currentWord == KULKAS */
+{
+	Word Kulkas = StringToWord("KULKAS", 6);
+
+	return IsWordEqual(Kulkas, currentWord);
+}
+
 boolean IsUNDO()
 /* Mengecek apakah currentWord == UNDO */
 {

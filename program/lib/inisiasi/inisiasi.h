@@ -58,6 +58,9 @@ boolean IsBOIL();
 boolean IsWAIT();
 /* Mengecek apakah currentWord == WAIT */
 
+boolean IsKULKAS();
+/* Mengecek apakah currentWord == KULKAS */
+
 boolean IsUNDO();
 /* Mengecek apakah currentWord == UNDO */
 
