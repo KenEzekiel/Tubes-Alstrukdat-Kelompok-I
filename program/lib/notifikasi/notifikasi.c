@@ -234,3 +234,9 @@ void updateNotif(State *curr, Notif *listNotif)
     initializeUlang(&ExpListState(*curr));
 }
 
+void warningNotif(Notif *listNotif)
+{
+    String newNotif;
+    charToString("Ups! Kamu tidak bisa bergerak karena terhalang :D", &newNotif, 49);
+    insertLastNotif(listNotif, newNotif);
+}
