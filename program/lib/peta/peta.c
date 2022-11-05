@@ -282,7 +282,7 @@ void MoveWest(Peta *m, boolean *gerak)
 
 void DisplayPos(Peta m)
 {
-    printf("(%d,%d)", Absis(POINT(m)), Ordinat(POINT(m)));
+    printf("(%d,%d)\n", Absis(POINT(m)), Ordinat(POINT(m)));
 }
 
 void DisplayPeta(Peta m)
