@@ -102,7 +102,7 @@ void minusProcessTime(ProcessList *P, TIME t){
     int hasil;
     // ALGORITMA
     MakeEmpty(&p, MaxPrioQueueEl(*P));
-    while (!IsEmpty(q))
+    while (!IsPrioQueueEmpty(q))
     {
         Dequeue(&q, &food);
         hasil = TIMEToMenit(DelivTime(food)) - TIMEToMenit(t);
@@ -124,7 +124,7 @@ void plusProcessTime(ProcessList *P, TIME t){
     int hasil;
     // ALGORITMA
     MakeEmpty(&p, MaxEl(*P));
-    while (!IsEmpty(q))
+    while (!isPrioQueueEmpty(q))
     {
         Dequeue(&q, &food);
         hasil = TIMEToMenit(DelivTime(food)) - TIMEToMenit(t);
