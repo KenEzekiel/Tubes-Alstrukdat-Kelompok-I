@@ -37,7 +37,7 @@ void StartPeta(Peta *m,char* dir);
 
 boolean CanOrder(Peta m);
 boolean CanMix(Peta m);
-boolean CanCut(Peta m);
+boolean CanChop(Peta m);
 boolean CanFry(Peta m);
 boolean CanBoil(Peta m);
 
