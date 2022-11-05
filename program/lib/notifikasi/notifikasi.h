@@ -52,15 +52,33 @@ void insertLastNotif(Notif *listNotif, ELTYPE newNotif);
 /* F.S. val adalah elemen terakhir l yang baru */
 
 void printNotif(Notif listNotif);
+/* Proses: Melakukan iterasi notif dan menampilkan di layar */
+/* I.S. List l terdefinisi, boleh kosong */
+/* F.S. val adalah elemen terakhir l yang baru */
 
 void addDelivered(ListMakanan delivered, Notif *listNotif);
+/* Proses: Menambahkan makanan yang telah terkirim ke notifikasi */
+/* I.S. listNotif dan delivered terdefinisi, boleh kosong */
+/* F.S. notifikasi dari makanan di delivered masuk sebagai elemen baru listNotif */
 
 void addExpired(ListMakanan expired,  Notif *listNotif);
+/* Proses: Menambahkan makanan yang telah expired ke notifikasi */
+/* I.S. listNotif dan expired terdefinisi, boleh kosong */
+/* F.S. notifikasi dari makanan di expired masuk sebagai elemen baru listNotif */
 
 void updateUndoNotif(State current, State prev, Notif *listNotif);
+/* Proses: Menambahkan notifikasi saat dilakukan command undo */
+/* I.S. listNotif terdefinisi, boleh kosong, State current dan prev terdefinisi */
+/* F.S. Melakukan perbandingan state current dan prev, menambahkan notifikasi sebagai elemen baru listNotif */
 
 void updateRedoNotif(State current, State prev, Notif *listNotif);
+/* Proses: Menambahkan notifikasi saat dilakukan command redo */
+/* I.S. listNotif terdefinisi, boleh kosong, State current dan prev terdefinisi */
+/* F.S. Melakukan perbandingan state current dan prev, menambahkan notifikasi sebagai elemen baru listNotif */
 
 void updateNotif(State curr, Notif *listNotif);
+/* Proses: Menambahkan notifikasi saat dilakukan command selain undo dan redo */
+/* I.S. listNotif terdefinisi, boleh kosong, State current terdefinisi */
+/* F.S. Menambahkan notifikasi delivered dan expired sebagai elemen baru listNotif */
 
 #endif

@@ -50,6 +50,7 @@ void printNotif(Notif listNotif)
     }
     else 
     {
+        printf("\n");
         for (int i = 0; i < notifLength(listNotif); i++)
         {
             printf("%d. ", i+1);
@@ -62,11 +63,10 @@ void printNotif(Notif listNotif)
 void addDelivered(ListMakanan delivered, Notif *listNotif)
 {
     /* KAMUS */
-    char c[] = " sudah diterima oleh Cooking BNMO! :D";
     String notifInfo, newNotif;
 
     /* ALGORITMA */
-    charToString(c, &notifInfo, 37);
+    charToString(" sudah diterima oleh Cooking BNMO! :D", &notifInfo, 37);
     for (int i = 0; i < listMakananLength(delivered); i++) 
     {
         newNotif = Nama(ELMT_LM(delivered, i));
@@ -78,11 +78,10 @@ void addDelivered(ListMakanan delivered, Notif *listNotif)
 void addExpired(ListMakanan expired,  Notif *listNotif)
 {
     /* KAMUS */
-    char c[] = " kedaluwarsa ... :(";
     String notifInfo, newNotif;
 
     /* ALGORITMA */
-    charToString(c, &notifInfo, 19);
+    charToString(" kedaluwarsa ... :(", &notifInfo, 19);
     for (int i = 0; i < listMakananLength(expired); i++) 
     {
         newNotif = Nama(ELMT_LM(expired, i));
@@ -94,14 +93,6 @@ void addExpired(ListMakanan expired,  Notif *listNotif)
 void updateUndoNotif(State current, State prev, Notif *listNotif)
 {
     /* KAMUS */
-    char c1[] = " dikembalikan ke inventory";
-    char c2[] = " dikeluarkan dari inventory";
-    char c3[] = " dibatalkan ... :(";
-    char c4[] = "FRY";
-    char c5[] = "MIX";
-    char c6[] = "CHOP";
-    char c7[] = "BOIL";
-    char c8[] = " ";
     Inventory tempPrev;
     Makanan tempVal;
     int idx;
@@ -112,14 +103,14 @@ void updateUndoNotif(State current, State prev, Notif *listNotif)
     ListMakanan delivCurr = DeliveredListState(current);
 
     /* ALGORITMA */
-    charToString(c1, &info1, 26);
-    charToString(c2, &info2, 27);
-    charToString(c3, &info3, 18);
-    charToString(c4, &aksiFry, 3);
-    charToString(c5, &aksiMix, 3);
-    charToString(c6, &aksiChop, 4);
-    charToString(c7, &aksiBoil, 4);
-    charToString(c8, &space, 1);
+    charToString(" dikembalikan ke inventory", &info1, 26);
+    charToString(" dikeluarkan dari inventory", &info2, 27);
+    charToString(" dibatalkan ... :(", &info3, 18);
+    charToString("FRY", &aksiFry, 3);
+    charToString("MIX", &aksiMix, 3);
+    charToString("CHOP", &aksiChop, 4);
+    charToString("BOIL", &aksiBoil, 4);
+    charToString(" ", &space, 1);
 
     /* Menambahkan notif pembatalan aksi */
     tempPrev = InventoryState(prev);
@@ -133,19 +124,19 @@ void updateUndoNotif(State current, State prev, Notif *listNotif)
             {
                 if (isStringEqual(Aksi(tempVal), aksiFry))
                 {
-                    newNotif = aksiFry;
+                    charToString("Penggorengan ", &newNotif, 13);
                 }
                 else if (isStringEqual(Aksi(tempVal), aksiMix))
                 {
-                    newNotif = aksiMix;
+                    charToString("Pencampuran ", &newNotif, 12);
                 }
                 else if (isStringEqual(Aksi(tempVal), aksiBoil))
                 {
-                    newNotif = aksiBoil;
+                    charToString("Perebusan ", &newNotif, 10);
                 }
                 else
                 {
-                    newNotif = aksiChop;
+                    charToString("Pemotongan ", &newNotif, 11);
                 }
                 insertSubstring(&newNotif, space);
                 insertSubstring(&newNotif, Nama(tempVal));
@@ -179,12 +170,6 @@ void updateUndoNotif(State current, State prev, Notif *listNotif)
 void updateRedoNotif(State current, State prev, Notif *listNotif)
 {
     /* KAMUS */
-    char c3[] = " dilakukan ... :D";
-    char c4[] = "FRY";
-    char c5[] = "MIX";
-    char c6[] = "CHOP";
-    char c7[] = "BOIL";
-    char c8[] = " ";
     Inventory tempCurr;
     Makanan tempVal;
     int idx;
@@ -195,12 +180,12 @@ void updateRedoNotif(State current, State prev, Notif *listNotif)
     ListMakanan delivCurr = DeliveredListState(current);
 
     /* ALGORITMA */
-    charToString(c3, &info, 17);
-    charToString(c4, &aksiFry, 3);
-    charToString(c5, &aksiMix, 3);
-    charToString(c6, &aksiChop, 4);
-    charToString(c7, &aksiBoil, 4);
-    charToString(c8, &space, 1);
+    charToString(" dilakukan ... :D", &info, 17);
+    charToString("FRY", &aksiFry, 3);
+    charToString("MIX", &aksiMix, 3);
+    charToString("CHOP", &aksiChop, 4);
+    charToString("BOIL", &aksiBoil, 4);
+    charToString(" ", &space, 1);
 
     /* Menambahkan notif pembatalan aksi */
     tempCurr = InventoryState(current);
@@ -214,19 +199,19 @@ void updateRedoNotif(State current, State prev, Notif *listNotif)
             {
                 if (isStringEqual(Aksi(tempVal), aksiFry))
                 {
-                    newNotif = aksiFry;
+                    charToString("Penggorengan ", &newNotif, 13);
                 }
                 else if (isStringEqual(Aksi(tempVal), aksiMix))
                 {
-                    newNotif = aksiMix;
+                    charToString("Pencampuran ", &newNotif, 12);
                 }
                 else if (isStringEqual(Aksi(tempVal), aksiBoil))
                 {
-                    newNotif = aksiBoil;
+                    charToString("Perebusan ", &newNotif, 10);
                 }
                 else
                 {
-                    newNotif = aksiChop;
+                    charToString("Pemotongan ", &newNotif, 11);
                 }
                 insertSubstring(&newNotif, space);
                 insertSubstring(&newNotif, Nama(tempVal));
