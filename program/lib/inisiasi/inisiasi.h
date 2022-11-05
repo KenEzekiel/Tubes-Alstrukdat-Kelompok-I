@@ -9,20 +9,12 @@
 #include "../../../lib/time/time.h"
 #include "../../../lib/point/point.h"
 
-
-/* Selektor */
-#define LENGTH(w) (w).Length
-#define WORD(w,i) (w).TabWord[i]
-
 void PrintGUI(TIME Waktu, POINT Lokasi, Inventory Inventory, Simulator BNMO, Peta Peta, Notif listNotif);
 
 void ScanWord();
 /* 	Menerima input dari pengguna
 	I.S. : currentChar sembarang 
    	F.S. : mencetak GUI, currentWord terdefinisi */
-
-Word StringToWord(char* string);
-/*  Mengubah array of char (string) menjadi word */
 
 boolean IsSTART();
 /* Mengecek apakah currentWord == START */
