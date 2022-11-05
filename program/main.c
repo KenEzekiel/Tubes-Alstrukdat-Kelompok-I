@@ -24,8 +24,7 @@ void InitializeVariables()
 	// Initialize changable variables
 	printf("Input user: ");
 	readString(&user);
-	CreateStartSimulator(&BNMO, user);
-	CreateNotif(&listNotif);
+	CreateStartSimulator(&BNMO, user);;
 	CreateUndoStackEmpty(&US);
 	CreateRedoStackEmpty(&RS);
 	// CreatePeta(&Map);
@@ -51,6 +50,7 @@ int main()
 		boolean isRunning = true;
 		while (isRunning)
 		{
+			CreateNotif(&listNotif);
 			PrintGUI(TimeState(State(BNMO)), Position(State(BNMO)), InventoryState(State(BNMO)), BNMO, Map, listNotif);
 
 			if (IsBUY())
