@@ -64,20 +64,27 @@ int main()
 			}
 			else if (IsMOVE())
 			{
+				boolean gerak=false;
 				if (IsNORTH()){
-					MoveNorth(&Map);
+					MoveNorth(&Map,&gerak);
 				}
 				else if (IsEAST()) {
-					MoveNorth(&Map);
+					MoveNorth(&Map,&gerak);
 				} 
 				else if (IsSOUTH()){
-					MoveSouth(&Map);
+					MoveSouth(&Map,&gerak);
 				}
 				else if (IsWEST()) {
-					MoveWest(&Map);
+					MoveWest(&Map,&gerak);
 				}
+
+				if (gerak) {
 				PushUndoStack(&US, State(BNMO));
 				updateNotif(State(BNMO), &listNotif);
+				}
+				else {
+					
+				}
 			}
 			else if (IsMIX())
 			{

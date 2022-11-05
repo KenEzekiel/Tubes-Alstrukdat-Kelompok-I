@@ -23,10 +23,10 @@ typedef struct
 void Update(Peta *m, int P);
 POINT cariSimul(Peta m);
 
-void MoveNorth(Peta *m);
-void MoveEast(Peta *m);
-void MoveSouth(Peta *m);
-void MoveWest(Peta *m);
+void MoveNorth(Peta *m,boolean *gerak);
+void MoveEast(Peta *m,boolean *gerak);
+void MoveSouth(Peta *m,boolean *gerak);
+void MoveWest(Peta *m,boolean *gerak);
 
 void DisplayPos(Peta m);
 void DisplayPeta(Peta m);
