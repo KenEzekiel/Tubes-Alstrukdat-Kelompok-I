@@ -66,8 +66,7 @@ int main()
 			}
 			else if (IsDELIVERY())
 			{
-				PushUndoStack(&US, State(BNMO));
-				updateNotif(State(BNMO), &listNotif);
+				displayDeliveryList(DeliveryListState(State(BNMO)));
 			}
 			else if (IsMOVE())
 			{
@@ -92,9 +91,9 @@ int main()
 
 				if (gerak)
 				{
+					UpdateActionTime(&State(BNMO));
 					PushUndoStack(&US, State(BNMO));
 					updateNotif(State(BNMO), &listNotif);
-					UpdateActionTime(&State(BNMO));
 				}
 				else
 				{
@@ -102,22 +101,24 @@ int main()
 			}
 			else if (IsMIX())
 			{
-				if (CanMix(Map)) {
+				if (CanMix(Map))
+				{
 					ListMakanan *lfiltered;
 					String aksi = wordToString(currentWord);
-					displayFilteredAksi(aksi,DaftarMakanan,&lfiltered);
+					displayFilteredAksi(aksi, DaftarMakanan, &lfiltered);
 					int i;
-					do {
+					do
+					{
 						printf("Enter command: ");
 						STARTWORD();
 						i = WordToInt(currentWord);
-					}
-					while (i<0 || i> listMakananLength(*lfiltered));
-					process(aksi,i,&DaftarMakanan,InventoryState(State(BNMO)),&lfiltered,&ProcessedList(State(BNMO)),Resep);
+					} while (i < 0 || i > listMakananLength(*lfiltered));
+					process(aksi, i, &DaftarMakanan, InventoryState(State(BNMO)), &lfiltered, &ProcessedList(State(BNMO)), Resep);
 					PushUndoStack(&US, State(BNMO));
 					updateNotif(State(BNMO), &listNotif);
 				}
-				else{
+				else
+				{
 					String aksi = wordToString(currentWord);
 					printf("BNMO tidak berada pada area ");
 					displayString(aksi);
@@ -126,22 +127,24 @@ int main()
 			}
 			else if (IsCHOP())
 			{
-				if (CanChop(Map)) {
+				if (CanChop(Map))
+				{
 					ListMakanan *lfiltered;
 					String aksi = wordToString(currentWord);
-					displayFilteredAksi(aksi,DaftarMakanan,&lfiltered);
+					displayFilteredAksi(aksi, DaftarMakanan, &lfiltered);
 					int i;
-					do {
+					do
+					{
 						printf("Enter command: ");
 						STARTWORD();
 						i = WordToInt(currentWord);
-					}
-					while (i<0 || i> listMakananLength(*lfiltered));
-					process(aksi,i,&DaftarMakanan,InventoryState(State(BNMO)),&lfiltered,&ProcessedList(State(BNMO)),Resep);
+					} while (i < 0 || i > listMakananLength(*lfiltered));
+					process(aksi, i, &DaftarMakanan, InventoryState(State(BNMO)), &lfiltered, &ProcessedList(State(BNMO)), Resep);
 					PushUndoStack(&US, State(BNMO));
 					updateNotif(State(BNMO), &listNotif);
 				}
-				else{
+				else
+				{
 					String aksi = wordToString(currentWord);
 					printf("BNMO tidak berada pada area ");
 					displayString(aksi);
@@ -150,23 +153,25 @@ int main()
 			}
 			else if (IsFRY())
 			{
-				if (CanFry(Map)) {
+				if (CanFry(Map))
+				{
 					ListMakanan *lfiltered;
 					String aksi = wordToString(currentWord);
-					displayFilteredAksi(aksi,DaftarMakanan,&lfiltered);
+					displayFilteredAksi(aksi, DaftarMakanan, &lfiltered);
 					int i;
-					do {
+					do
+					{
 						printf("Enter command: ");
 						STARTWORD();
 						i = WordToInt(currentWord);
 						printf("\n");
-					}
-					while (i<0 || i> listMakananLength(*lfiltered));
-					process(aksi,i,&DaftarMakanan,InventoryState(State(BNMO)),&lfiltered,&ProcessedList(State(BNMO)),Resep);
+					} while (i < 0 || i > listMakananLength(*lfiltered));
+					process(aksi, i, &DaftarMakanan, InventoryState(State(BNMO)), &lfiltered, &ProcessedList(State(BNMO)), Resep);
 					PushUndoStack(&US, State(BNMO));
 					updateNotif(State(BNMO), &listNotif);
 				}
-				else{
+				else
+				{
 					String aksi = wordToString(currentWord);
 					printf("BNMO tidak berada pada area ");
 					displayString(aksi);
@@ -175,22 +180,24 @@ int main()
 			}
 			else if (IsBOIL())
 			{
-				if (CanBoil(Map)) {
+				if (CanBoil(Map))
+				{
 					ListMakanan *lfiltered;
 					String aksi = wordToString(currentWord);
-					displayFilteredAksi(aksi,DaftarMakanan,&lfiltered);
+					displayFilteredAksi(aksi, DaftarMakanan, &lfiltered);
 					int i;
-					do {
+					do
+					{
 						printf("Enter command: ");
 						STARTWORD();
 						i = WordToInt(currentWord);
-					}
-					while (i<0 || i> listMakananLength(*lfiltered));
-					process(aksi,i,&DaftarMakanan,InventoryState(State(BNMO)),&lfiltered,&ProcessedList(State(BNMO)),Resep);
+					} while (i < 0 || i > listMakananLength(*lfiltered));
+					process(aksi, i, &DaftarMakanan, InventoryState(State(BNMO)), &lfiltered, &ProcessedList(State(BNMO)), Resep);
 					PushUndoStack(&US, State(BNMO));
 					updateNotif(State(BNMO), &listNotif);
 				}
-				else{
+				else
+				{
 					String aksi = wordToString(currentWord);
 					printf("BNMO tidak berada pada area ");
 					displayString(aksi);
