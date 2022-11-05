@@ -9,6 +9,7 @@
 #include "../inventory/inventory.h"
 #include "../deliverylist/deliverylist.h"
 #include "../listmakanan/listmakanan.h"
+#include "../olahmakanan/olahmakanan.h"
 #include "../boolean.h"
 
 /* Definisi ADT State */
@@ -18,6 +19,7 @@ typedef struct state
     TIME T;
     Inventory I;
     DeliveryList DL;
+    ProcessList PL;
     ListMakanan expiredList;
     ListMakanan deliveredList;
 } State;
@@ -29,11 +31,12 @@ typedef struct state
 #define DeliveryListState(S) (S).DL
 #define ExpListState(S) (S).expiredList
 #define DeliveredListState(S) (S).deliveredList
+#define ProcessedList(S) (S).PL
 
 /* Konstruktor */
 /* I.S. S terdefinisi sembarang, T, I, DL terisi */
 /* F.S. S terisi sesuai T, I, DL */
-void CreateState(State *S, POINT P, TIME T, Inventory I, DeliveryList DL, ListMakanan expList, ListMakanan deliveredList);
+void CreateState(State *S, POINT P, TIME T, Inventory I, DeliveryList DL, ListMakanan expList, ListMakanan deliveredList, ProcessList PL);
 
 /* Menampilkan State */
 void displayState(State S);
