@@ -33,7 +33,7 @@ void DisplayPeta(Peta m);
 
 void fileToPeta(char *dir, Matrix *m);
 void CreatePeta(Peta *m);
-void StartPeta(Peta *m);
+void StartPeta(Peta *m,char* dir);
 
 boolean CanOrder(Peta m);
 boolean CanMix(Peta m);

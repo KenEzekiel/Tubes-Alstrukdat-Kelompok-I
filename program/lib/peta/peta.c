@@ -362,8 +362,8 @@ void CreatePeta(Peta *m) {
     SOUTH(*m) = ' ';
 }
 
-void StartPeta(Peta *m) {
-    fileToPeta("../../../test/peta.txt", &PETA(*m));
+void StartPeta(Peta *m, char* dir) {
+    fileToPeta(dir, &PETA(*m));
     POINT(*m) = cariSimul(*m);
     Update(m, 5);
 }

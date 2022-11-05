@@ -8,11 +8,13 @@
 int main()
 {
     Peta p;
+    boolean pllll;
     fileToPeta("../../../test/peta.txt", &PETA(p));
     DisplayPeta(p);
     POINT(p) = cariSimul(p);
     Update(&p, 5);
-    MoveEast(&p);
+    MoveEast(&p,&pllll);
+    MoveEast(&p,&pllll);
     DisplayPeta(p);
     return 0;
 }
