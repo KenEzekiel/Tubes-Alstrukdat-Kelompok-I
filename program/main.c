@@ -40,8 +40,9 @@ void InitializeVariables()
 
 int main()
 {
-    displaySplashScreen("lib/utility/SplashScreen.txt");
-    printf("User input: "); STARTWORD();
+	displaySplashScreen("lib/utility/SplashScreen.txt");
+	printf("User input: ");
+	STARTWORD();
 
 	if (IsSTART())
 	{
@@ -126,7 +127,14 @@ int main()
 			}
 			else if (IsKULKAS())
 			{
-
+				if (IsINSERTKULKAS())
+				{
+					procInsertToKulkas(&K, &InventoryState(State(BNMO)));
+				}
+				else if (IsGETKULKAS())
+				{
+					procGetFromKulkas(&K, &InventoryState(State(BNMO)));
+				}
 			}
 			else if (IsUNDO())
 			{

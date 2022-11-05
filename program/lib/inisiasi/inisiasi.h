@@ -13,8 +13,8 @@ void PrintGUI(TIME Waktu, POINT Lokasi, Inventory Inventory, Simulator BNMO, Pet
 
 void ScanWord();
 /* 	Menerima input dari pengguna
-	I.S. : currentChar sembarang 
-   	F.S. : mencetak GUI, currentWord terdefinisi */
+	I.S. : currentChar sembarang
+	F.S. : mencetak GUI, currentWord terdefinisi */
 
 boolean IsSTART();
 /* Mengecek apakah currentWord == START */
@@ -60,6 +60,12 @@ boolean IsWAIT();
 
 boolean IsKULKAS();
 /* Mengecek apakah currentWord == KULKAS */
+
+boolean IsINSERTKULKAS();
+/* Mengecek apakah currentWord == INSERT */
+
+boolean IsGETKULKAS();
+/* Mengecek apakah currentWord == GET */
 
 boolean IsUNDO();
 /* Mengecek apakah currentWord == UNDO */

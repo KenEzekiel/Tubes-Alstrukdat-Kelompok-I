@@ -1,20 +1,22 @@
 #include <stdio.h>
 #include "inisiasi.h"
 
-
 void PrintGUI(TIME Waktu, POINT Lokasi, Inventory Inventory, Simulator BNMO, Peta Peta, Notif listNotif)
 /* 	Menerima input dari pengguna
 	I.S. : currentChar sembarang, currentWord sembarang
-   	F.S. : mencetak GUI, currentWord terdefinisi */
+	F.S. : mencetak GUI, currentWord terdefinisi */
 {
-	printf("BNMO berada di posisi: "); DisplayPos(Peta);
-	printf("Waktu: "); TulisTIME(Waktu);
-	
+	printf("BNMO berada di posisi: ");
+	DisplayPos(Peta);
+	printf("Waktu: ");
+	TulisTIME(Waktu);
+
 	printNotif(listNotif);
 
 	DisplayPeta(Peta);
 
-	printf("Enter Command: "); STARTWORD();
+	printf("Enter Command: ");
+	STARTWORD();
 }
 
 boolean IsSTART()
@@ -29,7 +31,7 @@ boolean IsEXIT()
 /* Mengecek apakah currentWord == EXIT */
 {
 	Word Exit = StringToWord("EXIT", 4);
-	
+
 	return IsWordEqual(Exit, currentWord);
 }
 
@@ -135,6 +137,22 @@ boolean IsKULKAS()
 	Word Kulkas = StringToWord("KULKAS", 6);
 
 	return IsWordEqual(Kulkas, currentWord);
+}
+
+boolean IsINSERTKULKAS()
+/* Mengecek apakah currentWord == INSERT */
+{
+	Word InsertKulkas = StringToWord("INSERT", 6);
+
+	return IsWordEqual(InsertKulkas, currentWord);
+}
+
+boolean IsGETKULKAS()
+/* Mengecek apakah currentWord == GET */
+{
+	Word GetKulkas = StringToWord("GET", 3);
+
+	return IsWordEqual(GetKulkas, currentWord);
 }
 
 boolean IsUNDO()
