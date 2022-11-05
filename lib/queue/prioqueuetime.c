@@ -155,14 +155,23 @@ void PrintPrioQueueTime(PrioQueueTime Q)
     */
     prioQueueInfotype val;
     PrioQueueTime temp;
+    int i = 1;
     temp = Q;
+    printf("List Makanan di Inventory\n");
+    printf(" (nama -- waktu sisa kedaluarsa) \n");
     if (!IsPrioQueueEmpty(Q))
     {
         while (!IsPrioQueueEmpty(temp))
         {
+            printf("%d. ");
             Dequeue(&temp, &val);
-            TulisMakanan(val);
-            // idx = (idx % NBElmt(Q)) + 1;
+            displayString(Nama(val));
+            printf(" - ");
+            printTime(Exp(val));
+            printf("\n");
+            // TulisMakanan(val);
+            //  idx = (idx % NBElmt(Q)) + 1;
+            i++;
         }
     }
     printf("#\n");
