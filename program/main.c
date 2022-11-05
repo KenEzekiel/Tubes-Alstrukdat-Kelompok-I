@@ -54,7 +54,7 @@ int main()
 		boolean isRunning = true;
 		while (isRunning)
 		{
-			PrintGUI(TimeState(State(BNMO)), Position(State(BNMO)), InventoryState(State(BNMO)), BNMO, Map, listNotif);
+			PrintGUI(TimeState(State(BNMO)), POINT(PetaState(State(BNMO))), InventoryState(State(BNMO)), BNMO, Map, listNotif);
 			CreateNotif(&listNotif);
 
 			if (IsBUY())
