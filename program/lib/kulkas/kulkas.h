@@ -88,7 +88,7 @@ void CreateKulkas(Kulkas *K, int nrow, int ncol);
 
 boolean isIdxKosong(Kulkas K, int irow, int icol);
 
-void insertAtIdx(Kulkas *K, int row, int col, Makanan food, int idkulkas);
+void insertAtIdx(Kulkas *K, int row, int col, Makanan food, int idkulkas, boolean *valid);
 
 void getFoodbyIdKulkas(Kulkas *K, Makanan *food, int idkulkas);
 

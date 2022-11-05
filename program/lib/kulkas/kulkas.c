@@ -31,7 +31,7 @@ void displayTuple(Tuple T)
 {
     printf("id kulkas : %d\n", IDKULKAS(T));
     displayString(Nama(MAKANAN(T)));
-    printf("%d, %d \n", IDXROW(T), IDXCOL(T));
+    printf("\n%d, %d \n", IDXROW(T), IDXCOL(T));
 }
 
 /* Operasi pada ListTuple */
@@ -193,7 +193,7 @@ void displayListTuple(ListTuple LT)
     // KAMUS LOKAL
     int i;
     // ALGORITMA
-    printf("[\n");
+    printf("[\n\n");
     for (i = 0; i < NEFF(LT); i++)
     {
         displayTuple(TELMT(LT, i));
@@ -274,7 +274,7 @@ boolean isIdxKosong(Kulkas K, int irow, int icol)
 }
 
 /* row dan col adalah indeks paling kiri atas */
-void insertAtIdx(Kulkas *K, int row, int col, Makanan food, int idkulkas)
+void insertAtIdx(Kulkas *K, int row, int col, Makanan food, int idkulkas, boolean *valid)
 {
     // KAMUS LOKAL
     int i, j;
@@ -300,6 +300,7 @@ void insertAtIdx(Kulkas *K, int row, int col, Makanan food, int idkulkas)
     if (!kosong)
     {
         printf("Slot tidak bisa diisi\n");
+        *valid = false;
     }
     else
     {
@@ -312,6 +313,7 @@ void insertAtIdx(Kulkas *K, int row, int col, Makanan food, int idkulkas)
             }
         }
         insertLastLT(&LISTTUPLE(*K), T);
+        *valid = true;
     }
 }
 
@@ -351,6 +353,7 @@ void procInsertToKulkas(Kulkas *K, Inventory *I)
     int i;
     int id, idxrow, idxcol, idkulkas;
     Makanan food;
+    boolean valid;
 
     // ALGORITMA
     displayInventory(*I);
@@ -372,7 +375,10 @@ void procInsertToKulkas(Kulkas *K, Inventory *I)
     idkulkas = WordToInt(currentWord);
 
     food = getMakananById(I, id);
-    insertAtIdx(K, idxrow, idxcol, food, idkulkas);
+    insertAtIdx(K, idxrow, idxcol, food, idkulkas, &valid);
+    if (!valid) {
+        Enqueue(I, food);
+    }
 
     displayInventory(*I);
     displayKulkas(*K);
@@ -393,7 +399,9 @@ void procGetFromKulkas(Kulkas *K, Inventory *I)
     idkulkas = WordToInt(currentWord);
 
     getFoodbyIdKulkas(K, &food, idkulkas);
+    printf("1\n");
     Enqueue(I, food);
+    printf("2\n");
 
     displayInventory(*I);
     displayKulkas(*K);
