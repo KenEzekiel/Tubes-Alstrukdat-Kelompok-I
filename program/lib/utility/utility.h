@@ -1,3 +1,6 @@
+#ifndef Utility_H
+#define Utility_H
+
 #define NORMAL "\x1B[0m"
 #define RED "\x1B[31m"
 #define GREEN "\x1B[32m"
@@ -22,3 +25,5 @@ void print_cyan(char* c);
 void print_image(FILE *fptr);
 
 void displaySplashScreen();
+
+#endif
