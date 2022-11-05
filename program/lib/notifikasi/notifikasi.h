@@ -76,7 +76,7 @@ void updateRedoNotif(State current, State prev, Notif *listNotif);
 /* I.S. listNotif terdefinisi, boleh kosong, State current dan prev terdefinisi */
 /* F.S. Melakukan perbandingan state current dan prev, menambahkan notifikasi sebagai elemen baru listNotif */
 
-void updateNotif(State curr, Notif *listNotif);
+void updateNotif(State *curr, Notif *listNotif);
 /* Proses: Menambahkan notifikasi saat dilakukan command selain undo dan redo */
 /* I.S. listNotif terdefinisi, boleh kosong, State current terdefinisi */
 /* F.S. Menambahkan notifikasi delivered dan expired sebagai elemen baru listNotif */
