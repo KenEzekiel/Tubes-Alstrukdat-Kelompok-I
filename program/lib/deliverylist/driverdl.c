@@ -7,7 +7,7 @@ int main()
     DeliveryList DL;
     Inventory I;
     ListMakanan L, delivered;
-    infotype x, y, z, a;
+    prioQueueInfotype x, y, z, a;
 
     MakeEmpty(&DL, 3);
     CreateInventory(&I, 3);
