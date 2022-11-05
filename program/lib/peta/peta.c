@@ -383,3 +383,10 @@ boolean CanFry(Peta m){
 boolean CanBoil(Peta m){
     return (NORTH(m)=='B' || EAST(m)=='B'|| WEST(m)=='B' || SOUTH(m) == 'B');
 }
+
+void Teleport(Peta *m, POINT P){
+    ELMT_MATRIX(PETA(*m),Absis(POINT(*m)),Ordinat(POINT(*m))) = '.';
+    POINT(*m) = P;
+    ELMT_MATRIX(PETA(*m),Absis(POINT(*m)),Ordinat(POINT(*m))) = 'S';
+    Update(m,5);
+}
