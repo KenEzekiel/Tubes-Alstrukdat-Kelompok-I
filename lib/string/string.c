@@ -53,13 +53,16 @@ void readString(String *s)
     char *c;
     // ALGORITMA
     CreateString(s);
+    /*
     scanf("%s", string);
     for (c = &string[0]; *c != '\0'; c++)
     {
         s->buffer[i] = *c;
         i++;
     }
-    LENGTH(*s) = i;
+    */
+    STARTWORD();
+    *s = wordToString(currentWord);
 }
 
 /* *** Display *** */
@@ -309,7 +312,8 @@ void procwordToString(Word w, String *s)
 void charToString(char c[], String *s, int len)
 {
     LENGTH(*s) = len;
-    for (int i = 0; i < len; i++) {
+    for (int i = 0; i < len; i++)
+    {
         ELMT_STRING(*s, i) = c[i];
     }
 }
