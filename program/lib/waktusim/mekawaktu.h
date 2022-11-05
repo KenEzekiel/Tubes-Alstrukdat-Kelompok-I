@@ -2,9 +2,10 @@
 #include "../deliverylist/deliverylist.h"
 #include "../listmakanan/listmakanan.h"
 #include "../olahmakanan/olahmakanan.h"
+#include "../state/state.h"
 #include "../boolean.h"
 
 void StartTimeSimulator(TIME *t);
-void UpdateActionTime(DeliveryList *DL, Inventory *I, TIME *tglob, ListMakanan *expired, ListMakanan *delivered, ProcessList *PL);
+void UpdateActionTime(State *S);
 void UpdateGlobalTime(TIME *t, TIME t2);
-void UpdateWaitTime(DeliveryList *DL, Inventory *I, TIME t, TIME *tglob, ListMakanan *expired, ListMakanan *delivered,ProcessList *PL);
+void UpdateWaitTime(State *S, TIME t);

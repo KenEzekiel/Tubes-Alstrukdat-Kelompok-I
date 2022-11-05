@@ -1,20 +1,20 @@
 #include <stdio.h>
 #include "mekawaktu.h"
 
-void UpdateActionTime(DeliveryList *DL,Inventory *I, TIME *tglob, ListMakanan *expired, ListMakanan *delivered, ProcessList *PL){
+void UpdateActionTime(State *S){
     TIME t;
     CreateTime(&t,0,0,1);
-    updateProcessList(PL,I,t, delivered);
-    updateInventory(I,t, expired);
-    updateDeliveryList(DL,I,t, delivered);
-    UpdateGlobalTime(tglob,t);
+    updateProcessList(&ProcessedList(*S),&InventoryState(*S),t, &DeliveredListState(*S));
+    updateInventory(&InventoryState(*S),t, &ExpListState(*S));
+    updateDeliveryList(&DeliveryListState(*S),&InventoryState(*S),t, &DeliveredListState(*S));
+    UpdateGlobalTime(&TimeState(*S),t);
 }
 
-void UpdateWaitTime(DeliveryList *DL,Inventory *I, TIME t, TIME *tglob, ListMakanan *expired, ListMakanan *delivered, ProcessList *PL){
-    updateProcessList(PL,I,t, delivered);
-    updateInventory(I,t, expired);
-    updateDeliveryList(DL,I,t, delivered);
-    UpdateGlobalTime(tglob,t);
+void UpdateWaitTime(State *S, TIME t){
+    updateProcessList(&ProcessedList(*S),&InventoryState(*S),t, &DeliveredListState(*S));
+    updateInventory(&InventoryState(*S),t, &ExpListState(*S));
+    updateDeliveryList(&DeliveryListState(*S),&InventoryState(*S),t, &DeliveredListState(*S));
+    UpdateGlobalTime(&TimeState(*S),t);
 }
 
 void UpdateGlobalTime(TIME *t, TIME t2) {

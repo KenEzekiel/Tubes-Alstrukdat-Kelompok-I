@@ -93,7 +93,7 @@ int main()
 				{
 					PushUndoStack(&US, State(BNMO));
 					updateNotif(State(BNMO), &listNotif);
-					UpdateActionTime(&DeliveryListState(State(BNMO)), &InventoryState(State(BNMO)), &TimeState(State(BNMO)), &ExpListState(State(BNMO)), &DeliveredListState(State(BNMO)), &ProcessedList(State(BNMO)));
+					UpdateActionTime(&State(BNMO));
 				}
 				else
 				{
