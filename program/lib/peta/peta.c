@@ -275,7 +275,7 @@ void MoveWest(Peta *m, boolean *gerak)
         {
             MoveW(&POINT(*m));
             Update(m, 4);
-            *gerak=false;
+            *gerak=true;
         }
     }
 }
