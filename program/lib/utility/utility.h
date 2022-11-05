@@ -5,6 +5,7 @@
 #define BLUE "\x1B[34m"
 #define MAGENTA "\x1B[35m"
 #define CYAN "\x1B[36m"
+#include <stdio.h>
 
 void print_red(char* c);
 
