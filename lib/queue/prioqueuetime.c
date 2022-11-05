@@ -174,7 +174,7 @@ void PrintPrioQueueTime(PrioQueueTime Q)
             i++;
         }
     }
-    printf("#\n");
+    printf("\n");
 }
 
 boolean isElmt(PrioQueueTime Q, prioQueueInfotype val)
