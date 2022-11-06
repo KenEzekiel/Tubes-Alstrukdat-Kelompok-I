@@ -219,13 +219,13 @@ int main()
 			else if (IsWAIT())
 			{
 				TIME temptime;
-				int X,Y;
+				int X, Y;
 				ADVWORD();
 				X = WordToInt(currentWord);
 				ADVWORD();
-				Y =WordToInt(currentWord);
-				CreateTime(&temptime,0,X,Y);
-				UpdateWaitTime(&State(BNMO),temptime);
+				Y = WordToInt(currentWord);
+				CreateTime(&temptime, 0, X, Y);
+				UpdateWaitTime(&State(BNMO), temptime);
 
 				PushUndoStack(&US, State(BNMO));
 				updateNotif(&State(BNMO), &listNotif);
@@ -244,7 +244,7 @@ int main()
 				PopUndoStack(&US, &temp);
 				State(BNMO) = StateTop(US);
 				PushRedoStack(&RS, temp);
-				Teleport(&Map,Position(State(BNMO)));
+				Teleport(&Map, Position(State(BNMO)));
 				updateUndoNotif(State(BNMO), temp, &listNotif);
 			}
 			else if (IsREDO())
@@ -254,7 +254,7 @@ int main()
 				State(BNMO) = temp;
 				updateRedoNotif(State(BNMO), StateTop(US), &listNotif);
 				PushUndoStack(&US, temp);
-				Teleport(&Map,Position(State(BNMO)));
+				Teleport(&Map, Position(State(BNMO)));
 			}
 			else if (IsCATALOG())
 			{

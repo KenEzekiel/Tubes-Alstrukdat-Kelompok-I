@@ -1,4 +1,2 @@
-lib/matrix/a.out
-lib/wordmachine/a.out
-lib/tree/a.out
-program/lib/resep/a.out
+*.out
+*.exe

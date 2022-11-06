@@ -6,8 +6,8 @@
 #include "../boolean.h"
 
 /* Ukuran maksimum baris dan kolom */
-#define ROW_CAP 1000
-#define COL_CAP 1000
+#define ROW_CAP 30
+#define COL_CAP 30
 
 typedef int IdxType; /* Index baris, kolom */
 typedef char MatrixElType;
@@ -24,7 +24,6 @@ void createMatrix(int nRows, int nCols, Matrix *m);
 #define COL_EFF(M) (M).colEff
 #define ELMT_MATRIX(M, i, j) (M).mem[(i)][(j)]
 
-
 boolean isMatrixIdxValid(int i, int j);
 
 IdxType getLastIdxRow(Matrix m);
@@ -38,6 +37,5 @@ void copyMatrix(Matrix mIn, Matrix *mOut);
 void readMatrix(Matrix *m, int nRow, int nCol);
 
 void displayMatrix(Matrix m);
-
 
 #endif
