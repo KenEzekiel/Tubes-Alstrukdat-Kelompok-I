@@ -3,16 +3,21 @@
 
 int main()
 {
-    ListMakanan lfood1, lbuy;
+    ListMakanan lfood1, lbuy, lsorted;
     String aksi;
     int id, idx;
 
     CreateListMakanan(&lfood1);
     CreateListMakanan(&lbuy);
+    CreateListMakanan(&lsorted);
 
     printf("Menampilkan list makanan hasil pembacaan dari file konfigurasi\n");
     lfood1 = readListMakanan("../../../test/makanan.txt");
     printCatalog(lfood1);
+
+    printf("Menampilkan list makanan yang terurut secara ID\n");
+    lsorted = sortListMakananByID(lfood1);
+    printCatalog(lsorted);
 
     printf("Mengecek indeks dari ID Makanan\n");
     printf("ID Makanan: ");
