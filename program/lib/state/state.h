@@ -16,7 +16,7 @@
 /* Definisi ADT State */
 typedef struct state
 {
-    Peta P;
+    POINT P;
     TIME T;
     Inventory I;
     DeliveryList DL;
@@ -26,7 +26,7 @@ typedef struct state
 } State;
 
 /* Definisi Selektor */
-#define PetaState(S) (S).P
+#define Position(S) (S).P
 #define TimeState(S) (S).T
 #define InventoryState(S) (S).I
 #define DeliveryListState(S) (S).DL
@@ -37,7 +37,7 @@ typedef struct state
 /* Konstruktor */
 /* I.S. S terdefinisi sembarang, T, I, DL terisi */
 /* F.S. S terisi sesuai T, I, DL */
-void CreateState(State *S, Peta P, TIME T, Inventory I, DeliveryList DL, ListMakanan expList, ListMakanan deliveredList, ProcessList PL);
+void CreateState(State *S, POINT p, TIME T, Inventory I, DeliveryList DL, ListMakanan expList, ListMakanan deliveredList, ProcessList PL);
 
 /* Menampilkan State */
 void displayState(State S);

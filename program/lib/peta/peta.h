@@ -42,4 +42,5 @@ boolean CanFry(Peta m);
 boolean CanBoil(Peta m);
 
 void NotifTidakGerak(int x);
+void Teleport(Peta *m, POINT P);
 #endif

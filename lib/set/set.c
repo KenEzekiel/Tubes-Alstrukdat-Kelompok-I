@@ -1,9 +1,10 @@
 #include "set.h"
 #include <stdio.h>
 
-void CreateSet(Set *S) {
-/*I.S. Set tidak terdefinisi*/
-/*F.S. Terbentuk Set kosong*/
+void CreateSet(Set *S)
+{
+    /*I.S. Set tidak terdefinisi*/
+    /*F.S. Terbentuk Set kosong*/
     int i;
     /*ALGORITMA*/
     for (i = 0; i < CAPACITY_SET; i++)
@@ -13,13 +14,15 @@ void CreateSet(Set *S) {
     lengthS(*S) = 0;
 }
 
-boolean isEmptySet(Set S){
-/*Memeriksa apakah set kosong atau tidak*/
+boolean isEmptySet(Set S)
+{
+    /*Memeriksa apakah set kosong atau tidak*/
     return (lengthS(S) == 0);
 }
 
-int lengthSet(Set S) {
-/*Menghasilkan panjang dari Set*/  
+int lengthSet(Set S)
+{
+    /*Menghasilkan panjang dari Set*/
     return lengthS(S);
 }
 
@@ -27,8 +30,10 @@ boolean IsIn(Set S, Eltype_SET val) {
 /*Menghasilkan nilai true apabila val ada di dalam set*/
     int i;
     boolean found = false;
-    while(i<lengthSet(S)){
-        if (ELMT_S(S,i) == val){
+    while (i < lengthSet(S))
+    {
+        if (ELMT_S(S, i) == val)
+        {
             found = true;
         }
     }
@@ -49,8 +54,9 @@ void copy(Set *S1,Set *S2) {
     }
 }
 
-boolean isSubset(Set S1,Set S2) {
-/*Menghasilkan true apabila S1 adalah subset dari S2*/
+boolean isSubset(Set S1, Set S2)
+{
+    /*Menghasilkan true apabila S1 adalah subset dari S2*/
     boolean sama = true;
     for(int i=0; i<lengthS(S1); i++)
     {
@@ -58,7 +64,7 @@ boolean isSubset(Set S1,Set S2) {
             if (ELMT_S(S2,i) != 1) {
                 sama = false;
             }
-        } 
+        }
     }
     return sama;
 }

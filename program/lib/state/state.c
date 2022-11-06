@@ -11,9 +11,9 @@
 /* Konstruktor */
 /* I.S. S terdefinisi sembarang, T, I, DL terisi */
 /* F.S. S terisi sesuai T, I, DL */
-void CreateState(State *S, Peta P, TIME T, Inventory I, DeliveryList DL, ListMakanan expList, ListMakanan deliveredList, ProcessList PL)
+void CreateState(State *S, POINT P, TIME T, Inventory I, DeliveryList DL, ListMakanan expList, ListMakanan deliveredList, ProcessList PL)
 {
-    PetaState(*S) = P;
+    Position(*S) = P;
     TimeState(*S) = T;
     InventoryState(*S) = I;
     DeliveryListState(*S) = DL;
@@ -25,7 +25,7 @@ void CreateState(State *S, Peta P, TIME T, Inventory I, DeliveryList DL, ListMak
 /* Menampilkan State */
 void displayState(State S)
 {
-    printf("Position: (%d, %d)\n", Absis(POINT(PetaState(S))), Ordinat(POINT(PetaState(S))));
+    printf("Position: (%d, %d)\n", Absis(Position(S)), Ordinat(Position(S)));
 
     printf("Time: ");
     PrintTime(TimeState(S));

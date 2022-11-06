@@ -36,6 +36,8 @@ void InitializeVariables()
 	StartPeta(&Map, "../test/peta.txt");
 	CreateListMakanan(&DaftarMakanan);
 	DaftarMakanan = readListMakanan("../test/makanan.txt");
+
+	PushUndoStack(&US, State(BNMO));
 }
 
 int main()
@@ -54,7 +56,7 @@ int main()
 		boolean isRunning = true;
 		while (isRunning)
 		{
-			PrintGUI(TimeState(State(BNMO)), POINT(PetaState(State(BNMO))), InventoryState(State(BNMO)), BNMO, Map, listNotif);
+			PrintGUI(TimeState(State(BNMO)), Position(State(BNMO)), InventoryState(State(BNMO)), BNMO, Map, listNotif);
 			CreateNotif(&listNotif);
 
 			if (IsBUY())
@@ -75,18 +77,22 @@ int main()
 				if (IsNORTH())
 				{
 					MoveNorth(&Map, &gerak);
+					MoveN(&Position(State(BNMO)));
 				}
 				else if (IsEAST())
 				{
 					MoveEast(&Map, &gerak);
+					MoveE(&Position(State(BNMO)));
 				}
 				else if (IsSOUTH())
 				{
 					MoveSouth(&Map, &gerak);
+					MoveS(&Position(State(BNMO)));
 				}
 				else if (IsWEST())
 				{
 					MoveWest(&Map, &gerak);
+					MoveW(&Position(State(BNMO)));
 				}
 
 				if (gerak)
@@ -213,13 +219,13 @@ int main()
 			else if (IsWAIT())
 			{
 				TIME temptime;
-				int X,Y;
+				int X, Y;
 				ADVWORD();
 				X = WordToInt(currentWord);
 				ADVWORD();
-				Y =WordToInt(currentWord);
-				CreateTime(&temptime,0,X,Y);
-				UpdateWaitTime(&State(BNMO),temptime);
+				Y = WordToInt(currentWord);
+				CreateTime(&temptime, 0, X, Y);
+				UpdateWaitTime(&State(BNMO), temptime);
 
 				PushUndoStack(&US, State(BNMO));
 				updateNotif(&State(BNMO), &listNotif);
@@ -238,6 +244,7 @@ int main()
 				PopUndoStack(&US, &temp);
 				State(BNMO) = StateTop(US);
 				PushRedoStack(&RS, temp);
+				Teleport(&Map, Position(State(BNMO)));
 				updateUndoNotif(State(BNMO), temp, &listNotif);
 			}
 			else if (IsREDO())
@@ -247,6 +254,7 @@ int main()
 				State(BNMO) = temp;
 				updateRedoNotif(State(BNMO), StateTop(US), &listNotif);
 				PushUndoStack(&US, temp);
+				Teleport(&Map, Position(State(BNMO)));
 			}
 			else if (IsCATALOG())
 			{

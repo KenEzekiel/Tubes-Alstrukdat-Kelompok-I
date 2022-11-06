@@ -11,7 +11,7 @@ typedef struct {
     int length;
 } Set;
 
-#define ELMT_S(S,i) (S).buffer[i]
+#define ELMT_S(S, i) (S).buffer[i]
 #define lengthS(S) (S).length
 
 void CreateSet(Set *S);
@@ -31,11 +31,11 @@ void add (Set *S, Eltype_SET val);
 /*I.S. Sebuah Set, boleh kosong*/
 /*F.S. Set yang telah ditambahkan elemen val*/
 
-void copy(Set *S1,Set*S2);
+void copy(Set *S1, Set *S2);
 /*I.S. S1 sembarang, S2 terdefinisi*/
 /*F.S. Menghasilkan S1 yang sama seperti S2*/
 
-boolean isSubset(Set S1,Set S2);
+boolean isSubset(Set S1, Set S2);
 /*Menghasilkan true apabila S1 adalah subset dari S2*/
 
 #endif
