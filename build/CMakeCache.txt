@@ -15,10 +15,10 @@
 ########################
 
 //Path to a program.
-CMAKE_ADDR2LINE:FILEPATH=CMAKE_ADDR2LINE-NOTFOUND
+CMAKE_ADDR2LINE:FILEPATH=C:/msys64/mingw64/bin/addr2line.exe
 
 //Path to a program.
-CMAKE_AR:FILEPATH=CMAKE_AR-NOTFOUND
+CMAKE_AR:FILEPATH=C:/msys64/mingw64/bin/ar.exe
 
 //No help, variable specified on the command line.
 CMAKE_BUILD_TYPE:STRING=Debug
@@ -27,43 +27,65 @@ CMAKE_BUILD_TYPE:STRING=Debug
 CMAKE_COLOR_MAKEFILE:BOOL=ON
 
 //CXX compiler
-CMAKE_CXX_COMPILER:FILEPATH=CMAKE_CXX_COMPILER-NOTFOUND
+CMAKE_CXX_COMPILER:FILEPATH=C:/msys64/mingw64/bin/c++.exe
+
+//A wrapper around 'ar' adding the appropriate '--plugin' option
+// for the GCC compiler
+CMAKE_CXX_COMPILER_AR:FILEPATH=C:/msys64/mingw64/bin/gcc-ar.exe
+
+//A wrapper around 'ranlib' adding the appropriate '--plugin' option
+// for the GCC compiler
+CMAKE_CXX_COMPILER_RANLIB:FILEPATH=C:/msys64/mingw64/bin/gcc-ranlib.exe
 
 //Flags used by the CXX compiler during all build types.
 CMAKE_CXX_FLAGS:STRING=
 
 //Flags used by the CXX compiler during DEBUG builds.
-CMAKE_CXX_FLAGS_DEBUG:STRING=
+CMAKE_CXX_FLAGS_DEBUG:STRING=-g
 
 //Flags used by the CXX compiler during MINSIZEREL builds.
-CMAKE_CXX_FLAGS_MINSIZEREL:STRING=
+CMAKE_CXX_FLAGS_MINSIZEREL:STRING=-Os -DNDEBUG
 
 //Flags used by the CXX compiler during RELEASE builds.
-CMAKE_CXX_FLAGS_RELEASE:STRING=
+CMAKE_CXX_FLAGS_RELEASE:STRING=-O3 -DNDEBUG
 
 //Flags used by the CXX compiler during RELWITHDEBINFO builds.
-CMAKE_CXX_FLAGS_RELWITHDEBINFO:STRING=
+CMAKE_CXX_FLAGS_RELWITHDEBINFO:STRING=-O2 -g -DNDEBUG
+
+//Libraries linked by default with all C++ applications.
+CMAKE_CXX_STANDARD_LIBRARIES:STRING=-lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
 
 //C compiler
-CMAKE_C_COMPILER:FILEPATH=CMAKE_C_COMPILER-NOTFOUND
+CMAKE_C_COMPILER:FILEPATH=C:/msys64/mingw64/bin/cc.exe
+
+//A wrapper around 'ar' adding the appropriate '--plugin' option
+// for the GCC compiler
+CMAKE_C_COMPILER_AR:FILEPATH=C:/msys64/mingw64/bin/gcc-ar.exe
+
+//A wrapper around 'ranlib' adding the appropriate '--plugin' option
+// for the GCC compiler
+CMAKE_C_COMPILER_RANLIB:FILEPATH=C:/msys64/mingw64/bin/gcc-ranlib.exe
 
 //Flags used by the C compiler during all build types.
 CMAKE_C_FLAGS:STRING=
 
 //Flags used by the C compiler during DEBUG builds.
-CMAKE_C_FLAGS_DEBUG:STRING=
+CMAKE_C_FLAGS_DEBUG:STRING=-g
 
 //Flags used by the C compiler during MINSIZEREL builds.
-CMAKE_C_FLAGS_MINSIZEREL:STRING=
+CMAKE_C_FLAGS_MINSIZEREL:STRING=-Os -DNDEBUG
 
 //Flags used by the C compiler during RELEASE builds.
-CMAKE_C_FLAGS_RELEASE:STRING=
+CMAKE_C_FLAGS_RELEASE:STRING=-O3 -DNDEBUG
 
 //Flags used by the C compiler during RELWITHDEBINFO builds.
-CMAKE_C_FLAGS_RELWITHDEBINFO:STRING=
+CMAKE_C_FLAGS_RELWITHDEBINFO:STRING=-O2 -g -DNDEBUG
+
+//Libraries linked by default with all C applications.
+CMAKE_C_STANDARD_LIBRARIES:STRING=-lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
 
 //Path to a program.
-CMAKE_DLLTOOL:FILEPATH=CMAKE_DLLTOOL-NOTFOUND
+CMAKE_DLLTOOL:FILEPATH=C:/msys64/mingw64/bin/dlltool.exe
 
 //Flags used by the linker during all build types.
 CMAKE_EXE_LINKER_FLAGS:STRING=
@@ -86,11 +108,14 @@ CMAKE_EXPORT_COMPILE_COMMANDS:BOOL=TRUE
 //Value Computed by CMake.
 CMAKE_FIND_PACKAGE_REDIRECTS_DIR:STATIC=C:/Users/Kenneth Ezekiel/OneDrive/Documents/GitHub/Tubes-Alstrukdat-Kelompok-I/build/CMakeFiles/pkgRedirects
 
+//Convert GNU import libraries to MS format (requires Visual Studio)
+CMAKE_GNUtoMS:BOOL=OFF
+
 //Install path prefix, prepended onto install directories.
 CMAKE_INSTALL_PREFIX:PATH=C:/Program Files (x86)/IF2110_Mobita
 
 //Path to a program.
-CMAKE_LINKER:FILEPATH=CMAKE_LINKER-NOTFOUND
+CMAKE_LINKER:FILEPATH=C:/msys64/mingw64/bin/ld.exe
 
 //Path to a program.
 CMAKE_MAKE_PROGRAM:FILEPATH=C:/msys64/usr/bin/make.exe
@@ -116,13 +141,13 @@ CMAKE_MODULE_LINKER_FLAGS_RELEASE:STRING=
 CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO:STRING=
 
 //Path to a program.
-CMAKE_NM:FILEPATH=CMAKE_NM-NOTFOUND
+CMAKE_NM:FILEPATH=C:/msys64/mingw64/bin/nm.exe
 
 //Path to a program.
-CMAKE_OBJCOPY:FILEPATH=CMAKE_OBJCOPY-NOTFOUND
+CMAKE_OBJCOPY:FILEPATH=C:/msys64/mingw64/bin/objcopy.exe
 
 //Path to a program.
-CMAKE_OBJDUMP:FILEPATH=CMAKE_OBJDUMP-NOTFOUND
+CMAKE_OBJDUMP:FILEPATH=C:/msys64/mingw64/bin/objdump.exe
 
 //Value Computed by CMake
 CMAKE_PROJECT_DESCRIPTION:STATIC=
@@ -149,7 +174,28 @@ CMAKE_PROJECT_VERSION_PATCH:STATIC=1
 CMAKE_PROJECT_VERSION_TWEAK:STATIC=
 
 //Path to a program.
-CMAKE_READELF:FILEPATH=CMAKE_READELF-NOTFOUND
+CMAKE_RANLIB:FILEPATH=C:/msys64/mingw64/bin/ranlib.exe
+
+//RC compiler
+CMAKE_RC_COMPILER:FILEPATH=C:/msys64/mingw64/bin/windres.exe
+
+//Flags for Windows Resource Compiler during all build types.
+CMAKE_RC_FLAGS:STRING=
+
+//Flags for Windows Resource Compiler during DEBUG builds.
+CMAKE_RC_FLAGS_DEBUG:STRING=
+
+//Flags for Windows Resource Compiler during MINSIZEREL builds.
+CMAKE_RC_FLAGS_MINSIZEREL:STRING=
+
+//Flags for Windows Resource Compiler during RELEASE builds.
+CMAKE_RC_FLAGS_RELEASE:STRING=
+
+//Flags for Windows Resource Compiler during RELWITHDEBINFO builds.
+CMAKE_RC_FLAGS_RELWITHDEBINFO:STRING=
+
+//Path to a program.
+CMAKE_READELF:FILEPATH=C:/msys64/mingw64/bin/readelf.exe
 
 //Flags used by the linker during the creation of shared libraries
 // during all build types.
@@ -199,7 +245,7 @@ CMAKE_STATIC_LINKER_FLAGS_RELEASE:STRING=
 CMAKE_STATIC_LINKER_FLAGS_RELWITHDEBINFO:STRING=
 
 //Path to a program.
-CMAKE_STRIP:FILEPATH=CMAKE_STRIP-NOTFOUND
+CMAKE_STRIP:FILEPATH=C:/msys64/mingw64/bin/strip.exe
 
 //If this value is on, makefiles will be generated without the
 // .SILENT directive, and all commands will be echoed to the console
@@ -243,6 +289,10 @@ CMAKE_CPACK_COMMAND:INTERNAL=C:/Program Files/CMake/bin/cpack.exe
 CMAKE_CTEST_COMMAND:INTERNAL=C:/Program Files/CMake/bin/ctest.exe
 //ADVANCED property for variable: CMAKE_CXX_COMPILER
 CMAKE_CXX_COMPILER-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CMAKE_CXX_COMPILER_AR
+CMAKE_CXX_COMPILER_AR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CMAKE_CXX_COMPILER_RANLIB
+CMAKE_CXX_COMPILER_RANLIB-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_CXX_FLAGS
 CMAKE_CXX_FLAGS-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_CXX_FLAGS_DEBUG
@@ -253,8 +303,14 @@ CMAKE_CXX_FLAGS_MINSIZEREL-ADVANCED:INTERNAL=1
 CMAKE_CXX_FLAGS_RELEASE-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_CXX_FLAGS_RELWITHDEBINFO
 CMAKE_CXX_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CMAKE_CXX_STANDARD_LIBRARIES
+CMAKE_CXX_STANDARD_LIBRARIES-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_C_COMPILER
 CMAKE_C_COMPILER-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CMAKE_C_COMPILER_AR
+CMAKE_C_COMPILER_AR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CMAKE_C_COMPILER_RANLIB
+CMAKE_C_COMPILER_RANLIB-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_C_FLAGS
 CMAKE_C_FLAGS-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_C_FLAGS_DEBUG
@@ -265,6 +321,8 @@ CMAKE_C_FLAGS_MINSIZEREL-ADVANCED:INTERNAL=1
 CMAKE_C_FLAGS_RELEASE-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_C_FLAGS_RELWITHDEBINFO
 CMAKE_C_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CMAKE_C_STANDARD_LIBRARIES
+CMAKE_C_STANDARD_LIBRARIES-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_DLLTOOL
 CMAKE_DLLTOOL-ADVANCED:INTERNAL=1
 //Path to cache edit program executable.
@@ -284,7 +342,7 @@ CMAKE_EXE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //Name of external makefile project generator.
 CMAKE_EXTRA_GENERATOR:INTERNAL=
 //Name of generator.
-CMAKE_GENERATOR:INTERNAL=Unix Makefiles
+CMAKE_GENERATOR:INTERNAL=MSYS Makefiles
 //Generator instance identifier.
 CMAKE_GENERATOR_INSTANCE:INTERNAL=
 //Name of generator platform.
@@ -320,8 +378,19 @@ CMAKE_OBJDUMP-ADVANCED:INTERNAL=1
 CMAKE_PLATFORM_INFO_INITIALIZED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_RANLIB
 CMAKE_RANLIB-ADVANCED:INTERNAL=1
-//noop for ranlib
-CMAKE_RANLIB:INTERNAL=:
+//ADVANCED property for variable: CMAKE_RC_COMPILER
+CMAKE_RC_COMPILER-ADVANCED:INTERNAL=1
+CMAKE_RC_COMPILER_WORKS:INTERNAL=1
+//ADVANCED property for variable: CMAKE_RC_FLAGS
+CMAKE_RC_FLAGS-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CMAKE_RC_FLAGS_DEBUG
+CMAKE_RC_FLAGS_DEBUG-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CMAKE_RC_FLAGS_MINSIZEREL
+CMAKE_RC_FLAGS_MINSIZEREL-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CMAKE_RC_FLAGS_RELEASE
+CMAKE_RC_FLAGS_RELEASE-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CMAKE_RC_FLAGS_RELWITHDEBINFO
+CMAKE_RC_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_READELF
 CMAKE_READELF-ADVANCED:INTERNAL=1
 //Path to CMake installation.
@@ -354,4 +423,6 @@ CMAKE_STATIC_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 CMAKE_STRIP-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_VERBOSE_MAKEFILE
 CMAKE_VERBOSE_MAKEFILE-ADVANCED:INTERNAL=1
+//linker supports push/pop state
+_CMAKE_LINKER_PUSHPOP_STATE_SUPPORTED:INTERNAL=TRUE
 
