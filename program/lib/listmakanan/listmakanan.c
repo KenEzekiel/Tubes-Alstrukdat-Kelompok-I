@@ -65,7 +65,7 @@ void insertLastMakanan(ListMakanan *lfood, eltype val)
 ListMakanan readListMakanan(char *dir)
 {
     /* KAMUS */
-    ListMakanan ret;
+    ListMakanan ret, sorted;
     Makanan food;
     int id, HH, MM, SS, ukBaris, ukKolom;
     String aksi, nama;
@@ -73,6 +73,7 @@ ListMakanan readListMakanan(char *dir)
 
     /* ALGORITMA */
     CreateListMakanan(&ret);
+    CreateListMakanan(&sorted);
 
     STARTFILEWORD(dir);
     int len = WordToInt(currentWord);
@@ -120,7 +121,8 @@ ListMakanan readListMakanan(char *dir)
         CreateMakanan(&food, id, nama, exp, aksi, delivTime, aksiTime, ukBaris, ukKolom);
         insertLastMakanan(&ret, food);
     }
-    return ret;
+    sorted = sortListMakananByID(ret);
+    return sorted;
 }
 /* Membaca file dari directory dan menghasilkan List Statik yang elemennya berisi tipe Makanan */
 /* Ketentuan file konfigurasi: baris pertama berisi banyaknya elemen, dilanjutkan tiap baris membaca tipe makanan dengan
@@ -277,4 +279,43 @@ void initializeUlang(ListMakanan *lfood)
     CreateListMakanan(&lnew);
 
     *lfood = lnew;
+}
+
+ListMakanan sortListMakananByID(ListMakanan lfood)
+{
+    /* I.S. l boleh kosong */
+    /* F.S. Jika asc = true, l terurut membesar */
+    /*      Jika asc = false, l terurut mengecil */
+    /* Proses : Mengurutkan l dengan salah satu algoritma sorting,
+       algoritma bebas */
+    /*Menggunakan Insertion Sort*/
+    /*KAMUS LOKAL*/
+    int i, j;
+    Makanan temp;
+    ListMakanan sorted;
+    IdxType idx;
+    int len = listMakananLength(lfood);
+    /*ALGORITMA*/
+    CreateListMakanan(&sorted);
+    sorted = lfood;
+    for (i = 1; i < len; i++)
+    {
+        temp = ELMT_LM(sorted, i);
+        idx = i - 1;
+        while ((ID(temp) < ID(ELMT_LM(sorted, idx))) && (idx > 0))
+        {
+            ELMT_LM(sorted, idx + 1) = ELMT_LM(sorted, idx);
+            idx--;
+        }
+        if (ID(temp) >= ID(ELMT_LM(sorted, idx)))
+        {
+            ELMT_LM(sorted, idx + 1) = temp;
+        }
+        else
+        {
+            ELMT_LM(sorted, idx + 1) = ELMT_LM(sorted, idx);
+            ELMT_LM(sorted, idx) = temp;
+        }
+    }
+    return sorted;
 }
