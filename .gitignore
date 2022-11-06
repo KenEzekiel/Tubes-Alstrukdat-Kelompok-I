@@ -2,3 +2,5 @@
 *.exe
 *.gch
 *.bat
+lib/tree/tree
+lib/wordmachine/wordmachine
