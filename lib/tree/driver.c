@@ -3,7 +3,7 @@
 
 int main()
 {
-	Tree t; CreateTree(1, Nil, &t);
+	Tree t; CreateTree(1, Nil, &t); 
 	PrintTree(t); printf("\n");
 	printf("Is empty: %d\n", HasNoChild(t));
 
