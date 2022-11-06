@@ -12,7 +12,7 @@
 #include "../state/state.h"
 
 #define Empty -1
-#define MaxEl 100
+#define MaxEl 30
 /* Empty adalah stack dengan elemen kosong . */
 
 // Undo/redo move mau simpen state peta atau move ke tempat sebelumnya tanpa increase time?
