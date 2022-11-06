@@ -6,7 +6,7 @@ void CreateSet(Set *S) {
 /*F.S. Terbentuk Set kosong*/
     int i;
     /*ALGORITMA*/
-    for (i = 0; i < CAPACITY; i++)
+    for (i = 0; i < CAPACITY_SET; i++)
     {
         ELMT_S(*S, i) = 0;
     }
@@ -23,7 +23,7 @@ int lengthSet(Set S) {
     return lengthS(S);
 }
 
-boolean IsIn(Set S, Eltype val) {
+boolean IsIn(Set S, Eltype_SET val) {
 /*Menghasilkan nilai true apabila val ada di dalam set*/
     int i;
     boolean found = false;
@@ -34,7 +34,7 @@ boolean IsIn(Set S, Eltype val) {
     }
     return found;
 }
-void add (Set *S, Eltype val) {
+void add (Set *S, Eltype_SET val) {
 /*I.S. Sebuah Set, boleh kosong*/
 /*F.S. Set yang telah ditambahkan elemen val*/
     ELMT_S(*S,val) = 1;
@@ -43,7 +43,8 @@ void add (Set *S, Eltype val) {
 void copy(Set *S1,Set *S2) {
 /*I.S. Set S1 tidak terdefinisi, S2 terdefinisi*/
 /*F.S. Menyalin isi S2 ke S1 sehingga S1=S2*/
-    for(int i=0; i<lengthS(*S2), i++){
+    for(int i=0; i<lengthS(*S2); i++)
+    {
         ELMT_S(*S1,i) = ELMT_S(*S2,i); 
     }
 }
@@ -51,7 +52,8 @@ void copy(Set *S1,Set *S2) {
 boolean isSubset(Set S1,Set S2) {
 /*Menghasilkan true apabila S1 adalah subset dari S2*/
     boolean sama = true;
-    for(int i=0; i<lengthS(S1), i++){
+    for(int i=0; i<lengthS(S1); i++)
+    {
         if(ELMT_S(S1,i) == 1) {
             if (ELMT_S(S2,i) != 1) {
                 sama = false;
