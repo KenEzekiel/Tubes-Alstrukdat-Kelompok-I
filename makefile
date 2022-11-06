@@ -3,9 +3,7 @@ msg := use the command "make file" to compile the respective driver in the folde
 all: 
 	$(msg)
 
-testing:
-	cd lib/
-	ls
+extension := 
 
 adt_path := lib/
 modul_path = program/lib/
@@ -38,89 +36,89 @@ utility := $(modul_path)/utility/
 mekawaktu := $(modul_path)/waktusim/
 
 liststatik: $(liststatik)$(wildcard *.c)
-	gcc $(liststatik)liststatik.c $(liststatik)driver.c -lm -Wall -o $(liststatik)liststatik
+	gcc $(liststatik)liststatik.c $(liststatik)driver.c -lm -Wall -o $(liststatik)liststatik$(extension)
 
 makanan: $(makanan)$(wildcard *.c)
-	gcc $(makanan)makanan.c $(string)string.c $(time)time.c $(makanan)driver.c -lm -Wall -o $(makanan)makanan
+	gcc $(makanan)makanan.c $(string)string.c $(time)time.c $(makanan)driver.c -lm -Wall -o $(makanan)makanan$(extension)
 
 matrix: $(matrix)$(wildcard *.c)
-	gcc $(matrix)matrix.c $(matrix)driver.c -lm -Wall -o $(matrix)matrix
+	gcc $(matrix)matrix.c $(matrix)driver.c -lm -Wall -o $(matrix)matrix$(extension)
 
 point: $(point)$(wildcard *.c)
-	gcc $(point)point.c $(point)driver.c -lm -Wall -o $(point)point
+	gcc $(point)point.c $(point)driver.c -lm -Wall -o $(point)point$(extension)
 
 queue: $(queue)queuedriver.c $(queue)$(wildcard *.c)
-	gcc $(queue)queue.c $(queue)queuedriver.c -o $(queue)queue
-	gcc $(queue)prioqueuetime.c $(queue)priodriver.c -lm -Wall -o $(queue)prio
+	gcc $(queue)queue.c $(queue)queuedriver.c -o $(queue)queue$(extension)
+	gcc $(queue)prioqueuetime.c $(queue)priodriver.c -lm -Wall -o $(queue)prio$(extension)
 
 set: $(set)$(wildcard *.c)
-	gcc $(set)set.c $(set)driver.c -o $(set)set
+	gcc $(set)set.c $(set)driver.c -o $(set)set$(extension)
 
 simulator: $(simulator)$(wildcard *.c)
-	gcc $(simulator)simulator.c $(string)string.c $(point)point.c $(queue)prioqueuetime.c $(makanan)makanan.c $(time)time.c $(simulator)driver.c -lm -Wall -o $(simulator)simulator
+	gcc $(simulator)simulator.c $(string)string.c $(point)point.c $(queue)prioqueuetime.c $(makanan)makanan.c $(time)time.c $(simulator)driver.c -lm -Wall -o $(simulator)simulator$(extension)
 
 stack: $(stack)$(wildcard *.c)
-	gcc $(stack)stack.c $(stack)driver.c -lm -Wall -o $(stack)stack
+	gcc $(stack)stack.c $(stack)driver.c -lm -Wall -o $(stack)stack$(extension)
 
 string: $(string)$(wildcard *.c)
-	gcc $(string)string.c $(wordmachine)wordmachine.c $(wordmachine)charmachine.c $(string)driver.c -lm -Wall -o $(string)string
+	gcc $(string)string.c $(wordmachine)wordmachine.c $(wordmachine)charmachine.c $(string)driver.c -lm -Wall -o $(string)string$(extension)
 
 time: $(time)$(wildcard *.c)
-	gcc $(time)time.c $(string)string.c $(wordmachine)wordmachine.c $(wordmachine)charmachine.c $(time)driver.c -lm -Wall -o $(time)time
+	gcc $(time)time.c $(string)string.c $(wordmachine)wordmachine.c $(wordmachine)charmachine.c $(time)driver.c -lm -Wall -o $(time)time$(extension)
 
 tree: $(tree)$(wildcard *.c)
-	gcc $(tree)tree.c $(tree)driver.c -lm -Wall -o $(tree)tree
+	gcc $(tree)tree.c $(tree)driver.c -lm -Wall -o $(tree)tree$(extension)
 
 wordmachine: $(wordmachine)$(wildcard *.c)
-	gcc $(wordmachine)wordmachine.c $(wordmachine)charmachine.c $(wordmachine)driver.c -lm -Wall -o $(wordmachine)wordmachine
+	gcc $(wordmachine)wordmachine.c $(wordmachine)charmachine.c $(wordmachine)driver.c -lm -Wall -o $(wordmachine)wordmachine$(extension)
 
 deliverylist: $(deliverylist)$(wildcard *.c)
-	gcc $(deliverylist)deliverylist.c $(queue)prioqueuetime.c $(inventory)inventory.c $(time)time.c $(makanan)makanan.c $(string)string.c $(liststatik)liststatik.c $(listmakanan)listmakanan.c $(deliverylist)driver.c -lm -Wall -o $(deliverylist)deliverylist
+	gcc $(deliverylist)deliverylist.c $(queue)prioqueuetime.c $(inventory)inventory.c $(time)time.c $(makanan)makanan.c $(string)string.c $(liststatik)liststatik.c $(listmakanan)listmakanan.c $(deliverylist)driver.c -lm -Wall -o $(deliverylist)deliverylist$(extension)
 
 inisiasi: $(inisiasi)$(wildcard *.c)
-	gcc $(inisiasi)inisiasi.c $(wordmachine)wordmachine.c $(inventory)inventory.c $(notifikasi)notifikasi.c $(peta)peta.c $(simulator)simulator.c $(time)time.c $(point)point.c $(inisiasi)driver.c -lm -Wall -o $(inisiasi)inisiasi
+	gcc $(inisiasi)inisiasi.c $(wordmachine)wordmachine.c $(inventory)inventory.c $(notifikasi)notifikasi.c $(peta)peta.c $(simulator)simulator.c $(time)time.c $(point)point.c $(inisiasi)driver.c -lm -Wall -o $(inisiasi)inisiasi$(extension)
 
 inventory: $(inventory)$(wildcard *.c)
-	gcc $(inventory)inventory.c $(makanan)makanan.c $(wordmachine)wordmachine.c $(wordmachine)charmachine.c $(time)time.c $(string)string.c $(queue)prioqueuetime.c $(listmakanan)listmakanan.c $(inventory)driver.c -lm -Wall -o $(inventory)inventory
+	gcc $(inventory)inventory.c $(makanan)makanan.c $(wordmachine)wordmachine.c $(wordmachine)charmachine.c $(time)time.c $(string)string.c $(queue)prioqueuetime.c $(listmakanan)listmakanan.c $(inventory)driver.c -lm -Wall -o $(inventory)inventory$(extension)
 
 kulkas: $(kulkas)$(wildcard *.c)
-	gcc $(kulkas)kulkas.c $(matrix)matrix.c $(makanan)makanan.c $(string)string.c $(inventory)inventory.c $(wordmachine)wordmachine.c $(wordmachine)charmachine.c $(time)time.c $(queue)prioqueuetime.c $(listmakanan)listmakanan.c $(kulkas)driver.c -lm -Wall -o $(kulkas)kulkas
+	gcc $(kulkas)kulkas.c $(matrix)matrix.c $(makanan)makanan.c $(string)string.c $(inventory)inventory.c $(wordmachine)wordmachine.c $(wordmachine)charmachine.c $(time)time.c $(queue)prioqueuetime.c $(listmakanan)listmakanan.c $(kulkas)driver.c -lm -Wall -o $(kulkas)kulkas$(extension)
 
 listmakanan: $(listmakanan)$(wildcard *.c)
-	gcc $(listmakanan)listmakanan.c $(makanan)makanan.c $(wordmachine)wordmachine.c $(wordmachine)charmachine.c $(time)time.c $(string)string.c $(listmakanan)driver.c -lm -Wall -o $(listmakanan)listmakanan
+	gcc $(listmakanan)listmakanan.c $(makanan)makanan.c $(wordmachine)wordmachine.c $(wordmachine)charmachine.c $(time)time.c $(string)string.c $(listmakanan)driver.c -lm -Wall -o $(listmakanan)listmakanan$(extension)
 
 notifikasi: $(notifikasi)$(wildcard *.c)
-	gcc $(notifikasi)notifikasi.c $((makanan)makanan.c $(wordmachine)wordmachine.c $(wordmachine)charmachine.c $(listmakanan)listmakanan.c $(deliverylist)deliverylist.c $(state)state.c $(inventory)inventory.c $(time)time.c $(string)string.c $(queue)prioqueuetime.c $(notifikasi)driver.c -lm -Wall -o $(notifikasi)notifikasi
+	gcc $(notifikasi)notifikasi.c $((makanan)makanan.c $(wordmachine)wordmachine.c $(wordmachine)charmachine.c $(listmakanan)listmakanan.c $(deliverylist)deliverylist.c $(state)state.c $(inventory)inventory.c $(time)time.c $(string)string.c $(queue)prioqueuetime.c $(notifikasi)driver.c -lm -Wall -o $(notifikasi)notifikasi$(extension)
 
 olahmakanan: $(olahmakanan)$(wildcard *.c)
-	gcc $(olahmakanan)olahmakanan.c $(queue)queue.c $(string)string.c $(matrix)matrix.c $(liststatik)liststatik.c $(point)point.c $(listmakanan)listmakanan.c $(inventory)inventory.c $(resep)resep.c $(deliverylist)deliverylist.c $(olahmakanan)driver.c -lm -Wall -o $(olahmakanan)olahmakanan
+	gcc $(olahmakanan)olahmakanan.c $(queue)queue.c $(string)string.c $(matrix)matrix.c $(liststatik)liststatik.c $(point)point.c $(listmakanan)listmakanan.c $(inventory)inventory.c $(resep)resep.c $(deliverylist)deliverylist.c $(olahmakanan)driver.c -lm -Wall -o $(olahmakanan)olahmakanan$(extension)
 
 peta: $(peta)$(wildcard *.c)
-	gcc $(peta)peta.c $(matrix)matrix.c $(point)point.c $(wordmachine)wordmachine.c $(charmachine)charmachine.c $(peta)driver.c -lm -Wall -o $(peta)peta
+	gcc $(peta)peta.c $(matrix)matrix.c $(point)point.c $(wordmachine)wordmachine.c $(charmachine)charmachine.c $(peta)driver.c -lm -Wall -o $(peta)peta$(extension)
 
 redostack: $(redostack)$(wildcard *.c)
-	gcc $(redostack)redostack.c $(stack)stack.c $(time)time.c $(inventory)inventory.c $(deliverylist)deliverylist.c $(statestack)statestack.c $(redostack)driver.c -lm -Wall -o $(redostack)redostack
+	gcc $(redostack)redostack.c $(stack)stack.c $(time)time.c $(inventory)inventory.c $(deliverylist)deliverylist.c $(statestack)statestack.c $(redostack)driver.c -lm -Wall -o $(redostack)redostack$(extension)
 
 resep: $(resep)$(wildcard *.c)
-	gcc $(resep)resep.c $(wordmachine)wordmachine.c $(wordmachine)charmachine.c $(tree)tree.c $(listmakanan)listmakanan.c $(resep)driver.c -lm -Wall -o $(resep)resep
+	gcc $(resep)resep.c $(wordmachine)wordmachine.c $(wordmachine)charmachine.c $(tree)tree.c $(listmakanan)listmakanan.c $(resep)driver.c -lm -Wall -o $(resep)resep$(extension)
 
 state: $(state)$(wildcard *.c)
-	gcc $(state)state.c $(time)time.c $(point)point.c $(inventory)inventory.c $(deliverylist)deliverylist.c $(listmakanan)listmakanan.c $(olahmakanan)olahmakanan.c $(peta)peta.c $(driver)driver.c -lm -Wall -o $(state)state
+	gcc $(state)state.c $(time)time.c $(point)point.c $(inventory)inventory.c $(deliverylist)deliverylist.c $(listmakanan)listmakanan.c $(olahmakanan)olahmakanan.c $(peta)peta.c $(driver)driver.c -lm -Wall -o $(state)state$(extension)
 
 statestack: $(statestack)$(wildcard *.c)
-	gcc $(statestack)statestack.c $(stack)stack.c $(time)time.c $(inventory)inventory.c $(deliverylist)deliverylist.c $(state)state.c $(statestack)driver.c -lm -Wall -o $(statestack)statestack
+	gcc $(statestack)statestack.c $(stack)stack.c $(time)time.c $(inventory)inventory.c $(deliverylist)deliverylist.c $(state)state.c $(statestack)driver.c -lm -Wall -o $(statestack)statestack$(extension)
 
 undostack: $(undostack)$(wildcard *.c)
-	gcc $(undostack)undostack.c $(stack)stack.c $(time)time.c $(inventory)inventory.c $(deliverylist)deliverylist.c $(statestack)statestack.c $(undostack)driver.c -lm -Wall -o $(undostack)undostack
+	gcc $(undostack)undostack.c $(stack)stack.c $(time)time.c $(inventory)inventory.c $(deliverylist)deliverylist.c $(statestack)statestack.c $(undostack)driver.c -lm -Wall -o $(undostack)undostack$(extension)
 
 utility: $(utility)$(wildcard *.c) $(utility)$(wildcard *.txt)
-	gcc $(utility)utility.c $(utility)driver.c -lm -Wall -o $(utility)utility
+	gcc $(utility)utility.c $(utility)driver.c -lm -Wall -o $(utility)utility$(extension)
 
 mekawaktu: $(mekawaktu)$(wildcard *.c)
-	gcc $(mekawaktu)mekawaktu.c $(inventory)inventory.c $(deliverylist)deliverylist.c $(listmakanan)listmakanan.c $(olahmakanan)olahmakanan.c $(state)state.c $(mekawaktu)driver.c -lm -Wall -o $(mekawaktu)waktusim
+	gcc $(mekawaktu)mekawaktu.c $(inventory)inventory.c $(deliverylist)deliverylist.c $(listmakanan)listmakanan.c $(olahmakanan)olahmakanan.c $(state)state.c $(mekawaktu)driver.c -lm -Wall -o $(mekawaktu)waktusim$(extension)
 
 main: lib/ program/ makefile
-	gcc program/main.c $(liststatik)liststatik.c $(makanan)makanan.c $(matrix)matrix.c $(point)point.c $(queue)prioqueuetime.c $(queue)queue.c $(simulator)simulator.c $(stack)stack.c $(string)string.c $(time)time.c $(tree)tree.c $(wordmachine)wordmachine.c $(wordmachine)charmachine.c $(deliverylist)deliverylist.c $(inisiasi)inisiasi.c $(inventory)inventory.c $(kulkas)kulkas.c $(listmakanan)listmakanan.c $(notifikasi)notifikasi.c $(olahmakanan)olahmakanan.c $(peta)peta.c $(redostack)redostack.c $(resep)resep.c $(state)state.c $(statestack)statestack.c $(undostack)undostack.c $(utility)utility.c $(mekawaktu)mekawaktu.c -Wall -lm -o main
+	gcc program/main.c $(liststatik)liststatik.c $(makanan)makanan.c $(matrix)matrix.c $(point)point.c $(queue)prioqueuetime.c $(queue)queue.c $(simulator)simulator.c $(stack)stack.c $(string)string.c $(time)time.c $(tree)tree.c $(wordmachine)wordmachine.c $(wordmachine)charmachine.c $(deliverylist)deliverylist.c $(inisiasi)inisiasi.c $(inventory)inventory.c $(kulkas)kulkas.c $(listmakanan)listmakanan.c $(notifikasi)notifikasi.c $(olahmakanan)olahmakanan.c $(peta)peta.c $(redostack)redostack.c $(resep)resep.c $(state)state.c $(statestack)statestack.c $(undostack)undostack.c $(utility)utility.c $(mekawaktu)mekawaktu.c -Wall -lm -o main$(extension)
 
 rmmain:
-	rm -rf main 
+	rm -rf main$(extension)
