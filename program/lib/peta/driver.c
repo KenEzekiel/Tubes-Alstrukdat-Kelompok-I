@@ -18,6 +18,3 @@ int main()
     DisplayPeta(p);
     return 0;
 }
-
-// gcc -o main lib/matrix/driverpeta.c lib/matrix/peta.c lib/matrix/matrix.c lib/wordmachine/wordmachine.c lib/wordmachine/charmachine.c lib/point/point.c
-// gcc driverpeta.c peta.c ../../../lib/matrix/matrix.c ../../../lib/wordmachine/wordmachine.c ../../../lib/wordmachine/charmachine.c ../../../lib/point/point.c -o main
