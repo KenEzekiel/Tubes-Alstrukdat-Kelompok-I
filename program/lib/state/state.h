@@ -37,7 +37,7 @@ typedef struct state
 /* Konstruktor */
 /* I.S. S terdefinisi sembarang, T, I, DL terisi */
 /* F.S. S terisi sesuai T, I, DL */
-void CreateState(State *S, POINT p, TIME T, Inventory I, DeliveryList DL, ListMakanan expList, ListMakanan deliveredList, ProcessList PL);
+void CreateState(State *S, POINT P, TIME T, Inventory I, DeliveryList DL, ListMakanan expList, ListMakanan deliveredList, ProcessList PL);
 
 /* Menampilkan State */
 void displayState(State S);
