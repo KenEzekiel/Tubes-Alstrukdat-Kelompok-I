@@ -238,7 +238,6 @@ void MoveNorth(Peta *m, boolean *gerak)
             *gerak = true;
         }
     }
-
 }
 
 void MoveEast(Peta *m, boolean *gerak)
@@ -275,7 +274,7 @@ void MoveWest(Peta *m, boolean *gerak)
         {
             MoveW(&POINT(*m));
             Update(m, 4);
-            *gerak=true;
+            *gerak = true;
         }
     }
 }
@@ -349,12 +348,13 @@ POINT cariSimul(Peta m)
     }
     return p;
 }
-void CreatePeta(Peta *m) {
+void CreatePeta(Peta *m)
+{
     Matrix mat;
     POINT point;
-    createMatrix(0,0,&mat);
+    createMatrix(0, 0, &mat);
     PETA(*m) = mat;
-    CreatePoint(&point,0,0);
+    CreatePoint(&point, 0, 0);
     POINT(*m) = point;
     NORTH(*m) = ' ';
     EAST(*m) = ' ';
@@ -362,31 +362,38 @@ void CreatePeta(Peta *m) {
     SOUTH(*m) = ' ';
 }
 
-void StartPeta(Peta *m, char* dir) {
+void StartPeta(Peta *m, char *dir)
+{
     fileToPeta(dir, &PETA(*m));
     POINT(*m) = cariSimul(*m);
     Update(m, 5);
 }
 
-boolean CanBuy(Peta m){
-    return (NORTH(m)=='T' || EAST(m)=='T'|| WEST(m)=='T' || SOUTH(m) == 'T');
+boolean CanBuy(Peta m)
+{
+    return (NORTH(m) == 'T' || EAST(m) == 'T' || WEST(m) == 'T' || SOUTH(m) == 'T');
 }
-boolean CanMix(Peta m){
-    return (NORTH(m)=='M' || EAST(m)=='M'|| WEST(m)=='M' || SOUTH(m) == 'M');
+boolean CanMix(Peta m)
+{
+    return (NORTH(m) == 'M' || EAST(m) == 'M' || WEST(m) == 'M' || SOUTH(m) == 'M');
 }
-boolean CanChop(Peta m){
-    return (NORTH(m)=='C' || EAST(m)=='C'|| WEST(m)=='C' || SOUTH(m) == 'C');
+boolean CanChop(Peta m)
+{
+    return (NORTH(m) == 'C' || EAST(m) == 'C' || WEST(m) == 'C' || SOUTH(m) == 'C');
 }
-boolean CanFry(Peta m){
-    return (NORTH(m)=='F' || EAST(m)=='F'|| WEST(m)=='F' || SOUTH(m) == 'F');
+boolean CanFry(Peta m)
+{
+    return (NORTH(m) == 'F' || EAST(m) == 'F' || WEST(m) == 'F' || SOUTH(m) == 'F');
 }
-boolean CanBoil(Peta m){
-    return (NORTH(m)=='B' || EAST(m)=='B'|| WEST(m)=='B' || SOUTH(m) == 'B');
+boolean CanBoil(Peta m)
+{
+    return (NORTH(m) == 'B' || EAST(m) == 'B' || WEST(m) == 'B' || SOUTH(m) == 'B');
 }
 
-void Teleport(Peta *m, POINT P){
-    ELMT_MATRIX(PETA(*m),Absis(POINT(*m)),Ordinat(POINT(*m))) = '.';
+void Teleport(Peta *m, POINT P)
+{
+    ELMT_MATRIX(PETA(*m), Absis(POINT(*m)), Ordinat(POINT(*m))) = '.';
     POINT(*m) = P;
-    ELMT_MATRIX(PETA(*m),Absis(POINT(*m)),Ordinat(POINT(*m))) = 'S';
-    Update(m,5);
+    ELMT_MATRIX(PETA(*m), Absis(P), Ordinat(P)) = 'S';
+    Update(m, 5);
 }
