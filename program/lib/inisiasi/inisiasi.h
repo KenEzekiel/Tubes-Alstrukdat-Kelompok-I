@@ -67,6 +67,9 @@ boolean IsINSERTKULKAS();
 boolean IsGETKULKAS();
 /* Mengecek apakah currentWord == GET */
 
+boolean IsDISPLAYKULKAS();
+/* Mengecek apakah currentWord == DISPLAYKULKAS */
+
 boolean IsUNDO();
 /* Mengecek apakah currentWord == UNDO */
 

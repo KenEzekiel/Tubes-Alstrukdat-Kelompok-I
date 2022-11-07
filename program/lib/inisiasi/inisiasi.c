@@ -155,6 +155,14 @@ boolean IsGETKULKAS()
 	return IsWordEqual(GetKulkas, currentWord);
 }
 
+boolean IsDISPLAYKULKAS()
+/* Mengecek apakah currentWord == DISPLAYKULKAS */
+{
+	Word DisplayKulkas = StringToWord("DISPLAYKULKAS", 13);
+
+	return IsWordEqual(DisplayKulkas, currentWord);
+}
+
 boolean IsUNDO()
 /* Mengecek apakah currentWord == UNDO */
 {

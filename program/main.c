@@ -60,15 +60,17 @@ int main()
 			CreateNotif(&listNotif);
 
 			if (IsBUY())
-			{	
-				if (CanBuy(Map)) {
+			{
+				if (CanBuy(Map))
+				{
 					buy(&DeliveryListState(State(BNMO)), DaftarMakanan);
 					UpdateActionTime(&State(BNMO));
 					PushUndoStack(&US, State(BNMO));
 					updateNotif(&State(BNMO), &listNotif);
 				}
-				else {
-					//LIVIAAAAAAAAAAAAAAAAAAAAA NOTIF GABISA BUY TARO SINI
+				else
+				{
+					// LIVIAAAAAAAAAAAAAAAAAAAAA NOTIF GABISA BUY TARO SINI
 				}
 			}
 			else if (IsDELIVERY())
@@ -242,6 +244,10 @@ int main()
 			else if (IsGETKULKAS())
 			{
 				procGetFromKulkas(&K, &InventoryState(State(BNMO)));
+			}
+			else if (IsDISPLAYKULKAS())
+			{
+				displayKulkas(K);
 			}
 			else if (IsUNDO())
 			{
