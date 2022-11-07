@@ -32,17 +32,17 @@ void InitializeVariables()
 	CreateKulkas(&K, 20, 30);
 
 	// // Initialize constant variables (read from file)
-	ReadFromFile(&Resep, 10, "../test/resep_2.txt");
-	StartPeta(&Map, "../test/peta.txt");
+	ReadFromFile(&Resep, 10, "test/resep_2.txt");
+	StartPeta(&Map, "test/peta.txt");
 	CreateListMakanan(&DaftarMakanan);
-	DaftarMakanan = readListMakanan("../test/makanan.txt");
+	DaftarMakanan = readListMakanan("test/makanan.txt");
 
 	PushUndoStack(&US, State(BNMO));
 }
 
 int main()
 {
-	displaySplashScreen("lib/utility/SplashScreen.txt");
+	displaySplashScreen("program/lib/utility/SplashScreen.txt");
 	printf("User input: ");
 	STARTWORD();
 
@@ -281,4 +281,4 @@ int main()
 	return 0;
 }
 
-// gcc main.c lib/deliverylist/deliverylist.c lib/inisiasi/inisiasi.c lib/inventory/inventory.c lib/listmakanan/listmakanan.c lib/notifikasi/notifikasi.c lib/olahmakanan/olahmakanan.c lib/peta/peta.c lib/redostack/redostack.c lib/resep/resep.c lib/state/state.c lib/statestack/statestack.c lib/undostack/undostack.c lib/utility/utility.c lib/waktusim/mekawaktu.c ../lib/liststatik/liststatik.c ../lib/makanan/makanan.c ../lib/matrix/matrix.c ../lib/point/point.c ../lib/queue/queue.c ../lib/simulator/simulator.c ../lib/stack/stack.c ../lib/string/string.c ../lib/time/time.c ../lib/tree/tree.c ../lib/wordmachine/wordmachine.c ../lib/wordmachine/charmachine.c ../lib/queue/prioqueuetime.c -lm; ./a.out
+// gcc main.c lib/deliverylist/deliverylist.c lib/inisiasi/inisiasi.c lib/inventory/inventory.c lib/listmakanan/listmakanan.c lib/notifikasi/notifikasi.c lib/olahmakanan/olahmakanan.c lib/peta/peta.c lib/redostack/redostack.c lib/resep/resep.c lib/state/state.c lib/statestack/statestack.c lib/undostack/undostack.c lib/utility/utility.c lib/waktusim/mekawaktu.c ../lib/liststatik/liststatik.c ../lib/makanan/makanan.c ../lib/matrix/matrix.c ../lib/point/point.c ../lib/queue/queue.c ../lib/simulator/simulator.c ../lib/stack/stack.c ../lib/string/string.c ../lib/time/time.c ../lib/tree/tree.c ../lib/wordmachine/wordmachine.c ../lib/wordmachine/charmachine.c ../lib/queue/prioqueuetime.c lib/kulkas/kulkas.c -lm; ./a.out

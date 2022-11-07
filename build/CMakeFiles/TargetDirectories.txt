@@ -1,3 +1,0 @@
-C:/Users/Kenneth Ezekiel/OneDrive/Documents/GitHub/Tubes-Alstrukdat-Kelompok-I/build/CMakeFiles/main.dir
-C:/Users/Kenneth Ezekiel/OneDrive/Documents/GitHub/Tubes-Alstrukdat-Kelompok-I/build/CMakeFiles/edit_cache.dir
-C:/Users/Kenneth Ezekiel/OneDrive/Documents/GitHub/Tubes-Alstrukdat-Kelompok-I/build/CMakeFiles/rebuild_cache.dir

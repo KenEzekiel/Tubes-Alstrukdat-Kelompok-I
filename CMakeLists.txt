@@ -1,7 +1,0 @@
-cmake_minimum_required(VERSION 3.6)
-set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -Wl,--stack,10000000")
-project(IF2110_Mobita VERSION 0.0.1)
-file(GLOB_RECURSE sources CONFIGURE_DEPENDS lib/*.h lib/*.c program/*.h program/*.c)
-list(FILTER sources EXCLUDE REGEX "driver")
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/../program)
-add_executable(main ${sources})

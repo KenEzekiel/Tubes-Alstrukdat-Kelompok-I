@@ -3,12 +3,11 @@
 
 #include "../boolean.h"
 
-#define SETCAPACITY 100
+#define CAPACITY_SET 100
 
-typedef int SEltype;
-typedef struct
-{
-    SEltype buffer[SETCAPACITY];
+typedef int Eltype_SET;
+typedef struct {
+    Eltype_SET buffer[CAPACITY_SET];
     int length;
 } Set;
 
@@ -25,10 +24,10 @@ boolean isEmptySet(Set S);
 int lengthSet(Set S);
 /*Menghasilkan panjang dari Set*/
 
-boolean isIn(Set S, SEltype val);
+boolean isIn(Set S, Eltype_SET val);
 /*Mengembalikan nilai true apabila val ada di dalam set*/
 
-void add(Set *S, SEltype val);
+void add (Set *S, Eltype_SET val);
 /*I.S. Sebuah Set, boleh kosong*/
 /*F.S. Set yang telah ditambahkan elemen val*/
 

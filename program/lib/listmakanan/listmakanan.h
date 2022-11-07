@@ -77,4 +77,6 @@ void displayFilteredAksi(String aksi, ListMakanan lfood, ListMakanan *lfiltered)
 
 void initializeUlang(ListMakanan *lfood);
 
+ListMakanan sortListMakananByID(ListMakanan lfood);
+
 #endif

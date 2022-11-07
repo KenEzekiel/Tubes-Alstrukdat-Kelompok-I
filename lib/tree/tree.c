@@ -15,7 +15,7 @@ Address NewTreeNode(Infotype root)
 {
 	Address t = (Address) malloc(sizeof(Node));
 
-	if (t != Nil)
+	if (t != Nil) 
 	{
 		ROOT(t) = root;
 		SUBADDRESS(t) = (Address*) malloc(INITIAL * sizeof(Address*));

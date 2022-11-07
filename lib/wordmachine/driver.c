@@ -3,7 +3,8 @@
 
 int main()
 {
-	STARTFILEWORD("../../test/test.txt");
+	printf("hello");
+	STARTFILEWORD("test/makanan.txt");
 
 	int len = WordToInt(currentWord);
 	printf("%d\n", len);
