@@ -247,7 +247,14 @@ int ElmtIdxInLTByIdKulkas(ListTuple LT, int idkulkas)
             i++;
         }
     }
-    return i;
+    if (found)
+    {
+        return i;
+    }
+    else
+    {
+        return -1;
+    }
 }
 
 /* Operasi pada Kulkas */
@@ -325,20 +332,27 @@ void getFoodbyIdKulkas(Kulkas *K, Makanan *food, int idkulkas)
     int idx = ElmtIdxInLTByIdKulkas(LISTTUPLE(*K), idkulkas);
     Tuple element;
     // ALGORITMA
-    printf("A\n");
-    row = IDXROW(TELMT(LISTTUPLE(*K), idx));
-    printf("B\n");
-    col = IDXCOL(TELMT(LISTTUPLE(*K), idx));
-    printf("C\n");
-    *food = MAKANAN(TELMT(LISTTUPLE(*K), idx));
-    printf("D\n");
-    deleteAtLT(&LISTTUPLE(*K), &element, idx);
-    printf("E\n");
-    for (i = row; i < row + SizeBaris(*food); i++)
+    // printf("A\n");
+    if (idx == -1)
     {
-        for (j = col; j < col + SizeKolom(*food); j++)
+        printf("Id Kulkas tidak valid\n");
+    }
+    else
+    {
+        row = IDXROW(TELMT(LISTTUPLE(*K), idx));
+        // printf("B\n");
+        col = IDXCOL(TELMT(LISTTUPLE(*K), idx));
+        // printf("C\n");
+        *food = MAKANAN(TELMT(LISTTUPLE(*K), idx));
+        // printf("D\n");
+        deleteAtLT(&LISTTUPLE(*K), &element, idx);
+        // printf("E\n");
+        for (i = row; i < row + SizeBaris(*food); i++)
         {
-            ELMT_MATRIX(MAP(*K), i, j) = 'O';
+            for (j = col; j < col + SizeKolom(*food); j++)
+            {
+                ELMT_MATRIX(MAP(*K), i, j) = 'O';
+            }
         }
     }
 }
@@ -361,8 +375,10 @@ void procInsertToKulkas(Kulkas *K, Inventory *I)
     int id, idxrow, idxcol, idkulkas;
     Makanan food;
     boolean valid;
+    Inventory temp;
 
     // ALGORITMA
+    temp = *I;
     displayInventory(*I);
     displayKulkas(*K);
     printf("Masukkan id makanan yang ingin dimasukkan ke kulkas: ");
@@ -383,11 +399,11 @@ void procInsertToKulkas(Kulkas *K, Inventory *I)
 
     if (!IsPrioQueueEmpty(*I))
     {
-        food = getMakananById(I, id);
+        food = getMakananById(&temp, id);
         insertAtIdx(K, idxrow, idxcol, food, idkulkas, &valid);
-        if (!valid)
+        if (valid)
         {
-            Enqueue(I, food);
+            *I = temp;
         }
     }
 
@@ -401,8 +417,10 @@ void procGetFromKulkas(Kulkas *K, Inventory *I)
     int i;
     int idkulkas, idxrow, idxcol;
     Makanan food;
+    Inventory temp;
 
     // ALGORITMA
+    temp = *I;
     displayInventory(*I);
     displayKulkas(*K);
     printf("Masukkan id makanan di kulkas yang ingin diambil dari kulkas: ");
