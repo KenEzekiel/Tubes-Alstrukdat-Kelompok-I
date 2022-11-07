@@ -44,5 +44,11 @@ void PushRedoStack(RedoStack *RS, State X)
 /* F.S. X adalah nilai elemen TOP yang lama, TOP berkurang 1 */
 void PopRedoStack(RedoStack *RS, State *X)
 {
-    PopStateStack(RS, X);
+    if (IsStateStackEmpty(*RS))
+    {
+    }
+    else
+    {
+        PopStateStack(RS, X);
+    }
 }

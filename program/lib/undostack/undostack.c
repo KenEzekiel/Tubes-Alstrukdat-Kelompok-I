@@ -43,5 +43,11 @@ void PushUndoStack(UndoStack *US, State X)
 /* F.S. X adalah nilai elemen TOP yang lama, TOP berkurang 1 */
 void PopUndoStack(UndoStack *US, State *X)
 {
-    PopStateStack(US, X);
+    if (IsStateStackEmpty(*US))
+    {
+    }
+    else
+    {
+        PopStateStack(US, X);
+    }
 }
