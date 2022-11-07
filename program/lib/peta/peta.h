@@ -35,7 +35,7 @@ void fileToPeta(char *dir, Matrix *m);
 void CreatePeta(Peta *m);
 void StartPeta(Peta *m,char* dir);
 
-boolean CanOrder(Peta m);
+boolean CanBuy(Peta m);
 boolean CanMix(Peta m);
 boolean CanChop(Peta m);
 boolean CanFry(Peta m);

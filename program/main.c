@@ -60,11 +60,16 @@ int main()
 			CreateNotif(&listNotif);
 
 			if (IsBUY())
-			{
-				buy(&DeliveryListState(State(BNMO)), DaftarMakanan);
-				UpdateActionTime(&State(BNMO));
-				PushUndoStack(&US, State(BNMO));
-				updateNotif(&State(BNMO), &listNotif);
+			{	
+				if (CanBuy(Map)) {
+					buy(&DeliveryListState(State(BNMO)), DaftarMakanan);
+					UpdateActionTime(&State(BNMO));
+					PushUndoStack(&US, State(BNMO));
+					updateNotif(&State(BNMO), &listNotif);
+				}
+				else {
+					//LIVIAAAAAAAAAAAAAAAAAAAAA NOTIF GABISA BUY TARO SINI
+				}
 			}
 			else if (IsDELIVERY())
 			{

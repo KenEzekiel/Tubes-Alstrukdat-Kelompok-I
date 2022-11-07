@@ -368,7 +368,7 @@ void StartPeta(Peta *m, char* dir) {
     Update(m, 5);
 }
 
-boolean CanOrder(Peta m){
+boolean CanBuy(Peta m){
     return (NORTH(m)=='T' || EAST(m)=='T'|| WEST(m)=='T' || SOUTH(m) == 'T');
 }
 boolean CanMix(Peta m){
