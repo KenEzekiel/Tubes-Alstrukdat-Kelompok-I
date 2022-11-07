@@ -37,7 +37,7 @@ void InitializeVariables()
 	CreateListMakanan(&DaftarMakanan);
 	DaftarMakanan = readListMakanan("test/makanan.txt");
 
-	PushUndoStack(&US, State(BNMO));
+	// PushUndoStack(&US, State(BNMO));
 }
 
 int main()
@@ -63,9 +63,10 @@ int main()
 			{
 				if (CanBuy(Map))
 				{
+					PushUndoStack(&US, State(BNMO));
 					buy(&DeliveryListState(State(BNMO)), DaftarMakanan);
 					UpdateActionTime(&State(BNMO));
-					PushUndoStack(&US, State(BNMO));
+
 					updateNotif(&State(BNMO), &listNotif);
 				}
 				else
@@ -84,33 +85,62 @@ int main()
 				if (IsNORTH())
 				{
 					MoveNorth(&Map, &gerak);
-					MoveN(&Position(State(BNMO)));
+					if (gerak)
+					{
+						UpdateActionTime(&State(BNMO));
+						PushUndoStack(&US, State(BNMO));
+						updateNotif(&State(BNMO), &listNotif);
+						MoveN(&Position(State(BNMO)));
+					}
+					else
+					{
+						warningNotif(&listNotif);
+					}
 				}
 				else if (IsEAST())
 				{
 					MoveEast(&Map, &gerak);
-					MoveE(&Position(State(BNMO)));
+					if (gerak)
+					{
+						UpdateActionTime(&State(BNMO));
+						PushUndoStack(&US, State(BNMO));
+						updateNotif(&State(BNMO), &listNotif);
+						MoveE(&Position(State(BNMO)));
+					}
+					else
+					{
+						warningNotif(&listNotif);
+					}
 				}
 				else if (IsSOUTH())
 				{
 					MoveSouth(&Map, &gerak);
-					MoveS(&Position(State(BNMO)));
+					if (gerak)
+					{
+						UpdateActionTime(&State(BNMO));
+						PushUndoStack(&US, State(BNMO));
+						updateNotif(&State(BNMO), &listNotif);
+						MoveS(&Position(State(BNMO)));
+					}
+					else
+					{
+						warningNotif(&listNotif);
+					}
 				}
 				else if (IsWEST())
 				{
 					MoveWest(&Map, &gerak);
-					MoveW(&Position(State(BNMO)));
-				}
-
-				if (gerak)
-				{
-					UpdateActionTime(&State(BNMO));
-					PushUndoStack(&US, State(BNMO));
-					updateNotif(&State(BNMO), &listNotif);
-				}
-				else
-				{
-					warningNotif(&listNotif);
+					if (gerak)
+					{
+						UpdateActionTime(&State(BNMO));
+						PushUndoStack(&US, State(BNMO));
+						updateNotif(&State(BNMO), &listNotif);
+						MoveW(&Position(State(BNMO)));
+					}
+					else
+					{
+						warningNotif(&listNotif);
+					}
 				}
 			}
 			else if (IsMIX())
@@ -128,9 +158,10 @@ int main()
 						STARTWORD();
 						i = WordToInt(currentWord);
 					} while (i < 0 || i > listMakananLength(lfiltered));
+					PushUndoStack(&US, State(BNMO));
 					process(aksi, i, &DaftarMakanan, InventoryState(State(BNMO)), &lfiltered, &ProcessedList(State(BNMO)), Resep);
 					UpdateActionTime(&State(BNMO));
-					PushUndoStack(&US, State(BNMO));
+
 					updateNotif(&State(BNMO), &listNotif);
 				}
 				else
@@ -155,9 +186,10 @@ int main()
 						STARTWORD();
 						i = WordToInt(currentWord);
 					} while (i < 0 || i > listMakananLength(lfiltered));
+					PushUndoStack(&US, State(BNMO));
 					process(aksi, i, &DaftarMakanan, InventoryState(State(BNMO)), &lfiltered, &ProcessedList(State(BNMO)), Resep);
 					UpdateActionTime(&State(BNMO));
-					PushUndoStack(&US, State(BNMO));
+
 					updateNotif(&State(BNMO), &listNotif);
 				}
 				else
@@ -183,9 +215,10 @@ int main()
 						i = WordToInt(currentWord);
 						printf("\n");
 					} while (i < 0 || i > listMakananLength(lfiltered));
+					PushUndoStack(&US, State(BNMO));
 					process(aksi, i, &DaftarMakanan, InventoryState(State(BNMO)), &lfiltered, &ProcessedList(State(BNMO)), Resep);
 					UpdateActionTime(&State(BNMO));
-					PushUndoStack(&US, State(BNMO));
+
 					updateNotif(&State(BNMO), &listNotif);
 				}
 				else
@@ -210,9 +243,10 @@ int main()
 						STARTWORD();
 						i = WordToInt(currentWord);
 					} while (i < 0 || i > listMakananLength(lfiltered));
+					PushUndoStack(&US, State(BNMO));
 					process(aksi, i, &DaftarMakanan, InventoryState(State(BNMO)), &lfiltered, &ProcessedList(State(BNMO)), Resep);
 					UpdateActionTime(&State(BNMO));
-					PushUndoStack(&US, State(BNMO));
+
 					updateNotif(&State(BNMO), &listNotif);
 				}
 				else
@@ -232,9 +266,8 @@ int main()
 				ADVWORD();
 				Y = WordToInt(currentWord);
 				CreateTime(&temptime, 0, X, Y);
-				UpdateWaitTime(&State(BNMO), temptime);
-
 				PushUndoStack(&US, State(BNMO));
+				UpdateWaitTime(&State(BNMO), temptime);
 				updateNotif(&State(BNMO), &listNotif);
 			}
 			else if (IsINSERTKULKAS())
@@ -252,20 +285,36 @@ int main()
 			else if (IsUNDO())
 			{
 				State temp;
-				PopUndoStack(&US, &temp);
-				State(BNMO) = StateTop(US);
-				PushRedoStack(&RS, temp);
-				Teleport(&Map, Position(State(BNMO)));
-				updateUndoNotif(State(BNMO), temp, &listNotif);
+				if (!IsUndoStackEmpty(US))
+				{
+					PushRedoStack(&RS, State(BNMO));
+
+					PopUndoStack(&US, &temp);
+					State(BNMO) = temp;
+					Teleport(&Map, Position(State(BNMO)));
+					updateUndoNotif(State(BNMO), temp, &listNotif);
+				}
+				else
+				{
+					printf("Undo stack kosong!\n");
+				}
 			}
 			else if (IsREDO())
 			{
-				State temp;
-				PopRedoStack(&RS, &temp);
-				State(BNMO) = temp;
-				updateRedoNotif(State(BNMO), StateTop(US), &listNotif);
-				PushUndoStack(&US, temp);
-				Teleport(&Map, Position(State(BNMO)));
+				if (!IsRedoStackEmpty(RS))
+				{
+					State temp;
+					PopRedoStack(&RS, &temp);
+					PushUndoStack(&US, State(BNMO));
+					State(BNMO) = temp;
+					updateRedoNotif(State(BNMO), StateTop(US), &listNotif);
+
+					Teleport(&Map, Position(State(BNMO)));
+				}
+				else
+				{
+					printf("Redo stack kosong!\n");
+				}
 			}
 			else if (IsCATALOG())
 			{
