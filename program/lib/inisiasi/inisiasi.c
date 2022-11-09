@@ -202,3 +202,11 @@ boolean IsINVENTORY()
 
 	return IsWordEqual(Inventory, currentWord);
 }
+
+boolean IsREKOMENDASI()
+/* Mengecek apakah currentWord == REKOMENDASI */
+{
+	Word Rekomendasi = StringToWord("REKOMENDASI", 11);
+
+	return IsWordEqual(Rekomendasi, currentWord);
+}

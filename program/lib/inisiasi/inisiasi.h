@@ -85,4 +85,7 @@ boolean IsCOOKBOOK();
 boolean IsINVENTORY();
 /* Mengecek apakah currentWord == INVENTORY */
 
+boolean IsREKOMENDASI();
+/* Mengecek apakah currentWord == REKOMENDASI */
+
 #endif
