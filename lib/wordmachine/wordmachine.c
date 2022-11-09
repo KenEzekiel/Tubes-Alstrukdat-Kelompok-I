@@ -137,6 +137,19 @@ boolean IsWordEqual(Word w1, Word w2)
    return true;
 }
 
+boolean isInt(Word w)
+{
+   boolean found = true;
+   for (int i = 0; i < w.Length; i++)
+   {
+      if (w.TabWord[i] < 48 || w.TabWord[i] > 57)
+      {
+         found = false;
+      }
+   }
+   return found;
+}
+
 int WordToInt(Word w)
 /* Mengubah array char integer ('0', '1', '2', dst.) menjadi integer */
 {

@@ -78,6 +78,8 @@ void PrintWord();
 boolean IsWordEqual(Word w1, Word w2);
 /* Mengecek apakah w1 sama dengan w2 */
 
+boolean isInt(Word w);
+
 int WordToInt(Word w);
 /* Mengubah array char integer ('0', '1', '2', dst.) menjadi integer */
 
