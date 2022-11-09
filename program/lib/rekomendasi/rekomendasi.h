@@ -12,5 +12,12 @@ Set inventorySet(Inventory *I, ListMakanan LM);
 
 void initializeSet(Set *S, ListMakanan LM); 
 
+Set resepSet(Tree *t, ListMakanan LM);
+
+void cekTreeSubset(ListMakanan *recom, ListMakanan LM, Tree *t, Set invSet);
+
+void rekomendasiMakanan(ListMakanan *recom, ListMakanan LM, Inventory *I, ResepTree Resep);
+
+void printRekomendasiMakanan(ListMakanan LM, Inventory *I, ResepTree Resep);
 
 #endif
