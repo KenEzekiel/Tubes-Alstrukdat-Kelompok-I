@@ -38,4 +38,7 @@ void copy(Set *S1, Set *S2);
 boolean isSubset(Set S1, Set S2);
 /*Menghasilkan true apabila S1 adalah subset dari S2*/
 
+void printSet(Set S);
+/* Menampilkan isi set dengan format [e1,e2,...] */
+
 #endif

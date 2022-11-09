@@ -68,3 +68,18 @@ boolean isSubset(Set S1, Set S2)
     }
     return sama;
 }
+
+void printSet(Set S)
+{
+    /* Menampilkan isi set dengan format [e1,e2,...] */
+    printf("[");
+    for (int i = 0; i < lengthSet(S);i++)
+    {
+        printf("%d", ELMT_S(S,i));
+        if (i != lengthS(S) - 1)
+        {
+            printf(",");
+        }
+    }
+    printf("]\n");
+}
