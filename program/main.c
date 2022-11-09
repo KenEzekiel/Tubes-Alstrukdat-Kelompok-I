@@ -368,6 +368,10 @@ int main()
 			{
 				displayInventory(InventoryState(State(BNMO)));
 			}
+			else if (IsREKOMENDASI())
+			{
+				printRekomendasiMakanan(DaftarMakanan, &InventoryState(State(BNMO)), Resep);
+			}
 			else if (IsEXIT())
 			{
 				isRunning = false;

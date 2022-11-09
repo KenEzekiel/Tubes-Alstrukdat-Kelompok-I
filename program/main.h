@@ -33,5 +33,6 @@
 #include "lib/state/state.h"
 #include "lib/notifikasi/notifikasi.h"
 #include "lib/kulkas/kulkas.h"
+#include "lib/rekomendasi/rekomendasi.h"
 
 #endif
