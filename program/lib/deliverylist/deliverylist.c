@@ -346,14 +346,21 @@ void buy(DeliveryList *DL, ListMakanan LM)
     String aksiBuy, foodName;
     ListMakanan listBuy;
     int opt, idx, idFood;
+    
 
     /* ALGORITMA */
     charToString("BUY", &aksiBuy, 3);
     displayFilteredAksi(aksiBuy, LM, &listBuy);
-    printf("\n Kirim 0 untuk exit \n");
+    printf("\nKirim 0 untuk exit \n");
 
     printf("Enter command: ");
     STARTWORD();
+    while (!isInt(currentWord))
+    {
+        printf("Input yang dimasukkan tidak valid.\n");
+        printf("Enter command: ");
+        STARTWORD();
+    }
     opt = WordToInt(currentWord);
 
     while (opt != 0)
@@ -368,6 +375,7 @@ void buy(DeliveryList *DL, ListMakanan LM)
         {
             foodName = Nama(ELMT_LM(listBuy, idx));
             buyMakananbyId(DL, idFood, listBuy);
+            
             printf("Berhasil memesan ");
             displayString(foodName);
             printf(". ");
@@ -375,8 +383,14 @@ void buy(DeliveryList *DL, ListMakanan LM)
             printf(" akan diantar dalam ");
             PrintTime(DelivTime(ELMT_LM(listBuy, idx)));
         }
-        printf("\nEnter command: ");
+        printf("Enter command: ");
         STARTWORD();
+        while (!isInt(currentWord))
+        {
+            printf("Input yang dimasukkan tidak valid.\n");
+            printf("Enter command: ");
+            STARTWORD();
+        }
         opt = WordToInt(currentWord);
     }
 }
