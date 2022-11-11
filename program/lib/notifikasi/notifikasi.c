@@ -93,10 +93,11 @@ void addExpired(ListMakanan expired,  Notif *listNotif)
 void updateUndoNotif(State current, State prev, Notif *listNotif)
 {
     /* KAMUS */
-    Inventory tempPrev;
+    ProcessList tempPrev;
+    DeliveryList tempPrevBuy;
     Makanan tempVal;
     int idx;
-    String info1, info2, info3, newNotif, aksiFry, aksiMix, aksiChop, aksiBoil, space;
+    String info1, info2, info3, newNotif, aksiFry, aksiMix, aksiChop, aksiBoil, aksiBuy, space;
     ListMakanan expPrev = ExpListState(prev);
     ListMakanan expCurr = ExpListState(current);
     ListMakanan delivPrev = DeliveredListState(prev);
@@ -110,39 +111,51 @@ void updateUndoNotif(State current, State prev, Notif *listNotif)
     charToString("MIX", &aksiMix, 3);
     charToString("CHOP", &aksiChop, 4);
     charToString("BOIL", &aksiBoil, 4);
+    charToString("BUY", &aksiBuy, 3);
     charToString(" ", &space, 1);
 
-    /* Menambahkan notif pembatalan aksi */
-    tempPrev = InventoryState(prev);
+    /* Menambahkan notif pembatalan aksi selain BUY*/
+    tempPrev = ProcessedList(prev);
     while (!IsPrioQueueEmpty(tempPrev))
     {
         Dequeue(&tempPrev, &tempVal);
-        if (!isElmtById(InventoryState(current), ID(tempVal)))
+        if (!isElmtById(ProcessedList(current), ID(tempVal)))
         {
-            idx = indexOfID(delivPrev, ID(tempVal));
-            if (idx == IDX_UNDEF_LMAKANAN)
+            if (isStringEqual(Aksi(tempVal), aksiFry))
             {
-                if (isStringEqual(Aksi(tempVal), aksiFry))
-                {
-                    charToString("Penggorengan ", &newNotif, 13);
-                }
-                else if (isStringEqual(Aksi(tempVal), aksiMix))
-                {
-                    charToString("Pencampuran ", &newNotif, 12);
-                }
-                else if (isStringEqual(Aksi(tempVal), aksiBoil))
-                {
-                    charToString("Perebusan ", &newNotif, 10);
-                }
-                else
-                {
-                    charToString("Pemotongan ", &newNotif, 11);
-                }
-                insertSubstring(&newNotif, space);
-                insertSubstring(&newNotif, Nama(tempVal));
-                insertSubstring(&newNotif, info3);
-                insertLastNotif(listNotif, newNotif);
+                charToString("Penggorengan ", &newNotif, 13);
             }
+            else if (isStringEqual(Aksi(tempVal), aksiMix))
+            {
+                charToString("Pencampuran ", &newNotif, 12);
+            }
+            else if (isStringEqual(Aksi(tempVal), aksiBoil))
+            {
+                charToString("Perebusan ", &newNotif, 10);
+            }
+            else
+            {
+                charToString("Pemotongan ", &newNotif, 11);
+            }
+            insertSubstring(&newNotif, space);
+            insertSubstring(&newNotif, Nama(tempVal));
+            insertSubstring(&newNotif, info3);
+            insertLastNotif(listNotif, newNotif);
+        }
+    }
+
+    /* Menambahkan notif pembatalan aksi BUY*/
+    tempPrevBuy = DeliveryListState(prev);
+    while (!IsPrioQueueEmpty(tempPrevBuy))
+    {
+        Dequeue(&tempPrevBuy, &tempVal);
+        if (!isElmtById(DeliveryListState(current), ID(tempVal)))
+        {
+            charToString("Pembelian ", &newNotif, 11);
+            insertSubstring(&newNotif, space);
+            insertSubstring(&newNotif, Nama(tempVal));
+            insertSubstring(&newNotif, info3);
+            insertLastNotif(listNotif, newNotif);
         }
     }
 
@@ -170,10 +183,11 @@ void updateUndoNotif(State current, State prev, Notif *listNotif)
 void updateRedoNotif(State current, State prev, Notif *listNotif)
 {
     /* KAMUS */
-    Inventory tempCurr;
+    ProcessList tempCurr;
+    DeliveryList tempCurrBuy;
     Makanan tempVal;
     int idx;
-    String info, newNotif, aksiFry, aksiMix, aksiChop, aksiBoil, space;
+    String info, newNotif, aksiFry, aksiMix, aksiChop, aksiBoil, aksiBuy, space;
     ListMakanan expPrev = ExpListState(prev);
     ListMakanan expCurr = ExpListState(current);
     ListMakanan delivPrev = DeliveredListState(prev);
@@ -185,39 +199,51 @@ void updateRedoNotif(State current, State prev, Notif *listNotif)
     charToString("MIX", &aksiMix, 3);
     charToString("CHOP", &aksiChop, 4);
     charToString("BOIL", &aksiBoil, 4);
+    charToString("BUY", &aksiBuy, 3);
     charToString(" ", &space, 1);
 
-    /* Menambahkan notif pembatalan aksi */
-    tempCurr = InventoryState(current);
+    /* Menambahkan notif aksi dilakukan selain BUY */
+    tempCurr = ProcessedList(current);
     while (!IsPrioQueueEmpty(tempCurr))
     {
         Dequeue(&tempCurr, &tempVal);
-        if (!isElmtById(InventoryState(prev), ID(tempVal)))
+        if (!isElmtById(ProcessedList(prev), ID(tempVal)))
         {
-            idx = indexOfID(delivCurr, ID(tempVal));
-            if (idx == IDX_UNDEF_LMAKANAN)
+            if (isStringEqual(Aksi(tempVal), aksiFry))
             {
-                if (isStringEqual(Aksi(tempVal), aksiFry))
-                {
-                    charToString("Penggorengan ", &newNotif, 13);
-                }
-                else if (isStringEqual(Aksi(tempVal), aksiMix))
-                {
-                    charToString("Pencampuran ", &newNotif, 12);
-                }
-                else if (isStringEqual(Aksi(tempVal), aksiBoil))
-                {
-                    charToString("Perebusan ", &newNotif, 10);
-                }
-                else
-                {
-                    charToString("Pemotongan ", &newNotif, 11);
-                }
-                insertSubstring(&newNotif, space);
-                insertSubstring(&newNotif, Nama(tempVal));
-                insertSubstring(&newNotif, info);
-                insertLastNotif(listNotif, newNotif);
+                charToString("Penggorengan ", &newNotif, 13);
             }
+            else if (isStringEqual(Aksi(tempVal), aksiMix))
+            {
+                charToString("Pencampuran ", &newNotif, 12);
+            }
+            else if (isStringEqual(Aksi(tempVal), aksiBoil))
+            {
+                charToString("Perebusan ", &newNotif, 10);
+            }
+            else
+            {
+                charToString("Pemotongan ", &newNotif, 11);
+            }
+            insertSubstring(&newNotif, space);
+            insertSubstring(&newNotif, Nama(tempVal));
+            insertSubstring(&newNotif, info);
+            insertLastNotif(listNotif, newNotif);
+        }
+    }
+
+    /* Menambahkan notif aksi BUY dilakukan */
+    tempCurrBuy = DeliveryListState(current);
+    while (!IsPrioQueueEmpty(tempCurrBuy))
+    {
+        Dequeue(&tempCurrBuy, &tempVal);
+        if (!isElmtById(DeliveryListState(prev), ID(tempVal)))
+        {
+            charToString("Pembelian ", &newNotif, 11);
+            insertSubstring(&newNotif, space);
+            insertSubstring(&newNotif, Nama(tempVal));
+            insertSubstring(&newNotif, info);
+            insertLastNotif(listNotif, newNotif);
         }
     }
 
