@@ -36,6 +36,7 @@ void InitializeVariables()
 	StartPeta(&Map, "test/peta.txt");
 	CreateListMakanan(&DaftarMakanan);
 	DaftarMakanan = readListMakanan("test/makanan.txt");
+	Position(State(BNMO)) = cariSimul(Map);
 
 	// PushUndoStack(&US, State(BNMO));
 }
