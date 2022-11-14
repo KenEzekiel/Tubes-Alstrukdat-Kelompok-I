@@ -427,9 +427,16 @@ void procGetFromKulkas(Kulkas *K, Inventory *I)
     STARTWORD();
     idkulkas = WordToInt(currentWord);
 
+    int idx = ElmtIdxInLTByIdKulkas(LISTTUPLE(*K), idkulkas);
+
     getFoodbyIdKulkas(K, &food, idkulkas);
     // printf("1\n");
-    Enqueue(I, food);
+
+    if (idx != -1)
+    {
+        Enqueue(I, food);
+    }
+
     // printf("2\n");
 
     displayInventory(*I);

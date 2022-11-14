@@ -32,16 +32,16 @@ void InitializeVariables()
 	CreateKulkas(&K, 20, 30);
 
 	// Initialize constant variables (read from file)
-	ReadFromFile(&Resep, 10, "test/resep_2.txt");
-	StartPeta(&Map, "test/peta.txt");
+	ReadFromFile(&Resep, 10, "../test/resep_2.txt");
+	StartPeta(&Map, "../test/peta.txt");
 	CreateListMakanan(&DaftarMakanan);
-	DaftarMakanan = readListMakanan("test/makanan.txt");
+	DaftarMakanan = readListMakanan("../test/makanan.txt");
 	Position(State(BNMO)) = cariSimul(Map);
 }
 
 int main()
 {
-	displaySplashScreen("program/lib/utility/SplashScreen.txt");
+	displaySplashScreen("./lib/utility/SplashScreen.txt");
 	printf("User input: ");
 	STARTWORD();
 
@@ -91,8 +91,8 @@ int main()
 						else
 						{
 							foodName = Nama(ELMT_LM(listBuy, idx));
-							buyMakananbyId(&DeliveryListState(State(BNMO)), idFood, listBuy);
 							PushUndoStack(US, State(BNMO));
+							buyMakananbyId(&DeliveryListState(State(BNMO)), idFood, listBuy);
 							UpdateActionTime(&State(BNMO));
 							updateNotif(&State(BNMO), &listNotif);
 							printf("Berhasil memesan ");
@@ -134,8 +134,8 @@ int main()
 					MoveNorth(&Map, &gerak);
 					if (gerak)
 					{
-						UpdateActionTime(&State(BNMO));
 						PushUndoStack(US, State(BNMO));
+						UpdateActionTime(&State(BNMO));
 						updateNotif(&State(BNMO), &listNotif);
 						MoveN(&Position(State(BNMO)));
 					}
@@ -149,8 +149,8 @@ int main()
 					MoveEast(&Map, &gerak);
 					if (gerak)
 					{
-						UpdateActionTime(&State(BNMO));
 						PushUndoStack(US, State(BNMO));
+						UpdateActionTime(&State(BNMO));
 						updateNotif(&State(BNMO), &listNotif);
 						MoveE(&Position(State(BNMO)));
 					}
@@ -164,8 +164,8 @@ int main()
 					MoveSouth(&Map, &gerak);
 					if (gerak)
 					{
-						UpdateActionTime(&State(BNMO));
 						PushUndoStack(US, State(BNMO));
+						UpdateActionTime(&State(BNMO));
 						updateNotif(&State(BNMO), &listNotif);
 						MoveS(&Position(State(BNMO)));
 					}
@@ -179,8 +179,8 @@ int main()
 					MoveWest(&Map, &gerak);
 					if (gerak)
 					{
-						UpdateActionTime(&State(BNMO));
 						PushUndoStack(US, State(BNMO));
+						UpdateActionTime(&State(BNMO));
 						updateNotif(&State(BNMO), &listNotif);
 						MoveW(&Position(State(BNMO)));
 					}
