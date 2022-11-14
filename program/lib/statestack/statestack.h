@@ -32,6 +32,7 @@ typedef struct Statestack
 /* Jika US adalah StateStack maka akses elemen : */
 /* US.T[(S.TOP)] untuk mengakses elemen TOP */
 /* US.TOP adalah alamat elemen TOP */
+typedef struct Statestack *stackaddr;
 
 /* Definisi akses dengan Selektor : Set dan Get */
 #define idxTop(SS) (SS).TOP
@@ -44,25 +45,25 @@ typedef struct Statestack
 /* F.S. Membuat sebuah StateStack S yang kosong berkapasitas MaxEl */
 /* jadi indeksnya antara 0.. MaxEl */
 /* Ciri StateStack kosong : TOP bernilai Empty */
-void CreateStateStackEmpty(StateStack *SS);
+stackaddr CreateStateStackEmpty();
 
 /* ************ Predikat Untuk test keadaan KOLEKSI ************ */
 /* Mengirim true jika StateStack kosong: lihat definisi di atas */
-boolean IsStateStackEmpty(StateStack SS);
+boolean IsStateStackEmpty(stackaddr sa);
 
 /* Mengirim true jika tabel penampung nilai elemen StateStack penuh */
-boolean IsStateStackFull(StateStack SS);
+boolean IsStateStackFull(stackaddr sa);
 
 /* ************ Menambahkan sebuah elemen ke StateStack ************ */
 /* Menambahkan X sebagai elemen StateStack S. */
 /* I.S. S mungkin kosong, tabel penampung elemen StateStack TIDAK penuh */
 /* F.S. X menjadi TOP yang baru,TOP bertambah 1 */
-void PushStateStack(StateStack *SS, State X);
+void PushStateStack(stackaddr sa, State X);
 
 /* ************ Menghapus sebuah elemen StateStack ************ */
 /* Menghapus X dari StateStack S. */
 /* I.S. S  tidak mungkin kosong */
 /* F.S. X adalah nilai elemen TOP yang lama, TOP berkurang 1 */
-void PopStateStack(StateStack *SS, State *X);
+void PopStateStack(stackaddr sa, State *X);
 
 #endif

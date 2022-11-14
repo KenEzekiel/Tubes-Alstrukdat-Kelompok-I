@@ -16,6 +16,7 @@
 #include "../lib/time/time.h"
 #include "../lib/tree/tree.h"
 #include "../lib/wordmachine/wordmachine.h"
+#include "../lib/set/set.h"
 #include "lib/boolean.h"
 
 // File header program

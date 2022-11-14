@@ -17,54 +17,62 @@
 /* F.S. Membuat sebuah StateStack S yang kosong berkapasitas MaxEl */
 /* jadi indeksnya antara 0.. MaxEl */
 /* Ciri StateStack kosong : TOP bernilai Empty */
-void CreateStateStackEmpty(StateStack *SS)
+stackaddr CreateStateStackEmpty()
 {
-    idxTop(*SS) = Empty;
+    stackaddr sa = (stackaddr)malloc(sizeof(StateStack));
+    if (sa != NULL)
+    {
+        idxTop(*sa) = Empty;
+    }
+    return sa;
 }
 
 /* ************ Predikat Untuk test keadaan KOLEKSI ************ */
 /* Mengirim true jika StateStack kosong: lihat definisi di atas */
-boolean IsStateStackEmpty(StateStack SS)
+boolean IsStateStackEmpty(stackaddr sa)
 {
-    return idxTop(SS) == Empty;
+    return idxTop(*sa) == Empty;
 }
 
 /* Mengirim true jika tabel penampung nilai elemen StateStack penuh */
-boolean IsStateStackFull(StateStack SS)
+boolean IsStateStackFull(stackaddr sa)
 {
-    return idxTop(SS) == MaxEl - 1;
+    return idxTop(*sa) == MaxEl - 1;
 }
 
 /* ************ Menambahkan sebuah elemen ke StateStack ************ */
 /* Menambahkan X sebagai elemen StateStack S. */
 /* I.S. SS mungkin kosong, tabel penampung elemen StateStack TIDAK penuh */
 /* F.S. X menjadi TOP yang baru,TOP bertambah 1 */
-void PushStateStack(StateStack *SS, State X)
+void PushStateStack(stackaddr sa, State X)
 {
-    if (IsStateStackEmpty(*SS))
+    if (IsStateStackEmpty(sa))
     {
-        idxTop(*SS) = 0;
+        idxTop(*sa) = 0;
     }
     else
     {
-        idxTop(*SS) = idxTop(*SS) + 1;
+        idxTop(*sa) = idxTop(*sa) + 1;
     }
-    StateTop(*SS) = X;
+    StateTop(*sa) = X;
 }
 
 /* ************ Menghapus sebuah elemen StateStack ************ */
 /* Menghapus X dari StateStack S. */
 /* I.S. SS  tidak mungkin kosong */
 /* F.S. X adalah nilai elemen TOP yang lama, TOP berkurang 1 */
-void PopStateStack(StateStack *SS, State *X)
+void PopStateStack(stackaddr sa, State *X)
 {
-    *X = StateTop(*SS);
-    if (idxTop(*SS) == 0)
+    if (!IsStateStackEmpty(sa))
     {
-        idxTop(*SS) = Empty;
-    }
-    else
-    {
-        idxTop(*SS) = idxTop(*SS) - 1;
+        *X = StateTop(*sa);
+        if (idxTop(*sa) == 0)
+        {
+            idxTop(*sa) = Empty;
+        }
+        else
+        {
+            idxTop(*sa) = idxTop(*sa) - 1;
+        }
     }
 }

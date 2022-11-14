@@ -53,7 +53,7 @@ void BacaTIME(TIME *T)
    HH = WordToInt(currentWord);
    ADVWORD();
    MM = WordToInt(currentWord);
-   while (IsTIMEValid(DD,HH, MM) == false)
+   while (IsTIMEValid(DD, HH, MM) == false)
    {
       printf("Waktu tidak valid\n");
       STARTWORD();
@@ -63,7 +63,7 @@ void BacaTIME(TIME *T)
       ADVWORD();
       MM = WordToInt(currentWord);
    }
-   CreateTime(T,DD,HH,MM);
+   CreateTime(T, DD, HH, MM);
 }
 
 void TulisTIME(TIME T)
@@ -76,15 +76,18 @@ void TulisTIME(TIME T)
    DD = Day(T);
    HH = Hour(T);
    MM = Minute(T);
-   
-   if (DD>0){
-        printf("%d.%d.%d", DD, HH, MM);
+
+   if (DD > 0)
+   {
+      printf("%d.%d.%d", DD, HH, MM);
    }
-   else if (HH>0) {
-        printf("%d.%d", HH, MM);
+   else if (HH > 0)
+   {
+      printf("%d.%d", HH, MM);
    }
-   else {
-        printf("%d",MM);
+   else
+   {
+      printf("%d", MM);
    }
    printf("\n");
 }
@@ -97,23 +100,29 @@ void PrintTime(TIME T)
    DD = Day(T);
    HH = Hour(T);
    MM = Minute(T);
-   
-   if (DD > 0) {
+
+   if (DD > 0)
+   {
       printf("%d hari", DD);
    }
-   if (HH > 0) {
-      if (DD > 0) {
+   if (HH > 0)
+   {
+      if (DD > 0)
+      {
          printf(" ");
       }
       printf("%d jam", HH);
    }
-   if (MM > 0) {
-      if (DD > 0 || HH > 0) {
+   if (MM > 0)
+   {
+      if (DD > 0 || HH > 0)
+      {
          printf(" ");
       }
-      printf("%d menit", MM);
+      printf("%d menit\n", MM);
    }
-   if (HH == 0 && MM == 0 && DD == 0){
+   if (HH == 0 && MM == 0 && DD == 0)
+   {
       printf("0");
    }
 }
@@ -128,12 +137,12 @@ long TIMEToMenit(TIME T)
    /* Nilai maksimum = 3600*23+59*60+59 */
    int hari, jam, menit;
    int jlhmenit;
-   
+
    hari = Day(T);
    jam = Hour(T);
    menit = Minute(T);
-   
-   jlhmenit = 1440*hari + 60*jam + menit;
+
+   jlhmenit = 1440 * hari + 60 * jam + menit;
 
    return jlhmenit;
 }
@@ -146,7 +155,7 @@ TIME MenitToTIME(long N)
       N1 = N mod 86400, baru N1 dikonversi menjadi TIME */
    int minute, h, m, d;
    TIME T;
-   
+
    /*while(N>= 86400) {
       N -= 86400;
    }*/
@@ -158,7 +167,7 @@ TIME MenitToTIME(long N)
    Day(T) = d;
    Hour(T) = h;
    Minute(T) = m;
-   
+
    return T;
 }
 
@@ -173,7 +182,7 @@ boolean TEQ(TIME T1, TIME T2)
    menit1 = TIMEToMenit(T1);
    menit2 = TIMEToMenit(T2);
 
-   return(menit1 == menit2);
+   return (menit1 == menit2);
 }
 
 boolean TNEQ(TIME T1, TIME T2)
@@ -183,7 +192,7 @@ boolean TNEQ(TIME T1, TIME T2)
    menit1 = TIMEToMenit(T1);
    menit2 = TIMEToMenit(T2);
 
-   return(menit1 != menit2);
+   return (menit1 != menit2);
 }
 
 boolean TLT(TIME T1, TIME T2)
@@ -253,10 +262,11 @@ long Durasi(TIME TAw, TIME TAkh)
    time2 = TIMEToMenit(TAkh);
    if (time1 > time2)
    {
-        durasi = time1-time2;
+      durasi = time1 - time2;
    }
-   else{
-        durasi = time2 - time1;
+   else
+   {
+      durasi = time2 - time1;
    }
    return durasi;
 }

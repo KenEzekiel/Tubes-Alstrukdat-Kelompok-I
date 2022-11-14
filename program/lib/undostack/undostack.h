@@ -40,25 +40,25 @@ typedef StateStack UndoStack;
 /* F.S. Membuat sebuah UndoStack S yang kosong berkapasitas MaxEl */
 /* jadi indeksnya antara 0.. MaxEl */
 /* Ciri UndoStack kosong : TOP bernilai Nil */
-void CreateUndoStackEmpty(UndoStack *US);
+stackaddr CreateUndoStackEmpty();
 
 /* ************ Predikat Untuk test keadaan KOLEKSI ************ */
 /* Mengirim true jika UndoStack kosong: lihat definisi di atas */
-boolean IsUndoStackEmpty(UndoStack US);
+boolean IsUndoStackEmpty(stackaddr sa);
 
 /* Mengirim true jika tabel penampung nilai elemen UndoStack penuh */
-boolean IsUndoStackFull(UndoStack US);
+boolean IsUndoStackFull(stackaddr sa);
 
 /* ************ Menambahkan sebuah elemen ke UndoStack ************ */
 /* Menambahkan X sebagai elemen UndoStack S. */
 /* I.S. S mungkin kosong, tabel penampung elemen UndoStack TIDAK penuh */
 /* F.S. X menjadi TOP yang baru,TOP bertambah 1 */
-void PushUndoStack(UndoStack *US, State X);
+void PushUndoStack(stackaddr sa, State X);
 
 /* ************ Menghapus sebuah elemen UndoStack ************ */
 /* Menghapus X dari UndoStack S. */
 /* I.S. S  tidak mungkin kosong */
 /* F.S. X adalah nilai elemen TOP yang lama, TOP berkurang 1 */
-void PopUndoStack(UndoStack *US, State *X);
+void PopUndoStack(stackaddr sa, State *X);
 
 #endif

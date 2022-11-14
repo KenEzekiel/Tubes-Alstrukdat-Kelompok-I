@@ -9,8 +9,8 @@
 // Inventory Inv;
 // Masuk kedalam Simulator.State
 Simulator BNMO;
-UndoStack US;
-RedoStack RS;
+stackaddr US;
+stackaddr RS;
 Notif listNotif;
 Kulkas K;
 
@@ -26,19 +26,17 @@ void InitializeVariables()
 	printf("Input user: ");
 	readString(&user);
 	CreateStartSimulator(&BNMO, user);
-	;
-	CreateUndoStackEmpty(&US);
-	CreateRedoStackEmpty(&RS);
+
+	US = CreateUndoStackEmpty();
+	RS = CreateRedoStackEmpty();
 	CreateKulkas(&K, 20, 30);
 
-	// // Initialize constant variables (read from file)
+	// Initialize constant variables (read from file)
 	ReadFromFile(&Resep, 10, "test/resep_2.txt");
 	StartPeta(&Map, "test/peta.txt");
 	CreateListMakanan(&DaftarMakanan);
 	DaftarMakanan = readListMakanan("test/makanan.txt");
 	Position(State(BNMO)) = cariSimul(Map);
-
-	// PushUndoStack(&US, State(BNMO));
 }
 
 int main()
@@ -72,11 +70,13 @@ int main()
 					displayFilteredAksi(aksiBuy, DaftarMakanan, &listBuy);
 					printf("\nKirim 0 untuk exit \n");
 
-					printf("Enter command: "); STARTWORD();
+					printf("Enter command: ");
+					STARTWORD();
 					while (!isInt(currentWord))
 					{
 						printf("Input yang dimasukkan tidak valid.\n");
-						printf("Enter command: "); STARTWORD();
+						printf("Enter command: ");
+						STARTWORD();
 					}
 					opt = WordToInt(currentWord);
 
@@ -92,17 +92,23 @@ int main()
 						{
 							foodName = Nama(ELMT_LM(listBuy, idx));
 							buyMakananbyId(&DeliveryListState(State(BNMO)), idFood, listBuy);
-							PushUndoStack(&US, State(BNMO));
+							PushUndoStack(US, State(BNMO));
 							UpdateActionTime(&State(BNMO));
 							updateNotif(&State(BNMO), &listNotif);
-							printf("Berhasil memesan "); displayString(foodName); printf(". ");
-							displayString(foodName); printf(" akan diantar dalam "); PrintTime(DelivTime(ELMT_LM(listBuy, idx)));
+							printf("Berhasil memesan ");
+							displayString(foodName);
+							printf(". ");
+							displayString(foodName);
+							printf(" akan diantar dalam ");
+							PrintTime(DelivTime(ELMT_LM(listBuy, idx)));
 						}
-						printf("Enter command: "); STARTWORD();
+						printf("Enter command: ");
+						STARTWORD();
 						while (!isInt(currentWord))
 						{
 							printf("Input yang dimasukkan tidak valid.\n");
-							printf("Enter command: "); STARTWORD();
+							printf("Enter command: ");
+							STARTWORD();
 						}
 						opt = WordToInt(currentWord);
 					}
@@ -129,7 +135,7 @@ int main()
 					if (gerak)
 					{
 						UpdateActionTime(&State(BNMO));
-						PushUndoStack(&US, State(BNMO));
+						PushUndoStack(US, State(BNMO));
 						updateNotif(&State(BNMO), &listNotif);
 						MoveN(&Position(State(BNMO)));
 					}
@@ -144,7 +150,7 @@ int main()
 					if (gerak)
 					{
 						UpdateActionTime(&State(BNMO));
-						PushUndoStack(&US, State(BNMO));
+						PushUndoStack(US, State(BNMO));
 						updateNotif(&State(BNMO), &listNotif);
 						MoveE(&Position(State(BNMO)));
 					}
@@ -159,7 +165,7 @@ int main()
 					if (gerak)
 					{
 						UpdateActionTime(&State(BNMO));
-						PushUndoStack(&US, State(BNMO));
+						PushUndoStack(US, State(BNMO));
 						updateNotif(&State(BNMO), &listNotif);
 						MoveS(&Position(State(BNMO)));
 					}
@@ -174,7 +180,7 @@ int main()
 					if (gerak)
 					{
 						UpdateActionTime(&State(BNMO));
-						PushUndoStack(&US, State(BNMO));
+						PushUndoStack(US, State(BNMO));
 						updateNotif(&State(BNMO), &listNotif);
 						MoveW(&Position(State(BNMO)));
 					}
@@ -199,7 +205,7 @@ int main()
 						STARTWORD();
 						i = WordToInt(currentWord);
 					} while (i < 0 || i > listMakananLength(lfiltered));
-					PushUndoStack(&US, State(BNMO));
+					PushUndoStack(US, State(BNMO));
 					process(aksi, i, &DaftarMakanan, InventoryState(State(BNMO)), &lfiltered, &ProcessedList(State(BNMO)), Resep);
 					UpdateActionTime(&State(BNMO));
 
@@ -227,7 +233,7 @@ int main()
 						STARTWORD();
 						i = WordToInt(currentWord);
 					} while (i < 0 || i > listMakananLength(lfiltered));
-					PushUndoStack(&US, State(BNMO));
+					PushUndoStack(US, State(BNMO));
 					process(aksi, i, &DaftarMakanan, InventoryState(State(BNMO)), &lfiltered, &ProcessedList(State(BNMO)), Resep);
 					UpdateActionTime(&State(BNMO));
 
@@ -256,7 +262,7 @@ int main()
 						i = WordToInt(currentWord);
 						printf("\n");
 					} while (i < 0 || i > listMakananLength(lfiltered));
-					PushUndoStack(&US, State(BNMO));
+					PushUndoStack(US, State(BNMO));
 					process(aksi, i, &DaftarMakanan, InventoryState(State(BNMO)), &lfiltered, &ProcessedList(State(BNMO)), Resep);
 					UpdateActionTime(&State(BNMO));
 
@@ -284,7 +290,7 @@ int main()
 						STARTWORD();
 						i = WordToInt(currentWord);
 					} while (i < 0 || i > listMakananLength(lfiltered));
-					PushUndoStack(&US, State(BNMO));
+					PushUndoStack(US, State(BNMO));
 					process(aksi, i, &DaftarMakanan, InventoryState(State(BNMO)), &lfiltered, &ProcessedList(State(BNMO)), Resep);
 					UpdateActionTime(&State(BNMO));
 
@@ -307,7 +313,7 @@ int main()
 				ADVWORD();
 				Y = WordToInt(currentWord);
 				CreateTime(&temptime, 0, X, Y);
-				PushUndoStack(&US, State(BNMO));
+				PushUndoStack(US, State(BNMO));
 				UpdateWaitTime(&State(BNMO), temptime);
 				updateNotif(&State(BNMO), &listNotif);
 			}
@@ -328,9 +334,9 @@ int main()
 				State temp;
 				if (!IsUndoStackEmpty(US))
 				{
-					PushRedoStack(&RS, State(BNMO));
+					PushRedoStack(RS, State(BNMO));
 
-					PopUndoStack(&US, &temp);
+					PopUndoStack(US, &temp);
 					State(BNMO) = temp;
 					Teleport(&Map, Position(State(BNMO)));
 					updateUndoNotif(State(BNMO), temp, &listNotif);
@@ -345,10 +351,10 @@ int main()
 				if (!IsRedoStackEmpty(RS))
 				{
 					State temp;
-					PopRedoStack(&RS, &temp);
-					PushUndoStack(&US, State(BNMO));
+					PopRedoStack(RS, &temp);
+					PushUndoStack(US, State(BNMO));
 					State(BNMO) = temp;
-					updateRedoNotif(State(BNMO), StateTop(US), &listNotif);
+					updateRedoNotif(State(BNMO), StateTop(*US), &listNotif);
 
 					Teleport(&Map, Position(State(BNMO)));
 				}
