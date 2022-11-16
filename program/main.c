@@ -92,6 +92,8 @@ int main()
 						{
 							foodName = Nama(ELMT_LM(listBuy, idx));
 							PushUndoStack(US, State(BNMO));
+							ClearRedoStack(RS);
+							RS = CreateRedoStackEmpty();
 							buyMakananbyId(&DeliveryListState(State(BNMO)), idFood, listBuy);
 							UpdateActionTime(&State(BNMO));
 							updateNotif(&State(BNMO), &listNotif);
@@ -135,6 +137,8 @@ int main()
 					if (gerak)
 					{
 						PushUndoStack(US, State(BNMO));
+						ClearRedoStack(RS);
+						RS = CreateRedoStackEmpty();
 						UpdateActionTime(&State(BNMO));
 						updateNotif(&State(BNMO), &listNotif);
 						MoveN(&Position(State(BNMO)));
@@ -150,6 +154,8 @@ int main()
 					if (gerak)
 					{
 						PushUndoStack(US, State(BNMO));
+						ClearRedoStack(RS);
+						RS = CreateRedoStackEmpty();
 						UpdateActionTime(&State(BNMO));
 						updateNotif(&State(BNMO), &listNotif);
 						MoveE(&Position(State(BNMO)));
@@ -165,6 +171,8 @@ int main()
 					if (gerak)
 					{
 						PushUndoStack(US, State(BNMO));
+						ClearRedoStack(RS);
+						RS = CreateRedoStackEmpty();
 						UpdateActionTime(&State(BNMO));
 						updateNotif(&State(BNMO), &listNotif);
 						MoveS(&Position(State(BNMO)));
@@ -180,6 +188,8 @@ int main()
 					if (gerak)
 					{
 						PushUndoStack(US, State(BNMO));
+						ClearRedoStack(RS);
+						RS = CreateRedoStackEmpty();
 						UpdateActionTime(&State(BNMO));
 						updateNotif(&State(BNMO), &listNotif);
 						MoveW(&Position(State(BNMO)));
@@ -206,6 +216,8 @@ int main()
 						i = WordToInt(currentWord);
 					} while (i < 0 || i > listMakananLength(lfiltered));
 					PushUndoStack(US, State(BNMO));
+					ClearRedoStack(RS);
+					RS = CreateRedoStackEmpty();
 					process(aksi, i, &DaftarMakanan, InventoryState(State(BNMO)), &lfiltered, &ProcessedList(State(BNMO)), Resep);
 					UpdateActionTime(&State(BNMO));
 
@@ -234,6 +246,8 @@ int main()
 						i = WordToInt(currentWord);
 					} while (i < 0 || i > listMakananLength(lfiltered));
 					PushUndoStack(US, State(BNMO));
+					ClearRedoStack(RS);
+					RS = CreateRedoStackEmpty();
 					process(aksi, i, &DaftarMakanan, InventoryState(State(BNMO)), &lfiltered, &ProcessedList(State(BNMO)), Resep);
 					UpdateActionTime(&State(BNMO));
 
@@ -263,6 +277,8 @@ int main()
 						printf("\n");
 					} while (i < 0 || i > listMakananLength(lfiltered));
 					PushUndoStack(US, State(BNMO));
+					ClearRedoStack(RS);
+					RS = CreateRedoStackEmpty();
 					process(aksi, i, &DaftarMakanan, InventoryState(State(BNMO)), &lfiltered, &ProcessedList(State(BNMO)), Resep);
 					UpdateActionTime(&State(BNMO));
 
@@ -291,6 +307,8 @@ int main()
 						i = WordToInt(currentWord);
 					} while (i < 0 || i > listMakananLength(lfiltered));
 					PushUndoStack(US, State(BNMO));
+					ClearRedoStack(RS);
+					RS = CreateRedoStackEmpty();
 					process(aksi, i, &DaftarMakanan, InventoryState(State(BNMO)), &lfiltered, &ProcessedList(State(BNMO)), Resep);
 					UpdateActionTime(&State(BNMO));
 
@@ -314,6 +332,8 @@ int main()
 				Y = WordToInt(currentWord);
 				CreateTime(&temptime, 0, X, Y);
 				PushUndoStack(US, State(BNMO));
+				ClearRedoStack(RS);
+				RS = CreateRedoStackEmpty();
 				UpdateWaitTime(&State(BNMO), temptime);
 				updateNotif(&State(BNMO), &listNotif);
 			}

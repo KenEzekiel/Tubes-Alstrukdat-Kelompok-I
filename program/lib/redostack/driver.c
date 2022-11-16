@@ -28,5 +28,6 @@ int main()
     PushRedoStack(sa, S);
     PopRedoStack(sa, &S);
     displayState(S);
+    ClearRedoStack(sa);
     return 0;
 }

@@ -66,4 +66,8 @@ void PushStateStack(stackaddr sa, State X);
 /* F.S. X adalah nilai elemen TOP yang lama, TOP berkurang 1 */
 void PopStateStack(stackaddr sa, State *X);
 
+/* ****** Clear stack ****** */
+/* Menghapus semua elemen didalam stack */
+void ClearStateStack(stackaddr sa);
+
 #endif

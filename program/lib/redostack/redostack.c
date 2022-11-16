@@ -47,3 +47,10 @@ void PopRedoStack(stackaddr sa, State *X)
 
     PopStateStack(sa, X);
 }
+
+/* ****** Clear stack ****** */
+/* Menghapus semua elemen didalam stack */
+void ClearRedoStack(stackaddr sa)
+{
+    ClearStateStack(sa);
+}

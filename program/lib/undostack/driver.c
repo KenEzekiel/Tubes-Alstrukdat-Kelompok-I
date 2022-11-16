@@ -28,5 +28,6 @@ int main()
     PushUndoStack(sa, S);
     PopUndoStack(sa, &S);
     displayState(S);
+    ClearUndoStack(sa);
     return 0;
 }

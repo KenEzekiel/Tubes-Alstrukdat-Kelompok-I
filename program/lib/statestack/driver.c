@@ -28,5 +28,6 @@ int main()
     PushStateStack(sa, S);
     PopStateStack(sa, &S);
     displayState(S);
+    ClearStateStack(sa);
     return 0;
 }

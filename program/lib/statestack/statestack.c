@@ -76,3 +76,10 @@ void PopStateStack(stackaddr sa, State *X)
         }
     }
 }
+
+/* ****** Clear stack ****** */
+/* Menghapus semua elemen didalam stack */
+void ClearStateStack(stackaddr sa)
+{
+    free(sa);
+}
