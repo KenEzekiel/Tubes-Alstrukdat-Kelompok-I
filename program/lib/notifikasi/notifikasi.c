@@ -97,7 +97,7 @@ void updateUndoNotif(State current, State prev, Notif *listNotif)
     DeliveryList tempPrevBuy;
     Makanan tempVal;
     int idx;
-    String info1, info2, info3, newNotif, aksiFry, aksiMix, aksiChop, aksiBoil, aksiBuy, space;
+    String info1, info2, info3, newNotif, aksiFry, aksiMix, aksiChop, aksiBoil, aksiBuy;
     ListMakanan expPrev = ExpListState(prev);
     ListMakanan expCurr = ExpListState(current);
     ListMakanan delivPrev = DeliveredListState(prev);
@@ -112,7 +112,6 @@ void updateUndoNotif(State current, State prev, Notif *listNotif)
     charToString("CHOP", &aksiChop, 4);
     charToString("BOIL", &aksiBoil, 4);
     charToString("BUY", &aksiBuy, 3);
-    charToString(" ", &space, 1);
 
     /* Menambahkan notif pembatalan aksi selain BUY*/
     tempPrev = ProcessedList(prev);
@@ -137,7 +136,6 @@ void updateUndoNotif(State current, State prev, Notif *listNotif)
             {
                 charToString("Pemotongan ", &newNotif, 11);
             }
-            insertSubstring(&newNotif, space);
             insertSubstring(&newNotif, Nama(tempVal));
             insertSubstring(&newNotif, info3);
             insertLastNotif(listNotif, newNotif);
@@ -152,7 +150,6 @@ void updateUndoNotif(State current, State prev, Notif *listNotif)
         if (!isElmtById(DeliveryListState(current), ID(tempVal)))
         {
             charToString("Pembelian ", &newNotif, 11);
-            insertSubstring(&newNotif, space);
             insertSubstring(&newNotif, Nama(tempVal));
             insertSubstring(&newNotif, info3);
             insertLastNotif(listNotif, newNotif);
@@ -187,7 +184,7 @@ void updateRedoNotif(State current, State prev, Notif *listNotif)
     DeliveryList tempCurrBuy;
     Makanan tempVal;
     int idx;
-    String info, newNotif, aksiFry, aksiMix, aksiChop, aksiBoil, aksiBuy, space;
+    String info, newNotif, aksiFry, aksiMix, aksiChop, aksiBoil, aksiBuy;
     ListMakanan expPrev = ExpListState(prev);
     ListMakanan expCurr = ExpListState(current);
     ListMakanan delivPrev = DeliveredListState(prev);
@@ -200,7 +197,6 @@ void updateRedoNotif(State current, State prev, Notif *listNotif)
     charToString("CHOP", &aksiChop, 4);
     charToString("BOIL", &aksiBoil, 4);
     charToString("BUY", &aksiBuy, 3);
-    charToString(" ", &space, 1);
 
     /* Menambahkan notif aksi dilakukan selain BUY */
     tempCurr = ProcessedList(current);
@@ -225,7 +221,6 @@ void updateRedoNotif(State current, State prev, Notif *listNotif)
             {
                 charToString("Pemotongan ", &newNotif, 11);
             }
-            insertSubstring(&newNotif, space);
             insertSubstring(&newNotif, Nama(tempVal));
             insertSubstring(&newNotif, info);
             insertLastNotif(listNotif, newNotif);
@@ -240,7 +235,6 @@ void updateRedoNotif(State current, State prev, Notif *listNotif)
         if (!isElmtById(DeliveryListState(prev), ID(tempVal)))
         {
             charToString("Pembelian ", &newNotif, 11);
-            insertSubstring(&newNotif, space);
             insertSubstring(&newNotif, Nama(tempVal));
             insertSubstring(&newNotif, info);
             insertLastNotif(listNotif, newNotif);
