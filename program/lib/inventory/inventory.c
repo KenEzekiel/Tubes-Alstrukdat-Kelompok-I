@@ -83,6 +83,25 @@ void deleteExpired(Inventory *I, ListMakanan *expired)
     *I = p;
 }
 
+void deleteFoodById(Inventory *I, int id)
+{
+    // KAMUS LOKAL
+    Inventory p;
+    Inventory q = *I;
+    prioQueueInfotype food;
+    // ALGORITMA
+    MakeEmpty(&p, MaxPrioQueueEl(*I));
+    while (!IsPrioQueueEmpty(q))
+    {
+        Dequeue(&q, &food);
+        if (ID(food) != id)
+        {
+            Enqueue(&p, food);
+        }
+    }
+    *I = p;
+}
+
 /* *** Mengurangi waktu dari semua makanan di inventory *** */
 /* I.S. I terdefinisi, tidak kosong */
 /* F.S. semua makanan dikurangi waktu expired nya sejumlah time,

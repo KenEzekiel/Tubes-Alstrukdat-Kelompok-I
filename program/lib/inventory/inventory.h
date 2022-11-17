@@ -39,6 +39,8 @@ void reverseUpdateInventory(Inventory *I, TIME t);
 /* F.S. semua makanan yang expired di I (TIME == 0) di delete di HEAD */
 void deleteExpired(Inventory *I, ListMakanan *expired);
 
+void deleteFoodById(Inventory *I, int id);
+
 /* *** Mengurangi waktu dari semua makanan di inventory *** */
 /* I.S. I terdefinisi, tidak kosong */
 /* F.S. semua makanan dikurangi waktu expired nya sejumlah time,
