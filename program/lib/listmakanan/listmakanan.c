@@ -5,6 +5,7 @@
 #include "../../../lib/time/time.h"
 #include "../../../lib/string/string.h"
 #include "listmakanan.h"
+#include "../utility/utility.h"
 #include <stdio.h>
 
 /* ********** KONSTRUKTOR ********** */
@@ -211,8 +212,8 @@ int indexOfName(ListMakanan lfood, String nama)
 void printCatalog(ListMakanan lfood)
 {
     Makanan food;
-    printf("======================================================List Makanan==================================================\n");
-    printf("Nama Makanan - Durasi Kedaluwarsa - Aksi yang Diperlukan - Delivery Time - Waktu Pengolahan Makanan - Ukuran Makanan\n");
+    print_blue("======================================================List Makanan==================================================\n");
+    print_blue("Nama Makanan - Durasi Kedaluwarsa - Aksi yang Diperlukan - Delivery Time - Waktu Pengolahan Makanan - Ukuran Makanan\n");
     for (int i = 0; i < listMakananLength(lfood); i++)
     {
         food = ELMT_LM(lfood, i);
@@ -240,11 +241,11 @@ void displayFilteredAksi(String aksi, ListMakanan lfood, ListMakanan *lfiltered)
 
     charToString("BUY", &aksiBuy, 3);
 
-    printf("========================\n");
-    printf("=         ");
+    print_blue("========================\n");
+    print_blue("=         ");
     displayString(aksi);
-    printf("          =\n");
-    printf("========================\n");
+    print_blue("          =\n");
+    print_blue("========================\n");
 
     CreateListMakanan(lfiltered);
     *lfiltered = filterByAksi(lfood,aksi);
