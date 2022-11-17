@@ -119,7 +119,7 @@ void PrintTime(TIME T)
       {
          printf(" ");
       }
-      printf("%d menit\n", MM);
+      printf("%d menit", MM);
    }
    if (HH == 0 && MM == 0 && DD == 0)
    {
