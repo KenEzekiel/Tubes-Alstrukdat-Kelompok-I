@@ -43,4 +43,7 @@ void upgradeProcessList(ProcessList *P);
 void displayProcessList(ProcessList P);
 
 void addProcessList(ProcessList *PL, prioQueueInfotype food);
+
+void delivproc(ProcessList *DL, Inventory *I, ListMakanan *delivered);
+
 #endif

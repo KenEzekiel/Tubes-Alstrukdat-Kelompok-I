@@ -97,7 +97,7 @@ void updateProcessList(ProcessList *P, Inventory *I, TIME t, ListMakanan *delive
     if (!IsPrioQueueEmpty(*P))
     {
         minusProcessTime(P, t);
-        deliver(P, I, delivered);
+        delivproc(P, I, delivered);
     }
 }
 
@@ -222,4 +222,28 @@ void addProcessList(ProcessList *PL, prioQueueInfotype food) {
             j = i == 0 ? MaxPrioQueueEl(*PL) - 1 : i - 1;
         }
     }
+}
+
+void delivproc(ProcessList *DL, Inventory *I, ListMakanan *delivered)
+{
+    // KAMUS LOKAL
+    DeliveryList p;
+    DeliveryList q = *DL;
+    prioQueueInfotype food;
+    // ALGORITMA
+    MakeEmpty(&p, MaxPrioQueueEl(*DL));
+    while (!IsPrioQueueEmpty(q))
+    {
+        Dequeue(&q, &food);
+        if (TIMEToMenit(AksiTime(food)) != 0)
+        {
+            buyMakanan(&p, food);
+        }
+        else
+        {
+            Enqueue(I, food);
+            insertLastMakanan(delivered, food);
+        }
+    }
+    *DL = p;
 }
