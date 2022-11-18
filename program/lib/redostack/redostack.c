@@ -20,13 +20,13 @@ stackaddr CreateRedoStackEmpty()
 /* Mengirim true jika RedoStack kosong: lihat definisi di atas */
 boolean IsRedoStackEmpty(stackaddr sa)
 {
-    IsStateStackEmpty(sa);
+    return IsStateStackEmpty(sa);
 }
 
 /* Mengirim true jika tabel penampung nilai elemen RedoStack penuh */
 boolean IsRedoStackFull(stackaddr sa)
 {
-    IsStateStackFull(sa);
+    return IsStateStackFull(sa);
 }
 
 /* ************ Menambahkan sebuah elemen ke RedoStack ************ */

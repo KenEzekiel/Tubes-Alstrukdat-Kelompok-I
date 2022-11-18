@@ -95,8 +95,6 @@ void Enqueue(PrioQueueTime *Q, prioQueueInfotype X)
     /* I.S. Q mungkin kosong, tabel penampung elemen Q TIDAK penuh */
     /* F.S. X disisipkan pada posisi yang tepat sesuai dengan prioritas,
             TAIL "maju" dengan mekanisme circular buffer; */
-    boolean found;
-    int idx;
     int i, j;
     prioQueueInfotype temp;
 

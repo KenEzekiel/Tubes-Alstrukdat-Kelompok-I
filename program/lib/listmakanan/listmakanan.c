@@ -235,8 +235,7 @@ void printCatalog(ListMakanan lfood)
 /* I.S. Menampilkan list makanan lfood */
 
 void displayFilteredAksi(String aksi, ListMakanan lfood, ListMakanan *lfiltered) {
-    Makanan food;
-    String nama, aksiBuy;
+    String aksiBuy;
 
 
     charToString("BUY", &aksiBuy, 3);
@@ -291,7 +290,7 @@ ListMakanan sortListMakananByID(ListMakanan lfood)
        algoritma bebas */
     /*Menggunakan Insertion Sort*/
     /*KAMUS LOKAL*/
-    int i, j;
+    int i;
     Makanan temp;
     ListMakanan sorted;
     IdxType idx;

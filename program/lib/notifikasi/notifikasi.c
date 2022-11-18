@@ -97,7 +97,6 @@ void updateUndoNotif(State current, State prev, Notif *listNotif)
     ProcessList tempPrev;
     DeliveryList tempPrevBuy;
     Makanan tempVal;
-    int idx;
     String info1, info2, info3, newNotif, aksiFry, aksiMix, aksiChop, aksiBoil, aksiBuy;
     ListMakanan expPrev = ExpListState(prev);
     ListMakanan expCurr = ExpListState(current);
@@ -184,11 +183,10 @@ void updateRedoNotif(State current, State prev, Notif *listNotif)
     ProcessList tempCurr;
     DeliveryList tempCurrBuy;
     Makanan tempVal;
-    int idx;
     String info, newNotif, aksiFry, aksiMix, aksiChop, aksiBoil, aksiBuy;
-    ListMakanan expPrev = ExpListState(prev);
+    // ListMakanan expPrev = ExpListState(prev);
     ListMakanan expCurr = ExpListState(current);
-    ListMakanan delivPrev = DeliveredListState(prev);
+    // ListMakanan delivPrev = DeliveredListState(prev);
     ListMakanan delivCurr = DeliveredListState(current);
 
     /* ALGORITMA */

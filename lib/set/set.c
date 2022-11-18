@@ -28,7 +28,7 @@ int lengthSet(Set S)
 
 boolean IsIn(Set S, Eltype_SET val) {
 /*Menghasilkan nilai true apabila val ada di dalam set*/
-    int i;
+    int i = 0;
     boolean found = false;
     while (i < lengthSet(S))
     {

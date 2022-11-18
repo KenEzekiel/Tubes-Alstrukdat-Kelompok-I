@@ -402,7 +402,7 @@ void sortList(ListStatik *l, boolean asc)
        algoritma bebas */
     /*Menggunakan Insertion Sort*/
     /*KAMUS LOKAL*/
-    int i, j;
+    int i;
     listElType temp;
     IdxType idx;
     int len = listLength(*l);

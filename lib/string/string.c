@@ -47,10 +47,6 @@ int stringLength(String s)
 /* F.S. s diisi oleh input string */
 void readString(String *s)
 {
-    // KAMUS LOKAL
-    int n, i = 0;
-    char string[CAPACITY];
-    char *c;
     // ALGORITMA
     CreateString(s);
     /*

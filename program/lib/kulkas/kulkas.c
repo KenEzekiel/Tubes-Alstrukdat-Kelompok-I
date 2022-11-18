@@ -144,7 +144,7 @@ void deleteElmtLT(ListTuple *LT, Tuple *T)
     // KAMUS LOKAL
     int idxrow = IDXROW(*T);
     int idxcol = IDXCOL(*T);
-    Makanan food = MAKANAN(*T);
+
     int id = IDKULKAS(*T);
     boolean found = false;
     int i = 0;
@@ -207,7 +207,7 @@ int ElmtIdxInLT(ListTuple LT, Tuple T)
     // KAMUS LOKAL
     int idxrow = IDXROW(T);
     int idxcol = IDXCOL(T);
-    Makanan food = MAKANAN(T);
+
     int id = IDKULKAS(T);
     boolean found = false;
     int i = 0;
@@ -371,7 +371,6 @@ void displayKulkas(Kulkas K)
 void procInsertToKulkas(Kulkas *K, Inventory *I)
 {
     // KAMUS LOKAL
-    int i;
     int id, idxrow, idxcol, idkulkas;
     Makanan food;
     boolean valid;
@@ -414,13 +413,10 @@ void procInsertToKulkas(Kulkas *K, Inventory *I)
 void procGetFromKulkas(Kulkas *K, Inventory *I)
 {
     // KAMUS LOKAL
-    int i;
-    int idkulkas, idxrow, idxcol;
+    int idkulkas;
     Makanan food;
-    Inventory temp;
 
     // ALGORITMA
-    temp = *I;
     displayInventory(*I);
     displayKulkas(*K);
     printf("Masukkan id makanan di kulkas yang ingin diambil dari kulkas: ");
