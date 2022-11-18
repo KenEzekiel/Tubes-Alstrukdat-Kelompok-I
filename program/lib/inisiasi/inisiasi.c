@@ -1,21 +1,22 @@
 #include <stdio.h>
 #include "inisiasi.h"
+#include "../utility/utility.h"
 
 void PrintGUI(TIME Waktu, POINT Lokasi, Inventory Inventory, Simulator BNMO, Peta Peta, Notif listNotif)
 /* 	Menerima input dari pengguna
 	I.S. : currentChar sembarang, currentWord sembarang
 	F.S. : mencetak GUI, currentWord terdefinisi */
 {
-	printf("BNMO berada di posisi: ");
+	print_blue("BNMO berada di posisi: ");
 	DisplayPos(Peta);
-	printf("Waktu: ");
+	print_blue("Waktu: ");
 	TulisTIME(Waktu);
 
 	printNotif(listNotif);
 
 	DisplayPeta(Peta);
 
-	printf("Enter Command: ");
+	print_cyan("Enter Command: ");
 	STARTWORD();
 }
 

@@ -89,6 +89,5 @@ boolean checkUpgrade(DeliveryList DL);
 /* Upgrade adalah penambahan kapasitas 2 kali lipat aslinya */
 void upgradeDelivList(DeliveryList *DL);
 
-void buy(DeliveryList *DL, ListMakanan LM);
 
 #endif

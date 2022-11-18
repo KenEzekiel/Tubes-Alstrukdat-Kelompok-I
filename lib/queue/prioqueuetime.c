@@ -5,6 +5,7 @@
 #include "../boolean.h"
 #include "../makanan/makanan.h"
 #include "../time/time.h"
+#include "../../program/lib/utility/utility.h"
 #include "prioqueuetime.h"
 #include <stdlib.h>
 #include <stdio.h>
@@ -157,8 +158,8 @@ void PrintPrioQueueTime(PrioQueueTime Q)
     PrioQueueTime temp;
     int i = 1;
     temp = Q;
-    printf("List Makanan di Inventory\n");
-    printf(" (nama -- waktu sisa kedaluarsa) \n");
+    print_blue("List Makanan di Inventory\n");
+    print_yellow(" (nama -- waktu sisa kedaluarsa) \n");
     if (!IsPrioQueueEmpty(Q))
     {
         while (!IsPrioQueueEmpty(temp))

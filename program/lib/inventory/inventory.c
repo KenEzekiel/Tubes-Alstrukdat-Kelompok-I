@@ -2,6 +2,7 @@
 #include "../../../lib/queue/prioqueuetime.h"
 #include "../../../lib/time/time.h"
 #include "../../../lib/makanan/makanan.h"
+#include "../utility/utility.h"
 #include "inventory.h"
 #include <stdio.h>
 
@@ -248,10 +249,10 @@ boolean isElmtByName(Inventory I, String nama)
 /* *** Menampilkan isi inventory *** */
 void displayInventory(Inventory I)
 {
-    printf("\nINVENTORY: \n");
+    print_blue("\n========================INVENTORY========================\n");
     if (IsPrioQueueEmpty(I))
     {
-        printf("Inventory Kosong\n");
+        print_red("Inventory Kosong\n");
     }
     else
     {

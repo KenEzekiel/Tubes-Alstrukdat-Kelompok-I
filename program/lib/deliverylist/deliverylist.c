@@ -5,6 +5,7 @@
 #include "../../../lib/makanan/makanan.h"
 #include "../../../lib/string/string.h"
 #include "../../../lib/liststatik/liststatik.h"
+#include "../utility/utility.h"
 #include "deliverylist.h"
 #include <stdio.h>
 
@@ -258,15 +259,15 @@ void plusDelivTime(DeliveryList *DL, TIME t)
 /* *** Menampilkan isi Delivery List *** */
 void displayDeliveryList(DeliveryList DL)
 {
-    printf("\nDELIVERY LIST: \n");
+    print_blue("\n========================DELIVERY LIST========================\n");
     if (IsPrioQueueEmpty(DL))
     {
-        printf("Delivery List Kosong\n");
+        print_red("Delivery List Kosong\n");
     }
     else
     {
-        printf("List Makanan di Perjalanan \n");
-        printf(" (nama - waktu sisa delivery) \n");
+        print_blue("List Makanan di Perjalanan \n");
+        print_yellow(" (nama - waktu sisa delivery) \n");
 
         prioQueueInfotype val;
         PrioQueueTime temp;
@@ -337,60 +338,5 @@ void upgradeDelivList(DeliveryList *DL)
             buyMakanan(&q, food);
         }
         *DL = q;
-    }
-}
-
-void buy(DeliveryList *DL, ListMakanan LM)
-{
-    /* KAMUS */
-    String aksiBuy, foodName;
-    ListMakanan listBuy;
-    int opt, idx, idFood;
-    
-
-    /* ALGORITMA */
-    charToString("BUY", &aksiBuy, 3);
-    displayFilteredAksi(aksiBuy, LM, &listBuy);
-    printf("\nKirim 0 untuk exit \n");
-
-    printf("Enter command: ");
-    STARTWORD();
-    while (!isInt(currentWord))
-    {
-        printf("Input yang dimasukkan tidak valid.\n");
-        printf("Enter command: ");
-        STARTWORD();
-    }
-    opt = WordToInt(currentWord);
-
-    while (opt != 0)
-    {
-        idFood = ID(ELMT_LM(listBuy, opt - 1));
-        idx = indexOfID(listBuy, idFood);
-        if (idx == IDX_UNDEF_LMAKANAN)
-        {
-            printf("Makanan yang dipilih tidak valid. Silahkan input kembali.\n");
-        }
-        else
-        {
-            foodName = Nama(ELMT_LM(listBuy, idx));
-            buyMakananbyId(DL, idFood, listBuy);
-            
-            printf("Berhasil memesan ");
-            displayString(foodName);
-            printf(". ");
-            displayString(foodName);
-            printf(" akan diantar dalam ");
-            PrintTime(DelivTime(ELMT_LM(listBuy, idx)));
-        }
-        printf("Enter command: ");
-        STARTWORD();
-        while (!isInt(currentWord))
-        {
-            printf("Input yang dimasukkan tidak valid.\n");
-            printf("Enter command: ");
-            STARTWORD();
-        }
-        opt = WordToInt(currentWord);
     }
 }

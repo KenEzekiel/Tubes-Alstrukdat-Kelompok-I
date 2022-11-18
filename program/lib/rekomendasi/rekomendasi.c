@@ -90,6 +90,7 @@ void rekomendasiMakanan(ListMakanan *recom, ListMakanan LM, Inventory *I, ResepT
 void printRekomendasiMakanan(ListMakanan LM, Inventory *I, ResepTree Resep)
 {
     int no = 1;
+    print_blue("\n====================REKOMENDASI====================\n");
     print_cyan("Rekomendasi makanan buat kamu ;)\n");
 
     ListMakanan recom;
