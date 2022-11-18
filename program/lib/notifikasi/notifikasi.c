@@ -1,4 +1,5 @@
 #include "notifikasi.h"
+#include "../utility/utility.h"
 #include <stdio.h>
 
 void CreateNotif(Notif *listNotif)
@@ -43,7 +44,7 @@ void insertLastNotif(Notif *listNotif, ELTYPE newNotif)
 
 void printNotif(Notif listNotif)
 {
-    printf("Notifikasi: ");
+    print_blue("Notifikasi: ");
     if (notifLength(listNotif) == 0) 
     {
         printf("- \n");
@@ -250,6 +251,10 @@ void updateNotif(State *curr, Notif *listNotif)
 {
     addDelivered(DeliveredListState(*curr), listNotif);
     addExpired(ExpListState(*curr), listNotif);
+}
+
+void initializeNotif(State *curr)
+{
     initializeUlang(&DeliveredListState(*curr));
     initializeUlang(&ExpListState(*curr));
 }

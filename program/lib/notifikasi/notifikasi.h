@@ -81,6 +81,9 @@ void updateNotif(State *curr, Notif *listNotif);
 /* I.S. listNotif terdefinisi, boleh kosong, State current terdefinisi */
 /* F.S. Menambahkan notifikasi delivered dan expired sebagai elemen baru listNotif */
 
+void initializeNotif(State *curr);
+/* Melakukan inisialisasi ulang list delivered dan expired */
+
 void warningNotif(Notif *listNotif);
 /* Proses: Menambahkan notifikasi peringatan gagal bergerak */
 
