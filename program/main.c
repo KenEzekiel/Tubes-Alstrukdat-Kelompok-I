@@ -19,7 +19,7 @@ String user;
 void InitializeVariables()
 {
 	// Initialize changable variables
-	printf("Masukkan nama user: ");
+	print_yellow("Masukkan nama user: ");
 	readString(&user);
 	CreateStartSimulator(&BNMO, user);
 
@@ -38,7 +38,7 @@ void InitializeVariables()
 int main()
 {
 	displaySplashScreen("./lib/utility/SplashScreen.txt");
-	printf("User input: ");
+	print_cyan("Enter Command: ");
 	STARTWORD();
 
 	if (IsSTART())
@@ -57,54 +57,9 @@ int main()
 			{
 				if (CanBuy(Map))
 				{
-					String aksiBuy, foodName;
-					ListMakanan listBuy;
-					int opt, idx, idFood;
-
-					charToString("BUY", &aksiBuy, 3);
-					displayFilteredAksi(aksiBuy, DaftarMakanan, &listBuy);
-					print_red("\nKirim 0 untuk exit\n");
-
-					print_blue("Masukkan pilihan: ");
-					STARTWORD();
-					while (!isInt(currentWord))
-					{
-						print_red("Input yang dimasukkan tidak valid.\n");
-						print_blue("Masukkan pilihan: ");
-						STARTWORD();
-					}
-					opt = WordToInt(currentWord);
-
-					while (opt != 0)
-					{
-						idFood = ID(ELMT_LM(listBuy, opt - 1));
-						idx = indexOfID(listBuy, idFood);
-						if (idx == IDX_UNDEF_LMAKANAN)
-						{
-							printf("Makanan yang dipilih tidak valid. Silahkan input kembali.\n");
-						}
-						else
-						{
-							foodName = Nama(ELMT_LM(listBuy, idx));
-							PushUndoStack(US, State(BNMO));
-							ClearRedoStack(RS);
-							RS = CreateRedoStackEmpty();
-							buyMakananbyId(&DeliveryListState(State(BNMO)), idFood, listBuy);
-							UpdateActionTime(&State(BNMO));
-							updateNotif(&State(BNMO), &listNotif);
-							printf("Berhasil memesan "); displayString(foodName); printf(". ");
-							displayString(foodName); printf(" akan diantar dalam "); PrintTime(DelivTime(ELMT_LM(listBuy, idx))); printf(".\n");
-						}
-						print_blue("Masukkan pilihan: ");
-						STARTWORD();
-						while (!isInt(currentWord))
-						{
-							print_red("Input yang dimasukkan tidak valid.\n");
-							print_blue("Masukkan pilihan: ");
-							STARTWORD();
-						}
-						opt = WordToInt(currentWord);
-					}
+					buyMechanism(&State(BNMO), DaftarMakanan, US, &listNotif);
+					ClearRedoStack(RS);
+					RS = CreateRedoStackEmpty();
 				}
 				else
 				{
@@ -128,6 +83,7 @@ int main()
 					if (gerak)
 					{
 						PushUndoStack(US, State(BNMO));
+						initializeNotif(&State(BNMO));
 						ClearRedoStack(RS);
 						RS = CreateRedoStackEmpty();
 						UpdateActionTime(&State(BNMO));
@@ -145,6 +101,7 @@ int main()
 					if (gerak)
 					{
 						PushUndoStack(US, State(BNMO));
+						initializeNotif(&State(BNMO));
 						ClearRedoStack(RS);
 						RS = CreateRedoStackEmpty();
 						UpdateActionTime(&State(BNMO));
@@ -162,6 +119,7 @@ int main()
 					if (gerak)
 					{
 						PushUndoStack(US, State(BNMO));
+						initializeNotif(&State(BNMO));
 						ClearRedoStack(RS);
 						RS = CreateRedoStackEmpty();
 						UpdateActionTime(&State(BNMO));
@@ -179,6 +137,7 @@ int main()
 					if (gerak)
 					{
 						PushUndoStack(US, State(BNMO));
+						initializeNotif(&State(BNMO));
 						ClearRedoStack(RS);
 						RS = CreateRedoStackEmpty();
 						UpdateActionTime(&State(BNMO));
@@ -190,74 +149,20 @@ int main()
 						warningNotif(&listNotif);
 					}
 				}
+				else 
+				{
+					print_red("Masukan tidak valid! Silahkan ulangi...\n");
+				}
 			}
 			else if (IsMIX())
 			{
 
 				if (CanMix(Map))
 				{
-					String aksiMix, foodName;
-					ListMakanan listMix;
-					int opt, idx, idFood;
-
-					charToString("MIX", &aksiMix, 3);
-					displayFilteredAksi(aksiMix, DaftarMakanan, &listMix);
-					print_red("\nKirim 0 untuk exit\n");
-
-					print_blue("Masukkan pilihan: ");
-					STARTWORD();
-					while (!isInt(currentWord))
-					{
-						print_red("Input yang dimasukkan tidak valid.\n");
-						print_blue("Masukkan pilihan: ");
-						STARTWORD();
-					}
-					opt = WordToInt(currentWord);
-
-					while (opt != 0)
-					{
-						idFood = ID(ELMT_LM(listMix, opt - 1));
-						idx = indexOfID(listMix, idFood);
-						foodName = Nama(ELMT_LM(listMix, idx));
-						ListMakanan lneeded; CreateListMakanan(&lneeded);
-						lneeded = listNeeded(idFood, Resep, DaftarMakanan);
-
-						if (!isAvailable(InventoryState(State(BNMO)), lneeded))
-						{
-							printf("Gagal membuat ");
-							displayString(foodName);
-							printf(" karena kamu tidak memiliki bahan berikut:\n ");
-							int count = 1;
-							for (int i = 0; i < listMakananLength(lneeded); i++)
-							{
-								if (!isElmtById(InventoryState(State(BNMO)), ID(ELMT_LM(lneeded, i))))
-								{
-									printf("%d. ", count);
-									displayString(Nama(ELMT_LM(lneeded,i)));
-									printf("\n");
-									count++;
-								}
-							}
-						}
-						else
-						{
-							PushUndoStack(US, State(BNMO));
-							ClearRedoStack(RS);
-							RS = CreateRedoStackEmpty();
-							process(idFood, &InventoryState(State(BNMO)), lneeded, listMix, &ProcessedList(State(BNMO)));
-							UpdateActionTime(&State(BNMO));
-							updateNotif(&State(BNMO), &listNotif);
-						}
-						print_blue("Masukkan pilihan: ");
-						STARTWORD();
-						while (!isInt(currentWord))
-						{
-							print_red("Input yang dimasukkan tidak valid.\n");
-							print_blue("Masukkan pilihan: ");
-							STARTWORD();
-						}
-						opt = WordToInt(currentWord);
-					}
+					String aksi = wordToString(currentWord);
+					olahMechanism(aksi, &State(BNMO), DaftarMakanan, Resep, US, &listNotif);
+					ClearRedoStack(RS);
+					RS = CreateRedoStackEmpty();
 				}
 				else
 				{
@@ -271,68 +176,10 @@ int main()
 			{
 				if (CanChop(Map))
 				{
-					String aksiChop, foodName;
-					ListMakanan listChop;
-					int opt, idx, idFood;
-
-					charToString("CHOP", &aksiChop, 4);
-					displayFilteredAksi(aksiChop, DaftarMakanan, &listChop);
-					print_red("\nKirim 0 untuk exit\n");
-
-					print_blue("Masukkan pilihan: ");
-					STARTWORD();
-					while (!isInt(currentWord))
-					{
-						print_red("Input yang dimasukkan tidak valid.\n");
-						print_blue("Masukkan pilihan: ");
-						STARTWORD();
-					}
-					opt = WordToInt(currentWord);
-
-					while (opt != 0)
-					{
-						idFood = ID(ELMT_LM(listChop, opt - 1));
-						idx = indexOfID(listChop, idFood);
-						foodName = Nama(ELMT_LM(listChop, idx));
-						ListMakanan lneeded; CreateListMakanan(&lneeded);
-						lneeded = listNeeded(idFood, Resep, DaftarMakanan);
-
-						if (!isAvailable(InventoryState(State(BNMO)), lneeded))
-						{
-							printf("Gagal membuat ");
-							displayString(foodName);
-							printf(" karena kamu tidak memiliki bahan berikut:\n ");
-							int count = 1;
-							for (int i = 0; i < listMakananLength(lneeded); i++)
-							{
-								if (!isElmtById(InventoryState(State(BNMO)), ID(ELMT_LM(lneeded, i))))
-								{
-									printf("%d. ", count);
-									displayString(Nama(ELMT_LM(lneeded,i)));
-									printf("\n");
-									count++;
-								}
-							}
-						}
-						else
-						{
-							PushUndoStack(US, State(BNMO));
-							ClearRedoStack(RS);
-							RS = CreateRedoStackEmpty();
-							process(idFood, &InventoryState(State(BNMO)), lneeded, listChop, &ProcessedList(State(BNMO)));
-							UpdateActionTime(&State(BNMO));
-							updateNotif(&State(BNMO), &listNotif);
-						}
-						print_blue("Masukkan pilihan: ");
-						STARTWORD();
-						while (!isInt(currentWord))
-						{
-							print_red("Input yang dimasukkan tidak valid.\n");
-							print_blue("Masukkan pilihan: ");
-							STARTWORD();
-						}
-						opt = WordToInt(currentWord);
-					}
+					String aksi = wordToString(currentWord);
+					olahMechanism(aksi, &State(BNMO), DaftarMakanan, Resep, US, &listNotif);
+					ClearRedoStack(RS);
+					RS = CreateRedoStackEmpty();
 				}
 				else
 				{
@@ -346,68 +193,10 @@ int main()
 			{
 				if (CanFry(Map))
 				{
-					String aksiFry, foodName;
-					ListMakanan listFry;
-					int opt, idx, idFood;
-
-					charToString("FRY", &aksiFry, 3);
-					displayFilteredAksi(aksiFry, DaftarMakanan, &listFry);
-					print_red("\nKirim 0 untuk exit\n");
-
-					print_blue("Masukkan pilihan: ");
-					STARTWORD();
-					while (!isInt(currentWord))
-					{
-						print_red("Input yang dimasukkan tidak valid.\n");
-						print_blue("Masukkan pilihan: ");
-						STARTWORD();
-					}
-					opt = WordToInt(currentWord);
-
-					while (opt != 0)
-					{
-						idFood = ID(ELMT_LM(listFry, opt - 1));
-						idx = indexOfID(listFry, idFood);
-						foodName = Nama(ELMT_LM(listFry, idx));
-						ListMakanan lneeded; CreateListMakanan(&lneeded);
-						lneeded = listNeeded(idFood, Resep, DaftarMakanan);
-
-						if (!isAvailable(InventoryState(State(BNMO)), lneeded))
-						{
-							printf("Gagal membuat ");
-							displayString(foodName);
-							printf(" karena kamu tidak memiliki bahan berikut:\n ");
-							int count = 1;
-							for (int i = 0; i < listMakananLength(lneeded); i++)
-							{
-								if (!isElmtById(InventoryState(State(BNMO)), ID(ELMT_LM(lneeded, i))))
-								{
-									printf("%d. ", count);
-									displayString(Nama(ELMT_LM(lneeded,i)));
-									printf("\n");
-									count++;
-								}
-							}
-						}
-						else
-						{
-							PushUndoStack(US, State(BNMO));
-							ClearRedoStack(RS);
-							RS = CreateRedoStackEmpty();
-							process(idFood, &InventoryState(State(BNMO)), lneeded, listFry, &ProcessedList(State(BNMO)));
-							UpdateActionTime(&State(BNMO));
-							updateNotif(&State(BNMO), &listNotif);
-						}
-						print_blue("Masukkan pilihan: ");
-						STARTWORD();
-						while (!isInt(currentWord))
-						{
-							print_red("Input yang dimasukkan tidak valid.\n");
-							print_blue("Masukkan pilihan: ");
-							STARTWORD();
-						}
-						opt = WordToInt(currentWord);
-					}
+					String aksi = wordToString(currentWord);
+					olahMechanism(aksi, &State(BNMO), DaftarMakanan, Resep, US, &listNotif);
+					ClearRedoStack(RS);
+					RS = CreateRedoStackEmpty();
 				}
 				else
 				{
@@ -421,68 +210,10 @@ int main()
 			{
 				if (CanBoil(Map))
 				{
-					String aksiBoil, foodName;
-					ListMakanan listBoil;
-					int opt, idx, idFood;
-
-					charToString("BOIL", &aksiBoil, 4);
-					displayFilteredAksi(aksiBoil, DaftarMakanan, &listBoil);
-					print_red("\nKirim 0 untuk exit\n");
-
-					print_blue("Masukkan pilihan: ");
-					STARTWORD();
-					while (!isInt(currentWord))
-					{
-						print_red("Input yang dimasukkan tidak valid.\n");
-						print_blue("Masukkan pilihan: ");
-						STARTWORD();
-					}
-					opt = WordToInt(currentWord);
-
-					while (opt != 0)
-					{
-						idFood = ID(ELMT_LM(listBoil, opt - 1));
-						idx = indexOfID(listBoil, idFood);
-						foodName = Nama(ELMT_LM(listBoil, idx));
-						ListMakanan lneeded; CreateListMakanan(&lneeded);
-						lneeded = listNeeded(idFood, Resep, DaftarMakanan);
-
-						if (!isAvailable(InventoryState(State(BNMO)), lneeded))
-						{
-							printf("Gagal membuat ");
-							displayString(foodName);
-							printf(" karena kamu tidak memiliki bahan berikut:\n ");
-							int count = 1;
-							for (int i = 0; i < listMakananLength(lneeded); i++)
-							{
-								if (!isElmtById(InventoryState(State(BNMO)), ID(ELMT_LM(lneeded, i))))
-								{
-									printf("%d. ", count);
-									displayString(Nama(ELMT_LM(lneeded,i)));
-									printf("\n");
-									count++;
-								}
-							}
-						}
-						else
-						{
-							PushUndoStack(US, State(BNMO));
-							ClearRedoStack(RS);
-							RS = CreateRedoStackEmpty();
-							process(idFood, &InventoryState(State(BNMO)), lneeded, listBoil, &ProcessedList(State(BNMO)));
-							UpdateActionTime(&State(BNMO));
-							updateNotif(&State(BNMO), &listNotif);
-						}
-						print_blue("Masukkan pilihan: ");
-						STARTWORD();
-						while (!isInt(currentWord))
-						{
-							print_red("Input yang dimasukkan tidak valid.\n");
-							print_blue("Masukkan pilihan: ");
-							STARTWORD();
-						}
-						opt = WordToInt(currentWord);
-					}
+					String aksi = wordToString(currentWord);
+					olahMechanism(aksi, &State(BNMO), DaftarMakanan, Resep, US, &listNotif);
+					ClearRedoStack(RS);
+					RS = CreateRedoStackEmpty();
 				}
 				else
 				{
@@ -502,6 +233,7 @@ int main()
 				Y = WordToInt(currentWord);
 				CreateTime(&temptime, 0, X, Y);
 				PushUndoStack(US, State(BNMO));
+				initializeNotif(&State(BNMO));
 				ClearRedoStack(RS);
 				RS = CreateRedoStackEmpty();
 				UpdateWaitTime(&State(BNMO), temptime);
@@ -532,7 +264,7 @@ int main()
 				}
 				else
 				{
-					printf("Undo stack kosong!\n");
+					print_red("Undo stack kosong!\n");
 				}
 			}
 			else if (IsREDO())
@@ -549,7 +281,7 @@ int main()
 				}
 				else
 				{
-					printf("Redo stack kosong!\n");
+					print_red("Redo stack kosong!\n");
 				}
 			}
 			else if (IsCATALOG())
@@ -574,13 +306,13 @@ int main()
 			}
 			else 
 			{
-				printf("Masukan tidak valid! Silahkan ulangi...");
+				print_red("Masukan tidak valid! Silahkan ulangi...\n");
 			}
 		}
 	}
 
 	// Keluar dari program
-	printf("Terima kasih sudah menggunakan program ini!\n");
+	print_green("Terima kasih sudah menggunakan program ini!\n");
 
 	return 0;
 }

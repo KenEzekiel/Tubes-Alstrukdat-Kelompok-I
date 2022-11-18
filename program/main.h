@@ -28,6 +28,7 @@
 #include "lib/listmakanan/listmakanan.h"
 #include "lib/waktusim/mekawaktu.h"
 #include "lib/utility/utility.h"
+#include "lib/utility/process.h"
 #include "lib/statestack/statestack.h"
 #include "lib/undostack/undostack.h"
 #include "lib/redostack/redostack.h"
