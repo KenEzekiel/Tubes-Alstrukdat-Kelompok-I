@@ -1,4 +1,5 @@
 #include "resep.h"
+#include "../utility/utility.h"
 
 void CreateResepTree(ResepTree* Resep, int size)
 /*  I.S. : Sembarang
@@ -149,6 +150,7 @@ void PrintResep(ListMakanan* Makanan, ResepTree* Resep)
 /* I.S. : Resep terdefinisi
    F.S. : ResepTree tercetak, tiap tree dipisahkan dengan enter */
 {
+	print_blue("\n===========================RESEP===========================\n");
 	for (int i = 0; i < RESEPCOUNT(*Resep); i++)
 	{
 		DisplayCookbook(Makanan, &TREE(*Resep,i));
