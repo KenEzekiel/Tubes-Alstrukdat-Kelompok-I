@@ -1,12 +1,8 @@
 #include <stdio.h>
-// #include "lib/utility/utility.h"
 #include "main.h"
 
 /***** Global Variable *****/
 // Changable variables
-// TIME Waktu;
-// POINT Lokasi;
-// Inventory Inv;
 // Masuk kedalam Simulator.State
 Simulator BNMO;
 stackaddr US;
@@ -47,7 +43,6 @@ int main()
 
 	if (IsSTART())
 	{
-
 		/* Menginisiasi nilai variable konstan/global */
 		InitializeVariables();
 
@@ -577,6 +572,10 @@ int main()
 			{
 				isRunning = false;
 			}
+			else 
+			{
+				printf("Masukan tidak valid! Silahkan ulangi...");
+			}
 		}
 	}
 
@@ -585,5 +584,3 @@ int main()
 
 	return 0;
 }
-
-// gcc main.c lib/deliverylist/deliverylist.c lib/inisiasi/inisiasi.c lib/inventory/inventory.c lib/listmakanan/listmakanan.c lib/notifikasi/notifikasi.c lib/olahmakanan/olahmakanan.c lib/peta/peta.c lib/redostack/redostack.c lib/resep/resep.c lib/state/state.c lib/statestack/statestack.c lib/undostack/undostack.c lib/utility/utility.c lib/waktusim/mekawaktu.c ../lib/liststatik/liststatik.c ../lib/makanan/makanan.c ../lib/matrix/matrix.c ../lib/point/point.c ../lib/queue/queue.c ../lib/simulator/simulator.c ../lib/stack/stack.c ../lib/string/string.c ../lib/time/time.c ../lib/tree/tree.c ../lib/wordmachine/wordmachine.c ../lib/wordmachine/charmachine.c ../lib/queue/prioqueuetime.c lib/kulkas/kulkas.c -lm; ./a.out

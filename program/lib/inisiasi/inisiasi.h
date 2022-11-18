@@ -10,8 +10,6 @@
 #include "../../../lib/point/point.h"
 
 void PrintGUI(TIME Waktu, POINT Lokasi, Inventory Inventory, Simulator BNMO, Peta Peta, Notif listNotif);
-
-void ScanWord();
 /* 	Menerima input dari pengguna
 	I.S. : currentChar sembarang
 	F.S. : mencetak GUI, currentWord terdefinisi */
