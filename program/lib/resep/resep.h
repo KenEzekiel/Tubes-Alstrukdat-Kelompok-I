@@ -1,9 +1,11 @@
 #ifndef RESEP
 #define RESEP
 
+#include "../../../lib/string/string.h"
 #include "../../../lib/tree/tree.h"
 #include "../../../lib/wordmachine/wordmachine.h"
 #include "../listmakanan/listmakanan.h"
+#include "../utility/utility.h"
 
 /* Selektor */
 #define LIST(t) (t).T

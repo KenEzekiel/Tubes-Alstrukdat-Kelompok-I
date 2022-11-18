@@ -1,5 +1,4 @@
 #include "resep.h"
-#include "../utility/utility.h"
 
 void CreateResepTree(ResepTree* Resep, int size)
 /*  I.S. : Sembarang
