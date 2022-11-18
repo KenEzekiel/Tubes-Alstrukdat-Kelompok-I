@@ -1,12 +1,8 @@
 #include <stdio.h>
-// #include "lib/utility/utility.h"
 #include "main.h"
 
 /***** Global Variable *****/
 // Changable variables
-// TIME Waktu;
-// POINT Lokasi;
-// Inventory Inv;
 // Masuk kedalam Simulator.State
 Simulator BNMO;
 stackaddr US;
@@ -576,6 +572,10 @@ int main()
 			else if (IsEXIT())
 			{
 				isRunning = false;
+			}
+			else 
+			{
+				printf("Masukan tidak valid! Silahkan ulangi...");
 			}
 		}
 	}
