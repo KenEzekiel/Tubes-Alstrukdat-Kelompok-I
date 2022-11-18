@@ -101,7 +101,7 @@ redostack: $(redostack)$(wildcard *.c)
 	gcc $(redostack)redostack.c $(stack)stack.c $(time)time.c $(inventory)inventory.c $(deliverylist)deliverylist.c $(statestack)statestack.c $(redostack)driver.c -lm -Wall -o $(redostack)redostack$(extension)
 
 resep: $(resep)$(wildcard *.c)
-	gcc $(resep)resep.c $(wordmachine)wordmachine.c $(wordmachine)charmachine.c $(tree)tree.c $(listmakanan)listmakanan.c $(resep)driver.c -lm -Wall -o $(resep)resep$(extension)
+	gcc $(resep)resep.c $(makanan)makanan.c $(string)string.c $(time)time.c $(wordmachine)wordmachine.c $(wordmachine)charmachine.c $(tree)tree.c $(utility)utility.c $(listmakanan)listmakanan.c $(resep)driver.c -lm -Wall -o $(resep)resep$(extension)
 
 state: $(state)$(wildcard *.c)
 	gcc $(state)state.c $(time)time.c $(point)point.c $(inventory)inventory.c $(deliverylist)deliverylist.c $(listmakanan)listmakanan.c $(olahmakanan)olahmakanan.c $(peta)peta.c $(driver)driver.c -lm -Wall -o $(state)state$(extension)
@@ -122,7 +122,7 @@ mekawaktu: $(mekawaktu)$(wildcard *.c)
 	gcc $(mekawaktu)mekawaktu.c $(inventory)inventory.c $(deliverylist)deliverylist.c $(listmakanan)listmakanan.c $(olahmakanan)olahmakanan.c $(state)state.c $(mekawaktu)driver.c -lm -Wall -o $(mekawaktu)waktusim$(extension)
 
 main: lib/ program/ makefile
-	gcc program/main.c $(liststatik)liststatik.c $(makanan)makanan.c $(matrix)matrix.c $(point)point.c $(queue)prioqueuetime.c $(queue)queue.c $(simulator)simulator.c $(stack)stack.c $(string)string.c $(time)time.c $(tree)tree.c $(wordmachine)wordmachine.c $(wordmachine)charmachine.c $(deliverylist)deliverylist.c $(inisiasi)inisiasi.c $(inventory)inventory.c $(kulkas)kulkas.c $(listmakanan)listmakanan.c $(notifikasi)notifikasi.c $(olahmakanan)olahmakanan.c $(peta)peta.c $(redostack)redostack.c $(resep)resep.c $(state)state.c $(statestack)statestack.c $(undostack)undostack.c $(rekomendasi)rekomendasi.c $(utility)process.c $(utility)utility.c $(mekawaktu)mekawaktu.c -Wall -lm -o main$(extension)
+	gcc program/main.c $(liststatik)liststatik.c $(makanan)makanan.c $(matrix)matrix.c $(point)point.c $(queue)prioqueuetime.c $(queue)queue.c $(set)set.c $(simulator)simulator.c $(stack)stack.c $(string)string.c $(time)time.c $(tree)tree.c $(wordmachine)wordmachine.c $(wordmachine)charmachine.c $(deliverylist)deliverylist.c $(inisiasi)inisiasi.c $(inventory)inventory.c $(kulkas)kulkas.c $(listmakanan)listmakanan.c $(notifikasi)notifikasi.c $(olahmakanan)olahmakanan.c $(peta)peta.c $(redostack)redostack.c $(resep)resep.c $(state)state.c $(statestack)statestack.c $(undostack)undostack.c $(rekomendasi)rekomendasi.c $(utility)process.c $(utility)utility.c $(mekawaktu)mekawaktu.c -Wall -lm -o main$(extension)
 
 rmmain:
 	rm -rf main$(extension)
