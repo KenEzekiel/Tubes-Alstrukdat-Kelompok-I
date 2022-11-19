@@ -92,3 +92,28 @@ Running the program can be done by executing run.bat on windows, or make main in
         | resep_2.txt
 
 ```
+## Tasks Distribution
+
+| -------------------------------- | ------------------------------------ |
+|  Names                           | Tasks                                |
+| -------------------------------- | ------------------------------------ |
+| Kevin John Wesley Hutabarat      | ADT Stack, ADT Time, ADT Set,        |
+|                                  | Pengolahan Makanan, Undo, Redo,      |
+|                                  | Rekomendasi Makanan                  |
+| -------------------------------- | ------------------------------------ | 
+| Kenneth Ezekiel Suprantoni       | ADT List Statik, ADT Queue,          |
+|                                  | Inventory, Pemesanan Bahan Makanan,  |
+|                                  | Delivery, Kulkas, Undo, Redo         |
+| -------------------------------- | ------------------------------------ |
+| Frankie Huang                    | ADT Tree, ADT Mesin Karakter,        |
+|                                  | Inisiasi, List Resep, Cookbook       |
+| -------------------------------- | ------------------------------------ |
+| Angela Livia Arumasari           | ADT Makanan, ADT Simulator,          |
+|                                  | Simulator, List Makanan, Notifikasi, |
+|                                  | Rekomendasi Makanan                  |
+| -------------------------------- | ------------------------------------ |
+| Alex Sander                      | ADT Matrix, ADT Point, Peta,         |
+|                                  | Mekanisme Waktu, Waktu Pengolahan    |
+|                                  | Makanan                              |
+| -------------------------------- | ------------------------------------ |
+
