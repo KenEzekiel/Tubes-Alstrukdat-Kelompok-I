@@ -1,4 +1,5 @@
 #include "prioqueuetime.h"
+#include "queue.h"
 #include <stdio.h>
 #include "../boolean.h"
 #include "../makanan/makanan.h"
@@ -7,7 +8,7 @@
 int main()
 {
     PrioQueueTime Q;
-    infotype x, y, z, a;
+    prioQueueInfotype x, y, z, a;
     MakeEmpty(&Q, 5);
 
     /*for (int i = 10; i > 0; i--)
@@ -25,8 +26,8 @@ int main()
     Enqueue(&Q, y);
     Enqueue(&Q, z);
     Enqueue(&Q, a);
-    printf("Apakah Q kosong? %d\n", IsEmpty(Q));
-    printf("Apakah Q penuh? %d\n", IsFull(Q));
+    printf("Apakah Q kosong? %d\n", IsPrioQueueEmpty(Q));
+    printf("Apakah Q penuh? %d\n", IsPrioQueueFull(Q));
     printf("Jumlah elemen Q? %d\n", NBElmt(Q));
     printf("is x element Q? %d\n", isElmt(Q, x));
     deleteElmt(&Q, &x);
@@ -63,6 +64,16 @@ int main()
     printf("idx head : %d\t idx tail : %d\n", Head(Q), Tail(Q));*/
     PrintPrioQueueTime(Q);
     DeAlokasi(&Q);
+
+    Queue qbiasa;
+    QueueElType temp;
+    CreateQueue(&qbiasa);
+    enqueue(&qbiasa, 1);
+    dequeue(&qbiasa, &temp);
+    printf("is queue empty? %d\n", isQueueEmpty(qbiasa));
+    printf("is queue full? %d\n", isQueueFull(qbiasa));
+    printf("queue length? %d\n", queueLength(qbiasa));
+    displayQueue(qbiasa);
 
     return 0;
 }
