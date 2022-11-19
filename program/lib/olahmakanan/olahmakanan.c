@@ -89,36 +89,49 @@ void CreateProcessMakanan(ProcessList *P, int max){
     MakeEmpty(P, max);
 }
 
-void updateProcessList(ProcessList *P, Inventory *I, TIME t, ListMakanan *delivered){
+void updateProcessList(ProcessList *P, Inventory *I, TIME t, ListMakanan *delivered, ListMakanan *expired){
     // KAMUS LOKAL
 
     // ALGORITMA
 
     if (!IsPrioQueueEmpty(*P))
     {
-        minusProcessTime(P, t);
-        delivproc(P, I, delivered);
+        updateProcessTime(P, t, I, delivered, expired);
     }
 }
 
-void minusProcessTime(ProcessList *P, TIME t){
+void updateProcessTime(ProcessList *P, TIME t, Inventory *I, ListMakanan *delivered, ListMakanan *expired){
     // KAMUS LOKAL
     ProcessList p;
     ProcessList q = *P;
     prioQueueInfotype food;
-    int hasil;
+    int hasil, exp;
     // ALGORITMA
     MakeEmpty(&p, MaxPrioQueueEl(*P));
     while (!IsPrioQueueEmpty(q))
     {
         Dequeue(&q, &food);
         hasil = TIMEToMenit(AksiTime(food)) - TIMEToMenit(t);
-        if (hasil < 0)
+        if (hasil > 0)
         {
-            hasil = 0;
+            AksiTime(food) = MenitToTIME(hasil);
+            buyMakanan(&p, food);
         }
-        AksiTime(food) = MenitToTIME(hasil);
-        addProcessList(&p, food);
+        else
+        {
+            exp = hasil + TIMEToMenit(Exp(food));
+            if (exp > 0)
+            {
+                insertLastMakanan(delivered, food);
+                Exp(food) = MenitToTIME(exp);
+                Enqueue(I, food);
+            }
+            else
+            {
+                insertLastMakanan(delivered, food);
+                insertLastMakanan(expired, food);
+            }
+        }
     }
     *P = p;
 }

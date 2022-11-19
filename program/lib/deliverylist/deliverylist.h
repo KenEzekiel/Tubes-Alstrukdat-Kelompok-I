@@ -12,6 +12,7 @@
 #include "../../../lib/string/string.h"
 #include "../../../lib/liststatik/liststatik.h"
 #include "../listmakanan/listmakanan.h"
+#include "../olahmakanan/olahmakanan.h"
 
 /* *** Definisi DeliveryList adalah PrioQueueTime *** */
 typedef PrioQueueTime DeliveryList;
@@ -50,7 +51,7 @@ boolean isMakananValidbyName(String nama, ListMakanan L);
 /* F.S. Isi dari DL dan I di update */
 /* Jika ada makanan yang sudah 0 delivery time nya, akan dimasukkan ke I dan dikeluarkan dari DL*/
 /* Update semua makanan untuk mengurangi waktu delivery time nya sebesar t */
-void updateDelivListAndInv(DeliveryList *DL, Inventory *I, TIME t, ListMakanan *delivered, ListMakanan *expired);
+void updateDelivProcessInv(DeliveryList *DL, Inventory *I, PrioQueueTime *PL, TIME t, ListMakanan *delivered, ListMakanan *expired);
 
 /* *** Update DeliveryList dan Inventory *** */
 /* I.S. DeliveryList dan Inventory terdefinisi sembarang */

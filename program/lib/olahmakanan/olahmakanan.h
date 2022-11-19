@@ -28,9 +28,9 @@ void process(int id, Inventory *I, ListMakanan lneed, ListMakanan lfiltered, Pro
        jika ada bahan yang tidak tersedia, menampilkan bahan-bahan yang tidak tersedia tersebut*/
 void CreateProcessMakanan(ProcessList *P,int max);
 
-void updateProcessList(ProcessList *P, Inventory *I, TIME t, ListMakanan *delivered);
+void updateProcessList(ProcessList *P, Inventory *I, TIME t, ListMakanan *delivered, ListMakanan *expired);
 
-void minusProcessTime(ProcessList *P, TIME t);
+void updateProcessTime(ProcessList *P, TIME t, Inventory *I, ListMakanan *delivered, ListMakanan *expired);
 
 void plusProcessTime(ProcessList *P, TIME t);
 

@@ -151,16 +151,14 @@ boolean isMakananValidbyName(String nama, ListMakanan L)
 /* F.S. Isi dari DL dan I di update*/
 /* Jika ada makanan yang sudah 0 delivery time nya, akan dimasukkan ke I dan dikeluarkan dari DL*/
 /* Update semua makanan untuk mengurangi waktu delivery time nya sebesar t */
-void updateDelivListAndInv(DeliveryList *DL, Inventory *I, TIME t, ListMakanan *delivered, ListMakanan *expired)
+void updateDelivProcessInv(DeliveryList *DL, Inventory *I, PrioQueueTime *PL, TIME t, ListMakanan *delivered, ListMakanan *expired)
 {
-    if (!IsPrioQueueEmpty(*I))
-    {
-        updateInventory(I, t, expired);
-    }
+    updateInventory(I, t, expired);
     if (!IsPrioQueueEmpty(*DL))
     {
         updateDelivTime(DL, t, I, delivered, expired);
     }
+    updateProcessList(PL, I, t, delivered, expired);
 }
 
 /* *** Update DeliveryList dan Inventory *** */

@@ -4,14 +4,12 @@
 void UpdateActionTime(State *S){
     TIME t;
     CreateTime(&t,0,0,1);
-    updateProcessList(&ProcessedList(*S),&InventoryState(*S),t, &DeliveredListState(*S));
-    updateDelivListAndInv(&DeliveryListState(*S), &InventoryState(*S), t, &DeliveredListState(*S), &ExpListState(*S));
+    updateDelivProcessInv(&DeliveryListState(*S), &InventoryState(*S), &ProcessedList(*S), t, &DeliveredListState(*S), &ExpListState(*S));
     UpdateGlobalTime(&TimeState(*S),t);
 }
 
 void UpdateWaitTime(State *S, TIME t){
-    updateProcessList(&ProcessedList(*S),&InventoryState(*S),t, &DeliveredListState(*S));
-    updateDelivListAndInv(&DeliveryListState(*S), &InventoryState(*S), t, &DeliveredListState(*S), &ExpListState(*S));
+    updateDelivProcessInv(&DeliveryListState(*S), &InventoryState(*S), &ProcessedList(*S), t, &DeliveredListState(*S), &ExpListState(*S));
     UpdateGlobalTime(&TimeState(*S),t);
 }
 
