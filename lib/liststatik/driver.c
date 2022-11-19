@@ -15,9 +15,9 @@ int main()
     printf("input idx: ");
     IdxType idx;
     scanf("%d", &idx);
-    printf("is idx eff? %d\n", isIdxEff(L, idx));
-    printf("is list empty? %d\n", isEmpty(L));
-    printf("is list full? %d\n", isFull(L));
+    printf("is idx eff? %d\n", isIdxListEff(L, idx));
+    printf("is list empty? %d\n", isListEmpty(L));
+    printf("is list full? %d\n", isListFull(L));
     printf("list: \n");
     printList(L);
 
@@ -34,7 +34,7 @@ int main()
 
     printf("\napakah list 1 dan list 2 sama? %d\n", isListEqual(L, L2));
 
-    ElType elmt;
+    listElType elmt;
     printf("input elmt: ");
     scanf("%d", &elmt);
 
@@ -43,7 +43,7 @@ int main()
 
     printf("indeks elemen %d pertama di list 1 adalah: %d\n", elmt, indexOf(L, elmt));
 
-    ElType min, max;
+    listElType min, max;
     extremeValues(L, &max, &min);
     printf("min di list 1: %d\nmax di list 1: %d\n", min, max);
 

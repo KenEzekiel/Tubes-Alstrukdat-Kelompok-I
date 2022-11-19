@@ -89,13 +89,13 @@ boolean isIdxListEff(ListStatik l, IdxType i)
 
 /* ********** TEST KOSONG/PENUH ********** */
 /* *** Test List kosong *** */
-boolean isEmpty(ListStatik l)
+boolean isListEmpty(ListStatik l)
 {
     /* Mengirimkan true jika List l kosong, mengirimkan false jika tidak */
     return (listLength(l) == 0);
 }
 /* *** Test List penuh *** */
-boolean isFull(ListStatik l)
+boolean isListFull(ListStatik l)
 {
     /* Mengirimkan true jika List l penuh, mengirimkan false jika tidak */
     return (listLength(l) == CAPACITY);
@@ -287,7 +287,7 @@ void insertFirst(ListStatik *l, listElType val)
     /*KAMUS LOKAL*/
     int i;
     /*ALGORITMA*/
-    if (isFull(*l) != true)
+    if (isListFull(*l) != true)
     {
         for (i = listLength(*l); i > 0; i--)
         {
@@ -305,7 +305,7 @@ void insertAt(ListStatik *l, listElType val, IdxType idx)
     /*KAMUS LOKAL*/
     int i;
     /*ALGORITMA*/
-    if ((isFull(*l) != true) && (isEmpty(*l) != true))
+    if ((isListFull(*l) != true) && (isListEmpty(*l) != true))
     {
         for (i = listLength(*l); i > idx; i--)
         {
@@ -322,7 +322,7 @@ void insertLast(ListStatik *l, listElType val)
     /* F.S. val adalah elemen terakhir l yang baru */
     /*KAMUS LOKAL*/
     /*ALGORITMA*/
-    if (isFull(*l) != true)
+    if (isListFull(*l) != true)
     {
         ELMT_L(*l, listLength(*l)) = val;
     }
@@ -340,7 +340,7 @@ void deleteFirst(ListStatik *l, listElType *val)
     /*KAMUS LOKAL*/
     int i;
     /*ALGORITMA*/
-    if (isEmpty(*l) != true)
+    if (isListEmpty(*l) != true)
     {
         *val = ELMT_L(*l, getFirstIdx(*l));
 
@@ -363,7 +363,7 @@ void deleteAt(ListStatik *l, listElType *val, IdxType idx)
     /*KAMUS LOKAL*/
     int i;
     /*ALGORITMA*/
-    if (isEmpty(*l) != true)
+    if (isListEmpty(*l) != true)
     {
         *val = ELMT_L(*l, idx);
 
@@ -384,7 +384,7 @@ void deleteLast(ListStatik *l, listElType *val)
     /*      List l mungkin menjadi kosong */
     /*KAMUS LOKAL*/
     /*ALGORITMA*/
-    if (isEmpty(*l) != true)
+    if (isListEmpty(*l) != true)
     {
         *val = ELMT_L(*l, getLastIdx(*l));
 
