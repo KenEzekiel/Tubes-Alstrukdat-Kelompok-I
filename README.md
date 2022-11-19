@@ -44,72 +44,43 @@ Cooking BNMO is a Command-Line Interface Game that is made using C, which includ
 └─── lib
 |       | boolean.h
 |       └─── liststatik
-|       |               | 
-|       |               | 
 |       └─── makanan
-|       |               | 
-|       |               | 
 |       └─── matrix
-|       |               | 
-|       |               | 
 |       └─── point
-|       |               | 
-|       |               | 
 |       └─── queue
-|       |               | 
-|       |               | 
 |       └─── simulator
-|       |               | 
-|       |               | 
 |       └─── stack
-|       |               | 
-|       |               | 
 |       └─── string
-|       |               | 
-|       |               | 
 |       └─── time
-|       |               | 
-|       |               | 
 |       └─── tree
-|       |               | 
-|       |               | 
 |       └─── wordmachine
-|       |               | 
-|       |               | 
-|       └───
 |
 └─── program
 |       | main.c
 |       | main.h
+|       | run.bat
 |       └─── lib
+|               | boolean.h
 |               └─── deliverylist
-|               |               | 
-|               |               | 
 |               └─── inisiasi
 |               └─── inventory
-|               |               | 
-|               |               | 
 |               └─── listmakanan
-|               |               | 
-|               |               |
+|               └─── notifikasi
 |               └─── olahmakanan
-|               |               |
-|               |               |
 |               └─── peta
 |               └─── redostack
+|               └─── rekomendasi
 |               └─── resep
 |               └─── state
 |               └─── statestack
 |               └─── undostack
 |               └─── utility
 |               └─── waktusim
-|               | boolean.h
-|
-|
 |
 └─── test
+        | makanan.txt
         | peta.txt
-        | resep.txt
-        | test.txt
+        | resep_1.txt
+        | resep_2.txt
 
 ```
