@@ -151,16 +151,15 @@ boolean isMakananValidbyName(String nama, ListMakanan L)
 /* F.S. Isi dari DL dan I di update*/
 /* Jika ada makanan yang sudah 0 delivery time nya, akan dimasukkan ke I dan dikeluarkan dari DL*/
 /* Update semua makanan untuk mengurangi waktu delivery time nya sebesar t */
-void updateDeliveryList(DeliveryList *DL, Inventory *I, TIME t, ListMakanan *delivered)
+void updateDelivListAndInv(DeliveryList *DL, Inventory *I, TIME t, ListMakanan *delivered, ListMakanan *expired)
 {
-    // KAMUS LOKAL
-
-    // ALGORITMA
-
+    if (!IsPrioQueueEmpty(*I))
+    {
+        updateInventory(I, t, expired);
+    }
     if (!IsPrioQueueEmpty(*DL))
     {
-        minusDelivTime(DL, t);
-        deliver(DL, I, delivered);
+        updateDelivTime(DL, t, I, delivered, expired);
     }
 }
 
@@ -211,25 +210,39 @@ void deliver(DeliveryList *DL, Inventory *I, ListMakanan *delivered)
 /* I.S. DL terdefinisi, tidak kosong */
 /* F.S. semua makanan dikurangi delivery time nya sebesar t
 jika hasil < 0, maka delivery time di set 0 */
-void minusDelivTime(DeliveryList *DL, TIME t)
+void updateDelivTime(DeliveryList *DL, TIME t, Inventory *I, ListMakanan *delivered, ListMakanan *expired)
 {
     // KAMUS LOKAL
     DeliveryList p;
     DeliveryList q = *DL;
     prioQueueInfotype food;
-    int hasil;
+    int hasil, exp;
     // ALGORITMA
     MakeEmpty(&p, MaxPrioQueueEl(*DL));
     while (!IsPrioQueueEmpty(q))
     {
         Dequeue(&q, &food);
         hasil = TIMEToMenit(DelivTime(food)) - TIMEToMenit(t);
-        if (hasil < 0)
+        if (hasil > 0)
         {
-            hasil = 0;
+            DelivTime(food) = MenitToTIME(hasil);
+            buyMakanan(&p, food);
         }
-        DelivTime(food) = MenitToTIME(hasil);
-        buyMakanan(&p, food);
+        else
+        {
+            exp = hasil + TIMEToMenit(Exp(food));
+            if (exp > 0)
+            {
+                insertLastMakanan(delivered, food);
+                Exp(food) = MenitToTIME(exp);
+                Enqueue(I, food);
+            }
+            else
+            {
+                insertLastMakanan(delivered, food);
+                insertLastMakanan(expired, food);
+            }
+        }
     }
     *DL = p;
 }
