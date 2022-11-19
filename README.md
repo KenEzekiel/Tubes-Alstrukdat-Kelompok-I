@@ -8,9 +8,13 @@ Cooking BNMO is a Command-Line Interface Game that is made using C, which includ
 
 ## Run the program
 
-Running the program can be done by executing run.bat on windows, or make main in the program directory, which can be done in windows or linux.
+Compiling the program can be done by executing run.bat on windows, or make main in the program directory, which can be done in windows or linux.
+
+The executable, main.exe, can be run in the terminal using ./main
 
 ## Features
+
+All features listed are 100% done and implemented.
 
 - Inisiasi
 - Simulator
@@ -29,13 +33,13 @@ Running the program can be done by executing run.bat on windows, or make main in
 
 ## Anggota Kelompok I
 
-| NIM      | Name                        |
-| -------- | --------------------------- |
-| 13521094 | Angela Livia Arumsari       |
-| 13521089 | Kenneth Ezekiel Suprantoni  |
-| 13521092 | Frankie Huang               |
-| 13521042 | Kevin John Wesley Hutabarat |
-| 13521061 | Alex Sander                 |
+| NIM      | Name                        | ADT Part                              | Feature Part                                                       |
+| -------- | --------------------------- | ------------------------------------- | ------------------------------------------------------------------ |
+| 13521094 | Angela Livia Arumsari       | ADT Makanan, ADT Simulator            | Simulator, List Makanan, Notifikasi, Rekomendasi                   |
+| 13521089 | Kenneth Ezekiel Suprantoni  | ADT List Statik, ADT Queue            | Inventory, Pemesanan Bahan Makanan dan Delivery, Kulkas, Undo/Redo | 
+| 13521092 | Frankie Huang               | ADT Tree, ADT Mesin Karakter dan Kata | Inisiasi, List Resep, Cookbook                                     |
+| 13521042 | Kevin John Wesley Hutabarat | ADT Stack, ADT Time, ADT Set          | Pengolahan Makanan, Undo/Redo, Rekomendasi                         |
+| 13521061 | Alex Sander                 | ADT Matrix, ADT Point                 | Peta, Mekanisme Waktu, Waktu Pengolahan Makanan                    |
 
 ## Program Structure
 
