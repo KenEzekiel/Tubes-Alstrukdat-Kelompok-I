@@ -43,6 +43,9 @@ void add (Set *S, Eltype_SET val) {
 /*I.S. Sebuah Set, boleh kosong*/
 /*F.S. Set yang telah ditambahkan elemen val*/
     ELMT_S(*S,val) = 1;
+    if (val>lengthS(*S)){
+        lengthS(*S) = val+1;
+    }
 }
 
 void copy(Set *S1,Set *S2) {
