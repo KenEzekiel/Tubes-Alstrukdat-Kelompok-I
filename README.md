@@ -6,6 +6,10 @@ BNMO is a game robot owned by Indra and Doni. Recently, Indra has been in close 
 
 Cooking BNMO is a Command-Line Interface Game that is made using C, which includes a variety of Abstact Data Types and Structures, such as List, Matrix, Tree, Queue, Stack, etc.
 
+## Run the program
+
+Running the program can be done by executing run.bat on windows, or make main in the program directory, which can be done in windows or linux.
+
 ## Features
 
 - Inisiasi
