@@ -6,7 +6,7 @@ BNMO is a game robot owned by Indra and Doni. Recently, Indra has been in close 
 
 Cooking BNMO is a Command-Line Interface Game that is made using C, which includes a variety of Abstact Data Types and Structures, such as List, Matrix, Tree, Queue, Stack, etc.
 
-## Run the program
+## Running the program
 
 Compiling the program can be done by executing run.bat on windows, or make main in the program directory, which can be done in windows or linux.
 
@@ -98,26 +98,21 @@ All features listed are 100% done and implemented.
 ```
 ## Tasks Distribution
 
-| -------------------------------- | ------------------------------------ |
 |  Names                           | Tasks                                |
 | -------------------------------- | ------------------------------------ |
 | Kevin John Wesley Hutabarat      | ADT Stack, ADT Time, ADT Set,        |
 |                                  | Pengolahan Makanan, Undo, Redo,      |
 |                                  | Rekomendasi Makanan                  |
-| -------------------------------- | ------------------------------------ | 
 | Kenneth Ezekiel Suprantoni       | ADT List Statik, ADT Queue,          |
 |                                  | Inventory, Pemesanan Bahan Makanan,  |
 |                                  | Delivery, Kulkas, Undo, Redo         |
-| -------------------------------- | ------------------------------------ |
 | Frankie Huang                    | ADT Tree, ADT Mesin Karakter,        |
 |                                  | Inisiasi, List Resep, Cookbook       |
-| -------------------------------- | ------------------------------------ |
 | Angela Livia Arumasari           | ADT Makanan, ADT Simulator,          |
 |                                  | Simulator, List Makanan, Notifikasi, |
 |                                  | Rekomendasi Makanan                  |
-| -------------------------------- | ------------------------------------ |
 | Alex Sander                      | ADT Matrix, ADT Point, Peta,         |
 |                                  | Mekanisme Waktu, Waktu Pengolahan    |
 |                                  | Makanan                              |
-| -------------------------------- | ------------------------------------ |
+
 
