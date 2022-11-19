@@ -2,7 +2,7 @@
 #include "matrix.h"
 
 int main() {
-    MatrixElType var;
+    int var;
     Matrix m;
     createMatrix(2,2,&m);
     for (int i = 0; i<ROW_EFF(m);i++) {

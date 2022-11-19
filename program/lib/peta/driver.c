@@ -9,7 +9,7 @@ int main()
 {
     Peta p;
     boolean pllll;
-    fileToPeta("../../../test/peta.txt", &PETA(p));
+    fileToPeta("test/peta.txt", &PETA(p));
     DisplayPeta(p);
     POINT(p) = cariSimul(p);
     Update(&p, 5);

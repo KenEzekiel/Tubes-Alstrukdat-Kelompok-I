@@ -28,16 +28,16 @@ void InitializeVariables()
 	CreateKulkas(&K, 20, 30);
 
 	// Initialize constant variables (read from file)
-	ReadFromFile(&Resep, 10, "../test/resep_2.txt");
-	StartPeta(&Map, "../test/peta.txt");
+	ReadFromFile(&Resep, 10, "test/resep_2.txt");
+	StartPeta(&Map, "test/peta.txt");
 	CreateListMakanan(&DaftarMakanan);
-	DaftarMakanan = readListMakanan("../test/makanan.txt");
+	DaftarMakanan = readListMakanan("test/makanan.txt");
 	Position(State(BNMO)) = cariSimul(Map);
 }
 
 int main()
 {
-	displaySplashScreen("./lib/utility/SplashScreen.txt");
+	displaySplashScreen("program/lib/utility/SplashScreen.txt");
 	print_cyan("Enter Command: ");
 	STARTWORD();
 

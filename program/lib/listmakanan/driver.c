@@ -12,7 +12,7 @@ int main()
     CreateListMakanan(&lsorted);
 
     printf("Menampilkan list makanan hasil pembacaan dari file konfigurasi\n");
-    lfood1 = readListMakanan("../../../test/makanan.txt");
+    lfood1 = readListMakanan("test/makanan.txt");
     printCatalog(lfood1);
 
     printf("Menampilkan list makanan yang terurut secara ID\n");

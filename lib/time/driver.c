@@ -2,7 +2,7 @@
 #include <stdio.h>
 
 int main() {
-    TIME T1,T2, T3;
+    TIME T2, T3;
     int n;
 
     //Membuat ADT Time dari elemen jam, menit, detik
@@ -68,7 +68,7 @@ int main() {
     //Durasi dari T2 ke T3
     printf("\n");
     printf("Durasi T2 ke T3: ");
-    printf("%d menit\n", Durasi(T2,T3));
+    printf("%ld menit\n", Durasi(T2,T3));
 
     return 0;
 

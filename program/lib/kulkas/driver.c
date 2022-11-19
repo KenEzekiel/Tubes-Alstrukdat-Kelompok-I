@@ -4,7 +4,7 @@ int main()
 {
     Inventory Q;
     ListMakanan expired;
-    prioQueueInfotype x, y, z, a;
+    prioQueueInfotype x, y, z;
     Kulkas K;
     CreateInventory(&Q, 4);
     CreateListMakanan(&expired);

@@ -21,7 +21,7 @@ void displayMakananFiltered(String aksi, ListMakanan *lfood, ListMakanan *lfilte
         printf("========================");
         printf("=         ");
         displayString(aksi);
-        printf("        =", aksi);
+        printf("        =");
         printf("========================\n\n");
     }
 

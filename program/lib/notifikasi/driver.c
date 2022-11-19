@@ -7,7 +7,6 @@
 int main() {
     Notif listNotif;
     String newNotif;
-    State prev, current;
     CreateNotif(&listNotif);
 
     printf("Tampilan saat notifikasi kosong\n");
