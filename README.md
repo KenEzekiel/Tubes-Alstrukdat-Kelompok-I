@@ -6,6 +6,10 @@ BNMO is a game robot owned by Indra and Doni. Recently, Indra has been in close 
 
 Cooking BNMO is a Command-Line Interface Game that is made using C, which includes a variety of Abstact Data Types and Structures, such as List, Matrix, Tree, Queue, Stack, etc.
 
+## Run the program
+
+Running the program can be done by executing run.bat on windows, or make main in the program directory, which can be done in windows or linux.
+
 ## Features
 
 - Inisiasi
@@ -18,6 +22,10 @@ Cooking BNMO is a Command-Line Interface Game that is made using C, which includ
 - Pengolahan Makanan
 - Mekanisme Waktu
 - Undo, Redo, Catalog, Cookbook
+- Rekomendasi Makanan
+- Kulkas
+- Waktu Pengolahan Makanan
+- Notifikasi
 
 ## Anggota Kelompok I
 
@@ -44,72 +52,43 @@ Cooking BNMO is a Command-Line Interface Game that is made using C, which includ
 └─── lib
 |       | boolean.h
 |       └─── liststatik
-|       |               | 
-|       |               | 
 |       └─── makanan
-|       |               | 
-|       |               | 
 |       └─── matrix
-|       |               | 
-|       |               | 
 |       └─── point
-|       |               | 
-|       |               | 
 |       └─── queue
-|       |               | 
-|       |               | 
 |       └─── simulator
-|       |               | 
-|       |               | 
 |       └─── stack
-|       |               | 
-|       |               | 
 |       └─── string
-|       |               | 
-|       |               | 
 |       └─── time
-|       |               | 
-|       |               | 
 |       └─── tree
-|       |               | 
-|       |               | 
 |       └─── wordmachine
-|       |               | 
-|       |               | 
-|       └───
 |
 └─── program
 |       | main.c
 |       | main.h
+|       | run.bat
 |       └─── lib
+|               | boolean.h
 |               └─── deliverylist
-|               |               | 
-|               |               | 
 |               └─── inisiasi
 |               └─── inventory
-|               |               | 
-|               |               | 
 |               └─── listmakanan
-|               |               | 
-|               |               |
+|               └─── notifikasi
 |               └─── olahmakanan
-|               |               |
-|               |               |
 |               └─── peta
 |               └─── redostack
+|               └─── rekomendasi
 |               └─── resep
 |               └─── state
 |               └─── statestack
 |               └─── undostack
 |               └─── utility
 |               └─── waktusim
-|               | boolean.h
-|
-|
 |
 └─── test
+        | makanan.txt
         | peta.txt
-        | resep.txt
-        | test.txt
+        | resep_1.txt
+        | resep_2.txt
 
 ```
