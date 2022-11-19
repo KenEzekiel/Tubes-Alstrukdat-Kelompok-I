@@ -6,13 +6,14 @@ int main()
 {
     DeliveryList DL;
     Inventory I;
-    ListMakanan L, delivered;
+    ListMakanan L, delivered, expired;
     prioQueueInfotype x, y, z, a;
 
     MakeEmpty(&DL, 3);
     CreateInventory(&I, 3);
     CreateListMakanan(&L);
     CreateListMakanan(&delivered);
+    CreateListMakanan(&expired);
 
     BacaMakanan(&x);
     BacaMakanan(&y);
@@ -51,7 +52,7 @@ int main()
     int sec;
     printf("Masukkan menit update: ");
     scanf("%d", &sec);
-    updateDeliveryList(&DL, &I, MenitToTIME(sec), &delivered);
+    updateDelivTime(&DL, MenitToTIME(sec), &I,  &delivered, &expired);
     displayDeliveryList(DL);
     displayInventory(I);
     printf("Makanan yang sudah dikirim: \n");
