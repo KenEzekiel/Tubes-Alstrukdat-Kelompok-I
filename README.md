@@ -14,6 +14,8 @@ The executable, main.exe, can be run in the terminal using ./main
 
 ## Features
 
+All features listed are 100% done and implemented.
+
 - Inisiasi
 - Simulator
 - Makanan
