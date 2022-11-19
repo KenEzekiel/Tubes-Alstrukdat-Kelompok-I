@@ -3,20 +3,20 @@
 
 int main() {
     Stack S;
-    infotype val;
+    stackInfotype val;
 
     //inisialisasi stack
     CreateEmpty(&S);
 
     //Menampilkan stack kosong, penuh, atau tidak keduanya
-    printf("Stack kosong? %d\n", IsEmpty(S));
-    printf("Stack penuh? %d\n", IsFull(S));
+    printf("Stack kosong? %d\n", IsStackEmpty(S));
+    printf("Stack penuh? %d\n", IsStackFull(S));
 
     //Menambahkan elemen ke dalam stack
     int EOP = -9999;
-    infotype N=0;
+    stackInfotype N=0;
     printf("Masukkan angka ke dalam stack (-9999 jika berhenti): \n");
-    while(N!=EOP && !IsFull(S)){
+    while(N!=EOP && !IsStackFull(S)){
         scanf("%d", &N);
         if(N!=EOP){
             Push(&S,N);
@@ -25,10 +25,10 @@ int main() {
 
     //menampilkan elemen stack
     printf("[");
-    while(!IsEmpty(S)) {
+    while(!IsStackEmpty(S)) {
         Pop(&S,&val);
         printf("%d",val);
-        if(!IsEmpty(S)){
+        if(!IsStackEmpty(S)){
             printf(",");
         }
     }
