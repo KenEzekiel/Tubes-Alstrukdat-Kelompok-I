@@ -22,6 +22,10 @@ Running the program can be done by executing run.bat on windows, or make main in
 - Pengolahan Makanan
 - Mekanisme Waktu
 - Undo, Redo, Catalog, Cookbook
+- Rekomendasi Makanan
+- Kulkas
+- Waktu Pengolahan Makanan
+- Notifikasi
 
 ## Anggota Kelompok I
 
