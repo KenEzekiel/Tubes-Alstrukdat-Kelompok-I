@@ -44,56 +44,56 @@ All features listed are 100% done and implemented.
 ## Program Structure
 
 ```
-| README.md
-| .gitignore
-|
-└─── .vscode
-|
-└─── doc
-|       | Pedoman Tugas Besar IF2110 2022_2023.docx
-|       | Spesifikasi Tugas Besar IF2110 2022-2023.pdf
-|
-└─── lib
-|       | boolean.h
-|       └─── liststatik
-|       └─── makanan
-|       └─── matrix
-|       └─── point
-|       └─── queue
-|       └─── simulator
-|       └─── stack
-|       └─── string
-|       └─── time
-|       └─── tree
-|       └─── wordmachine
-|
-└─── program
-|       | main.c
-|       | main.h
-|       | run.bat
-|       └─── lib
-|               | boolean.h
-|               └─── deliverylist
-|               └─── inisiasi
-|               └─── inventory
-|               └─── listmakanan
-|               └─── notifikasi
-|               └─── olahmakanan
-|               └─── peta
-|               └─── redostack
-|               └─── rekomendasi
-|               └─── resep
-|               └─── state
-|               └─── statestack
-|               └─── undostack
-|               └─── utility
-|               └─── waktusim
-|
+│ README.md
+│ .gitignore
+│
+├─── .vscode
+│
+├─── doc
+│       │ Pedoman Tugas Besar IF2110 2022_2023.docx
+│       │ Spesifikasi Tugas Besar IF2110 2022-2023.pdf
+│
+├─── lib
+│       | boolean.h
+│       ├─── liststatik
+│       ├─── makanan
+│       ├─── matrix
+│       ├─── point
+│       ├─── queue
+│       ├─── simulator
+│       ├─── stack
+│       ├─── string
+│       ├─── time
+│       ├─── tree
+│       └─── wordmachine
+│
+├─── program
+│       | main.c
+│       | main.h
+│       | run.bat
+│       └─── lib
+│               | boolean.h
+│               ├─── deliverylist
+│               ├─── inisiasi
+│               ├─── inventory
+│               ├─── listmakanan
+│               ├─── notifikasi
+│               ├─── olahmakanan
+│               ├─── peta
+│               ├─── redostack
+│               ├─── rekomendasi
+│               ├─── resep
+│               ├─── state
+│               ├─── statestack
+│               ├─── undostack
+│               ├─── utility
+│               └─── waktusim
+│
 └─── test
-        | makanan.txt
-        | peta.txt
-        | resep_1.txt
-        | resep_2.txt
+        │ makanan.txt
+        │ peta.txt
+        │ resep_1.txt
+        │ resep_2.txt
 
 ```
 ## Tasks Distribution
