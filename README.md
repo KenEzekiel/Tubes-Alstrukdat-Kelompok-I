@@ -8,7 +8,7 @@ Cooking BNMO is a Command-Line Interface Game that is made using C, which includ
 
 ## Running the program
 
-Compiling the program can be done by executing run.bat on windows, or make main in the program directory, which can be done in windows or linux.
+Compiling the program can be done by executing run.bat on windows, or make main to make the main binary file, and make run to run all drivers, which can be done in windows or linux.
 
 The executable, main.exe, can be run in the terminal using ./main
 
